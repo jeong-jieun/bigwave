@@ -1,6 +1,23 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Member, Marina, Schedule, Booking
+from datetime import datetime
+
+# 메인페이지에서 조회하기 버튼 클릭시 스케줄 조회 페이지 보여주기
+def schedule(request):
+    schedules = []
+    if request.method == 'POST':
+        start = request.POST.get('start')
+        end = request.POST.get('end')
+        qty = request.POST.get('qty', '')
+        schedules = Schedule.objects.filter(sch_marina=start, sch_arrival=end)
+    elif request.method == 'GET':
+        start = request.GET.get('start')
+        end = request.GET.get('end')
+        qty = request.GET.get('qty', '')
+        schedules = Schedule.objects.filter(sch_marina=start, sch_arrival=end)
+    return render(request, 'jeapp/html/schedule.html', {'qty' : qty,
+                                                        'schedule': schedules})
 
 # 결제하기 버튼 클릭시 DB에 저장시키기
 def setbookingInsert(request):
@@ -119,8 +136,6 @@ def index(request):
         start = request.POST.get('start')
         end = request.POST.get('end')
         
-    # 선택한 출발지와 도착지에 해당하는 스케줄 검색
-    schedules = Schedule.objects.filter(sch_marina=start, sch_arrival=end)
     return render(request,
                   'jeapp/index.html',
                   {"mem_list" : mem_list,
