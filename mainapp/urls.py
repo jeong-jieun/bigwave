@@ -20,16 +20,15 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    
     ### mainapp (http://127.0.0.1:8000/hw/)
     path('hwsj/', views.hwsj),
-    ### mainapp (http://127.0.0.1:8000/hw/)
+    ### mainapp (http://127.0.0.1:8000/signup2/)
     path('signup2/', views.signup2),
-    ### mainapp (http://127.0.0.1:8000/hw/)
+    ### mainapp (http://127.0.0.1:8000/signup/)
     path('signup/', views.signup),
-    ### mainapp (http://127.0.0.1:8000/hw/)
+    ### mainapp (http://127.0.0.1:8000/login/)
     path('login/', views.login),
-    ### mainapp (http://127.0.0.1:8000/hw/)
+    ### mainapp (http://127.0.0.1:8000/login2/)
     path('login2/', views.login2),
     ### mainapp (http://127.0.0.1:8000/imsi/)
     path('imsi/', views.imsi),

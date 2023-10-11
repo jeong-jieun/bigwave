@@ -47,3 +47,4 @@ def index(request):
     return render(request,
                   'mainapp/index.html',
                   {})
+    

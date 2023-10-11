@@ -129,8 +129,8 @@ def index(request):
                    'selected_start': start,
                    'selected_end': end})
     
-# main.html 처리(첫화면)
-def main(request):
-    return render(request,
-                  'jeapp/main.html',
-                  {})
+# # main.html 처리(첫화면)
+# def main(request):
+#     return render(request,
+#                   'jeapp/main.html',
+#                   {})
