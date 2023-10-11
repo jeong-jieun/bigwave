@@ -1,0 +1,1690 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="format-detection" content="telephone=no, address=no, email=no" />
+	<meta name="viewport" content="width=device-width, user-scalable=yes" />
+	<meta name="description" content="수서고속철도, SRT, 수서~부산(경부선), ~목포(호남선), 승차권 예매, 운행정보 안내" />
+	<meta name="naver-site-verification" content="0a893b6cf32c1efffb45bae4d7f442b5b74f7f84" />
+	<title>승차권 예약/발매 - 국민철도 SR</title>
+	<link rel="apple-touch-icon-precomposed" href="https://etk.srail.kr/apple-touch-icon-precomposed.png" />
+	<link rel="shortcut icon" href="https://etk.srail.kr/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="{% static 'prc/css/nav_common.css'%}" />
+    <link href="{% static 'prc/css/copy_style.css'%}" rel="stylesheet">
+
+
+	<!--[if IE 7]><link rel="stylesheet" type="text/css" href="/css/skin/etk_kr/ie7.css" /><![endif]-->
+	<!--[if IE 8]><link rel="stylesheet" type="text/css" href="/css/skin/etk_kr/ie8.css" /><![endif]-->
+	<!--[if IE 9]><link rel="stylesheet" type="text/css" href="/css/skin/etk_kr/ie9.css" /><![endif]-->
+	<script type="text/javascript">
+	//<![CDATA[
+		var MAIN_CONTEXT_PATH = '';
+		var WWW_DOMAIN = 'https://www.srail.co.kr';
+		var cfg = {
+			contextPath : '',
+			isLogin : false
+		};
+		/*
+		switch (location.hostname) {
+			case 'testetkp.srail.co.kr' :
+				document.domain = 'srail.co.kr';
+				break;
+			case 'devetk.srail.co.kr' :
+				document.domain = 'srail.co.kr';
+				break;
+			case 'devetk.srail.kr' :
+				document.domain = 'srail.kr';
+				break;
+			case 'etk.srail.co.kr' :
+				document.domain = 'srail.co.kr';
+				break;
+			case 'etk.srail.kr' :
+				document.domain = 'srail.kr';
+				break;
+			default :
+				document.domain = 'srail.kr';
+		} 
+		*/
+		//document.domain = 'srail.kr';
+	//]]>
+	
+	</script>
+	<script type="text/javascript" src="https://etk.srail.kr/js/jquery/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="https://etk.srail.kr/js/jquery/plugin/jquery-ui/1.12.1/jquery-ui.js"></script>	
+	<script type="text/javascript" src="https://etk.srail.kr/js/jquery.bxslider.js"></script>
+	<script type="text/javascript">var $J = $.noConflict();</script>
+	<script type="text/javascript" src="{% static 'prc/js/201812100809.js'%}"></script>
+	<script type="text/javascript" src="https://etk.srail.kr/js/prototype/prototype.1.7.2.js"></script>
+	<script type="text/javascript" src="https://etk.srail.kr/js/scriptaculous/1.9.0/scriptaculous.js?load=builder,effects"></script>
+	<script type="text/javascript" src="https://etk.srail.kr/js/Common.js"></script>
+	<script type="text/javascript" src="https://etk.srail.kr/js/Navi.js"></script>
+	<script type="text/javascript" src="https://etk.srail.kr/js/sweetalert2.js"></script>
+	<script type="text/javascript" src="https://etk.srail.kr/js/swiper-bundle.min.js"></script>
+
+
+	<script type="text/javascript" src="https://etk.srail.kr/js/IFrame.js"></script>
+
+	<script type="text/javascript" src="https://etk.srail.kr/js/netfunnel/netfunnel-pr.1.0.js"></script>
+
+	<script type="text/javascript" src="https://etk.srail.kr/js/netfunnel/skin/sr.1.0.js"></script>
+
+</head>
+<body>
+
+<div id="wrap">
+
+		<script>
+		var ptkNm = encodeURIComponent("");
+		var regUserId = "";
+		function goToHpg(obj,link){
+			if(!cfg.isLogin){
+				if (confirm('로그인 후 이용이 가능합니다.\n\n로그인 페이지로 이동하시겠습니까?')) {
+					if(obj == '1'){
+						location.href = 'http://etk.srail.kr/cmc/01/selectLoginForm.do?pageId=TK0701000000&goUrl=' + encodeURIComponentEx(link);
+					}else{
+						location.href = 'http://etk.srail.kr/cmc/01/selectLoginForm.do?pageId=TK0701000000';
+					}
+					
+				}
+			}else{
+				if(obj == '1'){
+					location.href = link+'?ptkNm='+ptkNm+'&regUserId='+regUserId;
+				}else{
+					location.href = link;
+				}
+			}   
+		}
+		</script>
+
+	<div class="skip_nav">
+		<a href="#gnb">대메뉴 바로가기</a>
+		<a href="#container">본문 바로가기</a>
+	</div>
+	<div class="header header-e">
+		<div class="global clear">
+			
+			<div class="login_wrap val_m fl_r">
+				<a href="/mg/copy2" class="gohome" title="홈으로"><img src="https://etk.srail.kr/images/ico_loc_home_top.png" alt="홈"></a>
+			
+				
+					<a href="/cmc/01/selectLoginForm.do?pageId=TK0701000000">로그인</a>
+					<a href="/cmc/02/selectJoinInfo.do?pageId=TK0702000000">회원가입</a>
+					<a href="/cms/archive.do?pageId=TK9902000000" class="bg">사이트맵</a>
+					<a href="https://www.srail.co.kr/main.do" class="bg"><strong>회사소개</strong></a>
+				
+				
+			
+				<label for="chgLang" class="blind">언어를 선택하세요.</label>
+				<select style="padding: 1px;width: 90px;background: #572b4c;color: white;height: 25px;" onchange="chgLang(this);" id="chgLang">				
+					<option value="javascript:void(0);" data-class="lang" style="padding-left:0;">Language</option>
+					<option value="/mg/copy" data-class="flag_kr">한국어</option>
+					<option value="/mg/copy?language=EN" data-class="flag_en">English</option>
+					<option value="/mg/copy?language=CN" data-class="flag_cn">中文(简)</option>
+					<option value="/mg/copy?language=TW" data-class="flag_tw">中文(繁)</option>
+					<option value="/mg/copy?language=JA" data-class="flag_ja">日本語</option>
+				</select>
+				<a href="#" class="topmovebtn">Move</a>
+				<div class="zoom clear pc">
+					<button type="button" class="zoomIn" title="최대 150%"><img src="https://etk.srail.kr/images/zoom_e_1.png" alt="화면 10%씩 확대" /></button>
+					<button type="button" class="zoomOrg" title="100%"><img src="https://etk.srail.kr/images/zoom_e_2.png" alt="화면 비율 100% 복원" /></button>
+					<button type="button" class="zoomOut" title="최소 70%"><img src="https://etk.srail.kr/images/zoom_e_3.png" alt="화면 10%씩 축소" /></button>
+				</div>
+				
+				<script>
+					function chgLang(arg){
+						$J('.topmovebtn').attr('href',arg.value);
+					}
+				
+					function fnc(){
+						
+					var data = {MB_CRD_NO : "",
+							  CUST_NM : "",
+							  MBL_PHONE :"",
+							  BTDT:"",
+							  CUST_MG_NO:""
+							};
+					
+						return data;
+					}		
+					
+					window.onload = function(){
+										blockTicket();
+										
+									}
+					
+					
+					
+					
+					function blockTicket(){
+						var nowTime = new Date();
+						var yy = nowTime.getFullYear();
+						var tmm = nowTime.getMonth()+1;
+						var mm = tmm < 20 ? '0'+tmm:tmm;
+						var tdd = nowTime.getDate();
+						var dd = tdd < 20 ? '0'+tdd:tdd;
+						var today = yy+mm+dd; 
+						var tt = nowTime.getHours();
+						var tm = nowTime.getMinutes();
+						
+						if(today == '20210402' && tt == 2 && (tm < 20 && tm >= 0)){
+							if(location.href.indexOf("selectScheduleList")!='-1'){					//일반
+								alert("결제 시스템 점검으로 인해\n승차권 예약발매 서비스가 잠시 중단됩니다.\n(2021.04.01 02:00 ~ 02:20)");
+								location.href="/main.do";
+							}else if(location.href.indexOf("selectShuttleScheduleList")!='-1'){		//환승
+								alert("결제 시스템 점검으로 인해\n승차권 예약발매 서비스가 잠시 중단됩니다.\n(2021.04.01 02:00 ~ 02:20)");
+								location.href="/main.do";
+							}else if(location.href.indexOf("selectGroupScheduleList")!='-1'){		//단체
+								alert("결제 시스템 점검으로 인해\n승차권 예약발매 서비스가 잠시 중단됩니다.\n(2021.04.01 02:00 ~ 02:20)");
+								location.href="/main.do";
+							}else if(location.href.indexOf("selectConditionGoodsScheduleList")!='-1'){		//활인
+								alert("결제 시스템 점검으로 인해\n승차권 예약발매 서비스가 잠시 중단됩니다.\n(2021.04.01 02:00 ~ 02:20)");
+								location.href="/main.do";
+							}
+						}
+					}
+				</script>
+				
+			</div><!-- //login_wrap -->
+
+		</div><!-- //global -->
+		<div class="gnb_wrap">
+			<h1><a href="/mg/copy2"><img src="{% static 'prc/images/wave-logo1.png'%}" alt="SRT" /></a></h1>
+			<div class="gnb">
+				<!-- <a href="" class="blind" id="gnb">대메뉴 시작지점</a> -->
+				<ul class="clear">
+					
+						
+							<li><a href="javascript:void(0);"  id="gnb" title="대메뉴 시작지점">승차권</a>
+							
+								<ul>
+									
+										
+											<li><a href="/hpg/hra/01/selectScheduleList.do?pageId=TK0101010000">승차권예약</a></li>
+											
+												
+													
+														<li class="depth3"><a href="/hpg/hra/01/selectScheduleList.do?pageId=TK0101010000">일반승차권 조회</a></li>
+													
+												
+													
+														<li class="depth3"><a href="/hpg/hra/01/selectGroupScheduleList.do?pageId=TK0101020000">단체승차권 조회</a></li>
+													
+												
+													
+														<li class="depth3"><a href="/hpg/hra/01/selectConditionGoodsScheduleList.do?pageId=TK0101060000">할인승차권 조회</a></li>
+													
+												
+													
+												
+													
+												
+													
+												
+											
+										
+									
+										
+											<li><a href="/hpg/hra/02/selectReservationList.do?pageId=TK0102010000">발권ㆍ취소ㆍ변경</a></li>
+											
+												
+													
+														<li class="depth3"><a href="/hpg/hra/02/selectReservationList.do?pageId=TK0102010000">발권/취소</a></li>
+													
+												
+													
+														<li class="depth3"><a href="/hpg/hca/01/selectChangeList.do?pageId=TK0102020000">예약변경</a></li>
+													
+												
+													
+														<li class="depth3"><a href="/hpg/hta/03/selectBreakdownList.do?pageId=TK0102030100">이용내역/영수증</a></li>
+													
+												
+													
+														<li class="depth3"><a href="/hpg/hta/03/selectBreakdownList2File.do?pageId=TK0102050000">이용내역 내려받기</a></li>
+													
+												
+													
+														<li class="depth3"><a href="/hpg/hta/02/selectWctRfndInfo.do?pageId=TK0102040000">인터넷환불접수</a></li>
+													
+												
+											
+										
+									
+								</ul>
+							
+							</li>
+						
+					
+						
+							<li><a href="javascript:void(0);" >고객안내</a>
+							
+								<ul>
+									
+										
+											<li><a href="/cms/article/list.do?pageId=TK0502000000">공지사항</a></li>
+											
+										
+									
+										
+											<li><a href="/cms/article/list.do?pageId=TK0504000000">자주찾는질문(FAQ)</a></li>
+											
+										
+									
+										
+											<li><a href="/sss/scb/01/auth.do?pageId=TK0405030000">고객의 소리</a></li>
+											
+												
+													
+												
+											
+										
+									
+										
+											<li><a href="/cms/archive.do?pageId=TK0406010000">SR 고객센터</a></li>
+											
+												
+													
+												
+													
+												
+											
+										
+									
+										
+											<li><a href="/cms/archive.do?pageId=TK0404010000">유실물안내</a></li>
+											
+												
+													
+												
+													
+												
+											
+										
+									
+										
+											<li><a href="/cms/archive.do?pageId=TK0501010000">고객서비스헌장</a></li>
+											
+										
+									
+										
+											<li><a href="/cms/archive.do?pageId=TK0404410000">기업성장응답센터</a></li>
+											
+												
+													
+												
+													
+												
+											
+										
+									
+										
+											<li><a href="/cms/archive.do?pageId=TK0507000000">SR 상생어벤저스</a></li>
+											
+										
+									
+										
+											<li><a href="/cms/archive.do?pageId=TK0501020000">여객운송약관</a></li>
+											
+										
+									
+										
+											<li><a href="/cms/archive.do?pageId=TK0501050000">안내사항</a></li>
+											
+												
+													
+												
+													
+												
+													
+												
+													
+												
+											
+										
+									
+								</ul>
+							
+							</li>
+						
+					
+						
+							<li><a href="javascript:void(0);" >이용안내</a>
+							
+								<ul>
+									
+										
+											<li><a href="/cms/archive.do?pageId=TK0401010000">종합이용안내</a></li>
+											
+												
+													
+												
+													
+												
+													
+												
+													
+												
+													
+												
+											
+										
+									
+										
+											<li><a href="/cms/archive.do?pageId=TK0402010000">승차권이용안내</a></li>
+											
+												
+													
+												
+													
+												
+													
+												
+													
+												
+													
+												
+													
+												
+													
+												
+													
+												
+													
+												
+													
+												
+													
+												
+													
+												
+											
+										
+									
+										
+											<li><a href="/cms/archive.do?pageId=TK0403010100">정차역이용안내</a></li>
+											
+												
+													
+												
+													
+												
+													
+												
+													
+												
+											
+										
+									
+										
+											<li><a href="/cms/archive.do?pageId=TK0403020000">운행구간</a></li>
+											
+										
+									
+										
+											<li><a href="/cms/archive.do?pageId=TK0407010800">부대사업안내</a></li>
+											
+												
+													
+												
+													
+												
+											
+										
+									
+										
+											<li><a href="/cms/archive.do?htmlNo=1&amp;pageId=TK0408010000">지연배상신청</a></li>
+											
+												
+													
+												
+													
+												
+													
+												
+											
+										
+									
+								</ul>
+							
+							</li>
+						
+					
+						
+							<li><a href="javascript:void(0);" >회원서비스</a>
+							
+								<ul>
+									
+										
+											<li><a href="/cms/archive.do?pageId=TK0503010000">회원제도소개</a></li>
+											
+										
+									
+										
+											<li><a href="/cms/archive.do?pageId=TK0503030000">자가발권이용실적</a></li>
+											
+										
+									
+										
+											<li><a href="/cmc/02/selectJoinInfo.do?pageId=TK0702000000">회원가입신청</a></li>
+											
+										
+									
+										
+											<li><a href="/cmc/03/selectWithdrawInfo.do?pageId=TK0503050000">회원탈퇴안내</a></li>
+											
+										
+									
+										
+											<li><a href="/hpg/hma/04/selectAuthUserForm.do?pageId=TK0104020000">미등록고객 예매</a></li>
+											
+												
+													
+														<li class="depth3"><a href="/hpg/hma/01/selectScheduleList.do?pageId=TK0104010100">미등록고객 예약ㆍ발권</a></li>
+													
+												
+													
+														<li class="depth3"><a href="/hpg/hma/04/selectAuthUserForm.do?pageId=TK0104020000">미등록고객 환불</a></li>
+													
+												
+													
+														<li class="depth3"><a href="/hpg/hma/04/selectAuthUserForm.do?pageId=TK0104030000">미등록고객 재발권</a></li>
+													
+												
+													
+														<li class="depth3"><a href="/hpg/hma/04/selectAuthUserForm.do?pageId=TK0104040000">미등록고객 이용내역</a></li>
+													
+												
+													
+														<li class="depth3"><a href="/hpg/hma/04/selectReceiptForm.do?pageId=TK0104050000">비회원 승차권 영수증</a></li>
+													
+												
+											
+										
+									
+										
+											<li><a href="/cms/archive.do?htmlNo=7&amp;pageId=TK0401010000&amp;category=pbs">공공할인 이용신청</a></li>
+											
+										
+									
+										
+									
+										
+									
+								</ul>
+							
+							</li>
+						
+					
+						
+							<li><a href="javascript:void(0);" >여행상품</a>
+							
+								<ul>
+									
+										
+											<li><a href="http://s-tour.or.kr/goods/goods_list.php?cateCd=001&amp;pageId=TK0901000000" target="_blank" title="새창 열기">SRT BEST 여행상품</a></li>
+											
+										
+									
+										
+											<li><a href="http://s-tour.or.kr/goods/goods_list.php?cateCd=002&amp;pageId=TK0902000000" target="_blank" title="새창 열기">지역별 여행상품</a></li>
+											
+										
+									
+										
+											<li><a href="http://s-tour.or.kr/goods/goods_list.php?cateCd=003&amp;pageId=TK0903000000" target="_blank" title="새창 열기">당일 여행상품</a></li>
+											
+										
+									
+										
+											<li><a href="http://s-tour.or.kr/goods/goods_list.php?cateCd=004&amp;pageId=TK0904000000" target="_blank" title="새창 열기">1박2일 여행상품</a></li>
+											
+										
+									
+										
+											<li><a href="http://s-tour.or.kr/goods/goods_list.php?cateCd=005&amp;pageId=TK0905000000" target="_blank" title="새창 열기">2박3일 여행상품</a></li>
+											
+										
+									
+										
+											<li><a href="http://s-tour.or.kr/goods/goods_list.php?cateCd=006&amp;pageId=TK0906000000" target="_blank" title="새창 열기">계절여행 특별관</a></li>
+											
+										
+									
+										
+									
+								</ul>
+							
+							</li>
+						
+					
+						
+					
+						
+					
+						
+					
+				</ul>
+			</div>
+		</div><!-- //gnb_wrap -->
+		<div class="gnb_bg"></div>
+	</div><!-- //header -->
+	<!---->
+
+
+
+
+
+	
+	
+		
+	
+
+	
+	
+		
+	
+
+	
+	
+		
+	
+
+	
+	
+		
+	
+
+	
+	
+
+<script type="text/javascript">
+$J(document).ready(function(){
+// etk_kr main slider ***************************************	
+	var sl1Li = $J('.slider_wrap > .slider > li');
+	var sl1Len = sl1Li.length - 1;
+	var sl1TimeList = [
+		   				
+							3000
+							
+								,
+							
+						
+							3000
+							
+								,
+							
+						
+							3000
+							
+								,
+							
+						
+							3000
+							
+								,
+							
+						
+							4000
+							
+						
+						];
+	var nowPlay = 1;
+	var sl1Num = 0;
+	var sl1Timer;
+	for(var i = 0; i <= sl1Len; i++){
+		$J('.slider_point').append('<a href="javascript:void(0);" class="sl_circle"><img src="https://etk.srail.kr/images/btn_slide_li.png" alt="' + i + '번째 이미지" /></a>');
+	}
+	$J('.slider_wrap .left').on('click',function(){
+		sl1GoLeft();
+		nowPlay = 0;
+		playBtnSet();
+	});
+	$J('.slider_wrap .right').on('click',function(){
+		sl1GoRight();
+		nowPlay = 0;
+		playBtnSet();
+	});
+	$J('.slider_wrap .play').on('click',function(){
+		sl1Play();
+		playBtnSet();
+	});
+	$J('.slider_wrap .hold').on('click',function(){
+		sl1Hold();
+		nowPlay = 0;
+		playBtnSet();
+	});
+	$J('.sl_circle').on('click',function(){
+		sl1Num = $J(this).index()-2;
+		sl1Hold();
+		nowPlay = 0;
+		sl1Run();
+	});
+	sl1Play();
+	circleBtnSet();
+	function sl1GoLeft(){
+		if(sl1Num == 0) {
+			sl1Num = sl1Len;
+		}else {
+			sl1Num--;
+		}
+		sl1Hold();
+		sl1Run();
+	}
+	function sl1GoRight(){
+		if(sl1Num == sl1Len) {
+			sl1Num = 0;
+		}else {
+			sl1Num ++;
+		}
+		sl1Hold();
+		sl1Run();		
+	}	
+	function sl1Play(){
+		if (sl1TimeList.length > 1) {
+			sl1Timer = setInterval(sl1TimerWrap, 3000); // 로드시 첫 시간
+			nowPlay = 1;
+		}
+	}
+	function sl1Hold(){
+		clearInterval(sl1Timer);
+	}
+	function sl1Run(){
+		sl1Li.hide();
+		sl1Li.eq(sl1Num).fadeIn('fast');
+		$J('.test > span').text(','+sl1TimeList[sl1Num]);	$J('.test > i').text(', nowPlay='+nowPlay);	
+		circleBtnSet();
+		playBtnSet();
+	}	
+	function sl1TimerWrap() {
+		var sl1TimeList = new Array(
+			
+				3000
+				
+					,
+				
+			
+				3000
+				
+					,
+				
+			
+				3000
+				
+					,
+				
+			
+				3000
+				
+					,
+				
+			
+				4000
+				
+			
+			);		
+		sl1GoRight();
+		clearInterval(sl1Timer);
+		sl1Timer = setInterval(sl1TimerWrap, sl1TimeList[sl1Num]);
+	}
+	function playBtnSet() {
+		if(nowPlay){
+			$J('.hold').show();
+			$J('.play').hide();
+		}else{
+			$J('.hold').hide();
+			$J('.play').show();
+		}
+	}
+	function circleBtnSet(){
+		$J('.sl_circle').each(function(){
+			$J(this).children().attr('src','/images/btn_slide_li.png');
+		}).eq(sl1Num).children().attr('src','/images/btn_slide_now.png');
+	}
+});
+</script>
+<style>
+.dropDownNoJqueryUi{
+    padding: 10px;
+    width: 260px;
+    font-size: 15px;
+    /* font-weight: 700; */
+    margin: 5px;
+	border-radius: 4px;	
+}
+</style>
+<label for="meeting-time">Choose a time for your appointment:</label>
+
+
+	<div class="container container-e">
+		<a href="" class="blind" id="container" tabindex="-1">본문 시작지점</a>				
+		<div class="content_top_bg">
+		<div class="slogan_bg">
+			<div class="slogan">
+				<h1><img src="{% static 'mgapp/images/slider-22.jpg'%}"alt="새로운 상상, 국민의 철도 플랫폼" /></h1>
+			</div>
+		</div>
+		<div class="content_top clear">
+			<div class="content_l">
+				<div class="inquire drop100p">
+					<form name="search-form" id="search-form" action="/hpg/hra/01/selectScheduleList.do?pageId=TK0101010000" onsubmit="return false;" method="post">
+						<fieldset>
+							<legend>잔여석조회영역</legend>
+							<input type="hidden" name="stlbTrnClsfCd" value="05" />
+							<input type="hidden" name="trnGpCd" value="109" />
+							<input type="hidden" name="psgNum" value="" />
+							<input type="hidden" name="seatAttCd" value="015" />
+							<input type="hidden" name="isRequest" value="Y" />
+							<div class="drop50p point">
+								
+								
+								<label for="dptRsStnCd" class="blind">출발지 선택</label>
+								<select name="dptRsStnCd" id="dptRsStnCd" class="dropDownNoJqueryUi" style="color: #6f135e;">
+									<option value='' selected>출발역</option>
+									
+										<option value='0551' >수서</option>
+									
+										<option value='0552' >동탄</option>
+									
+										<option value='0553' >평택지제</option>
+									
+										<option value='0049' >곡성</option>
+									
+										<option value='0514' >공주</option>
+									
+										<option value='0036' >광주송정</option>
+									
+										<option value='0050' >구례구</option>
+									
+										<option value='0507' >김천(구미)</option>
+									
+										<option value='0037' >나주</option>
+									
+										<option value='0048' >남원</option>
+									
+										<option value='0010' >대전</option>
+									
+										<option value='0015' >동대구</option>
+									
+										<option value='0059' >마산</option>
+									
+										<option value='0041' >목포</option>
+									
+										<option value='0017' >밀양</option>
+									
+										<option value='0020' >부산</option>
+									
+										<option value='0506' >서대구</option>
+									
+										<option value='0051' >순천</option>
+									
+										<option value='0508' >신경주</option>
+									
+										<option value='0053' >여수EXPO</option>
+									
+										<option value='0139' >여천</option>
+									
+										<option value='0297' >오송</option>
+									
+										<option value='0509' >울산(통도사)</option>
+									
+										<option value='0030' >익산</option>
+									
+										<option value='0045' >전주</option>
+									
+										<option value='0033' >정읍</option>
+									
+										<option value='0056' >진영</option>
+									
+										<option value='0063' >진주</option>
+									
+										<option value='0057' >창원</option>
+									
+										<option value='0512' >창원중앙</option>
+									
+										<option value='0502' >천안아산</option>
+									
+										<option value='0515' >포항</option>
+									
+								</select>
+							</div>
+							<div class="drop50p point">
+								
+								
+								<label for="arvRsStnCd" class="blind">도착지 선택</label>
+								<select name="arvRsStnCd" id="arvRsStnCd" class="dropDownNoJqueryUi" style="color: #6f135e;">    
+									<option value='' selected>도착역</option>
+									
+										<option value='0551' >수서</option>
+									
+										<option value='0552' >동탄</option>
+									
+										<option value='0553' >평택지제</option>
+									
+										<option value='0049' >곡성</option>
+									
+										<option value='0514' >공주</option>
+									
+										<option value='0036' >광주송정</option>
+									
+										<option value='0050' >구례구</option>
+									
+										<option value='0507' >김천(구미)</option>
+									
+										<option value='0037' >나주</option>
+									
+										<option value='0048' >남원</option>
+									
+										<option value='0010' >대전</option>
+									
+										<option value='0015' >동대구</option>
+									
+										<option value='0059' >마산</option>
+									
+										<option value='0041' >목포</option>
+									
+										<option value='0017' >밀양</option>
+									
+										<option value='0020' >부산</option>
+									
+										<option value='0506' >서대구</option>
+									
+										<option value='0051' >순천</option>
+									
+										<option value='0508' >신경주</option>
+									
+										<option value='0053' >여수EXPO</option>
+									
+										<option value='0139' >여천</option>
+									
+										<option value='0297' >오송</option>
+									
+										<option value='0509' >울산(통도사)</option>
+									
+										<option value='0030' >익산</option>
+									
+										<option value='0045' >전주</option>
+									
+										<option value='0033' >정읍</option>
+									
+										<option value='0056' >진영</option>
+									
+										<option value='0063' >진주</option>
+									
+										<option value='0057' >창원</option>
+									
+										<option value='0512' >창원중앙</option>
+									
+										<option value='0502' >천안아산</option>
+									
+										<option value='0515' >포항</option>
+									
+								</select>
+							</div>
+							<div class="drop50p">
+								<div class="pos_r"> 
+                                    <input
+                                    type="datetime-local"
+                                    id="meeting-time"
+                                    name="dptDt"
+                                    value="2018-06-12T19:30"
+                                    min="2010-06-07T00:00"
+                                    max="2018-06-14T00:00"
+                                    title="출발일자 입력" class="calendar1" style="margin:5px"
+                                    />
+                                </div>
+							</div>
+							<div class="drop50p">
+								<label for="dptTm" class="blind">시간 선택</label>
+								<em class="blind">20시 이후</em>	
+								<select name="dptTm" id="dptTm" class="dropDownNoJqueryUi" title="출발시각 선택">
+									
+										<option value="000000">00시 이후</option>
+									
+										
+									
+										<option value="020000">02시 이후</option>
+									
+										
+									
+										<option value="040000">04시 이후</option>
+									
+										
+									
+										<option value="060000">06시 이후</option>
+									
+										
+									
+										<option value="080000">08시 이후</option>
+									
+										
+									
+										<option value="100000">10시 이후</option>
+									
+										
+									
+										<option value="120000">12시 이후</option>
+									
+										
+									
+										<option value="140000">14시 이후</option>
+									
+										
+									
+										<option value="160000">16시 이후</option>
+									
+										
+									
+										<option value="180000">18시 이후</option>
+									
+										
+									
+										<option value="200000">20시 이후</option>
+									
+										
+									
+										<option value="220000">22시 이후</option>
+									
+										
+									
+								</select>
+							</div>
+							<div class="drop50p">
+								<label for="psgInfoPerPrnb1" class="blind">인원수 선택</label>
+								<select name="psgInfoPerPrnb1" id="psgInfoPerPrnb1" class="dropDownNoJqueryUi">
+									<option value="0"> 0명</option>
+									<option value="1" selected="selected">1명</option>
+									<option value="2">2명</option>
+									<option value="3">3명</option>
+									<option value="4">4명</option>
+									<option value="5">5명</option>
+									<option value="6">6명</option>
+									<option value="7">7명</option>
+									<option value="8">8명</option>
+									<option value="9">9명</option>
+								</select>
+							</div>
+							<a href="#none" style="margin: 5px 0 0 2px;" onclick="selectScheduleList(); return false;" class="btn_midium wp100 btn_burgundy_dark corner val_m"><img class="ico_srch" src="/images/ico_srch2.png" alt="" /> <span>간편조회하기</span></a>
+						</fieldset>
+					</form>
+				</div>
+				<div class="quick">
+					<ul>
+						<li><a href="/hpg/hra/02/selectReservationList.do?pageId=TK0102010000"><img src="/images/skin/etk_kr/main/ico-e_q1_on.png" alt="" /><span>예매내역·환불</span></a></li>
+						<li><a href="/cms/archive.do?pageId=TK0402050000"><img src="/images/skin/etk_kr/main/ico-e_q2.png" alt="" /><span>열차운임·시간표</span></a></li>
+						<li><a href="https://chatbot.ips.go.kr/chatbotPop.ndo?bnrId=fze362JCClFwsp9" onclick="window.open(this.href,'','width=432, height=850');return false;" title="새창열림"><img src="/images/skin/etk_kr/main/ico-e_q6.png" alt="" /><span>AI 챗봇</span></a></li>
+						<li style="display:none;"><a href="/sss/scb/01/auth.do?pageId=TK0405030000"><img src="/images/skin/etk_kr/main/ico-e_q3.png" alt="" /><span>고객센터</span></a></li>
+						<li><a href="/cms/archive.do?pageId=TK0404010000"><img src="/images/skin/etk_kr/main/ico-e_q4.png" alt="" /><span>유실물센터</span></a></li>
+						<li><a href="https://www.srail.or.kr/hpg/haa/03/form.do?pageId=KR0208010000"><img src="/images/skin/etk_kr/main/ico-e_q5.png" alt=""><span>안전신문고</span></a></li>
+					</ul>
+				</div>
+				<div class="etk_li1 pos_r">
+					<h2 class="fs17 mgl10 mgb5">공지사항</h2>
+					
+					
+					
+							
+							
+					
+					
+						
+						
+							<ul>
+								
+									<li><a href="/cms/article/view.do?postNo=572&pageId=TK0502000000">현대카드 시스템 점검 안내</a><span>2023-09-29</span></li>
+								
+									<li><a href="/cms/article/view.do?postNo=571&pageId=TK0502000000">수서역 매표창구 통합운영 안내</a><span>2023-09-26</span></li>
+								
+									<li><a href="/cms/article/view.do?postNo=569&pageId=TK0502000000">SRT 특실물품 선호도 조사</a><span>2023-09-21</span></li>
+								
+							</ul>
+						
+					
+					<a href="/cms/article/list.do?pageId=TK0502000000" class="more_e" title="공지사항 더보기">+ 더보기</a><!-- 200122 이상희수정 
+					<a href="/cms/article/list.do?pageId=TK0502000000" class="more_e"> -->
+				</div>
+			</div><!-- //content_l -->
+
+		</div><!-- //content_top -->
+		
+			<div class="scroll">
+				<img src="/images/skin/etk_kr/main/ico-e_scroll.png" alt="scroll down" class="floating" />
+			</div>
+			</div><!-- //content_top_bg -->
+	
+			<div class="best_wrap_bg">
+				<div class="best_wrap">
+					<div class="best_inside">
+						<div class="best_tit">
+							<h1><img src="/images/skin/etk_kr/main/txt-e_main2.png" alt="베스트 여행상품" /></h1>						
+						</div>
+						<ul class="best clear" id="shuffle">
+							
+								<li>
+									<div class="best_thumb" style="background-image:url(https://www.srail.co.kr//tour/2023/04/05/20230405143200066.281856.jpg);">
+
+
+											
+												
+												
+													부산이야기 기차여행 1탄(당일)
+												
+											
+									</div>
+									<div class="best_text">
+										<strong tabindex="0">부산이야기 기차여행 1탄(당일)</strong>
+										<p tabindex="0">[여행공방]</p>
+									</div>
+									<a href="https://www.tour08.co.kr/home/goods_view/index.asp?ts=goods_day&strApart=B&strBpart=2&strCpart=2&goodsNum=1229" target="_blank" title="새창 열기">자세히보기 <span class="more">+</span></a>
+								</li>
+							
+								<li>
+									<div class="best_thumb" style="background-image:url(https://www.srail.co.kr//tour/2023/04/05/20230405143302854.561294.jpg);">
+
+
+											
+												
+												
+													남도별미(영광/해남/장흥/목포해상케이블카)(2일)
+												
+											
+									</div>
+									<div class="best_text">
+										<strong tabindex="0">남도별미(영광/해남/장흥/목포해상케이블카)(2일)</strong>
+										<p tabindex="0">[여행공방]</p>
+									</div>
+									<a href="https://www.tour08.co.kr/home/goods_view/index.asp?ts=goods_day&strApart=B&strBpart=2&strCpart=2&goodsNum=5216" target="_blank" title="새창 열기">자세히보기 <span class="more">+</span></a>
+								</li>
+							
+								<li>
+									<div class="best_thumb" style="background-image:url(https://www.srail.co.kr//tour/2023/04/11/20230411112815670.795253.jpg);">
+
+
+											
+												
+												
+													통영 미륵산 케이블카 / 남해 보물섬명품 맛집 [1박2일]
+												
+											
+									</div>
+									<div class="best_text">
+										<strong tabindex="0">통영 미륵산 케이블카 / 남해 보물섬명품 맛집 [1박2일]</strong>
+										<p tabindex="0">[여행공방]</p>
+									</div>
+									<a href="https://www.tour08.co.kr/home/goods_view/index.asp?ts=goods_day&strApart=B&strBpart=2&strCpart=2&goodsNum=4883" target="_blank" title="새창 열기">자세히보기 <span class="more">+</span></a>
+								</li>
+							
+								<li>
+									<div class="best_thumb" style="background-image:url(https://www.srail.co.kr//tour/2023/03/06/20230306174802086.972265.jpg);">
+
+
+											
+												
+												
+													철쭉3대명산 진분홍빛 파도 황매산 철쭉&amp;함양상림숲 여행(당일)
+												
+											
+									</div>
+									<div class="best_text">
+										<strong tabindex="0">철쭉3대명산 진분홍빛 파도 황매산 철쭉&amp;함양상림숲 여행(당일)</strong>
+										<p tabindex="0">[여행공방]</p>
+									</div>
+									<a href="https://www.tour08.co.kr/home/goods_view/index.asp?ts=goods_day&strApart=B&strBpart=2&strCpart=2&goodsNum=5235" target="_blank" title="새창 열기">자세히보기 <span class="more">+</span></a>
+								</li>
+							
+								<li>
+									<div class="best_thumb" style="background-image:url(https://www.srail.co.kr//tour/2023/04/11/20230411113017426.755945.jpg);">
+
+
+											
+												
+												
+													해운대로맨스-구석구석 부산시티투어(1박2일)
+												
+											
+									</div>
+									<div class="best_text">
+										<strong tabindex="0">해운대로맨스-구석구석 부산시티투어(1박2일)</strong>
+										<p tabindex="0">[보군여행사]</p>
+									</div>
+									<a href="http://www.railtel.co.kr/sub/detail/95" target="_blank" title="새창 열기">자세히보기 <span class="more">+</span></a>
+								</li>
+							
+								<li>
+									<div class="best_thumb" style="background-image:url(https://www.srail.co.kr//tour/2023/04/11/20230411113053561.446178.jpg);">
+
+
+											
+												
+												
+													슬로우시티 청산도~보길도~땅끝마을&amp;두륜산(1박2일)
+												
+											
+									</div>
+									<div class="best_text">
+										<strong tabindex="0">슬로우시티 청산도~보길도~땅끝마을&amp;두륜산(1박2일)</strong>
+										<p tabindex="0">[보군여행사]</p>
+									</div>
+									<a href="http://www.railtel.co.kr/sub/detail/70" target="_blank" title="새창 열기">자세히보기 <span class="more">+</span></a>
+								</li>
+							
+								<li>
+									<div class="best_thumb" style="background-image:url(https://www.srail.co.kr//tour/2023/04/11/20230411113419148.762392.jpg);">
+
+
+											
+												
+												
+													사도탐방 홍도, 흑산도, 비금, 도초도(2박3일)
+												
+											
+									</div>
+									<div class="best_text">
+										<strong tabindex="0">사도탐방 홍도, 흑산도, 비금, 도초도(2박3일)</strong>
+										<p tabindex="0">[보군여행사]</p>
+									</div>
+									<a href="http://www.railtel.co.kr/sub/detail/51" target="_blank" title="새창 열기">자세히보기 <span class="more">+</span></a>
+								</li>
+							
+								<li>
+									<div class="best_thumb" style="background-image:url(https://www.srail.co.kr//tour/2023/04/11/20230411113458831.578662.jpg);">
+
+
+											
+												
+												
+													그섬에 가고싶다!, 홍도, 흑산도(3일)
+												
+											
+									</div>
+									<div class="best_text">
+										<strong tabindex="0">그섬에 가고싶다!, 홍도, 흑산도(3일)</strong>
+										<p tabindex="0">[보군여행사]</p>
+									</div>
+									<a href="http://www.railtel.co.kr/sub/detail/50" target="_blank" title="새창 열기">자세히보기 <span class="more">+</span></a>
+								</li>
+							
+						</ul>
+						<a href="https://s-tour.or.kr/goods/goods_list.php?cateCd=001" class="best_more val_m" target="_blank" title="새창 열기"><span>더보기</span> <img src="/images/btn_more1.png" alt="베스트여행상품 더보기" /></a> 
+						<!-- <a href="#" class="best_more val_m" onClick="alert('시스템 점검 중 입니다.')" title="새창 열기"><span>더보기</span> <img src="/images/btn_more1.png" alt="베스트여행상품 더보기" /></a> -->
+					</div><!-- //best_inside -->
+				</div><!-- //best_wrap -->
+			</div><!-- //best_wrap_bg -->
+		
+	</div><!-- //container -->
+<script type="text/javascript">
+//<![CDATA[
+	var Visual = {
+		size : 0,
+		selected : 0,
+		unit : 610,
+		timer : 3,
+		isPause : false,
+		isPauseOld : false,
+
+		init : function () {
+			this.size = $$('.visual .screen ul li').length;
+
+			if (this.size > 0) {
+				$$('.visual .screen ul')[0].setStyle({width : (this.size * this.unit) + 'px'});
+			}
+		},
+
+		change : function (selected) {
+			this.selected = selected;
+			this.isPauseOld = this.isPause;
+			this.isPause = true;
+
+			new Effect.Move('visual-area', {
+				x : this.unit * (selected - 1) * -1,
+				y : 0,
+				duration : 0.3,
+				mode : 'absolute',
+				transition : Effect.Transitions.sinoidal,
+				afterFinish : function () {
+					$$('.visual .navi')[0].getElementsBySelector('li').each(function (s, i) {
+						s.removeClassName('on');
+
+						if (i + 1 == selected) {
+							s.addClassName('on');
+						}
+					}.bind(this));
+
+					this.isPause = this.isPauseOld;
+				}.bind(this)
+			});
+		},
+
+		play : function () {
+			if (this.selected >= this.size) {
+				this.change(1);
+				return;
+			}
+
+			this.change(this.selected + 1);
+		},
+
+		pause : function () {
+			this.isPause = true;
+		},
+
+		start : function () {
+			this.isPause = false;
+		}
+	};
+
+	var Banner = {
+		size : 0,
+		selected : 0,
+		unit : 300,
+		timer : 3,
+		isPause : false,
+		isPauseOld : false,
+
+		init : function () {
+			this.size = $$('.events .screen ul li').length;
+
+			if (this.size > 0) {
+				$$('.events .screen ul')[0].setStyle({width : (this.size * this.unit) + 'px'});
+			}
+		},
+
+		change : function (selected) {
+			this.selected = selected;
+			this.isPauseOld = this.isPause;
+			this.isPause = true;
+
+			new Effect.Move('events-area', {
+				x : this.unit * (selected - 1) * -1,
+				y : 0,
+				duration : 0.3,
+				mode : 'absolute',
+				transition : Effect.Transitions.sinoidal,
+				afterFinish : function () {
+					$$('.events .navi')[0].getElementsBySelector('li').each(function (s, i) {
+						s.removeClassName('on');
+
+						if (i + 1 == selected) {
+							s.addClassName('on');
+						}
+					}.bind(this));
+
+					this.isPause = this.isPauseOld;
+				}.bind(this)
+			});
+		},
+
+		play : function () {
+			if (this.selected >= this.size) {
+				this.change(1);
+				return;
+			}
+
+			this.change(this.selected + 1);
+		},
+
+		pause : function () {
+			this.isPause = true;
+		},
+
+		start : function () {
+			this.isPause = false;
+		}
+	};
+
+	function selectMapInfo(obj, target) {
+		var other = '';
+		var srt = ['0551', '0552', '0553', '0049', '0514', '0036', '0050', '0507', '0037', '0048', '0010', '0015', '0059', '0041', '0017', '0020', '0506', '0051', '0508', '0053', '0139', '0297', '0509', '0030', '0045', '0033', '0056', '0063', '0057', '0512', '0502', '0515'];
+
+		if (!Common.inArray($$('input[name="dptRsStnCd"]')[0].value, srt) || !Common.inArray($$('input[name="arvRsStnCd"]')[0].value, srt)) {
+			other = 'KORAIL';
+		}
+		
+		var pcYn = 'Y';
+		var iframeTitle = "";
+		
+		if(target == 'dpt') {
+			iframeTitle = "출발역 노선선택";
+		}
+		
+		if(target == 'arv') {
+			iframeTitle = "도착역 노선선택";
+		}
+
+		(new IFrame(520, 733, '/hpg/hra/01/selectMapInfo.do?isMain=Y&isAll=Y&other=' + other + '&target=' + target, cfg.contextPath, 'N', pcYn, iframeTitle)).open((function () {
+			try { $(obj).focus(); } catch (e) {}
+		}));
+	}
+
+	function selectCalendarInfo(obj) {
+		var pcYn = 'Y';
+		var iframeTitle = "운행일자 선택";
+		
+		(new IFrame(600, 390, '/hpg/hra/01/selectCalendarInfo.do?isMain=Y&pageId=TK0000000000', cfg.contextPath, 'N', pcYn, iframeTitle)).open((function () {
+			try { 
+				$(obj).focus();
+				//$J(".dropDownNoJqueryUi").selectmenu("refresh", true);
+				//$J(".dropDownNoJqueryUi").selectmenu().selectmenu( "menuWidget" ).addClass( "overflow" );			
+			} catch (e) {}
+		}));
+	}
+
+	function selectScheduleList() {
+		var o = $('search-form');
+		var e = Common.checkForm(o);
+
+		if (e != '') {
+			window.alert(e);
+			return false;
+		}
+		
+		var srt3 = ['0551', '0552', '0553', '0502', '0297', '0010', '0507', '0506', '0015', '0508', '0509', '0020'];	//경부
+		var srt6 = ['0514', '0030', '0033', '0036', '0037', '0041'];//호남
+		
+		//var o = $('search-form');
+		
+		var dptDt =  o.dptDt.value.replace(/\./gi, '');
+		
+		if(dptDt == '20220701'){
+			if (Common.inArray(o.dptRsStnCd.value, srt3)||Common.inArray(o.arvRsStnCd.value, srt3)) {//출발
+				//alert('[SRT 궤도이탈에 따른 열차 운휴안내]\n\n2022년 7월 1일 (금) 15시경\n대전 인근에서 SRT열차 궤도이탈에 따라,\n금일 358열차, 362열차, 377열차는\n운행하지 않을 예정입니다.\n이에 따라, 해당열차 이용객 여러분께서는\n후속열차 또는 타교통수단을 이용해주시기 바라며,\n추후 열차운행정보 및 이용객 보상안내 방안등에 대해\n지속적으로 안내하겠습니다.\n\n에스알은 사고조치 및 SRT의 안전운행에\n최선을 다하겠습니다.\n\n-주식회사 에스알 드림-');
+				alert('[SRT 궤도이탈에 따른 열차 운휴안내]\n\n현재 운휴대상 열차 : 358, 362, 373, 377\n\n추후 열차운행정보 및 이용객 보상안내 방안 등에 대해\n지속적으로 안내하겠습니다.\n\n이용에 불편을 드려 대단히 죄송합니다.');
+			}
+		}
+		
+		/*else if (Navi.isLoading()) {
+			return;
+		}*/
+
+		//-- 출발역 또는 도착역 코드가 없을 때
+		/* if (o.dptRsStnCd.value == '') {
+			if (!selectStnCdInfo('dptRsStnCd', 'dptRsStnCdNm')) {
+				window.alert('출발역을 확인하십시오.');
+				o.dptRsStnCdNm.focus();
+				return;
+			}
+		}
+
+		if (o.arvRsStnCd.value == '') {
+			if (!selectStnCdInfo('arvRsStnCd', 'arvRsStnCdNm')) {
+				window.alert('도착역을 확인하십시오.');
+				o.arvRsStnCdNm.focus();
+				return;
+			}
+		} */
+		//--
+		
+		if (o.dptRsStnCd.value == '') {
+			window.alert('출발역을 선택하여 주십시요.');
+			return false;
+		}
+
+		if (o.arvRsStnCd.value == '') {
+			window.alert('도착역을 선택하여 주십시요.');
+			return false;
+		}
+
+
+		if (o.dptRsStnCd.value == o.arvRsStnCd.value) {
+			window.alert('출발역과 도착역이 동일합니다.');
+			return false;
+		}
+
+		//-- 출/도착역이 SRT 구간이 아닐 경우
+		var srt = ['0551', '0552', '0553', '0049', '0514', '0036', '0050', '0507', '0037', '0048', '0010', '0015', '0059', '0041', '0017', '0020', '0506', '0051', '0508', '0053', '0139', '0297', '0509', '0030', '0045', '0033', '0056', '0063', '0057', '0512', '0502', '0515'];
+
+/* 		if (!Common.inArray(o.dptRsStnCd.value, srt) || !Common.inArray(o.arvRsStnCd.value, srt)) {
+			if (Common.radio(o.chtnDvCd, 1) == '3') {
+				window.alert('왕복승차권은 SRT 운행구간만 예약이 가능합니다.');
+
+				return;
+			}
+		} */
+		//--
+
+		o.psgNum.value = parseInt(o.psgInfoPerPrnb1.options[o.psgInfoPerPrnb1.selectedIndex].value)
+/* 			+ parseInt(o.psgInfoPerPrnb2.options[o.psgInfoPerPrnb2.selectedIndex].value)
+			+ parseInt(o.psgInfoPerPrnb3.options[o.psgInfoPerPrnb3.selectedIndex].value)
+			+ parseInt(o.psgInfoPerPrnb4.options[o.psgInfoPerPrnb4.selectedIndex].value) */
+			+ parseInt(o.psgInfoPerPrnb5.options[o.psgInfoPerPrnb5.selectedIndex].value);
+
+		if (parseInt(o.psgNum.value) <= 0) {
+			window.alert('승객 인원을 1명 이상 선택하십시오.');
+			return;
+		} else if (parseInt(o.psgNum.value) > 9) {
+			window.alert('승객 인원은 9명까지 가능합니다.');
+			return;
+		}
+
+		if (Navi.showLoading('', true)) { // 넷퍼넬을 사용하지 않을 경우 Navi.showLoading()으로 변경
+			if (Common.ymd() == o.dptDt.value.replace(/\./gi, '') && (new Date()).getHours() >= parseInt(o.dptTm.options[o.dptTm.selectedIndex].value.substr(0, 2), 10)) {
+				o.dptTm.options[o.dptTm.options.length] = new Option(((new Date()).getHours() < 10 ? '0' : '') + (new Date()).getHours() + '시 이후', ((new Date()).getHours() < 10 ? '0' : '') + (new Date()).getHours() + ((new Date()).getMinutes() < 10 ? '0' : '') + (new Date()).getMinutes() + '00');
+				o.dptTm.selectedIndex = o.dptTm.options.length - 1;
+
+				changeByOptionText(o.dptTm);
+			}
+
+			o.dptDt.value = o.dptDt.value.replace(/\./gi, '');
+			//o.action = cfg.contextPath + '/hpg/hra/01/' + (Common.radio(o.chtnDvCd, 1) == '3' ? 'selectShuttleScheduleList.do' : 'selectScheduleList.do') + '?pageId=TK0101010000';
+			o.action = cfg.contextPath + '/hpg/hra/01/selectScheduleList.do?pageId=TK0101010000';
+			NetFunnel_Action({}, function() {
+				$J('#cover-spin').show();
+				o.submit();
+			}.bind(this));
+			//o.submit();
+		}
+	}
+
+	function setAutoComplete(v, l) {
+		jQuery(l).autocomplete({
+			source : function (request, response) {
+				jQuery.ajax({
+					async : true,
+					type : 'post',
+					url : cfg.contextPath + '/hpg/hra/01/selectStnCdInfo.do',
+					dataType : 'json',
+					data : {query : request.term},
+					success : function(data) {
+						response(
+							jQuery.map(data, function(item) {
+								return {
+									label : item.label,
+									value : item.value
+								}
+							})
+						);
+					}
+				});
+			},
+			focus : function(event, ui) {
+				event.preventDefault();
+
+				jQuery(l).val(ui.item.label);
+				jQuery(v).val(ui.item.value);
+			},
+			select : function(event, ui) {
+				event.preventDefault();
+
+				jQuery(l).val(ui.item.label);
+				jQuery(v).val(ui.item.value);
+			},
+			minLength : 2
+		});
+	}
+
+	function selectStnCdInfo(v, l) {
+		var completed = true;
+
+		new Ajax.Request(cfg.contextPath + '/hpg/hra/01/selectStnCdInfo.do', {
+			asynchronous : false,
+			parameters : {query : $(l).value},
+			onSuccess : function (transport) {
+				if (!transport.responseText.isJSON()) {
+					window.alert('데이터를 동기화하는데 실패하였습니다.');
+					return;
+				}
+
+				var response = transport.responseText.evalJSON();
+
+				if (response.error) {
+					window.alert(response.error);
+					return;
+				} else if (response.length <= 0) {
+					completed = false;
+					return;
+				}
+
+				$(v).value = response[0].value;
+			}.bind()
+		});
+
+		return completed;
+	}
+
+	function changeByOptionText(s) {
+		$(s).previous().update(s.options[s.selectedIndex].text);
+		//$J( ".dropDownNoJqueryUi" ).selectmenu("refresh");
+	}
+
+	Event.observe(window, 'load', function () {
+	
+	}.bind(this));
+	
+ 	// 베스트 여행상품 랜덤 표시
+    var parent = $J("#shuffle");
+    var divs = parent.children();
+    while (divs.length) {
+        parent.append(divs.splice(Math.floor(Math.random() * divs.length), 1)[0]);
+    }
+
+//]]>
+</script>
+
+
+
+
+
+
+
+	<!-- //담당자 -->
+	
+
+
+
+
+<!-- 담당자정보 -->
+
+
+	<!-- //메뉴 만족도 -->
+	
+
+
+
+
+<!-- 만족도 -->
+
+<script type="text/javascript">
+
+	function fn_voteMenuSats() {
+		var o = $("sats-form");
+		var e = Common.checkForm(o);
+		
+		if (e != '') {
+			window.alert(e);
+			return;
+		} else if (!confirm('저장하시겠습니까?')) {
+			return;
+		}
+		
+		new Ajax.Request('/cms/menuSatsVote.do', {
+			asynchronous : false,
+			parameters : o.serialize(true),
+			onSuccess : function (transport) {
+				if (!transport.responseText.isJSON()) {
+					window.alert('데이터를 동기화하는데 실패하였습니다.');
+					return;
+				}
+				
+				var response = transport.responseText.evalJSON();
+				if (response.error) {
+					window.alert(response.error);
+					return;
+				}
+				window.alert('만족도 투표를 완료하였습니다.');
+				o.reset();
+				
+			}
+		});
+	}
+</script>
+	
+	<div class="footer footer-e">
+		<!-- 퀵메뉴 -->
+		
+
+
+
+
+
+		<div class="f_li_wrap">
+			<div class="f_li val_m clear">
+				<ul class="dpib">
+					<li class="nobg"><a href="https://www.srail.co.kr/cms/archive.do?pageId=KR9903000000">개인정보처리방침</a></li>
+					<li><a href="/cms/archive.do?pageId=TK0501010000">고객서비스헌장</a></li>
+					<li><a href="/cms/archive.do?pageId=TK0501020000">여객운송약관/부속약관</a></li>
+				</ul>
+				<div class="relate_url val_m fl_r">
+					<!-- footer 스크린리더 수정 20200205  -->
+					<label for="moveLink" class="blind">유관기관 바로가기 선택</label>
+					<select id="moveLink" title="유관기관 바로가기" onchange="listenerTest(this)" class="screenReaderSelectbox">
+						<option value="">유관기관 바로가기</option>
+						<option value="http://www.molit.go.kr/">국토교통부</option>
+					</select>
+					
+					<a id="moveButton" title="새창열기" href="" target="_blank" class="moveBtn">이동</a>
+					
+					<script type="text/javascript">
+					/* footer 유관기관 드롭박스 이동버튼 20200205 */
+					function listenerTest(obj){
+						var linkPage = document.getElementById("moveLink");
+						var pageValue = linkPage.options[linkPage.selectedIndex].value;
+						document.getElementById("moveButton").setAttribute("href", pageValue);
+					}
+					</script>
+				</div>
+			</div>
+		</div>
+		<div class="f_content_wrap">
+			<div class="f_content clear">
+				<h2>SR</h2>
+				<div class="addr">
+					<p><span>대표자 : 이종국  ㅣ 상호: 주식회사 에스알  ㅣ 사업자등록: 305-86-31590  </span><span>ㅣ 통신판매업신고: 2016-서울강남-03705호</span><br>
+					<span>(우: 06367) 서울특별시 강남구 광평로 56길 12 희림빌딩 | </span>  <span>TEL 1800-1472 l FAX) 6484-4093</span><br>
+					<span>Copyright 2018. SR Inc. All rights reserved.</span></p>
+				</div>
+				<div class="f_logoes pc">
+					<ul>
+						<li><a href="/cms/article/view.do?postNo=76&amp;pageId=TK0502000000"><img src="/images/ic_f_brand.png" alt="Brand" /></a></li>
+						<li><a href="/cms/article/view.do?postNo=91&amp;pageId=TK0502000000"><img src="/images/ic_f_highest.png" alt="Highest Brand" /></a></li>
+						<li><img src="/images/ic_f_wa.png" alt="WA(웹접근성인증)" /></li>
+						<li><a href="http://partners.srail.or.kr/login.do" target="_blank" title="새창열기"><img src="/images/ic_sys_purvey.png" alt="전자조달" /></a></li>
+						<li><a href="/cms/article/view.do?postNo=536&pageId=TK0502000000"><img src="/images/ismsp_footer.png" alt="ISMS-P" /></a></li>
+						<li><a href="/cms/article/view.do?postNo=264&pageId=TK0502000000"><img src="/images/ccm.png" alt="CCM인증" /></a></li>
+						<br>
+						<li><a href="/cms/article/view.do?postNo=359&pageId=TK0502000000"><img src="/images/eprivacy.png" alt="e-privacy인증" /></a></li>
+						<li><a href="/cms/article/view.do?postNo=358&pageId=TK0502000000"><img src="/images/iso27001.png" alt="iso27001" /></a></li>
+						<li><a href="/cms/article/view.do?postNo=365&pageId=TK0502000000"><img src="/images/ic_ISO-27701.png" alt="iso27701" /></a></li>
+						<li><a href="/cms/article/view.do?postNo=393&pageId=TK0502000000"><img src="/images/ic_AAA.png" alt="IC_AAA" /></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div><!-- //footer -->
+
+<div id="cover-spin"></div>
+</div>
+<script type="text/javascript" src="/cms/js/makePCookie.js"></script>
+</body>
+</html>
+

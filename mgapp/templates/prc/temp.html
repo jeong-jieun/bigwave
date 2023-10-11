@@ -1,0 +1,339 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'prc/css/temp_style.css' %}">
+    <link rel="stylesheet" href="{% static 'prc/css/temp_normalize.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'prc/css/nav_common.css'%}" />
+    <style>
+        body {
+            background-image: url('{% static "prc/images/v1163_60.png" %}');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+        }
+        </style>
+</head>
+<body>
+    <div class="site-outer">
+        <nav class="navbar navbar-fixed-top">
+            <section class="container-fluid">
+                <div class="row">
+                    <div class="container-menu">
+                        <nav class="menu" id="hb">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </nav>
+                        <div class="logotype">
+                            <div class="big"><li><a href="/">선착장 예약 서비스</a></div>
+                        </div>
+                        <div class="nav">               
+                            <div class="nav-links">
+                              <a href="https://namu.wiki/w/%EC%98%88%EC%95%BD" target="_blank">예약 조회</a>
+                              <a href="#" onclick="location.href='http://127.0.0.1:8000/mg/temp2/'" target="_blank"style='color:black;'>로그인</a>
+                              <a href="#" onclick="location.href='https://namu.wiki/w/%EA%B0%80%EC%9E%85'" target="_blank" style="background-color: #6347f0; color:black;">회원가입</a>
+                            </div>
+                          </div>
+                    </div>
+                </div>
+            </section>
+        </nav>
+    </div>
+	<!-- NAVIGATION -->
+	<div class="navigation">
+        <div class="left-menu">
+            <div class="logo"><img src="{% static 'prc/images/wave-logo1.png'%}" alt="SRT" />
+                <div>해상 택시 선착장 예약 서비스</div>
+            </div>
+            <div class="accordion">
+                <div class="section"><input type="radio" name="accordion-1" id="section-1" checked="checked" /><label for="section-1"><span>Account</span></label>
+                    <div class="content">
+                        <ul>
+                            <li><a href="/mg/new/" style="color:black;"><i class="fa-solid fa-house"></i>home</a></li>
+                            <li><a href="/mg/nav_test/" style="color:#5161ce;"><i class="fa-solid fa-ship"></i>예약</a></li>
+                            <li><a href="/mg/copy/" style="color:black;"><i class="fa-solid fa-user"></i><span>정보</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="section"><input type="radio" name="accordion-1" id="section-2" value="toggle" /><label for="section-2"> <span>선착장</span></label>
+                    <div class="content">
+                        <ul>
+                            <li><a href="https://namu.wiki/w/%EC%86%A1%EB%8F%84"><i class="fa-solid fa-umbrella-beach"></i><span>송도</span></a></li>
+                            <li><i class="fa-solid fa-umbrella-beach"></i><span>영도</span></li>
+                            <li><a href="https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=%EC%84%A4%EC%9A%B4%EB%8F%84"><i class="fa-solid fa-umbrella-beach"></i><span>설운도</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="section"><input type="radio" name="accordion-1" id="section-3" value="toggle" /><label for="section-3"> <span>부가 서비스</span></label>
+                    <div class="content">
+                        <ul>
+                            <li><i class="fa fa-coffee"></i><span>맛집</span></li>
+                            <li><i class="fa fa-coffee"></i><span>맛집2</span></li>
+                            <li><i class="fa fa-coffee"></i><span>주변</span></li>
+                            <li><i class="fa fa-coffee"></i><span>주변2</span></li>
+                            <li><i class="fa fa-coffee"></i><span>이외 </span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="section"><input type="radio" name="accordion-1" id="section-4" value="toggle" /><label for="section-4"> <span>Section 4</span></label>
+                    <div class="content"></div>
+                </div>
+            </div>
+        </div>
+	</div>
+    <div class="content_top clear">
+        <div class="content_l">
+            <div class="inquire drop100p">
+                <form name="search-form" id="search-form" action="/hpg/hra/01/selectScheduleList.do?pageId=TK0101010000" onsubmit="return false;" method="post">
+                    <fieldset>
+                        <legend>잔여석조회영역</legend>
+                        <input type="hidden" name="stlbTrnClsfCd" value="05" />
+                        <input type="hidden" name="trnGpCd" value="109" />
+                        <input type="hidden" name="psgNum" value="" />
+                        <input type="hidden" name="seatAttCd" value="015" />
+                        <input type="hidden" name="isRequest" value="Y" />
+                        <div class="drop50p point">
+                            
+                            
+                            <label for="dptRsStnCd" class="blind">출발지 선택</label>
+                            <select name="dptRsStnCd" id="dptRsStnCd" class="dropDownNoJqueryUi" style="color: #6f135e;">
+                                <option value='' selected>출발역</option>
+                                
+                                    <option value='0551' >수서</option>
+                                
+                                    <option value='0552' >동탄</option>
+                                
+                                    <option value='0553' >평택지제</option>
+                                
+                                    <option value='0049' >곡성</option>
+                                
+                                    <option value='0514' >공주</option>
+                                
+                                    <option value='0036' >광주송정</option>
+                                
+                                    <option value='0050' >구례구</option>
+                                
+                                    <option value='0507' >김천(구미)</option>
+                                
+                                    <option value='0037' >나주</option>
+                                
+                                    <option value='0048' >남원</option>
+                                
+                                    <option value='0010' >대전</option>
+                                
+                                    <option value='0015' >동대구</option>
+                                
+                                    <option value='0059' >마산</option>
+                                
+                                    <option value='0041' >목포</option>
+                                
+                                    <option value='0017' >밀양</option>
+                                
+                                    <option value='0020' >부산</option>
+                                
+                                    <option value='0506' >서대구</option>
+                                
+                                    <option value='0051' >순천</option>
+                                
+                                    <option value='0508' >신경주</option>
+                                
+                                    <option value='0053' >여수EXPO</option>
+                                
+                                    <option value='0139' >여천</option>
+                                
+                                    <option value='0297' >오송</option>
+                                
+                                    <option value='0509' >울산(통도사)</option>
+                                
+                                    <option value='0030' >익산</option>
+                                
+                                    <option value='0045' >전주</option>
+                                
+                                    <option value='0033' >정읍</option>
+                                
+                                    <option value='0056' >진영</option>
+                                
+                                    <option value='0063' >진주</option>
+                                
+                                    <option value='0057' >창원</option>
+                                
+                                    <option value='0512' >창원중앙</option>
+                                
+                                    <option value='0502' >천안아산</option>
+                                
+                                    <option value='0515' >포항</option>
+                                
+                            </select>
+                        </div>
+                        <div class="drop50p point">
+                            
+                            
+                            <label for="arvRsStnCd" class="blind">도착지 선택</label>
+                            <select name="arvRsStnCd" id="arvRsStnCd" class="dropDownNoJqueryUi" style="color: #6f135e;">    
+                                <option value='' selected>도착역</option>
+                                
+                                    <option value='0551' >수서</option>
+                                
+                                    <option value='0552' >동탄</option>
+                                
+                                    <option value='0553' >평택지제</option>
+                                
+                                    <option value='0049' >곡성</option>
+                                
+                                    <option value='0514' >공주</option>
+                                
+                                    <option value='0036' >광주송정</option>
+                                
+                                    <option value='0050' >구례구</option>
+                                
+                                    <option value='0507' >김천(구미)</option>
+                                
+                                    <option value='0037' >나주</option>
+                                
+                                    <option value='0048' >남원</option>
+                                
+                                    <option value='0010' >대전</option>
+                                
+                                    <option value='0015' >동대구</option>
+                                
+                                    <option value='0059' >마산</option>
+                                
+                                    <option value='0041' >목포</option>
+                                
+                                    <option value='0017' >밀양</option>
+                                
+                                    <option value='0020' >부산</option>
+                                
+                                    <option value='0506' >서대구</option>
+                                
+                                    <option value='0051' >순천</option>
+                                
+                                    <option value='0508' >신경주</option>
+                                
+                                    <option value='0053' >여수EXPO</option>
+                                
+                                    <option value='0139' >여천</option>
+                                
+                                    <option value='0297' >오송</option>
+                                
+                                    <option value='0509' >울산(통도사)</option>
+                                
+                                    <option value='0030' >익산</option>
+                                
+                                    <option value='0045' >전주</option>
+                                
+                                    <option value='0033' >정읍</option>
+                                
+                                    <option value='0056' >진영</option>
+                                
+                                    <option value='0063' >진주</option>
+                                
+                                    <option value='0057' >창원</option>
+                                
+                                    <option value='0512' >창원중앙</option>
+                                
+                                    <option value='0502' >천안아산</option>
+                                
+                                    <option value='0515' >포항</option>
+                                
+                            </select>
+                        </div>
+                        <div class="drop50p">
+                            <div class="pos_r"> 
+                                <input
+                                type="datetime-local"
+                                id="meeting-time"
+                                name="dptDt"
+                                value="2018-06-12T19:30"
+                                min="2010-06-07T00:00"
+                                max="2018-06-14T00:00"
+                                title="출발일자 입력" class="calendar1" style="margin:5px"
+                                />
+                            </div>
+                        </div>
+                        <div class="drop50p">
+                            <label for="dptTm" class="blind">시간 선택</label>
+                            <em class="blind">20시 이후</em>	
+                            <select name="dptTm" id="dptTm" class="dropDownNoJqueryUi" title="출발시각 선택">
+                                
+                                    <option value="000000">00시 이후</option>
+                                
+                                    
+                                
+                                    <option value="020000">02시 이후</option>
+                                
+                                    
+                                
+                                    <option value="040000">04시 이후</option>
+                                
+                                    
+                                
+                                    <option value="060000">06시 이후</option>
+                                
+                                    
+                                
+                                    <option value="080000">08시 이후</option>
+                                
+                                    
+                                
+                                    <option value="100000">10시 이후</option>
+                                
+                                    
+                                
+                                    <option value="120000">12시 이후</option>
+                                
+                                    
+                                
+                                    <option value="140000">14시 이후</option>
+                                
+                                    
+                                
+                                    <option value="160000">16시 이후</option>
+                                
+                                    
+                                
+                                    <option value="180000">18시 이후</option>
+                                
+                                    
+                                
+                                    <option value="200000">20시 이후</option>
+                                
+                                    
+                                
+                                    <option value="220000">22시 이후</option>
+                                
+                                    
+                                
+                            </select>
+                        </div>
+                        <div class="drop50p">
+                            <label for="psgInfoPerPrnb1" class="blind">인원수 선택</label>
+                            <select name="psgInfoPerPrnb1" id="psgInfoPerPrnb1" class="dropDownNoJqueryUi">
+                                <option value="0"> 0명</option>
+                                <option value="1" selected="selected">1명</option>
+                                <option value="2">2명</option>
+                                <option value="3">3명</option>
+                                <option value="4">4명</option>
+                                <option value="5">5명</option>
+                                <option value="6">6명</option>
+                                <option value="7">7명</option>
+                                <option value="8">8명</option>
+                                <option value="9">9명</option>
+                            </select>
+                        </div>
+                        <a href="#none" style="margin: 5px 0 0 2px;" onclick="selectScheduleList(); return false;" class="btn_midium wp100 btn_burgundy_dark corner val_m"><img class="ico_srch" src="/images/ico_srch2.png" alt="" /> <span>간편조회하기</span></a>
+                    </fieldset>
+                </form>
+            </div>
+        </div><!-- //content_l -->
+
+    </div><!-- //content_top -->
+    <script src="{% static 'prc/js/temp_jquery.min.js'%}"></script><script  src="{% static 'prc/js/temp_script.js'%}"></script>
+    <script src="{% static 'prc/js/new_jquery.min.js'%}"></script>
+    <script src="{% static 'prc/js/new_bootstrap.min.js'%}"></script><script  src="{% static 'prc/js/new_script.js'%}"></script>
+</body>
+</html>

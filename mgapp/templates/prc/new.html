@@ -1,0 +1,246 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Shutters</title>
+  <link rel='stylesheet' href="{% static 'prc/css/new_bootstrap.min.css'%}">
+<link rel='stylesheet' href="{% static 'prc/css/new_font-awesome.min.css'%}"><link rel="stylesheet" href="{% static 'prc/css/new_style.css'%}">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="site-outer">
+	<nav class="navbar navbar-fixed-top">
+		<section class="container-fluid">
+			<div class="row">
+				<div class="container-menu">
+					<nav class="menu" id="hb">
+						<div></div>
+						<div></div>
+						<div></div>
+					</nav>
+					<div class="logotype">
+						<div class="big">Ki</div>
+					</div>
+					<div class="checkout">
+						<h3><a href="#"><i class="fa fa-shopping-cart red"></i>  To Checkout <span class="badge badge-red">0</span></a></h3>
+					</div>
+				</div>
+			</div>
+		</section>
+	</nav>
+	<div class="site-inner">
+		<section class="container-fluid">
+			<!-- ACCORDION ROW -->
+			<div class="row">
+					<ul class="accordion-group" id="accordion">
+						<li style="background-image: url('https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');">
+							<div class="accordion-overlay"></div>
+							<h3>Rustic</h3>
+							<section class="hidden-xs">
+								<article>
+									<p>Rual and rustic</p>
+								</article>
+							</section>
+						</li>
+						<li class="out" style="background-image: url('https://images.unsplash.com/photo-1484154218962-a197022b5858?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1953&q=80');">
+							<div class="accordion-overlay"></div>
+							<h3>Clean</h3>
+							<section class="hidden-xs">
+								<article>
+									<p>For the single or couple
+									</p>
+								</article>
+							</section>
+						</li>
+						<li style="background-image: url('https://images.unsplash.com/photo-1507089947368-19c1da9775ae?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1955&q=80');">
+							<div class="accordion-overlay"></div>
+							<h3>Stylish</h3>
+							<section class="hidden-xs">
+								<article>
+									<p>When people want it cosy but stylish</p>
+								</article>
+							</section>
+						</li>
+						<li style="background-image: url('https://images.unsplash.com/photo-1495433324511-bf8e92934d90?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');">
+							<div class="accordion-overlay"></div>
+							<h3>Family</h3>
+							<section class="hidden-xs">
+								<article>
+									<p>For the family dinner</p>
+								</article>
+							</section>
+						</li>
+					</ul>
+			</div>
+			<!-- BEGIN NEW ROW AFTER ACCORDION -->
+			<div class="row mg">
+				<!-- FIRST ROW -->
+				<div class="container">
+					<h1 class="text-center head red">Quality</h1>
+					<div class="row">
+						<div class="col-md-4 col-sm-6 col-xs-12">
+							<div class="product-box">
+								<h3 class="text-center">High quality</h3>
+								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-6 col-xs-12">
+							<div class="product-box">
+								<h3 class="text-center">Smart design</h3>
+								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+							</div>
+						</div>
+						<div class="col-md-4 col-sm-6 col-xs-12">
+							<div class="product-box">
+								<h3 class="text-center">Modern or retro</h3>
+								<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+	<div class="footer">
+		<footer class="footer-inner">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3">
+						<h3 class="h3">About us</h3>
+						<ul class="footer-list">
+							<li><a href="#">Our story</a></li>
+							<li><a href="#">Venue</a></li>
+							<li><a href="#">Other</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h3 class="h3">Partners</h3>
+						<ul class="footer-list">
+							<li><a href="#">IKEA</a></li>
+							<li><a href="#">MIO</a></li>
+							<li><a href="#">BAUHAUS</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h3 class="h3">Customer support</h3>
+						<ul class="footer-list">
+							<li><a href="#">Chat with us</a></li>
+							<li><a href="#">+46(0)2453 352</a></li>
+							<li><a href="#">E-mail us</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h3 class="h3">Socials</h3>
+						<ul class="footer-list footer-list-inline">
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<!-- NAVIGATION -->
+	<div class="navigation">
+		<button class="navigation-login">
+						<i class="fa fa-shopping-cart"></i> To Checkout <span class="badge badge-white">0</span>
+				</button>
+		<div class="navigation-search">
+			<div id="search">
+				<input type="text" name="input" class="input" placeholder="Search" />
+				<button type="reset" class="search" id="search-button"></button>
+			</div>
+		</div>
+		<div class="navigation-content">
+			<h3>Menu</h3>
+			<ul class="navigation-menu">
+				<li><a href="#" class="active">Home</a></li>
+				<li><a href="#"><i class="red fa fa-circle"></i> White goods</a></li>
+				<li><a href="#"><i class="beige fa fa-circle"></i> Kitchen cabinets</a></li>
+				<li><a href="#"><i class="orange fa fa-circle"></i> Counters</a></li>
+				<li><a href="#"><i class="blue fa fa-circle"></i> Other</a></li>
+			</ul>
+			<h3>More</h3>
+			<ul class="navigation-menu">
+				<li><a href="#">About Us</a></li>
+				<li><a href="#">Contact</a></li>
+				<li><a href="#">Info</a></li>
+				<li><a href="#">Collaboration</a></li>
+				<li><a href="#">Customer Service</a></li>
+			</ul>
+		</div>
+	</div>
+	<!-- CHECKOUT -->
+	<aside class="to-checkout">
+		<div class="to-checkout-inner">
+			<h3>Product list</h3>
+			<ul class="to-checkout-list">
+				<li><i class="fa fa-check"></i> Kitchens <a href="#" class="remove">Remove</a></li>
+			</ul>
+		</div>
+	</aside>
+	<!-- MODAL -->
+	<aside id="modal" class="modal fade">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<div class="modal-header-gradient"></div>
+					<div class="row">
+						<h2 class="white text-center">Choose size and color</h2>
+						<p data-modal-id class="text-center white"></p>
+					</div>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 col-sm-12">
+							<form id="modal-form">
+								<div class="form-group">
+									<div class="input-group">
+										<span class="input-group-addon"><i class="fa fa-plus"></i></span>
+										<select>
+																						<option value="">Choose size</option>
+																						<option value="1">XS</option>
+																						<option value="2">S</option>
+																						<option value="3">M</option>
+																						<option value="4">L</option>
+																						<option value="5">XL</option>
+																						<option value="6">XXL</option>
+																				</select>
+										<div class="input-group-addon-holder">
+											<select class="select-sibling">
+																								<option value="">Choose color</option>
+																								<option value="1">Blue</option>
+																								<option value="2">Orange</option>
+																								<option value="3">Yellow</option>
+																						</select>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<p>
+										<button class="button button-red" id="add-item" data-dismiss="modal">Add to basket</button>
+									</p>
+
+									<p>
+										<button type="reset" class="button button-transparent" data-dismiss="modal" id="cancel">Cancel</button>
+									</p>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</aside>
+</div>
+<!-- partial -->
+  <script src="{% static 'prc/js/new_jquery.min.js'%}"></script>
+<script src="{% static 'prc/js/new_jquery-ui.min.js'%}"></script>
+<script src="{% static 'prc/js/new_handlebars.min.js'%}"></script>
+<script src="{% static 'prc/js/new_bootstrap.min.js'%}"></script><script  src="{% static 'prc/js/new_script.js'%}"></script>
+
+</body>
+</html>

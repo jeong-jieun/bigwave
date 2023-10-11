@@ -1,0 +1,350 @@
+{% load static  %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 페이지</title>
+    <link rel="stylesheet" href="{% static 'mainapp/css/signup2.css' %}">
+
+
+  <!--goToContent2 : 가입하기에서 약관동의 이동 버튼-->
+  <!--goToContent3 : 약관동의에서 정보입력으로 이동 버튼-->
+  <!--checkAll : 전체동의 전체체크 함수-->
+  <!--Checkid : 회원 아이디 중복체크 함수-->
+  <!--Checkemail : 회원 이메일 중복체크 함수-->
+  <!--Checktel : 회원 핸드폰번호 중복체크 함수-->
+  <script>
+    function goToContent2() {
+      document.getElementById('tab2').checked = true;
+      document.getElementById('content1').style.display = 'none';
+      document.getElementById('content2').style.display = 'block';
+    }
+
+    function goToContent3() {
+      // Check if the required checkboxes are checked
+      var termsAgreed = document.getElementById('termsAgreed').checked;
+      var privacyAgreed = document.getElementById('privacyAgreed').checked;
+      var dataAgreed = document.getElementById('dataAgreed').checked;
+
+      // If any of the required checkboxes are not checked, show an alert
+      if (!termsAgreed || !privacyAgreed || !dataAgreed) {
+          alert('필수 항목에 동의해주세요.');
+          return;  // Do not proceed to the next step if not all required checkboxes are checked
+      }
+
+      // If all required checkboxes are checked, proceed to the next step
+      document.getElementById('tab3').checked = true;
+      document.getElementById('content2').style.display = 'none';
+      document.getElementById('content3').style.display = 'block';
+    }
+
+    function checkAll() {
+        var checkboxes = document.getElementById('content2').querySelectorAll('input[type="checkbox"]');
+        for (var i = 0; i < checkboxes.length; i++) {
+            checkboxes[i].checked = true;
+        }
+    }
+    function Checkid() {
+      fm = document.getElementById("fm");
+      mem_id = fm.mem_id.value;
+
+      location.href = "/idcheck/?mem_id=" + mem_id;
+    }
+    function Checkemail() {
+      fm = document.getElementById("fm");
+      mem_email = fm.mem_email.value;
+
+      location.href = "/emailcheck/?mem_email=" + mem_email;
+    }
+    function Checktel() {
+      fm = document.getElementById("fm");
+      mem_tel = fm.mem_tel.value;
+
+      location.href = "/emailcheck/?mem_tel=" + mem_tel;
+    }
+  </script>
+
+  <script>
+    function goToContent4FromContent3() {
+        // Check if all required fields are filled
+        var mem_id = document.querySelector('input[name="mem_id"]').value;
+        var mem_email = document.querySelector('input[name="mem_email"]').value;
+        var mem_pass = document.querySelector('input[name="mem_pass"]').value;
+        var mem_name = document.querySelector('input[name="mem_name"]').value;
+        var mem_age = document.querySelector('input[name="mem_age"]').value;
+        var mem_tel = document.querySelector('input[name="mem_tel"]').value;
+        var mem_add1 = document.querySelector('input[name="mem_add1"]').value;
+        var mem_add2 = document.querySelector('input[name="mem_add2"]').value;
+
+        // Check if all required fields are filled
+        if (!mem_id || !mem_email || !mem_pass || !mem_name || !mem_age || !mem_tel || !mem_add1 || !mem_add2) {
+            alert('모든 필수 항목을 입력하세요.');
+            return;
+        }
+
+        // Proceed to content4
+        document.getElementById('tab4').checked = true;
+        document.getElementById('content3').style.display = 'none';
+        document.getElementById('content4').style.display = 'block';
+    }
+</script>
+<script>
+  function updateEmailField() {
+    var selectElement = document.getElementById('emailOption');
+    var selectedOption = selectElement.options[selectElement.selectedIndex].text;
+
+    // 선택된 옵션을 mem_email2 입력 필드의 값으로 설정
+    document.querySelector('input[name="mem_email2"]').value = selectedOption;
+  }
+</script>
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+    function sample6_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+
+                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                if(data.userSelectedType === 'R'){
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if(data.buildingName !== '' && data.apartment === 'Y'){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                    if(extraAddr !== ''){
+                        extraAddr = ' (' + extraAddr + ')';
+                    }
+                    // 조합된 참고항목을 해당 필드에 넣는다.
+                    document.getElementById("sample6_extraAddress").value = extraAddr;
+                
+                } else {
+                    document.getElementById("sample6_extraAddress").value = '';
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('sample6_postcode').value = data.zonecode;
+                document.getElementById("sample6_address").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("sample6_detailAddress").focus();
+            }
+        }).open();
+    }
+</script>
+
+</head>
+<body>
+    <header>
+        <img src="https://www.iloom.com/img/front/gnb/gnb_logo.png">
+    
+        <nav>
+          <a href="#">brand</a>
+          <a href="#">furniture</a>
+          <a href="#">technology</a>
+          <a href="#">store</a>
+          <a href="#">event</a>
+        </nav>
+    
+        <div>
+          <img src="https://image.flaticon.com/icons/svg/622/622669.svg">
+          <img src="https://image.flaticon.com/icons/svg/1656/1656850.svg">
+        </div>
+      </header>
+    
+      <article class="find1">
+        <h2>회원가입</h2>
+        <p>일룸 회원가입을 환영합니다.<br>회원으로 가입하시면 다양한 혜택과 서비스를 이용하실 수 있습니다.</p>
+    
+        <div>
+          <input id="tab1" type="radio" name="tabs" checked>
+          <!--디폴트 메뉴-->
+          <label for="tab1"><img src="https://image.flaticon.com/icons/svg/126/126486.svg"><br>STEP 1<br>가입하기</label>
+          　
+          <input id="tab2" type="radio" name="tabs">
+          <label for="tab2"><img src="https://image.flaticon.com/icons/svg/1159/1159633.svg"><br>STEP 2<br>약관동의</label>
+    
+          <input id="tab3" type="radio" name="tabs">
+          <label for="tab3"><img src="https://image.flaticon.com/icons/svg/839/839860.svg"><br>STEP 3<br>정보입력</label>
+    
+          <input id="tab4" type="radio" name="tabs">
+          <label for="tab4"><img src="https://image.flaticon.com/icons/svg/3064/3064197.svg"><br>STEP 4<br>가입완료</label>
+    
+          <section id="content1">
+            <div>
+              <h4>일룸 간편 회원가입</h4>
+              <p>일룸 회원으로 가입합니다.</p><br>
+              <button type="button" class="signup-go" onclick="goToContent2()">회원가입</button>
+            </div>
+    
+            <div></div>
+    
+            <div class="second-login">
+                <h4>간편 로그인</h4>
+                <button type="button" class="login-img" onclick="alert('클릭!')" style="background-color: white;">
+                  <img src="{% static 'mainapp/img/네이버 로그인.png' %}" width="250" height="70"/>
+                </button>
+                <button type="button" class="login-img" onclick="alert('클릭!')" style="background-color: white;">
+                  <img src="{% static 'mainapp/img/kakao_login_medium_narrow.png' %}" width="250" height="70"/>
+                </button>
+                <button type="button" class="login-img" onclick="alert('클릭!')" style="background-color: white;">
+                  <img src="{% static 'mainapp/img/googlelogin.png' %}" width="255" height="75"/>
+                </button>
+              </div>
+          </section>
+    
+          <section id="content2" style="display: none;">
+            <label><input type="checkbox" onclick="checkAll()">　전체 동의</label>
+            <hr>
+            <label><input type="checkbox" id="termsAgreed">　회원 이용 약관 (필수)　〉</label><br>
+            <label><input type="checkbox" id="privacyAgreed">　개인정보 처리방침 (필수)　〉</label><br>
+            <label><input type="checkbox" id="dataAgreed">　개인정보 수집 및 이용 (필수)　〉</label><br>
+            <label><input type="checkbox">　이메일 마케팅 수신 동의 (선택)</label><br>
+            <label><input type="checkbox">　SMS 마케팅 수신 동의 (선택)</label><br>
+            <p>정보수신에 동의하지 않아도 정상적인 서비스 이용이 가능합니다. 거래 정보, 결제/교환/환불 등과 관련된 내용은 거래 안전을 위하여 수신동의 여부와 관계없이 발송됩니다.</p>
+            <button onclick="goToContent3()">다음으로</button>
+          </section>
+
+          <form id="fm" method="post" action="#">
+            {% csrf_token %}
+            <section id="content3" style="display: none;">
+              <h5>필수 입력 정보</h5>
+      
+              <div>
+                <div>
+                  <p>아이디</p>
+                  <p>이메일</p>
+                  <br>
+                  <br>
+                  <p>비밀번호</p>
+                  <p>비밀번호 확인</p>
+                  <p>이름</p>
+                  <p>생년월일</p>
+                  <p>휴대전화</p>
+                </div>
+      
+                <div>
+                  <input type="text" name="mem_id" placeholder="아이디를 입력하세요."><br>
+                  <button class = "telchk" type="button" onclick="Checkid()">중복확인</button>
+                  <input type="email" name="mem_email"> @ <input type="email" name="mem_email2">
+                  <select id="emailOption" size="1" onchange="updateEmailField()">
+                    <option selected>직접입력</option>
+                    <option>hanmail.net</option>
+                    <option>naver.com</option>
+                    <option>gmail.com</option>
+                    <option>hotmail.com</option>
+                    <option>nate.com</option>
+                  </select><br><br>
+                  <button class = "emailchk" type="button" onclick="Checkemail()">중복확인</button><br>
+                  <input type="password" placeholder="영문, 숫자 조합 6~12자"><br>
+                  <input type="password" name="mem_pass" placeholder="영문, 숫자 조합 6~12자"><br>
+                  <br>
+                  <input type="text" name="mem_name" placeholder="이름을 입력하세요."><br>
+                  <br>
+                  <input type="text" name="mem_age" placeholder="예) 20230904"><br>
+                  <br>
+                  <input type="tel" name="mem_tel" placeholder="예) 010-1234-1375"><br>
+                  <button class = "telchk" type="button" onclick="Checktel()">중복확인</button>
+                </div>
+              </div>
+
+              <hr>
+              <div class="join2">
+                <h5>선택 입력 정보</h5>
+                <div>
+                  <div>
+                    <p>주소</p>
+                    <p>결혼여부</p>
+                  </div>
+      
+                  <div>
+                    <input type="address" id="sample6_postcode" placeholder="우편번호" onclick="sample6_execDaumPostcode()">
+                    <button>주소검색</button><br>
+                    <input type="address" name="mem_add1"  placeholder="도로명주소"><br>
+                    <input type="address" name="mem_add2" placeholder="상세주소"><br>
+                    <br>
+                    <select>
+                      <option selected>선택</option>
+                      <option>미혼</option>
+                      <option>기혼</option>
+                    </select>
+                    <input type="text" placeholder="기념일 8자">
+                  </div>
+                </div>
+              </div>
+      
+              <button onclick="goToContent4FromContent3()">가입하기</button>
+            </section>
+          </form>
+          <section id="content4" style="display: none;">
+            <img src="https://image.flaticon.com/icons/svg/3069/3069346.svg">
+            <h4>회원가입이 완료되었습니다!</h4>
+            <p>모든 회원가입 절차가 완료되었습니다.<br>로그인 후 다양한 혜택과 서비스를 이용하실 수 있습니다.</p>
+            <button>메인으로</button>
+          </section>
+        </div>
+      </article>
+    
+      <footer>
+        <div>
+          <article>
+            <img src="https://www.iloom.com/img/front/gnb/gnb_logo.png">
+            <p>서울시 송파구 오금로 311 (오금동45-1)<br>
+              (주)일룸 ·대표이사 강성문｜개인정보보호 책임자 : 강성문<br>
+              사업자등록번호 : 215-86-93600｜통신판매업신고 : 2009-서울송파-0069호<br>
+              부가통신사업신고필증 : 021129</p>
+          </article>
+    
+          <article>
+            <h4>about</h4>
+            <nav>
+              <a href="#">회사소개</a>
+              <a href="#">매장안내</a>
+              <a href="#">인재채용</a>
+            </nav>
+          </article>
+    
+          <article>
+            <h4>support</h4>
+            <nav>
+              <a href="#">고객센터</a>
+              <a href="#">대리점 개설안내</a>
+            </nav>
+          </article>
+    
+          <article>
+            <h4>information</h4>
+            <nav>
+              <a href="#">이용약관</a>
+              <a href="#">개인정보 처리방침</a>
+            </nav>
+          </article>
+    
+          <article>
+            <h4>contact</h4>
+            <p>1577-5670</p>
+            <p>평일 09:30 ~ 17:30<br>제품문의, AS, 분해설치</p>
+            </articlen>
+        </div>
+        <hr>
+        <p>Copyright (c) 2018 iloom lnc. All rights reserved</p>
+      </footer>
+</body>
+</html>

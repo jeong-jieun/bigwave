@@ -1,0 +1,40 @@
+{% load static  %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- bootstrap 스타일(css) 적용하기 -->
+    <link rel="stylesheet" href="{% static 'mainapp/bootstrap/css/bootstrap.min.css' %}">
+    <!-- jQuery 자바스트립트(js) 적용하기 -->
+    <script type = "text/javascript" src="{% static 'frontapp/js/jquery-3.7.1.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'mainapp/css/dropdwon.css' %}">
+</head>
+<body>
+    <ul class="menu">
+        <li>
+          <a href="#">MENU 1</a>
+          <ul class="depth_1">
+            <li><a href="#">MENU 1_1</a></li>
+            <li><a href="#">MENU 1_2</a></li>
+            <li><a href="#">MENU 1_3</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">MENU 2</a>
+        </li>
+        <li>
+          <a href="#">MENU 3</a>
+          <ul class="depth_1">
+            <li><a href="#">MENU 3_1</a></li>
+            <li><a href="#">MENU 3_2</a></li>
+          </ul>
+        </li>
+      </ul>
+
+
+    <!-- bootstrap 자바스크립트(js) 적용하기 -->
+    <script type="text/javascript" src="{% static 'frontapp/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

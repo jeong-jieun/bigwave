@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>결제페이지</title>
+    <style>
+        @font-face {
+            font-family: 'Dovemayo_gothic';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.1/Dovemayo_gothic.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body {
+                font-family: 'Dovemayo_gothic';
+            }
+        a{
+            text-decoration: none;
+        }
+        a:hover {
+            background-color:cadetblue;
+            color:white;
+            border-radius: 30px;
+        }
+        fieldset{
+            width:80%;
+            margin:0px 20px;
+            background-color:NONE;
+            float:left;
+
+        }
+        legend{
+            text-align: center;
+        }
+            
+    </style>
+</head>
+<body>
+    
+    <h2><a href = "/je/">Big-Wave</a></h2>
+    <h2>결제 페이지 입니다.</h2>
+    <div class="row">
+        <div class="col-12">
+            <form action="#" id="fm" method="post">
+                {% csrf_token %}
+                <fieldset>
+                    <legend><h3>[예약확인]</h3></legend>
+                    * 예약 일시 : <span id="reservationTime"></span></br>
+                    * 탑승 장소 : {{ selected_schedule.sch_marina }}</span></br>
+                    * 도착 장소 : {{ selected_schedule.sch_arrival }}</span></br>
+                    * 승차 시간 : {{ selected_schedule.sch_stime }}</span></br>
+                    * 하차 시간 : {{ selected_schedule.sch_etime }}</span></br>
+                    * 예약 인원 : <span id="qty"></span>명</br>
+                    * 결제 금액 : <span id="totalAmount"></span>원
+                    <input type="hidden" name="book_qty" id="input_qty">
+                    <input type="hidden" name="book_price" id="input_totalAmount">
+                    <input type="hidden" name="book_marina" value="{{ selected_schedule.sch_marina }}">
+                    <input type="hidden" name="book_arrival" value="{{ selected_schedule.sch_arrival }}">
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <fieldset>
+            <legend><h3 style="color: red;">[주의사항]</h3></legend>
+            <b>본 약관을 확인하지 않고 예약을 진행하여 발생한 모든 불이익에 대해 책임지지 않습니다.</br>
+            예약하시는 고객님은 본 필독사항과 환불규정에 대하여 동의한 것으로 간주합니다.</b></br></br>
+            > 승선시 반드시 신분증 지참해 주세요. 미성년자 증빙서류(등본 등) 지참하셔야 합니다. (*미지참시 승선 불가)</br>
+            > 승선마감시간 까지 탑승하지 못 할 경우 탑승이 거부될 수 있습니다.</br>
+            > 주의사항 미이행 및 본인부주의로 사고 발생시 책임을 지지 않습니다.</br>
+            > 음식물 반입이 금지되어 있습니다.</br>
+            > 기상상태, 천재지변, 선박의 이상상태 등의 예기치 못한 사항으로 운행이 불가할 경우 출항시간이 지연 또는 취소될 수 있으며 문자메세지를 통해 공지합니다. 해당 사항의 경우 전액환불됩니다.</br>
+            > 비상상황발생 및 승무원의 지시가 있을 경우 구명조끼를 착용하여 주세요.</br>
+        </fieldset>
+    </div>
+    <button onclick="goBack()"><b>취소</b></button>
+    <button onclick="goUpdate()"><b>결제</b></button>
+    <script>
+        //취소하기
+        function goBack(){
+            history.go(-1);
+        }
+        //등록페이지로 가기
+        function goUpdate(){
+            fm = document.getElementById("fm");
+            fm.action = "/je/booking/";
+            fm.submit();
+        }
+        const now = new Date();
+        const formattedTime = `${now.getFullYear()}년 ${String(now.getMonth() + 1).padStart(2, '0')}월 ${String(now.getDate()).padStart(2, '0')}일 ${String(now.getHours()).padStart(2, '0')}시 ${String(now.getMinutes()).padStart(2, '0')}분`;
+
+        document.getElementById('reservationTime').innerText = formattedTime;
+
+        // URL의 쿼리 매개변수를 추출하고 표시하는 JavaScript 코드
+        const urlParams = new URLSearchParams(window.location.search);
+        const selectedSchNo = urlParams.get('selected_schedule');
+        const qtyValue = urlParams.get('qty');
+
+        document.getElementById('qty').innerText = qtyValue;
+        document.getElementById('input_qty').value = qtyValue;
+
+        const paymentAmount = qtyValue * 20000;
+        document.getElementById('totalAmount').innerText = paymentAmount.toLocaleString();
+        document.getElementById('input_totalAmount').value = paymentAmount;
+    </script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+    <!-- iamport.payment.js -->
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-{SDK-최신버전}.js"></script>
+</body>
+</html>

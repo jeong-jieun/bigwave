@@ -1,0 +1,167 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'prc/css/temp_style.css' %}">
+    <link rel="stylesheet" href="{% static 'prc/css/temp_normalize.min.css' %}">
+    <link rel="stylesheet" href="{% static 'prc/css/temp_grid.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'prc/css/nav_common.css'%}" />
+    <style>
+        body {
+            background-image: url('{% static "prc/images/v1163_60.png" %}');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+        }
+        </style>
+</head>
+<body>
+    <div class="site-outer">
+        <nav class="navbar navbar-fixed-top">
+            <section class="container-fluid">
+                <div class="row">
+                    <div class="container-menu">
+                        <nav class="menu" id="hb">
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </nav>
+                        <div class="logotype">
+                            <div class="big"><li><a href="/">선착장 예약 서비스</a></div>
+                        </div>
+                        <div class="nav">               
+                            <div class="nav-links">
+                              <a href="https://namu.wiki/w/%EC%98%88%EC%95%BD" target="_blank">예약 조회</a>
+                              <a href="#" onclick="location.href='https://www.naver.com'" target="_blank"style='color:black;'>회원 정보</a>
+                              <a href="#" onclick="location.href='http://127.0.0.1:8000/mg/temp1/'" target="_blank" style="background-color: #6347f0; color:black;">로그아웃</a>
+
+                            </div>
+                          </div>
+                    </div>
+                </div>
+            </section>
+        </nav>
+    </div>
+	<!-- NAVIGATION -->
+	<div class="navigation">
+        <div class="left-menu">
+            <div class="logo"><img src="{% static 'prc/images/wave-logo1.png'%}" alt="SRT" />
+                <div>해상 택시 선착장 예약 서비스</div>
+            </div>
+            <div class="accordion">
+                <div class="section"><input type="radio" name="accordion-1" id="section-1" checked="checked" /><label for="section-1"><span>Account</span></label>
+                    <div class="content">
+                        <ul>
+                            <li><a href="/mg/new/" style="color:black;"><i class="fa-solid fa-house"></i>home</a></li>
+                            <li><a href="/mg/nav_test/" style="color:#5161ce;"><i class="fa-solid fa-ship"></i>예약</a></li>
+                            <li><a href="/mg/copy/" style="color:black;"><i class="fa-solid fa-user"></i><span>정보</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="section"><input type="radio" name="accordion-1" id="section-2" value="toggle" /><label for="section-2"> <span>선착장</span></label>
+                    <div class="content">
+                        <ul>
+                            <li><a href="https://namu.wiki/w/%EC%86%A1%EB%8F%84"><i class="fa-solid fa-umbrella-beach"></i><span>송도</span></a></li>
+                            <li><i class="fa-solid fa-umbrella-beach"></i><span>영도</span></li>
+                            <li><a href="https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=%EC%84%A4%EC%9A%B4%EB%8F%84"><i class="fa-solid fa-umbrella-beach"></i><span>설운도</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="section"><input type="radio" name="accordion-1" id="section-3" value="toggle" /><label for="section-3"> <span>부가 서비스</span></label>
+                    <div class="content">
+                        <ul>
+                            <li><i class="fa fa-coffee"></i><span>맛집</span></li>
+                            <li><i class="fa fa-coffee"></i><span>맛집2</span></li>
+                            <li><i class="fa fa-coffee"></i><span>주변</span></li>
+                            <li><i class="fa fa-coffee"></i><span>주변2</span></li>
+                            <li><i class="fa fa-coffee"></i><span>이외 </span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="section"><input type="radio" name="accordion-1" id="section-4" value="toggle" /><label for="section-4"> <span>Section 4</span></label>
+                    <div class="content"></div>
+                </div>
+            </div>
+        </div>
+	</div>
+<!-- partial:index.partial.html -->
+<main>
+    <header>
+      <h1>Boarding pass</h1>
+      <div>
+        <h5>Flight n°</h5>
+        <p> VY1812</p>
+      </div>
+      <div>
+        <h5>Gate</h5>
+        <p> D26</p>
+      </div>
+    </header>
+    <section2 class="flight--general">
+        <div>
+            <h4>Munich</h4>
+            <h2>MUC</h2>
+        </div>
+        <div>
+            <h4>to</h4>
+        </div>
+        <div>
+            <h4>Barcelona</h4>
+            <h2>BCN</h2>
+        </div>
+        </section2>
+        <section2 class="flight--TimeInfo">
+        <div>
+            <h5>Boarding</h5>
+            <p>18:20</p>
+        </div>
+        <div>
+            <h5>Departure</h5>
+            <p>19:00</p>
+        </div>
+        <div>
+            <h5>Date</h5>
+            <p>15/10/2017</p>
+        </div>
+        </section2>
+        <section2 class="flight--PassInfo">
+        <div>
+            <h5>Passenger</h5>
+            <p>Victor Janin</p>
+        </div>
+        <div>
+            <h5>Seat</h5>
+            <p>23A</p>
+        </div>
+        </section2>
+        <section2 class="flight--qrcode">
+            <img src="{% static 'prc/images/다sdsd운로드.png'%}">
+        </section2>
+        <section2 class="extra--meteo">
+        <div>
+            <h5>16th</h5>
+            <h6>23°C </h6>
+            <p>Partly Sunny</p>
+        </div>
+        <div>
+            <h5>17th</h5>
+            <h6>24°C </h6>
+            <p>Cloudy with a bit of rain</p>
+        </div>
+        <div>
+            <h5>18th</h5>
+            <h6>23°C </h6>
+            <p>Mostly sunny</p>
+        </div>
+    </section2>
+</main>
+<!-- partial -->
+    <script src="{% static 'prc/js/temp_min.js2.js'%}"></script>
+    <script src="{% static 'prc/js/temp_jquery.min.js'%}"></script><script  src="{% static 'prc/js/temp_script.js'%}"></script>
+    <script src="{% static 'prc/js/new_jquery.min.js'%}"></script>
+    <script src="{% static 'prc/js/new_bootstrap.min.js'%}"></script><script  src="{% static 'prc/js/new_script.js'%}"></script>
+</body>
+</html>

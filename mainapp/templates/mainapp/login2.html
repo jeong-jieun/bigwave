@@ -1,0 +1,77 @@
+{% load static  %}
+<!DOCTYPE html>
+<html class="html">
+  <head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta http-equiv="X-UA-Compatible" content="ie-edge"/>
+    <meta name="keywords" content="Yulian Brito, Yulian, Brito, Frontend Developer, Sign Up Sign In 1"/>
+    <meta name="author" content="Yulian Brito"/>
+    <title>해양택시 로그인 페이지</title>
+    <link rel="stylesheet" href="{% static 'mainapp/css/login2.css' %}">
+    <script type = "text/javascript" src="{% static 'mainapp/js/login2.js' %}"></script>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
+
+    <!-- javascript 함수 -->
+    <script type="text/javascript">
+        function goLogin() {
+            fm = document.getElementById("fm");
+        
+            mem_id = fm.mem_id.value;
+            mem_pass = fm.mem_pass.value;
+
+            if(mem_id == "" || mem_pass == ""){
+                alert("아이디 또는 비밀번호를 입력해주세요.");
+                return;
+            }            
+            fm.action = "/loginafter/";
+            fm.submit();
+        }
+    </script>
+  </head>
+
+  <body>
+    <form id="fm" action="post" action="#">
+    <div class="login">
+        <div class="login-header">
+          <h1>Login</h1>
+        </div>
+        <div class="login-form">
+          <h3>아 이 디:</h3>
+          <input type="text" name="mem_id" placeholder="Userid"/><br>
+          <h3>비밀번호:</h3>
+          <input type="password" placeholder="Password"/>
+          <br>
+          <br>
+          <input type="button" name="mem_pass" value="회 원 가 입" class="login-button" onclick="gosignup"/><input type="button" value="로  그  인" class="login-button" onclick="gologin"/>
+          <br>
+          <a href="" class="a-bimil">비밀번호 찾기</a>
+          <br>
+          <br>
+          <br>
+          <br>
+          <div class="second-login">
+            <h2>간편 로그인</h2>
+            <br>
+            <button type="button" class="login-img" onclick="alert('클릭!')">
+              <img src="{% static 'mainapp/img/네이버 로그인.png' %}" width="300" height="50"/>
+            </button>
+            <br>
+            <button type="button" class="login-img" onclick="alert('클릭!')">
+              <img src="{% static 'mainapp/img/kakao_login_medium_narrow.png' %}" width="300" height="50"/>
+            </button>
+            <br>
+            <button type="button" class="login-img" onclick="alert('클릭!')">
+              <img src="{% static 'mainapp/img/googlelogin.png' %}" width="310" height="55"/>
+            </button>
+            <br>
+            <br>
+          </div>
+        </div>
+      </div>
+    </form>
+      <div class="error-page">
+        <div class="try-again">Error: Try again?</div>
+      </div>
+  </body>
+</html>
