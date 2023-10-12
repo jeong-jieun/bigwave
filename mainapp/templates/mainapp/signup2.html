@@ -7,20 +7,21 @@
     <title>회원가입 페이지</title>
     <link rel="stylesheet" href="{% static 'mainapp/css/signup2.css' %}">
 
+    <!--네이버로 로그인하기 링크-->
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
 
   <!--goToContent2 : 가입하기에서 약관동의 이동 버튼-->
   <!--goToContent3 : 약관동의에서 정보입력으로 이동 버튼-->
-  <!--checkAll : 전체동의 전체체크 함수-->
-  <!--Checkid : 회원 아이디 중복체크 함수-->
-  <!--Checkemail : 회원 이메일 중복체크 함수-->
-  <!--Checktel : 회원 핸드폰번호 중복체크 함수-->
   <script>
+    // goToContent2 : 가입하기에서 약관동의 이동 버튼
     function goToContent2() {
       document.getElementById('tab2').checked = true;
       document.getElementById('content1').style.display = 'none';
       document.getElementById('content2').style.display = 'block';
     }
-
+    // goToContent3 : 약관동의에서 정보입력으로 이동 버튼
     function goToContent3() {
       // Check if the required checkboxes are checked
       var termsAgreed = document.getElementById('termsAgreed').checked;
@@ -33,72 +34,91 @@
           return;  // Do not proceed to the next step if not all required checkboxes are checked
       }
 
-      // If all required checkboxes are checked, proceed to the next step
+      // content2에서 content3으로 넘어가기
       document.getElementById('tab3').checked = true;
       document.getElementById('content2').style.display = 'none';
       document.getElementById('content3').style.display = 'block';
     }
-
+    // checkAll : 전체동의 전체체크 함수
     function checkAll() {
         var checkboxes = document.getElementById('content2').querySelectorAll('input[type="checkbox"]');
         for (var i = 0; i < checkboxes.length; i++) {
             checkboxes[i].checked = true;
         }
     }
+  </script>
+
+  <!--content3 내부 함수 + 회원가입 완료 버튼 함수-->
+  <script>
+    // Checkid : 회원 아이디 중복체크 함수
     function Checkid() {
       fm = document.getElementById("fm");
       mem_id = fm.mem_id.value;
 
       location.href = "/idcheck/?mem_id=" + mem_id;
     }
+    // Checkemail : 회원 이메일 중복체크 함수
     function Checkemail() {
       fm = document.getElementById("fm");
       mem_email = fm.mem_email.value;
 
       location.href = "/emailcheck/?mem_email=" + mem_email;
     }
+    // Checktel : 회원 핸드폰번호 중복체크 함수
     function Checktel() {
       fm = document.getElementById("fm");
       mem_tel = fm.mem_tel.value;
 
       location.href = "/emailcheck/?mem_tel=" + mem_tel;
     }
-  </script>
 
-  <script>
+    // 선택된 이메일 도메인 값 넣기
+    function updateEmailField() {
+      var selectElement = document.getElementById('emailOption');
+      var selectedOption = selectElement.options[selectElement.selectedIndex].text;
+  
+      // 선택된 옵션을 mem_email2 입력 필드의 값으로 설정
+      document.querySelector('input[name="mem_email2"]').value = selectedOption;
+    }
+
     function goToContent4FromContent3() {
-        // Check if all required fields are filled
-        var mem_id = document.querySelector('input[name="mem_id"]').value;
-        var mem_email = document.querySelector('input[name="mem_email"]').value;
-        var mem_pass = document.querySelector('input[name="mem_pass"]').value;
-        var mem_name = document.querySelector('input[name="mem_name"]').value;
-        var mem_age = document.querySelector('input[name="mem_age"]').value;
-        var mem_tel = document.querySelector('input[name="mem_tel"]').value;
-        var mem_add1 = document.querySelector('input[name="mem_add1"]').value;
-        var mem_add2 = document.querySelector('input[name="mem_add2"]').value;
+      //입력사항 함수로 받아오기
+      var mem_id = document.querySelector('input[name="mem_id"]').value;
+      var mem_email = document.querySelector('input[name="mem_email"]').value;
+      var mem_pass = document.querySelector('input[name="mem_pass"]').value;
+      var mem_name = document.querySelector('input[name="mem_name"]').value;
+      var mem_age = document.querySelector('input[name="mem_age"]').value;
+      var mem_tel = document.querySelector('input[name="mem_tel"]').value;
+      var mem_add1 = document.querySelector('input[name="mem_add1"]').value;
+      var mem_add2 = document.querySelector('input[name="mem_add2"]').value;
+      var mem_add3 = document.querySelector('input[name="mem_add3"]').value;
 
-        // Check if all required fields are filled
-        if (!mem_id || !mem_email || !mem_pass || !mem_name || !mem_age || !mem_tel || !mem_add1 || !mem_add2) {
-            alert('모든 필수 항목을 입력하세요.');
-            return;
-        }
+      // 필수 입력사항에 값이 없으면 리스트에 해당 입력영역 넣기
+      var missingFields = [];
+      if (!mem_id) missingFields.push("아이디");
+      if (!mem_email) missingFields.push("이메일");
+      if (!mem_pass) missingFields.push("패스워드");
+      if (!mem_name) missingFields.push("이름");
+      if (!mem_age) missingFields.push("생년월일");
+      if (!mem_tel) missingFields.push("휴대폰번호");
+      if (!mem_add1) missingFields.push("우편번호");
+      if (!mem_add3) missingFields.push("상세주소");
 
-        // Proceed to content4
-        document.getElementById('tab4').checked = true;
-        document.getElementById('content3').style.display = 'none';
-        document.getElementById('content4').style.display = 'block';
+      // 입력값이 없는 영역 팝업으로 띄우기
+      if (missingFields.length > 0) {
+        var missingFieldsString = missingFields.join(", ");
+        alert(missingFieldsString + '의 값을 입력하세요: ');
+        return;
+      }
+      
+      // content3에서 content4로 넘어가기
+      document.getElementById('tab4').checked = true;
+      document.getElementById('content3').style.display = 'none';
+      document.getElementById('content4').style.display = 'block';
     }
 </script>
-<script>
-  function updateEmailField() {
-    var selectElement = document.getElementById('emailOption');
-    var selectedOption = selectElement.options[selectElement.selectedIndex].text;
 
-    // 선택된 옵션을 mem_email2 입력 필드의 값으로 설정
-    document.querySelector('input[name="mem_email2"]').value = selectedOption;
-  }
-</script>
-
+<!--우편번호찾기 버튼 함수-->
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
     function sample6_execDaumPostcode() {
@@ -150,28 +170,23 @@
     }
 </script>
 
+<!--content4 버튼 함수-->
+<script>
+  function gologin(){
+    fm = document.getElementById("fm");
+    //location.href = "/oracle/mem_update/";
+    fm.action = "/login2/";
+    fm.submit();
+  }
+</script>
+
 </head>
 <body>
-    <header>
-        <img src="https://www.iloom.com/img/front/gnb/gnb_logo.png">
-    
-        <nav>
-          <a href="#">brand</a>
-          <a href="#">furniture</a>
-          <a href="#">technology</a>
-          <a href="#">store</a>
-          <a href="#">event</a>
-        </nav>
-    
-        <div>
-          <img src="https://image.flaticon.com/icons/svg/622/622669.svg">
-          <img src="https://image.flaticon.com/icons/svg/1656/1656850.svg">
-        </div>
-      </header>
-    
+  <form id="fm" method="post">
+    {% csrf_token %}
       <article class="find1">
         <h2>회원가입</h2>
-        <p>일룸 회원가입을 환영합니다.<br>회원으로 가입하시면 다양한 혜택과 서비스를 이용하실 수 있습니다.</p>
+        <p>bigwave 회원가입을 환영합니다.<br>회원으로 가입하시면 다양한 혜택과 서비스를 이용하실 수 있습니다.</p>
     
         <div>
           <input id="tab1" type="radio" name="tabs" checked>
@@ -189,27 +204,94 @@
     
           <section id="content1">
             <div>
-              <h4>일룸 간편 회원가입</h4>
-              <p>일룸 회원으로 가입합니다.</p><br>
-              <button type="button" class="signup-go" onclick="goToContent2()">회원가입</button>
+              <h4>bigwave 회원가입</h4>
+              <p>bigwave 회원으로 가입합니다.</p><br>
+              <input type="button" class="signup-go" onclick="goToContent2()" value="회원가입"
+              style="margin-top: 1rem; background: #33628792; padding: 15px; width: 55%; color: white; transition: 0.6s;">
             </div>
     
-            <div></div>
-    
             <div class="second-login">
+                <br>
                 <h4>간편 로그인</h4>
-                <button type="button" class="login-img" onclick="alert('클릭!')" style="background-color: white;">
-                  <img src="{% static 'mainapp/img/네이버 로그인.png' %}" width="250" height="70"/>
-                </button>
-                <button type="button" class="login-img" onclick="alert('클릭!')" style="background-color: white;">
-                  <img src="{% static 'mainapp/img/kakao_login_medium_narrow.png' %}" width="250" height="70"/>
-                </button>
+                <div id="naver_id_login"></div>
+                <!-- //네이버 로그인 버튼 노출 영역 -->
+                <script type="text/javascript">
+                  var naver_id_login = new naver_id_login("YOUR_CLIENT_ID", "YOUR_CALLBACK_URL");
+                  var state = naver_id_login.getUniqState();
+                  naver_id_login.setButton("green", 25,50);
+                  naver_id_login.setDomain("YOUR_SERVICE_URL");
+                  naver_id_login.setState(state);
+                  naver_id_login.setPopup();
+                  naver_id_login.init_naver_id_login();
+                </script>
+    
+                <!--카카오로 로그인하기-->
+                <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.4.0/kakao.min.js"
+                integrity="sha384-mXVrIX2T/Kszp6Z0aEWaA8Nm7J6/ZeWXbL8UpGRjKwWe56Srd/iyNmWMBhcItAjH" crossorigin="anonymous"></script>
+              <script>
+                Kakao.init('c089c8172def97eb00c07217cae17495'); // 사용하려는 앱의 JavaScript 키 입력
+              </script>
+
+            <!--카카오로 로그인하기-->
+            <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.4.0/kakao.min.js"
+            integrity="sha384-mXVrIX2T/Kszp6Z0aEWaA8Nm7J6/ZeWXbL8UpGRjKwWe56Srd/iyNmWMBhcItAjH" crossorigin="anonymous"></script>
+          <script>
+            Kakao.init('c089c8172def97eb00c07217cae17495'); // 사용하려는 앱의 JavaScript 키 입력
+          </script>
+          
+          <a id="kakao-login-btn" href="javascript:loginWithKakao()">
+            <img src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg" width="235" height="50"
+              alt="카카오 로그인 버튼" />
+          </a>
+          <p id="token-result"></p>
+          <button class="api-btn" onclick="requestUserInfo()" style="visibility:hidden">사용자 정보 가져오기</button>
+          
+          <script>
+            function loginWithKakao() {
+              Kakao.Auth.authorize({
+                redirectUri: 'https://developers.kakao.com/tool/demo/oauth',
+                state: 'userme',
+              });
+            }
+          
+            function requestUserInfo() {
+              Kakao.API.request({
+                url: '/v2/user/me',
+              })
+                .then(function(res) {
+                  alert(JSON.stringify(res));
+                })
+                .catch(function(err) {
+                  alert(
+                    'failed to request user information: ' + JSON.stringify(err)
+                  );
+                });
+            }
+          
+            // 아래는 데모를 위한 UI 코드입니다.
+            displayToken()
+            function displayToken() {
+              var token = getCookie('authorize-access-token');
+          
+              if(token) {
+                Kakao.Auth.setAccessToken(token);
+                document.querySelector('#token-result').innerText = 'login success, ready to request API';
+                document.querySelector('button.api-btn').style.visibility = 'visible';
+              }
+            }
+          
+            function getCookie(name) {
+              var parts = document.cookie.split(name + '=');
+              if (parts.length === 2) { return parts[1].split(';')[0]; }
+            }
+          </script>
+          
                 <button type="button" class="login-img" onclick="alert('클릭!')" style="background-color: white;">
                   <img src="{% static 'mainapp/img/googlelogin.png' %}" width="255" height="75"/>
                 </button>
               </div>
           </section>
-    
+  
           <section id="content2" style="display: none;">
             <label><input type="checkbox" onclick="checkAll()">　전체 동의</label>
             <hr>
@@ -219,13 +301,13 @@
             <label><input type="checkbox">　이메일 마케팅 수신 동의 (선택)</label><br>
             <label><input type="checkbox">　SMS 마케팅 수신 동의 (선택)</label><br>
             <p>정보수신에 동의하지 않아도 정상적인 서비스 이용이 가능합니다. 거래 정보, 결제/교환/환불 등과 관련된 내용은 거래 안전을 위하여 수신동의 여부와 관계없이 발송됩니다.</p>
-            <button onclick="goToContent3()">다음으로</button>
+            <input type="button" onclick="goToContent3()" value="다음으로"
+            style="margin-top: 1rem; background: #33628792; padding: 15px; width: 55%; color: white; transition: 0.6s; margin: 2.5rem auto 0 6rem;">
           </section>
 
-          <form id="fm" method="post" action="#">
-            {% csrf_token %}
+          
             <section id="content3" style="display: none;">
-              <h5>필수 입력 정보</h5>
+              <h5>회원가입 입력 정보</h5>
       
               <div>
                 <div>
@@ -243,7 +325,7 @@
                 <div>
                   <input type="text" name="mem_id" placeholder="아이디를 입력하세요."><br>
                   <button class = "telchk" type="button" onclick="Checkid()">중복확인</button>
-                  <input type="email" name="mem_email"> @ <input type="email" name="mem_email2">
+                  <input type="text" class="mem_email" name="mem_email" style="width: 31%;"> @ <input type="email" name="mem_email2">
                   <select id="emailOption" size="1" onchange="updateEmailField()">
                     <option selected>직접입력</option>
                     <option>hanmail.net</option>
@@ -267,84 +349,38 @@
 
               <hr>
               <div class="join2">
-                <h5>선택 입력 정보</h5>
+                <h5>주소지 입력</h5>
                 <div>
                   <div>
                     <p>주소</p>
-                    <p>결혼여부</p>
                   </div>
       
                   <div>
-                    <input type="address" id="sample6_postcode" placeholder="우편번호" onclick="sample6_execDaumPostcode()">
-                    <button>주소검색</button><br>
-                    <input type="address" name="mem_add1"  placeholder="도로명주소"><br>
-                    <input type="address" name="mem_add2" placeholder="상세주소"><br>
-                    <br>
-                    <select>
-                      <option selected>선택</option>
-                      <option>미혼</option>
-                      <option>기혼</option>
-                    </select>
-                    <input type="text" placeholder="기념일 8자">
+                    <input type="address" id="sample6_postcode" placeholder="우편번호">
+                    <input type="button"  onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+                    <input type="address" name="mem_add1" id="sample6_address" placeholder="주소"><br>
+                    <input type="address" name="mem_add2" id="sample6_extraAddress" placeholder="참고항목">
+                    <input type="address" name="mem_add3" id="sample6_detailAddress" placeholder="상세주소">
+                    
+
                   </div>
                 </div>
               </div>
-      
-              <button onclick="goToContent4FromContent3()">가입하기</button>
+              <input type="button" onclick="goToContent4FromContent3()" value="가입하기">
+            
+              
             </section>
-          </form>
+          
           <section id="content4" style="display: none;">
             <img src="https://image.flaticon.com/icons/svg/3069/3069346.svg">
             <h4>회원가입이 완료되었습니다!</h4>
             <p>모든 회원가입 절차가 완료되었습니다.<br>로그인 후 다양한 혜택과 서비스를 이용하실 수 있습니다.</p>
             <button>메인으로</button>
+            <input type="button" onclick="gologin()" value="로그인하기">
           </section>
+        </form>
         </div>
+      
       </article>
-    
-      <footer>
-        <div>
-          <article>
-            <img src="https://www.iloom.com/img/front/gnb/gnb_logo.png">
-            <p>서울시 송파구 오금로 311 (오금동45-1)<br>
-              (주)일룸 ·대표이사 강성문｜개인정보보호 책임자 : 강성문<br>
-              사업자등록번호 : 215-86-93600｜통신판매업신고 : 2009-서울송파-0069호<br>
-              부가통신사업신고필증 : 021129</p>
-          </article>
-    
-          <article>
-            <h4>about</h4>
-            <nav>
-              <a href="#">회사소개</a>
-              <a href="#">매장안내</a>
-              <a href="#">인재채용</a>
-            </nav>
-          </article>
-    
-          <article>
-            <h4>support</h4>
-            <nav>
-              <a href="#">고객센터</a>
-              <a href="#">대리점 개설안내</a>
-            </nav>
-          </article>
-    
-          <article>
-            <h4>information</h4>
-            <nav>
-              <a href="#">이용약관</a>
-              <a href="#">개인정보 처리방침</a>
-            </nav>
-          </article>
-    
-          <article>
-            <h4>contact</h4>
-            <p>1577-5670</p>
-            <p>평일 09:30 ~ 17:30<br>제품문의, AS, 분해설치</p>
-            </articlen>
-        </div>
-        <hr>
-        <p>Copyright (c) 2018 iloom lnc. All rights reserved</p>
-      </footer>
 </body>
 </html>
