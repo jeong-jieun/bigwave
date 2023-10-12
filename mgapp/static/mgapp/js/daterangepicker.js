@@ -40,8 +40,8 @@
         this.maxDate = false;
         this.maxSpan = false;
         this.autoApply = false;
-        this.singleDatePicker = false;
-        this.showDropdowns = false;
+        this.singleDatePicker = true;
+        this.showDropdowns = true;
         this.minYear = moment().subtract(100, 'year').format('YYYY');
         this.maxYear = moment().add(100, 'year').format('YYYY');
         this.showWeekNumbers = false;
@@ -72,15 +72,14 @@
             direction: 'ltr',
             format: moment.localeData().longDateFormat('L'),
             separator: ' - ',
-            applyLabel: 'Apply',
-            cancelLabel: 'Cancel',
-            weekLabel: 'W',
-            customRangeLabel: 'Custom Range',
-            daysOfWeek: moment.weekdaysMin(),
-            monthNames: moment.monthsShort(),
+            applyLabel: '적용', // "Apply"를 "적용"으로 변경
+            cancelLabel: '취소', // "Cancel"을 "취소"로 변경
+            weekLabel: '주', // "W"를 "주"로 변경
+            customRangeLabel: '사용자 정의 범위', // "Custom Range"를 "사용자 정의 범위"로 변경
+            daysOfWeek: moment.weekdaysMin(), // 요일 이름 (짧게)
+            monthNames: moment.monthsShort(), // 월 이름 (짧게)
             firstDay: moment.localeData().firstDayOfWeek()
         };
-
         this.callback = function() { };
 
         //some state information

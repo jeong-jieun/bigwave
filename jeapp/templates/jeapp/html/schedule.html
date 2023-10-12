@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스케줄조회</title>
+    <style>
+        @font-face {
+            font-family: 'Dovemayo_gothic';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.1/Dovemayo_gothic.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body {
+            font-family: 'Dovemayo_gothic';
+            }
+        tr:hover {
+            background-color:skyblue;
+        }
+    </style>
+</head>
+<body>
+    <h2>스케줄조회</h2>
+    <form id="scheduleForm" method="GET" action="/je/checkout/">
+        <div>
+            <table border="1">
+                <tr>
+                    <th>선택</th>
+                    <th>출발지</th>
+                    <th>도착지</th>
+                    <th>출발시간</th>
+                    <th>도착시간</th>
+                </tr>
+                {% for row3 in schedule %}
+                <tr>
+                    <td><input type="radio" name="selected_schedule" value="{{ row3.sch_no }}"></td>
+                    <td>{{ row3.sch_marina }}</td>
+                    <td>{{ row3.sch_arrival }}</td>
+                    <td>{{ row3.sch_stime }}</td>
+                    <td>{{ row3.sch_etime }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            <input type="hidden" name="qty" value="{{ qty }}">
+            
+            <input type="submit" value="예약하기">
+        </div>
+    </form>
+    <script>
+        document.getElementById('scheduleForm').addEventListener('submit', function(e) {
+            const selectedSchedule = document.querySelector('[name="selected_schedule"]:checked');
+            
+            // 스케줄 체크 안되어있을때
+            if (!selectedSchedule) {
+                alert('스케줄을 선택하여 주세요.');
+                e.preventDefault();
+                return;
+            }
+
+            // 선택한 라디오 버튼의 sch_no 값을 가져옵니다.
+            const selectedSchNo = selectedSchedule.value;
+            
+        });
+    </script>
+</body>
+</html>

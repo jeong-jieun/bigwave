@@ -4,6 +4,14 @@ from django.http import HttpResponse
 
 
 # index.html 처리
+def booking(request):
+    return render(request,
+                  'mgapp/booking.html',
+                  {})
+def login(request):
+    return render(request,
+                  'mgapp/index_login.html',
+                  {})
 def temp2(request):
     return render(request,
                   'prc/temp2.html',

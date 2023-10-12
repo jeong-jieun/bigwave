@@ -20,6 +20,10 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
+    ### about (http://127.0.0.1:8000/mg/login/)
+    path('booking/', views.booking),
+    ### about (http://127.0.0.1:8000/mg/login/)
+    path('login/', views.login),
     ### about (http://127.0.0.1:8000/mg/temp2/)
     path('temp2/', views.temp2),
     ### about (http://127.0.0.1:8000/mg/temp1/)
