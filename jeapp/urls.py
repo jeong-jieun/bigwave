@@ -4,6 +4,8 @@ from django.urls import path
 from . import views
 urlpatterns = [
     
+    ### 부가서비스페이지 (http://127.0.0.1:8000/je/schedule/cafe)
+    path('schedule/cafe/', views.cafe),
     ### 부가서비스페이지 (http://127.0.0.1:8000/je/schedule)
     path('schedule/', views.schedule),
     ### 결제페이지 (http://127.0.0.1:8000/je/booking)

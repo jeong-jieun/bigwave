@@ -3,6 +3,12 @@ from django.http import HttpResponse
 from .models import Member, Marina, Schedule, Booking
 from datetime import datetime
 
+def cafe(request):
+    return render(request, 
+                  'jeapp/html/cafe.html',
+                  {})
+
+
 # 메인페이지에서 조회하기 버튼 클릭시 스케줄 조회 페이지 보여주기
 def schedule(request):
     schedules = []
