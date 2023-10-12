@@ -53,7 +53,6 @@
 
 				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
 					<li class="active"><a href="/">선착장</a></li>
-					<li><a href="services.html">Services</a></li>
 					<li class="has-children">
 						<a href="#">부가 서비스</a>
 						<ul class="dropdown">
@@ -68,8 +67,9 @@
 							</li>
 						</ul>
 					</li>
-					<li><a href="/login2/">로그인</a></li>
-					<li><a href="/signup2/">회원가입</a></li>
+					<li><a href="/mg/booking/">예약확인</a></li>
+					<li><a href="/mg/login2/">회원정보</a></li>
+					<li><a href="/mg/home/">로그아웃</a></li>
 				</ul>
 
 				<a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
@@ -82,79 +82,48 @@
 
 	<div class="hero">
 		
-		<div class="container">
+		<div class="container-fluid">
 			<div class="row align-items-center">
-				<div class="col-lg-7">
+				<div class="col-lg-5">
 					<div class="intro-wrap">
-						<h1 class="mb-5"><span class="d-block">Marine Taxi</span>Booking service
-							<br><span class="typed-words"></span></h1>
+						<h1 class="mb-5"><span class="d-block">선착장</span>가보자<span class="typed-words"></span></h1>
 						<div class="row">
 							<div class="col-12">
 								<form class="form">
+									<h1 style="color: black;">예약 일자</h1>
 									<div class="row mb-2">
-										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-6">
-											<select name="" id="" class="form-control custom-select">
-												<option value="">출발지</option>
-												<option value="">목적지DB1</option>
-												<option value="">목적지DB2</option>
-												<option value="">목적지DB3</option>
-												<option value="">목적지DB4</option>
-												<option value="">목적지DB5</option>
-												<option value="">목적지DB6</option>
-												<option value="">목적지DB7</option>
-												<option value="">목적지DB8</option>
-											</select>
-										</div>
-										<br>
-										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-6">
-											<select name="" id="" class="form-control custom-select">
-												<option value="">목적지</option>
-												<option value="">목적지DB1</option>
-												<option value="">목적지DB2</option>
-												<option value="">목적지DB3</option>
-												<option value="">목적지DB4</option>
-												<option value="">목적지DB5</option>
-												<option value="">목적지DB6</option>
-												<option value="">목적지DB7</option>
-												<option value="">목적지DB8</option>
-											</select>
-										</div>
-										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-6">
-											<input type="text" class="form-control" name="daterange">
-										</div>
-										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-6">
-											<select name="" id="" class="form-control custom-select">
-												<option value="">인구수</option>
-												<option value="">1 명</option>
-												<option value="">2명</option>
-												<option value="">3명</option>
-												<option value="">4명</option>
-												<option value="">5명</option>
-												<option value="">6명</option>
-												<option value="">7명</option>
-												<option value="">8명</option>
-											</select>
-										</div>
-
-									</div>    
-									<div class="row align-items-center">
-										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-12">
-											<input type="submit" class="btn btn-primary btn-block" value="검색하기">
-										</div>
-										{% comment %} <div class="col-lg-8">
-											<label class="control control--checkbox mt-3">
-												<span class="caption">Save this search</span>
-												<input type="checkbox" checked="checked" />
-												<div class="control__indicator"></div>
-											</label>
-										</div> {% endcomment %}
+										<div class="square" style="margin-top: 5px; margin-bottom: 5px;">
+											<section class="passengers-table">
+												<table class="passengers-desktop">
+													<tr style="margin-bottom: 100px;">
+														<th style="color: black;">예약자</th>
+														<th style="color: black; padding-left: 70PX;">출발지</th>
+														<th style="color: black;padding-left: 80PX;">목적지</th>
+														<th style="color: black;padding-left: 70PX;">인구수</th>
+														<th style="color: black;padding-left: 90PX;">날짜</th>
+														
+													</tr>
+													<tr style="margin-bottom: 50px;">
+														<th style="color: black;">홍길동</th>
+														<th style="color: black; padding-left: 70PX;">영도</th>
+														<th style="color: black;padding-left: 80PX;">다대포</th>
+														<th style="color: black;padding-left: 70PX;">3인</th>
+														<th style="color: black;padding-left: 90PX;">2023/10/10</th>
+													</tr>
+												</table>
+											</section>
+										</div>	
 									</div>
 								</form>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-5">
+				<div class="col-lg-2" style="top: 80px; left: 60px;">
+						<h1>QR코드</h1>
+						<img src="{% static 'prc/images/다sdsd운로드.png'%}" alt="Image" class="img-fluid active">
+				</div>
+				<div class="col-lg-4">
 					<div class="slides">
 						<img src="{% static 'mgapp/images/hero-slider-1.jpg'%}" alt="Image" class="img-fluid active">
 						<img src="{% static 'mgapp/images/hero-slider-2.jpg'%}" alt="Image" class="img-fluid">
