@@ -22,6 +22,12 @@ from . import views
 urlpatterns = [
     
     ### mainapp (http://127.0.0.1:8000/mygjlist/)
+    path('signupafter/', views.signupafter),
+    ### mainapp (http://127.0.0.1:8000/mygjlist/)
+    path('idcheck/', views.idcheck),
+    ### mainapp (http://127.0.0.1:8000/mygjlist/)
+    path('loginafter/', views.loginafter),
+    ### mainapp (http://127.0.0.1:8000/mygjlist/)
     path('mygjlist/', views.mygjlist),
     ### mainapp (http://127.0.0.1:8000/mypage/)
     path('mypage/', views.mypage),
