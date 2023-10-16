@@ -5,17 +5,37 @@ from datetime import datetime
 
 
 # 부가서비스
+def jagar(request):
+    marinas = Marina.objects.all()
+    selected_option = request.POST.get('search_option', None)
+    return render(request, 
+                  'jeapp/html/자갈치선착장.html',
+                  {'marina_list': marinas,
+                   'search_result': selected_option})
+# 부가서비스
+def mipo(request):
+    marinas = Marina.objects.all()
+    selected_option = request.POST.get('search_option', None)
+    return render(request, 
+                  'jeapp/html/미포선착장.html',
+                  {'marina_list': marinas,
+                   'search_result': selected_option})
+# 부가서비스
 def dadae(request):
+    marinas = Marina.objects.all()
+    selected_option = request.POST.get('search_option', None)
     return render(request, 
                   'jeapp/html/다대선착장.html',
-                  {})
-
-
+                  {'marina_list': marinas,
+                   'search_result': selected_option})
 # 부가서비스
-def cafe(request):
+def hari(request):
+    marinas = Marina.objects.all()
+    selected_option = request.POST.get('search_option', None)
     return render(request, 
-                  'jeapp/html/cafe.html',
-                  {})
+                  'jeapp/html/하리선착장.html',
+                  {'marina_list': marinas,
+                   'search_result': selected_option})
 
 
 # 메인페이지에서 조회하기 버튼 클릭시 스케줄 조회 페이지 보여주기
@@ -42,7 +62,7 @@ def save_reservation(request):
         book_no_format = now.strftime('%y%m%d%H%M')
         latest_booking = Booking.objects.filter(book_no__startswith=book_no_format).order_by('-book_no').first()
         if latest_booking:
-            suffix = int(latest_booking.book_no[-2:]) + 1
+            suffix = int(str(latest_booking.book_no)[-2:]) + 1
             book_no = f"{book_no_format}{suffix:02}"
         else:
             book_no = f"{book_no_format}01"
