@@ -57,38 +57,23 @@
 
       location.href = "/idcheck/?mem_id=" + mem_id;
     }
-    // Checkemail : 회원 이메일 중복체크 함수
-    function Checkemail() {
-      fm = document.getElementById("fm");
-      mem_email = fm.mem_email.value;
-
-      location.href = "/emailcheck/?mem_email=" + mem_email;
-    }
-    // Checktel : 회원 핸드폰번호 중복체크 함수
-    function Checktel() {
-      fm = document.getElementById("fm");
-      mem_tel = fm.mem_tel.value;
-
-      location.href = "/emailcheck/?mem_tel=" + mem_tel;
-    }
-
     // 선택된 이메일 도메인 값 넣기
     function updateEmailField() {
       var selectElement = document.getElementById('emailOption');
       var selectedOption = selectElement.options[selectElement.selectedIndex].text;
   
-      // 선택된 옵션을 mem_email2 입력 필드의 값으로 설정
-      document.querySelector('input[name="mem_email2"]').value = selectedOption;
+      // 선택된 옵션을 mem_mail2 입력 필드의 값으로 설정
+      document.querySelector('input[name="mem_mail2"]').value = selectedOption;
     }
 
     function goToContent4FromContent3() {
       //입력사항 함수로 받아오기
       var mem_id = document.querySelector('input[name="mem_id"]').value;
-      var mem_email = document.querySelector('input[name="mem_email"]').value;
+      var mem_mail = document.querySelector('input[name="mem_mail"]').value;
       var mem_pass = document.querySelector('input[name="mem_pass"]').value;
       var mem_name = document.querySelector('input[name="mem_name"]').value;
-      var mem_age = document.querySelector('input[name="mem_age"]').value;
-      var mem_tel = document.querySelector('input[name="mem_tel"]').value;
+      var mem_regno1 = document.querySelector('input[name="mem_regno1"]').value;
+      var mem_hp = document.querySelector('input[name="mem_hp"]').value;
       var mem_add1 = document.querySelector('input[name="mem_add1"]').value;
       var mem_add2 = document.querySelector('input[name="mem_add2"]').value;
       var mem_add3 = document.querySelector('input[name="mem_add3"]').value;
@@ -96,11 +81,11 @@
       // 필수 입력사항에 값이 없으면 리스트에 해당 입력영역 넣기
       var missingFields = [];
       if (!mem_id) missingFields.push("아이디");
-      if (!mem_email) missingFields.push("이메일");
+      if (!mem_mail) missingFields.push("이메일");
       if (!mem_pass) missingFields.push("패스워드");
       if (!mem_name) missingFields.push("이름");
-      if (!mem_age) missingFields.push("생년월일");
-      if (!mem_tel) missingFields.push("휴대폰번호");
+      if (!mem_regno1) missingFields.push("생년월일");
+      if (!mem_hp) missingFields.push("휴대폰번호");
       if (!mem_add1) missingFields.push("우편번호");
       if (!mem_add3) missingFields.push("상세주소");
 
@@ -110,11 +95,29 @@
         alert(missingFieldsString + '의 값을 입력하세요: ');
         return;
       }
+
+
       
       // content3에서 content4로 넘어가기
       document.getElementById('tab4').checked = true;
       document.getElementById('content3').style.display = 'none';
       document.getElementById('content4').style.display = 'block';
+
+      fm = document.getElementById("fm");
+  
+      mem_id = fm.mem_id.value;
+      mem_pass = fm.mem_pass.value;
+      mem_name = fm.mem_name.value;
+      mem_regno1 = fm.mem_regno1.value;
+      mem_mail = fm.mem_mail.value;
+      mem_mail2 = fm.mem_mail2.value;
+      mem_hp = fm.mem_hp.value;
+      mem_add1 = fm.mem_add1.value;
+      mem_add2 = fm.mem_add2.value;
+      mem_add3 = fm.mem_add3.value;
+    
+      fm.action = "/signupafter/";
+      fm.submit();
     }
 </script>
 
@@ -180,9 +183,33 @@
   }
 </script>
 
+<script type="text/javascript">
+  function goCheck() {
+      fm = document.getElementById("fm");
+      mem_id = fm.mem_id.value;
+
+      location.href = "/idcheck/?mem_id=" + mem_id;
+  }
+  function goCreate() {
+      fm = document.getElementById("fm");
+  
+      mem_id = fm.mem_id.value;
+      mem_pass = fm.mem_pass.value;
+      mem_name = fm.mem_name.value;
+      mem_regno1 = fm.mem_regno1.value;
+      mem_mail = fm.mem_mail.value +"@"+ fm.mem_mail2.value;
+      mem_hp = fm.mem_hp.value;
+      mem_add1 = fm.mem_add1.value + fm.mem_add2.value;
+      mem_add2 = fm.mem_add3.value;
+    
+      fm.action = "/signupafter/";
+      fm.submit();
+  }
+</script>
+
 </head>
 <body>
-  <form id="fm" method="post">
+  <form id="fm" method="post" action="#">
     {% csrf_token %}
       <article class="find1">
         <h2>회원가입</h2>
@@ -191,16 +218,16 @@
         <div>
           <input id="tab1" type="radio" name="tabs" checked>
           <!--디폴트 메뉴-->
-          <label for="tab1"><img src="https://image.flaticon.com/icons/svg/126/126486.svg"><br>STEP 1<br>가입하기</label>
+          <label for="tab1"><img src="{% static 'mainapp/img/가입하기.gif'%}"><br>STEP 1<br>가입하기</label>
           　
           <input id="tab2" type="radio" name="tabs">
-          <label for="tab2"><img src="https://image.flaticon.com/icons/svg/1159/1159633.svg"><br>STEP 2<br>약관동의</label>
+          <label for="tab2"><img src="{% static 'mainapp/img/체크리스트.gif'%}"><br>STEP 2<br>약관동의</label>
     
           <input id="tab3" type="radio" name="tabs">
-          <label for="tab3"><img src="https://image.flaticon.com/icons/svg/839/839860.svg"><br>STEP 3<br>정보입력</label>
+          <label for="tab3"><img src="{% static 'mainapp/img/회원가입.gif'%}"><br>STEP 3<br>정보입력</label>
     
           <input id="tab4" type="radio" name="tabs">
-          <label for="tab4"><img src="https://image.flaticon.com/icons/svg/3064/3064197.svg"><br>STEP 4<br>가입완료</label>
+          <label for="tab4"><img src="{% static 'mainapp/img/가입완료.gif'%}"><br>STEP 4<br>가입완료</label>
     
           <section id="content1">
             <div>
@@ -285,10 +312,6 @@
               if (parts.length === 2) { return parts[1].split(';')[0]; }
             }
           </script>
-          
-                <button type="button" class="login-img" onclick="alert('클릭!')" style="background-color: white;">
-                  <img src="{% static 'mainapp/img/googlelogin.png' %}" width="255" height="75"/>
-                </button>
               </div>
           </section>
   
@@ -313,8 +336,6 @@
                 <div>
                   <p>아이디</p>
                   <p>이메일</p>
-                  <br>
-                  <br>
                   <p>비밀번호</p>
                   <p>비밀번호 확인</p>
                   <p>이름</p>
@@ -324,8 +345,8 @@
       
                 <div>
                   <input type="text" name="mem_id" placeholder="아이디를 입력하세요."><br>
-                  <button class = "telchk" type="button" onclick="Checkid()">중복확인</button>
-                  <input type="text" class="mem_email" name="mem_email" style="width: 31%;"> @ <input type="email" name="mem_email2">
+                  <button class = "telchk" type="button" onclick="goCheck()">중복확인</button>
+                  <input type="text" class="mem_mail" name="mem_mail" style="width: 31%;"> @ <input type="text" name="mem_mail2" style="width: 31%;">
                   <select id="emailOption" size="1" onchange="updateEmailField()">
                     <option selected>직접입력</option>
                     <option>hanmail.net</option>
@@ -333,17 +354,16 @@
                     <option>gmail.com</option>
                     <option>hotmail.com</option>
                     <option>nate.com</option>
-                  </select><br><br>
-                  <button class = "emailchk" type="button" onclick="Checkemail()">중복확인</button><br>
+                  </select>
+                  <br><br>
                   <input type="password" placeholder="영문, 숫자 조합 6~12자"><br>
                   <input type="password" name="mem_pass" placeholder="영문, 숫자 조합 6~12자"><br>
                   <br>
                   <input type="text" name="mem_name" placeholder="이름을 입력하세요."><br>
                   <br>
-                  <input type="text" name="mem_age" placeholder="예) 20230904"><br>
+                  <input type="text" name="mem_regno1" placeholder="예) 20230904"><br>
                   <br>
-                  <input type="tel" name="mem_tel" placeholder="예) 010-1234-1375"><br>
-                  <button class = "telchk" type="button" onclick="Checktel()">중복확인</button>
+                  <input type="text" name="mem_hp" placeholder="예) 01012341375"><br>
                 </div>
               </div>
 
@@ -372,11 +392,10 @@
             </section>
           
           <section id="content4" style="display: none;">
-            <img src="https://image.flaticon.com/icons/svg/3069/3069346.svg">
+            <img src="{% static 'mainapp/img/가입완료.gif'%}">
             <h4>회원가입이 완료되었습니다!</h4>
             <p>모든 회원가입 절차가 완료되었습니다.<br>로그인 후 다양한 혜택과 서비스를 이용하실 수 있습니다.</p>
-            <button>메인으로</button>
-            <input type="button" onclick="gologin()" value="로그인하기">
+            <input type="button" onclick="goCreate()" value="로그인하기">
           </section>
         </form>
         </div>
