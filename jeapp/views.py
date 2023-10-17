@@ -190,6 +190,12 @@ def index(request):
                    'selected_start': start,
                    'selected_end': end})
     
+def jong(request):
+    return render(request, 
+                  'jeapp/html/jong.html',
+                  {})   
+    
+    
 # # main.html 처리(첫화면)
 # def main(request):
 #     return render(request,

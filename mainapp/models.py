@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> cf17f4144db73d39a5c81c9fd0c3ec020f831ad6
 from django.db import models
 
 ### DB에서 문자열을 관리하는 타입은 CharField 사용
@@ -88,3 +91,20 @@ class Traffic(models.Model):
         db_table = "traffic"
         app_label = "mainapp"
         managed = False
+<<<<<<< HEAD
+=======
+        
+
+class Boo_sch(models.Model):
+    book_no = BigIntegerField(primary_key=True, null=False)
+    book_mem = CharField(max_length=30, null=False, db_column="book_mem")
+    book_qty = IntegerField(null=False)
+    book_price = IntegerField(null=False)
+
+    boo_sch = models.ForeignKey(Schedule, to_field="sch_no", db_column="book_schedule", on_delete=models.PROTECT)
+
+    class Meta:
+        db_table = 'Booking'
+        app_label = "mainapp"
+        managed = False
+>>>>>>> cf17f4144db73d39a5c81c9fd0c3ec020f831ad6
