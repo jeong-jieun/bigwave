@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 from django.db import models
 
 ### DB에서 문자열을 관리하는 타입은 CharField 사용
@@ -87,3 +89,4 @@ class Traffic(models.Model):
         db_table = "traffic"
         app_label = "mainapp"
         managed = False
+>>>>>>> 16929b6550484050ba0057515d95742d834a72c6

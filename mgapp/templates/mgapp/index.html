@@ -30,7 +30,7 @@
 	<link rel="stylesheet" href="{% static 'mgapp/css/aos.css'%}">
 	<link rel="stylesheet" href="{% static 'mgapp/css/style.css'%}">
 
-	<title>Tour Free Bootstrap Template for Travel Agency by Untree.co</title>
+	<title>bigwave</title>
 </head>
 
 <body>
@@ -52,7 +52,7 @@
 				{% comment %} <span class="text-primary">bigwave</span> {% endcomment %}
 
 				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-					<li class="active"><a href="/">선착장</a></li>
+					<li class="active"><a href="/mg/test/">선착장예약</a></li>
 					<li><a href="services.html">Services</a></li>
 					<li class="has-children">
 						<a href="#">부가 서비스</a>
@@ -81,7 +81,7 @@
 
 
 	<div class="hero">
-		
+
 		<div class="container">
 			<div class="row align-items-center">
 				<div class="col-lg-7">
@@ -90,64 +90,47 @@
 							<br><span class="typed-words"></span></h1>
 						<div class="row">
 							<div class="col-12">
-								<form class="form">
+								<form class="form" id="fm" method="GET" action="/mg/test/" onsubmit="return validateForm()" >
 									<div class="row mb-2">
-										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-6">
-											<select name="" id="" class="form-control custom-select">
-												<option value="">출발지</option>
-												<option value="">목적지DB1</option>
-												<option value="">목적지DB2</option>
-												<option value="">목적지DB3</option>
-												<option value="">목적지DB4</option>
-												<option value="">목적지DB5</option>
-												<option value="">목적지DB6</option>
-												<option value="">목적지DB7</option>
-												<option value="">목적지DB8</option>
-											</select>
-										</div>
-										<br>
-										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-6">
-											<select name="" id="" class="form-control custom-select">
-												<option value="">목적지</option>
-												<option value="">목적지DB1</option>
-												<option value="">목적지DB2</option>
-												<option value="">목적지DB3</option>
-												<option value="">목적지DB4</option>
-												<option value="">목적지DB5</option>
-												<option value="">목적지DB6</option>
-												<option value="">목적지DB7</option>
-												<option value="">목적지DB8</option>
-											</select>
-										</div>
-										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-6">
-											<input type="text" class="form-control" name="daterange">
-										</div>
-										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-6">
-											<select name="" id="" class="form-control custom-select">
+											<div class="col-sm-12 cl-md-6 mb-3 mb-lg-0 col-lg-6">
+											  <select name="start"o id="start" class="form-control custom-select" onchange="changeP_nm()">
+												<option value="" {% if not selected_start %}selected{% endif %}>출발지를 선택하세요</option>
+												{% for row in marina_list %}
+												<option value="{{row.mar_nm}}" {% if row.mar_nm == selected_start %}selected{% endif %}>{{row.mar_nm}}</option>
+												{% endfor %}
+											  </select>
+											</div>
+											<br>
+											<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-6">
+											  <select name="end" id="end" class="form-control custom-select">
+												<option value="" {% if not selected_end %}selected{% endif %}>도착지를 선택하세요</option>
+											  </select>
+											</div>
+											<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-6">
+											  <input type="text" class="form-control" name="daterange">
+											</div>
+											<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-6">
+											  <select name="qty" id="qty" class="form-control custom-select">
 												<option value="">인구수</option>
-												<option value="">1 명</option>
-												<option value="">2명</option>
-												<option value="">3명</option>
-												<option value="">4명</option>
-												<option value="">5명</option>
-												<option value="">6명</option>
-												<option value="">7명</option>
-												<option value="">8명</option>
-											</select>
-										</div>
-
-									</div>    
+												<option value="1">1인</option>
+												<option value="2">2인</option>
+												<option value="3">3인</option>
+												<option value="4">4인</option>
+												<option value="5">5인 이상</option>
+											  </select>
+											</div>
+												{% comment %} <div class="col-lg-8">
+													<label class="control control--checkbox mt-3">
+														<span class="caption">Save this search</span>
+														<input type="checkbox" checked="checked" />
+														<div class="control__indicator"></div>
+													</label>
+												</div> {% endcomment %}
+											</div>
 									<div class="row align-items-center">
-										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-12">
-											<input type="submit" class="btn btn-primary btn-block" value="검색하기">
-										</div>
-										{% comment %} <div class="col-lg-8">
-											<label class="control control--checkbox mt-3">
-												<span class="caption">Save this search</span>
-												<input type="checkbox" checked="checked" />
-												<div class="control__indicator"></div>
-											</label>
-										</div> {% endcomment %}
+										<div class="col-sm-10 col-md-3 mb-3 mb-lg-1 col-lg-11">
+										<input type="submit" class="btn btn-primary btn-block" value="검색하기">
+										</DIV>
 									</div>
 								</form>
 							</div>
@@ -608,7 +591,59 @@
 			<span class="sr-only">Loading...</span>
 		</div>
 	</div>
-
+	<script>
+		// 출,도착지 셀렉박스 설정
+		function changeP_nm() {
+		  const startSelect = document.getElementById('start');
+		  const destinationSelect = document.getElementById('end');
+		  const selectedValue = startSelect.value;
+		  const selectedQty = document.getElementById('qty').value;
+	  
+		  // 두 번째 select 박스 초기화
+		  destinationSelect.innerHTML = '<option value="">도착지를 선택하세요</option>';
+	  
+		  for (let option of startSelect.options) {
+			if (option.value !== "" && option.value !== selectedValue) {
+			  const newOption = document.createElement('option');
+			  newOption.value = option.value;
+			  newOption.innerText = option.innerText;
+			  destinationSelect.appendChild(newOption);
+			}
+		  }
+	  
+		  // 현재 선택된 end 값을 기반으로 도착지 옵션을 선택합니다.
+		  const selectedEnd = "{{ selected_end }}";
+		  if (selectedEnd) {
+			for (let option of destinationSelect.options) {
+			  if (option.value === selectedEnd) {
+				option.selected = true;
+				break;
+			  }
+			}
+		  }
+		}
+	  
+		function validateForm() {
+		  const startSelect = document.getElementById('start');
+		  const destinationSelect = document.getElementById('end');
+		  const qtySelect = document.getElementById('qty');
+	  
+		  if (!startSelect.value || !destinationSelect.value || !qtySelect.value) {
+			alert("모든 항목을 선택하여 주세요!");
+			return false;
+		  }
+		  return true;
+		}
+	  
+		// 페이지가 로드되면 changeP_nm() 함수를 실행하여 도착지 셀렉트 박스를 초기화합니다.
+		window.onload = function () {
+		  changeP_nm();
+		};
+		function submitForm() {
+			// 폼을 JavaScript로 제출
+			document.getElementById("fm").submit();
+		}
+	</script>
 	<script src="{% static 'mgapp/js/jquery-3.4.1.min.js'%}"></script>
 	<script src="{% static 'mgapp/js/popper.min.js'%}"></script>
 	<script src="{% static 'mgapp/js/bootstrap.min.js'%}"></script>

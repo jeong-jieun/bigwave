@@ -89,7 +89,7 @@
 						<h1 class="mb-5"><span class="d-block">선착장</span>가보자<span class="typed-words"></span></h1>
 						<div class="row">
 							<div class="col-12">
-								<form class="form">
+								<form class="form" id="fm" method="GET">
 									<h1 style="color: black;">예약 일자</h1>
 									<div class="row mb-2">
 										<div class="square" style="margin-top: 5px; margin-bottom: 5px;">
@@ -100,16 +100,17 @@
 														<th style="color: black; padding-left: 70PX;">출발지</th>
 														<th style="color: black;padding-left: 80PX;">목적지</th>
 														<th style="color: black;padding-left: 70PX;">인구수</th>
-														<th style="color: black;padding-left: 90PX;">날짜</th>
-														
+														<th style="color: black;padding-left: 90PX;">날짜</th>													
 													</tr>
-													<tr style="margin-bottom: 50px;">
-														<th style="color: black;">홍길동</th>
-														<th style="color: black; padding-left: 70PX;">영도</th>
-														<th style="color: black;padding-left: 80PX;">다대포</th>
-														<th style="color: black;padding-left: 70PX;">3인</th>
-														<th style="color: black;padding-left: 90PX;">2023/10/10</th>
+													{% for row3 in schedule %}
+													<tr style="margin-bottom: 50px; width: 90%; height: 100%;">
+														<td style="color: black;"><input type="radio" name="selected_schedule" value="{{ row3.sch_no }}"></td>
+														<td style="color: black;">{{ row3.sch_marina }}</td>
+														<td style="color: black;">{{ row3.sch_arrival }}</td>
+														<td style="color: black;">{{ row3.sch_stime }}</td>
+														<td style="color: black;">{{ row3.sch_etime }}</td>
 													</tr>
+													{% endfor %}
 												</table>
 											</section>
 										</div>	
@@ -118,10 +119,6 @@
 							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-lg-2" style="top: 80px; left: 60px;">
-						<h1>QR코드</h1>
-						<img src="{% static 'prc/images/다sdsd운로드.png'%}" alt="Image" class="img-fluid active">
 				</div>
 				<div class="col-lg-4">
 					<div class="slides">
@@ -135,14 +132,14 @@
 			</div>
 		</div>
 	</div>
-
+				{% comment %} <div class="col-lg-2" style="top: 40px; left: 60px;height: 50%;">
+						<h1>QR코드</h1>
+						<img src="{% static 'prc/images/다sdsd운로드.png'%}" alt="Image" class="img-fluid active"> {% endcomment %}
 
 	<div class="untree_co-section">
 		<div class="container">
 			<div class="row mb-5 justify-content-center">
 				<div class="col-lg-6 text-center">
-					<h2 class="section-title text-center mb-3">홈페이지 운영방식</h2>
-					<p>해상택시 운영 서비스를 만들게된 기반</p>
 				</div>
 			</div>
 			<div class="row align-items-stretch">
@@ -577,7 +574,59 @@
 			<span class="sr-only">Loading...</span>
 		</div>
 	</div>
-
+	<script>
+		// 출,도착지 셀렉박스 설정
+		function changeP_nm() {
+		  const startSelect = document.getElementById('start');
+		  const destinationSelect = document.getElementById('end');
+		  const selectedValue = startSelect.value;
+		  const selectedQty = document.getElementById('qty').value;
+	  
+		  // 두 번째 select 박스 초기화
+		  destinationSelect.innerHTML = '<option value="">도착지를 선택하세요</option>';
+	  
+		  for (let option of startSelect.options) {
+			if (option.value !== "" && option.value !== selectedValue) {
+			  const newOption = document.createElement('option');
+			  newOption.value = option.value;
+			  newOption.innerText = option.innerText;
+			  destinationSelect.appendChild(newOption);
+			}
+		  }
+	  
+		  // 현재 선택된 end 값을 기반으로 도착지 옵션을 선택합니다.
+		  const selectedEnd = "{{ selected_end }}";
+		  if (selectedEnd) {
+			for (let option of destinationSelect.options) {
+			  if (option.value === selectedEnd) {
+				option.selected = true;
+				break;
+			  }
+			}
+		  }
+		}
+	  
+		function validateForm() {
+		  const startSelect = document.getElementById('start');
+		  const destinationSelect = document.getElementById('end');
+		  const qtySelect = document.getElementById('qty');
+	  
+		  if (!startSelect.value || !destinationSelect.value || !qtySelect.value) {
+			alert("모든 항목을 선택하여 주세요!");
+			return false;
+		  }
+		  return true;
+		}
+	  
+		// 페이지가 로드되면 changeP_nm() 함수를 실행하여 도착지 셀렉트 박스를 초기화합니다.
+		window.onload = function () {
+		  changeP_nm();
+		};
+		function submitForm() {
+			// 폼을 JavaScript로 제출
+			document.getElementById("fm").submit();
+		}
+	</script>
 	<script src="{% static 'mgapp/js/jquery-3.4.1.min.js'%}"></script>
 	<script src="{% static 'mgapp/js/popper.min.js'%}"></script>
 	<script src="{% static 'mgapp/js/bootstrap.min.js'%}"></script>
