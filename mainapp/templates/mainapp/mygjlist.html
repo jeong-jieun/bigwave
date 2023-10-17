@@ -10,10 +10,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="{% static 'mainapp/css/mypage.css'%}">
 </head>
-<body>
+<body style="background-color: #DBE2EF;">
     <div class="container con-min-width mx-auto">
   <header class="con mx-auto flex">
-    <a href="/" class="logo flex items-center">bigwave</a>
+    <a href="/" class="logo flex items-center" style="font-size: 25px;">home</a>
     <div class="flex-grow"></div>
     <div class="search flex items-center">
     </div>
@@ -38,22 +38,31 @@
     <main>
       <div>
         <span class="flex justify-center">예약 내역</span>
+        <p style="margin: 0 0 1px 32px; color: gray;" >회색 글자만 수정 가능</p>
         <div class="flex mx-auto">
           <div class="uesr-info flex flex-col flex-grow">
             <div class="uesr-ID flex">
-              <div class="info-name" style="background-color: #33628792; color: white; text-align: center;" >예약 날짜</div>
-              <div class="info">231012 10:00~</div>
+              <div class="info-name" style="background-color: #3F72AF; color: white; text-align: center;" >예약 번호</div>
+              <div class="info">231012</div>
             </div>
             <div class="uesr-name flex">
-              <div class="info-name" style="background-color: #33628792; color: white; text-align: center;">출발지</div>
+              <div class="info-name" style="background-color: #3F72AF; color: white; text-align: center;">출발지</div>
               <div class="info">송도</div>
             </div>
             <div class="uesr-gender flex">
-              <div class="info-name" style="background-color: #33628792; color: white; text-align: center;">도착지</div>
+              <div class="info-name" style="background-color: #3F72AF; color: white; text-align: center;">출발시간</div>
+              <div class="info">231016 10:00</div>
+            </div>
+            <div class="uesr-gender flex">
+              <div class="info-name" style="background-color: #3F72AF; color: white; text-align: center;">도착지</div>
               <div class="info">영도</div>
             </div>
             <div class="uesr-gender flex">
-              <div class="info-name" style="background-color: #33628792; color: white; text-align: center;">탑승 인원수</div>
+              <div class="info-name" style="background-color: #3F72AF; color: white; text-align: center;">도착시간</div>
+              <div class="info">231016 11:00</div>
+            </div>
+            <div class="uesr-gender flex">
+              <div class="info-name" style="background-color: #3F72AF; color: white; text-align: center;">탑승 인원수</div>
               <div class="info">2명</div>
             </div>
               <div class="info">
@@ -63,7 +72,7 @@
           </div>
         </div>
         <div class="btn-info-change flex justify-center">
-          <button class="btn btn-outline" href="#">예약 변경</button>
+          <button class="btn btn-outline" href="#" style="background-color: #3F72AF;">예약 취소</button>
         </div>
       </div>
     </main>
