@@ -4,6 +4,8 @@ from django.db import models
 from django.db.models.fields import CharField
 ### DB에서 숫자값을 관리하는 타입은 IntegerField 사용
 from django.db.models.fields import IntegerField
+from django.db.models.fields import BigIntegerField
+from django.db.models.fields import FloatField
 
 
 class Member(models.Model):
@@ -11,10 +13,9 @@ class Member(models.Model):
     mem_pass = CharField(max_length=20, null=False)
     mem_name = CharField(max_length=15, null=False)
     mem_regno1 = IntegerField(null=False)
-    mem_regno2 = IntegerField(null=False)
-    mem_zip = IntegerField(null=False)
-    mem_add1 = CharField(max_length=100, null=False)
-    mem_add2 = CharField(max_length=80, null=False)
+    mem_mail = CharField(max_length=30)
+    mem_add1 = CharField(max_length=100)
+    mem_add2 = CharField(max_length=80)
     mem_hp = CharField(max_length=11, null=False)
     class Meta:
         db_table = "member"
@@ -25,6 +26,8 @@ class Marina(models.Model):
     mar_nm = CharField(primary_key=True, max_length=30, null=False)
     mar_add1 = CharField(max_length=100, null=False)
     mar_add2 = CharField(max_length=80, null=False)
+    mar_lat = FloatField(null=False)
+    mar_lon = FloatField(null=False)
     class Meta:
         db_table = "marina"
         app_label = "jeapp"
@@ -45,14 +48,42 @@ class Schedule(models.Model):
         managed = False
         
 class Booking(models.Model):
-    book_no = IntegerField(primary_key=True, null=False)
+    book_no = BigIntegerField(primary_key=True, null=False)
     book_mem = CharField(max_length=30, null=False)
     book_qty = IntegerField(null=False)
-    book_price = CharField(max_length=15, null=False)
-    book_marina = CharField(max_length=30, null=False)
-    book_arrival = CharField(max_length=30, null=False)
-    book_taxi = CharField(max_length=10, null=False)
+    book_price = IntegerField(null=False)
+    book_schedule = IntegerField(null=False)
     class Meta:
         db_table = "booking"
+        app_label = "jeapp"
+        managed = False
+
+class Service(models.Model):
+    ser_mar = CharField(max_length=30, null=False)
+    ser_gu = CharField(max_length=10, null=False)
+    ser_group = CharField(max_length=50, null=False)
+    ser_nm = CharField(primary_key=True, max_length=50, null=False)
+    ser_add = CharField(max_length=100, null=False)
+    ser_tel = CharField(max_length=20)
+    ser_img = CharField(max_length=300, null=False)
+    ser_distance = IntegerField(null=False)
+    ser_url = CharField(max_length=100, null=False)
+    ser_lat = FloatField(null=False)
+    ser_lon = FloatField(null=False)
+    class Meta:
+        db_table = "service"
+        app_label = "jeapp"
+        managed = False
+
+class Traffic(models.Model):
+    tra_mar = CharField(max_length=30, null=False)
+    tra_num = IntegerField(null=False)
+    tra_nm = CharField(max_length=50, null=False)
+    tra_time = CharField(max_length=50, null=False)
+    tra_bus = CharField(max_length=20, null=False)
+    tra_way = CharField(max_length=100, null=False)
+    tra_route = CharField(max_length=100, null=False)
+    class Meta:
+        db_table = "traffic"
         app_label = "jeapp"
         managed = False
