@@ -4,14 +4,14 @@ from django.urls import path
 from . import views
 urlpatterns = [
    
-    ### 부가서비스페이지 (http://127.0.0.1:8000/je/service/자갈치선착장)
-    path('service/자갈치선착장/', views.jagar),
-    ### 부가서비스페이지 (http://127.0.0.1:8000/je/service/미포선착장)
-    path('service/미포선착장/', views.mipo),
-    ### 부가서비스페이지 (http://127.0.0.1:8000/je/service/하리선착장)
-    path('service/하리선착장/', views.hari),
-    ### 부가서비스페이지 (http://127.0.0.1:8000/je/service/다대선착장)
-    path('service/다대선착장/', views.dadae),
+    ### 부가서비스페이지 (http://127.0.0.1:8000/je/service/cafe)
+    path('service/cafe/', views.cafe),
+    ### 부가서비스페이지 (http://127.0.0.1:8000/je/service/food)
+    path('service/food/', views.food),
+    ### 부가서비스페이지 (http://127.0.0.1:8000/je/service/tour)
+    path('service/tour/', views.tour),
+    ### 부가서비스페이지 (http://127.0.0.1:8000/je/service/traffic)
+    path('service/traffic/', views.traffic),
     ### 스케줄 조회 페이지 (http://127.0.0.1:8000/je/schedule)
     path('schedule/', views.schedule),
     ### 결제버튼 클릭시 db저장 (http://127.0.0.1:8000/je/save_reservation)

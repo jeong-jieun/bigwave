@@ -111,8 +111,8 @@ DATABASES = {
 ### 추가된 DB를 사용할 app을 지정(연결)하기
 DATABASE_ROUTERS = [
     ### 앱이름.router파일이름.클래스이름(클래스이름은 바뀔수 있음)
-    # 예시 : 'firstapp.router.DBRouter',
     'jeapp.router.DBRouter',
+    'mgapp.router.DBRouter',
     'mainapp.router.DBRouter',
 ]
 

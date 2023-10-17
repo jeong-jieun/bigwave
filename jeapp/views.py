@@ -5,36 +5,46 @@ from datetime import datetime
 
 
 # 부가서비스
-def jagar(request):
+def traffic(request):
     marinas = Marina.objects.all()
     selected_option = request.POST.get('search_option', None)
     return render(request, 
-                  'jeapp/html/자갈치선착장.html',
+                  'jeapp/html/traffic.html',
                   {'marina_list': marinas,
                    'search_result': selected_option})
 # 부가서비스
-def mipo(request):
+def tour(request):
     marinas = Marina.objects.all()
     selected_option = request.POST.get('search_option', None)
     return render(request, 
-                  'jeapp/html/미포선착장.html',
+                  'jeapp/html/tour.html',
                   {'marina_list': marinas,
                    'search_result': selected_option})
 # 부가서비스
-def dadae(request):
+def food(request):
     marinas = Marina.objects.all()
     selected_option = request.POST.get('search_option', None)
     return render(request, 
-                  'jeapp/html/다대선착장.html',
+                  'jeapp/html/food.html',
                   {'marina_list': marinas,
                    'search_result': selected_option})
 # 부가서비스
-def hari(request):
+def cafe(request):
     marinas = Marina.objects.all()
     selected_option = request.POST.get('search_option', None)
     return render(request, 
-                  'jeapp/html/하리선착장.html',
+                  'jeapp/html/cafe.html',
                   {'marina_list': marinas,
+                   'search_result': selected_option})
+ # 부가서비스   
+def service(request):
+    marinas = Marina.objects.all()
+    service = Service.objects.all()
+    selected_option = request.POST.get('search_option', None)
+    return render(request,
+                  'jeapp/html/service.html',
+                  {'marina_list': marinas,
+                   'service' : service,
                    'search_result': selected_option})
 
 
@@ -139,16 +149,6 @@ def save_reservation(request):
     # """
     # return HttpResponse(msg)
 
-
-
-
-def service(request):
-    marinas = Marina.objects.all()
-    selected_option = request.POST.get('search_option', None)
-    return render(request,
-                  'jeapp/html/service.html',
-                  {'marina_list': marinas,
-                   'search_result': selected_option})
 
 def login(request):
     return render(request, 
