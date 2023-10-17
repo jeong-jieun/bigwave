@@ -100,7 +100,7 @@ def loginafter(request):
             msg = f"""
                 <script type="text/javascript">
                     alert('{mem.mem_name}님 정상적으로 로그인 되었습니다.');
-                    location.href='/';
+                    location.href='/mg/login';
                 </script>
             """
             request.session["ses_mem_id"] = mem_id
