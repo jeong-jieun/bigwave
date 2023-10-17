@@ -80,8 +80,8 @@ def idcheck(request):
 ### loginafter 로그인 후 페이지
 def loginafter(request):
     try:
-        mem_id =request.POST.get("mem_id", "")
-        mem_pass =request.POST.get("mem_pass", "")
+        mem_id = request.POST.get("mem_id", "")
+        mem_pass = request.POST.get("mem_pass", "")
         
         # Get the member based on mem_id
         try:
@@ -100,7 +100,7 @@ def loginafter(request):
             msg = f"""
                 <script type="text/javascript">
                     alert('{mem.mem_name}님 정상적으로 로그인 되었습니다.');
-                    location.href='/mg/login';
+                    location.href='/mg/home/';
                 </script>
             """
             request.session["ses_mem_id"] = mem_id

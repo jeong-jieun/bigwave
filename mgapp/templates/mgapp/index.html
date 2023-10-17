@@ -51,7 +51,7 @@
 				<a href="/mg/home/" class="logo m-0">bigwave</a> 
 				{% comment %} <span class="text-primary">bigwave</span> {% endcomment %}
 
-				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
+				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right" style="width: 70%;">
 					<li class="active"><a href="/mg/test/">선착장예약</a></li>
 					<li><a href="services.html">Services</a></li>
 					<li class="has-children">
@@ -68,8 +68,14 @@
 							</li>
 						</ul>
 					</li>
+					{% if request.session.ses_mem_id == None %}
 					<li><a href="/login2/">로그인</a></li>
 					<li><a href="/signup2/">회원가입</a></li>
+					{% else %}
+					<li><a href="/mg/booking/">예약확인</a></li>
+					<li><a href="/mypage/">회원정보</a></li>
+					<li><a href="/mg/logout/">로그아웃</a></li>
+					{% endif %}
 				</ul>
 
 				<a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
@@ -89,6 +95,7 @@
 						<h1 class="mb-5"><span class="d-block">Marine Taxi</span>Booking service
 							<br><span class="typed-words"></span></h1>
 						<div class="row">
+							{% if request.session.ses_mem_id == None %}
 							<div class="col-12">
 								<form class="form" id="fm" method="GET" action="/mg/test/" onsubmit="return validateForm()" >
 									<div class="row mb-2">
@@ -134,6 +141,37 @@
 									</div>
 								</form>
 							</div>
+							{% else %}
+							<div class="col-12">
+								<form class="form" id="fm" method="GET">
+									<h1 style="color: black;">예약 일자</h1>
+									<div class="row mb-2">
+										<div class="square" style="margin-top: 5px; margin-bottom: 5px;">
+											<section class="passengers-table">
+												<table class="passengers-desktop">
+													<tr style="margin-bottom: 100px;">
+														<th style="color: black;">예약자</th>
+														<th style="color: black; padding-left: 70PX;">출발지</th>
+														<th style="color: black;padding-left: 80PX;">목적지</th>
+														<th style="color: black;padding-left: 70PX;">인구수</th>
+														<th style="color: black;padding-left: 90PX;">날짜</th>													
+													</tr>
+													{% for row3 in schedule %}
+													<tr style="margin-bottom: 50px; width: 90%; height: 100%;">
+														<td style="color: black;"><input type="radio" name="selected_schedule" value="{{ row3.sch_no }}"></td>
+														<td style="color: black;">{{ row3.sch_marina }}</td>
+														<td style="color: black;">{{ row3.sch_arrival }}</td>
+														<td style="color: black;">{{ row3.sch_stime }}</td>
+														<td style="color: black;">{{ row3.sch_etime }}</td>
+													</tr>
+													{% endfor %}
+												</table>
+											</section>
+										</div>	
+									</div>
+								</form>
+							</div>
+							{% endif %}
 						</div>
 					</div>
 				</div>

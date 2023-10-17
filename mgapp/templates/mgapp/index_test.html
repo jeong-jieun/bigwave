@@ -72,9 +72,16 @@
 							</li>
 						</ul>
 					</li>
+					{% if request.session.ses_mem_id == None %}
 					<li><a href="/login2/">로그인</a></li>
 					<li><a href="/signup2/">회원가입</a></li>
+					{% else %}
+					<li><a href="/mg/booking/">예약확인</a></li>
+					<li><a href="/mypage/">회원정보</a></li>
+					<li><a href="/mg/logout/">로그아웃</a></li>
+					{% endif %}
 				</ul>
+
 
 				<a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
 					<span></span>

@@ -22,6 +22,8 @@ from . import views
 urlpatterns = [
     ### about (http://127.0.0.1:8000/mg/login/)
     path('booking/', views.booking),
+    ### about (http://127.0.0.1:8000/mg/logout/)
+    path('logout/', views.logout),
     ### about (http://127.0.0.1:8000/mg/login/)
     path('login/', views.login),
     ### about (http://127.0.0.1:8000/mg/temp2/)

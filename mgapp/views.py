@@ -6,6 +6,19 @@ from datetime import datetime
 
 
 # index.html 처리
+def logout(request):
+    
+    ### 로그아웃 처리는 session 딕셔너리의 key를 없애주면 됩니다
+    # - 딕셔너리에서 모든 정보 삭제하는 함수 : flush()
+    request.session.flush()
+    msg = """
+            <script type='text/javascript'>
+                alert('로그아웃 되었습니다.');
+                location.href = '/mg/home/';
+            </script>
+        """
+    
+    return HttpResponse(msg)
 def booking(request):
     return render(request,
                   'mgapp/booking.html',
