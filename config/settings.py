@@ -113,11 +113,8 @@ DATABASE_ROUTERS = [
     ### 앱이름.router파일이름.클래스이름(클래스이름은 바뀔수 있음)
     # 예시 : 'firstapp.router.DBRouter',
     'jeapp.router.DBRouter',
-<<<<<<< HEAD
-    'mgapp.router.DBRouter',
-=======
->>>>>>> 16929b6550484050ba0057515d95742d834a72c6
     'mainapp.router.DBRouter',
+    'mgapp.router.DBRouter',
 ]
 
 ### Logging 처리
