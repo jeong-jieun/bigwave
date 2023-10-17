@@ -80,8 +80,8 @@ def idcheck(request):
 ### loginafter 로그인 후 페이지
 def loginafter(request):
     try:
-        mem_id = request.POST.get("mem_id", "")
-        mem_pass = request.POST.get("mem_pass", "")
+        mem_id =request.POST.get("mem_id", "")
+        mem_pass =request.POST.get("mem_pass", "")
         
         # Get the member based on mem_id
         try:
