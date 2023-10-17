@@ -1,10 +1,18 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from .models import Member
+from .models import Member, Booking, Schedule, Boo_sch
 
 # Create your views here.
 
+def mygjlist(request):
+    mem_id = request.session.get('ses_mem_id', None)
+    boo_mem = Boo_sch.objects.get(book_mem=mem_id)
+
+    return render(request, 'mainapp/mygjlist.html', {
+        "mem_id": mem_id,
+        "boo_mem": boo_mem,
+    })
 ### signupafter 회원가입 후 페이지
 def signupafter(request):
     try :
@@ -80,8 +88,8 @@ def idcheck(request):
 ### loginafter 로그인 후 페이지
 def loginafter(request):
     try:
-        mem_id = request.POST.get("mem_id", "")
-        mem_pass = request.POST.get("mem_pass", "")
+        mem_id =request.POST.get("mem_id", "")
+        mem_pass =request.POST.get("mem_pass", "")
         
         # Get the member based on mem_id
         try:
@@ -125,12 +133,22 @@ def loginafter(request):
             </script>
         """ 
         return HttpResponse(msg)
+    
+### logout 로그아웃 처리하기
+def logout(request):
+    
+    ### 로그아웃 처리는 session 딕셔너리의 key를 없애주면 됩니다
+    # - 딕셔너리에서 모든 정보 삭제하는 함수 : flush()
+    request.session.flush()
+    msg = """
+            <script type='text/javascript'>
+                alert('로그아웃 되었습니다.');
+                location.href = '/';
+            </script>
+        """
+    
+    return HttpResponse(msg)
 
-# mygjlist.html 처리
-def mygjlist(request):
-    return render(request,
-                  'mainapp/mygjlist.html',
-                  {})
 
 # mypage.html 처리
 def mypage(request):

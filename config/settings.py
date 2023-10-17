@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-5#c8ibxa*lb1ru!@ba!_ae__jj!hf9g%&w!^wadf)9i_%$nb9o
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -114,6 +114,7 @@ DATABASE_ROUTERS = [
     # 예시 : 'firstapp.router.DBRouter',
     'jeapp.router.DBRouter',
     'mainapp.router.DBRouter',
+    'mgapp.router.DBRouter',
 ]
 
 ### Logging 처리

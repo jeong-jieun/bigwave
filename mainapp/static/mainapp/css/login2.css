@@ -12,16 +12,6 @@ hr {
   border-top: 3px solid #33628792;
 }
 
-.login {
-  margin:0 auto;
-  max-width:500px;
-}
-.login-header {
-  color:#fff;
-  text-align:center;
-  font-size:230%;
-}
-
 .login-form {
   border:.5px solid #000;
   background:#fff;
@@ -47,7 +37,7 @@ hr {
   font-family: 'Ubuntu', sans-serif;
   margin:1em 2em;
   border-radius:5px;
-  border:3px solid #33628792;
+  border:3px solid #DBE2EF;
   outline:none;
   padding-left:10px;
 }
@@ -55,13 +45,14 @@ hr {
   height:50px;
   max-width:400px;
 	width: 40%;
-  background:#fff;
-  border:3px solid #33628792;
+  background:#112D4E;
+  border:3px solid #DBE2EF;
   border-radius:20px;
-  color: #000;
+  color: #F9F7F7;
   text-transform:uppercase;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 돋음;
   font-size: large;
+  font-weight: bolder;
   cursor:pointer;
 }
 
