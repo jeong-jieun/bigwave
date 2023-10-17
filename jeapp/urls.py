@@ -3,13 +3,19 @@ from django.urls import path
 
 from . import views
 urlpatterns = [
-    
-    ### 부가서비스페이지 (http://127.0.0.1:8000/je/schedule/cafe)
-    path('schedule/cafe/', views.cafe),
-    ### 부가서비스페이지 (http://127.0.0.1:8000/je/schedule)
+   
+    ### 부가서비스페이지 (http://127.0.0.1:8000/je/service/자갈치선착장)
+    path('service/자갈치선착장/', views.jagar),
+    ### 부가서비스페이지 (http://127.0.0.1:8000/je/service/미포선착장)
+    path('service/미포선착장/', views.mipo),
+    ### 부가서비스페이지 (http://127.0.0.1:8000/je/service/하리선착장)
+    path('service/하리선착장/', views.hari),
+    ### 부가서비스페이지 (http://127.0.0.1:8000/je/service/다대선착장)
+    path('service/다대선착장/', views.dadae),
+    ### 스케줄 조회 페이지 (http://127.0.0.1:8000/je/schedule)
     path('schedule/', views.schedule),
-    ### 결제페이지 (http://127.0.0.1:8000/je/booking)
-    path('booking/', views.setbookingInsert),
+    ### 결제버튼 클릭시 db저장 (http://127.0.0.1:8000/je/save_reservation)
+    path('save_reservation/', views.save_reservation, name='save_reservation'),
     ### 부가서비스페이지 (http://127.0.0.1:8000/je/service)
     path('service/', views.service, name='search_action'),
     ### 로그인페이지 (http://127.0.0.1:8000/je/login)

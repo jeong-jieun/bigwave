@@ -18,118 +18,125 @@
 
     <!-- javascript 함수 -->
     <script type="text/javascript">
-        function goLogin() {
-            fm = document.getElementById("fm");
-        
-            mem_id = fm.mem_id.value;
-            mem_pass = fm.mem_pass.value;
+      function goLogin() {
+          fm = document.getElementById("fm");
+      
+          mem_id = fm.mem_id.value;
+          mem_pass = fm.mem_pass.value;
 
-            if(mem_id == "" || mem_pass == ""){
-                alert("아이디 또는 비밀번호를 입력해주세요.");
-                return;
-            }            
-            fm.action = "/loginafter/";
-            fm.submit();
-        }
+          if(mem_id == "" || mem_pass == ""){
+              alert("아이디 또는 비밀번호를 입력해주세요.");
+              return;
+          }            
+          fm.action = "/loginafter/";
+          fm.submit();
+      }
+  </script>
+    <script>
+      // 회원가입 페이지 가기 함수
+      function gosignup() {
+        location.href = "/signup2";
+      }
     </script>
   </head>
 
   <body>
-    <form id="fm" action="post" action="#">
-    <div class="login">
-        <div class="login-header">
-          <br>
-          <h1>Login</h1>
-        </div>
-        <div class="login-form">
-          <h3>아 이 디:</h3>
-          <input type="text" name="mem_id" placeholder="Userid"/><br>
-          <h3>비밀번호:</h3>
-          <input type="password" placeholder="Password"/>
-          <br>
-          <br>
-          <input type="button" name="mem_pass" value="회 원 가 입" class="login-button" onclick="gosignup"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="로  그  인" class="login-button" onclick="gologin"/>
-          <br><br>
-          <a href="" class="a-bimil">비밀번호 찾기</a>
-          <br>
-          <hr>
-          <br>
-          <div class="second-login">
-            <h2>간편 로그인</h2>
-            <br>
-            <!--네이버로 로그인하기-->
-            <!-- 네이버 로그인 버튼 노출 영역 -->
-            <div id="naver_id_login"></div>
-            <!-- //네이버 로그인 버튼 노출 영역 -->
-            <script type="text/javascript">
-              var naver_id_login = new naver_id_login("bfX1VdQ2yuuZv8zS6li0", "http://127.0.0.1:8000");
-              var state = naver_id_login.getUniqState();
-              naver_id_login.setButton("green", 10,45);
-              naver_id_login.setDomain("http://127.0.0.1:8000/login2");
-              naver_id_login.setState(state);
-              naver_id_login.setPopup();
-              naver_id_login.init_naver_id_login();
-            </script>
+    <form id="fm" method="post" action="/loginafter/">
+      {% csrf_token %}
+        <div class="login">
+            <div class="login-header">
+              <br>
+              <h1>Login</h1>
+            </div>
+            <div class="login-form">
+              <h3>아 이 디:</h3>
+              <input type="text" name="mem_id" placeholder="Userid"/><br>
+              <h3>비밀번호:</h3>
+              <input type="password" name="mem_pass" placeholder="Password"/>
+              <br>
+              <br>
+              <input type="button" value="회 원 가 입" class="login-button" onclick="gosignup()"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="로  그  인" class="login-button" onclick="goLogin()"/>
+              <br><br>
+              <a href="" class="a-bimil">비밀번호 찾기</a>
+              <br>
+              <hr>
+              <br>
+              <div class="second-login">
+                <h2>간편 로그인</h2>
+                <br>
+                <!--네이버로 로그인하기-->
+                <!-- 네이버 로그인 버튼 노출 영역 -->
+                <div id="naver_id_login"></div>
+                <!-- //네이버 로그인 버튼 노출 영역 -->
+                <script type="text/javascript">
+                  var naver_id_login = new naver_id_login("bfX1VdQ2yuuZv8zS6li0", "http://127.0.0.1:8000");
+                  var state = naver_id_login.getUniqState();
+                  naver_id_login.setButton("green", 10,45);
+                  naver_id_login.setDomain("http://127.0.0.1:8000/login2");
+                  naver_id_login.setState(state);
+                  naver_id_login.setPopup();
+                  naver_id_login.init_naver_id_login();
+                </script>
 
-            <!--카카오로 로그인하기-->
-            <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.4.0/kakao.min.js"
-            integrity="sha384-mXVrIX2T/Kszp6Z0aEWaA8Nm7J6/ZeWXbL8UpGRjKwWe56Srd/iyNmWMBhcItAjH" crossorigin="anonymous"></script>
-          <script>
-            Kakao.init('c089c8172def97eb00c07217cae17495'); // 사용하려는 앱의 JavaScript 키 입력
-          </script>
-          
-          <a id="kakao-login-btn" href="javascript:loginWithKakao()">
-            <img src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg" width="210" height="50"
-              alt="카카오 로그인 버튼" />
-          </a>
-          <p id="token-result"></p>
-          <button class="api-btn" onclick="requestUserInfo()" style="visibility:hidden">사용자 정보 가져오기</button>
-          
-          <script>
-            function loginWithKakao() {
-              Kakao.Auth.authorize({
-                redirectUri: 'https://developers.kakao.com/tool/demo/oauth',
-                state: 'userme',
-              });
-            }
-          
-            function requestUserInfo() {
-              Kakao.API.request({
-                url: '/v2/user/me',
-              })
-                .then(function(res) {
-                  alert(JSON.stringify(res));
-                })
-                .catch(function(err) {
-                  alert(
-                    'failed to request user information: ' + JSON.stringify(err)
-                  );
-                });
-            }
-          
-            // 아래는 데모를 위한 UI 코드입니다.
-            displayToken()
-            function displayToken() {
-              var token = getCookie('authorize-access-token');
-          
-              if(token) {
-                Kakao.Auth.setAccessToken(token);
-                document.querySelector('#token-result').innerText = 'login success, ready to request API';
-                document.querySelector('button.api-btn').style.visibility = 'visible';
-              }
-            }
-          
-            function getCookie(name) {
-              var parts = document.cookie.split(name + '=');
-              if (parts.length === 2) { return parts[1].split(';')[0]; }
-            }
-          </script>
+                <!--카카오로 로그인하기-->
+                <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.4.0/kakao.min.js"
+                integrity="sha384-mXVrIX2T/Kszp6Z0aEWaA8Nm7J6/ZeWXbL8UpGRjKwWe56Srd/iyNmWMBhcItAjH" crossorigin="anonymous"></script>
+              <script>
+                Kakao.init('c089c8172def97eb00c07217cae17495'); // 사용하려는 앱의 JavaScript 키 입력
+              </script>
+              
+              <a id="kakao-login-btn" href="javascript:loginWithKakao()">
+                <img src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg" width="210" height="50"
+                  alt="카카오 로그인 버튼" />
+              </a>
+              <p id="token-result"></p>
+              <button class="api-btn" onclick="requestUserInfo()" style="visibility:hidden">사용자 정보 가져오기</button>
+              
+              <script>
+                function loginWithKakao() {
+                  Kakao.Auth.authorize({
+                    redirectUri: 'https://developers.kakao.com/tool/demo/oauth',
+                    state: 'userme',
+                  });
+                }
+              
+                function requestUserInfo() {
+                  Kakao.API.request({
+                    url: '/v2/user/me',
+                  })
+                    .then(function(res) {
+                      alert(JSON.stringify(res));
+                    })
+                    .catch(function(err) {
+                      alert(
+                        'failed to request user information: ' + JSON.stringify(err)
+                      );
+                    });
+                }
+              
+                // 아래는 데모를 위한 UI 코드입니다.
+                displayToken()
+                function displayToken() {
+                  var token = getCookie('authorize-access-token');
+              
+                  if(token) {
+                    Kakao.Auth.setAccessToken(token);
+                    document.querySelector('#token-result').innerText = 'login success, ready to request API';
+                    document.querySelector('button.api-btn').style.visibility = 'visible';
+                  }
+                }
+              
+                function getCookie(name) {
+                  var parts = document.cookie.split(name + '=');
+                  if (parts.length === 2) { return parts[1].split(';')[0]; }
+                }
+              </script>
+              </div>
+            </div>
           </div>
+      </form>
+        <div class="error-page">
+          <div class="try-again">Error: Try again?</div>
         </div>
-      </div>
-    </form>
-      <div class="error-page">
-        <div class="try-again">Error: Try again?</div>
-      </div>
   </body>
 </html>
