@@ -556,7 +556,6 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
   height: 80vh;
   background-color: #3F72AF;
   background-size: auto;
-  color: transparent; /* 기존의 텍스트 색을 투명하게 설정 */
   position: relative;}
   .hero.hero-inner {
     padding: 9rem 0 7rem 0;

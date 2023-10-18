@@ -114,11 +114,7 @@ DATABASE_ROUTERS = [
     # 예시 : 'firstapp.router.DBRouter',
     'jeapp.router.DBRouter',
     'mainapp.router.DBRouter',
-    'mgapp.router.DBRouter',
-<<<<<<< HEAD
-    
-=======
->>>>>>> cf17f4144db73d39a5c81c9fd0c3ec020f831ad6
+    'mgapp.router.DBRouter',  
 ]
 
 ### Logging 처리

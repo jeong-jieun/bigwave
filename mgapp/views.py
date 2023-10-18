@@ -82,6 +82,10 @@ def about(request):
     return render(request,
                   'mgapp/about.html',
                   {})
+def temptemp(request):
+    return render(request,
+                  'mgapp/temptemp.html',
+                  {})
 def index_t(request):
     return render(request,
                   'mgapp/index_test.html',
@@ -124,6 +128,29 @@ def test(request):
         schedules = Schedule.objects.filter(sch_marina=start, sch_arrival=end)
     return render(request,
                   'mgapp/index_test.html',
+                  {"mem_list" : mem_list,
+                   'schedule': schedules,
+                   'marina_list': marinas,
+                   'selected_start': start,
+                   'selected_end': end,
+                   'qty' : qty})
+def check(request):
+    schedules = []
+    mem_list = Member.objects.all()
+    marinas = Marina.objects.all()
+    start, end = None, None
+    if request.method == 'POST':
+        start = request.POST.get('start')
+        end = request.POST.get('end')
+        qty = request.POST.get('qty', '')
+        schedules = Schedule.objects.filter(sch_marina=start, sch_arrival=end)
+    elif request.method == 'GET':
+        start = request.GET.get('start')
+        end = request.GET.get('end')
+        qty = request.GET.get('qty', '')
+        schedules = Schedule.objects.filter(sch_marina=start, sch_arrival=end)
+    return render(request,
+                  'mgapp/check.html',
                   {"mem_list" : mem_list,
                    'schedule': schedules,
                    'marina_list': marinas,
