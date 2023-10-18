@@ -7,10 +7,44 @@
     <meta http-equiv="X-UA-Compatible" content="ie-edge"/>
     <meta name="keywords" content="Yulian Brito, Yulian, Brito, Frontend Developer, Sign Up Sign In 1"/>
     <meta name="author" content="Yulian Brito"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Untree.co">
+    <link rel="shortcut icon" href="favicon.png">
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap4" />
+
     <title>해양택시 로그인 페이지</title>
     <link rel="stylesheet" href="{% static 'mainapp/css/login2.css' %}">
     <script type = "text/javascript" src="{% static 'mainapp/js/login2.js' %}"></script>
     <link href='https://fonts.googleapis.com/css?family=Ubuntu:500' rel='stylesheet' type='text/css'>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
+  
+    <link rel="stylesheet" href="{% static 'mgapp/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'mgapp/css/owl.carousel.min.css'%}">
+    <link rel="stylesheet" href="{% static 'mgapp/css/owl.theme.default.min.css'%}">
+    <link rel="stylesheet" href="{% static 'mgapp/css/jquery.fancybox.min.css'%}">
+    <link rel="stylesheet" href="{% static 'mgapp/fonts/icomoon/style.css'%}">
+    <link rel="stylesheet" href="{% static 'mgapp/fonts/flaticon/font/flaticon.css'%}">
+    <link rel="stylesheet" href="{% static 'mgapp/css/daterangepicker.css'%}">
+    <link rel="stylesheet" href="{% static 'mgapp/css/aos.css'%}">
+    <link rel="stylesheet" href="{% static 'mgapp/css/style.css'%}">
+
+    <style>
+      @font-face {
+      font-family: 'NanumSquareRound';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+      }
+      /* 폰트 설정하기 */
+      body {
+          font-family: 'NanumSquareRound', sans-serif;
+          }</style>
 
     <!--네이버로 로그인하기 링크-->
     <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
@@ -40,29 +74,77 @@
     </script>
   </head>
 
+<<<<<<< HEAD
+  <body style="background-color: #F9F7F7; margin: 0px; font-family: 'NanumSquareRound', sans-serif, sans-serif;">
+=======
   <body>
+>>>>>>> ecbb4ef99ad869b441d2409d3d0a7f25f2b3079d
     <form id="fm" method="post" action="/loginafter/">
       {% csrf_token %}
-        <div class="login">
-            <div class="login-header">
-              <br>
-              <h1>Login</h1>
+      <div class="site-mobile-menu site-navbar-target" style="background-color: #3F72AF;">
+        <div class="site-mobile-menu-header">
+          <div class="site-mobile-menu-close">
+            <span class="icofont-close js-menu-toggle"></span>
+          </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+      </div>
+      <nav class="site-nav" style="background-color: #3F72AF; font-family: 'NanumSquareRound', sans-serif;">
+  
+        <div class="site-navigation">
+          <a href="/mg/home/" class="logo m-0">bigwave</a> 
+          {% comment %} <span class="text-primary">bigwave</span> {% endcomment %}
+  
+          <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
+            <li class="active"><a href="/" style="color: #DBE2EF; font-size: 20px; font-family: 'NanumSquareRound', sans-serif;">선착장</a></li>
+            <li><a href="services.html" style="color: #DBE2EF; font-size: 20px; font-family: 'NanumSquareRound', sans-serif;">Services</a></li>
+            <li class="has-children">
+              <a href="#" style="color: #DBE2EF; font-size: 20px;">부가 서비스</a>
+              <ul class="dropdown" style="background-color: #3F72AF;">
+                <li class="has-children">
+                  <a href="#" style="color: #DBE2EF; font-size: 17px;">선착장</a>
+                  <ul class="dropdown" style="background-color: #3F72AF;">
+                    <li><a href="#" style="color: #DBE2EF;">다대선착장</a></li>
+                    <li><a href="#" style="color: #DBE2EF;">동삼선착장</a></li>
+                    <li><a href="#" style="color: #DBE2EF;">미포선착장</a></li>
+                    <li><a href="#" style="color: #DBE2EF;">자갈치선착장</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li><a href="/login2/" style="color: #DBE2EF; font-size: 20px;">로그인</a></li>
+            <li><a href="/signup2/" style="color: #DBE2EF; font-size: 20px;">회원가입</a></li>
+          </ul>
+  
+          <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
+            <span></span>
+          </a>
+  
+        </div>
+      </nav>
+        <div class="login" style="margin: auto; max-width:500px;">
+            <div class="login-header" style="  color:#3F72AF; text-align:center; font-size:200%;">
+              <br><br>
+              <strong style="margin:0; padding:0; font-size: 70px; font-family: 'NanumSquareRound', sans-serif; font-weight: bolder;">Login</strong>
             </div>
-            <div class="login-form">
-              <h3>아 이 디:</h3>
+            <div class="login-form" style="border:.5px solid #000; background:#3F72AF; border-radius:10px; box-sizing:border-box;
+            padding-top:15px; padding-bottom:10%; margin:5% auto; text-align:center;">
+              <h3 style="margin:0; padding:0; text-align:left; margin-left:50px; color:#F9F7F7; font-size: 20px; font-weight: bolder;
+              font-family: 돋음;">아 이 디:</h3>
               <input type="text" name="mem_id" placeholder="Userid"/><br>
-              <h3>비밀번호:</h3>
+              <h3 style="margin:0; padding:0; text-align:left; margin-left:50px; color:#F9F7F7; font-size: 20px; font-weight: bolder;
+              font-family: 돋음;">비밀번호:</h3>
               <input type="password" name="mem_pass" placeholder="Password"/>
               <br>
               <br>
               <input type="button" value="회 원 가 입" class="login-button" onclick="gosignup()"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" value="로  그  인" class="login-button" onclick="goLogin()"/>
               <br><br>
-              <a href="" class="a-bimil">비밀번호 찾기</a>
+              <a href="" class="a-bimil" style="color: #F9F7F7; font-family: 돋음;">비밀번호 찾기</a>
               <br>
-              <hr>
+              <hr style="    border: 0; height: 3px; background: #F9F7F7;;">
               <br>
               <div class="second-login">
-                <h2>간편 로그인</h2>
+                <h2 style="color: #F9F7F7; font-family: 굴림; font-weight: bolder;">간편 로그인</h2>
                 <br>
                 <!--네이버로 로그인하기-->
                 <!-- 네이버 로그인 버튼 노출 영역 -->
@@ -77,6 +159,7 @@
                   naver_id_login.setPopup();
                   naver_id_login.init_naver_id_login();
                 </script>
+                <br>
 
                 <!--카카오로 로그인하기-->
                 <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.4.0/kakao.min.js"
@@ -134,9 +217,49 @@
               </div>
             </div>
           </div>
-      </form>
+    </form>
         <div class="error-page">
           <div class="try-again">Error: Try again?</div>
         </div>
+        <script src="{% static 'mgapp/js/jquery-3.4.1.min.js'%}"></script>
+        <script src="{% static 'mgapp/js/popper.min.js'%}"></script>
+        <script src="{% static 'mgapp/js/bootstrap.min.js'%}"></script>
+        <script src="{% static 'mgapp/js/owl.carousel.min.js'%}"></script>
+        <script src="{% static 'mgapp/js/jquery.animateNumber.min.js'%}"></script>
+        <script src="{% static 'mgapp/js/jquery.waypoints.min.js'%}"></script>
+        <script src="{% static 'mgapp/js/jquery.fancybox.min.js'%}"></script>
+        <script src="{% static 'mgapp/js/aos.js'%}"></script>
+        <script src="{% static 'mgapp/js/moment.min.js'%}"></script>
+        <script src="{% static 'mgapp/js/daterangepicker.js'%}"></script>
+      
+        <script src="{% static 'mgapp/js/typed.js'%}"></script>
+        <script>
+          $(function() {
+            var slides = $('.slides'),
+            images = slides.find('img');
+      
+            images.each(function(i) {
+              $(this).attr('data-id', i + 1);
+            })
+      
+            var typed = new Typed('.typed-words', {
+              strings: ["다대포 ","영도 ","자갈치 ", "송도",],
+              typeSpeed: 80,
+              backSpeed: 80,
+              backDelay: 4000,
+              startDelay: 1000,
+              loop: true,
+              showCursor: true,
+              preStringTyped: (arrayPos, self) => {
+                arrayPos++;
+                console.log(arrayPos);
+                $('.slides img').removeClass('active');
+                $('.slides img[data-id="'+arrayPos+'"]').addClass('active');
+              }
+      
+            });
+          })
+        </script>
+        <script src="{% static 'mgapp/js/custom.js'%}"></script>
   </body>
 </html>

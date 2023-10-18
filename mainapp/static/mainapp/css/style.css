@@ -169,14 +169,13 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
 
 .site-nav {
   /* padding-bottom: 3px; */
-  background-color: #F9F7F7;}
+  background-color: #3F72AF;}
   .site-nav h1 {
     margin: 0;
     padding: 0;
-    font-size: 25px; }
+    font-size: 14px; }
   .site-nav .site-navigation .site-menu {
-    padding-top: 10px;
-    text-align: center;
+    text-align: left;
     margin-bottom: 0; }
     .site-nav .site-navigation .site-menu > li {
       display: inline-block; }
@@ -554,7 +553,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
 .hero {
   width: 100%;
   height: 80vh;
-  background-color: #3F72AF;
+  background-color: #33628792;
   background-size: auto;
   color: transparent; /* 기존의 텍스트 색을 투명하게 설정 */
   position: relative;}
@@ -563,7 +562,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
     margin-bottom: auto;
     background: #781e1e; }
   .hero h1 {
-    color: #F9F7F7;
+    color: #ffffff;
     font-size: 40px; }
     @media (max-width: 991.98px) {
       .hero h1 {
@@ -584,7 +583,6 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
     padding-top: 100px; /* 원하는 간격으로 조절 */
     
   }
-
   .hero .slides {
     background: #ffffff;
     max-width: 1000px;
@@ -617,8 +615,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
         z-index: 1; }
 
 .untree_co-section {
-  padding: 70px 0;
-  background-color: #F9F7F7; }
+  padding: 70px 0; }
 
 .media-thumb {
   position: relative;

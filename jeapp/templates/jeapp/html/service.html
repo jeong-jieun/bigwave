@@ -36,11 +36,15 @@
         user-select: none;
       }
 
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
+      @font-face {
+        font-family: 'NanumSquareRound';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
       }
+      body {
+        font-family: 'NanumSquareRound', sans-serif;
+        }
 
       .b-example-divider {
         width: 100%;
@@ -107,98 +111,86 @@
       .nav-pills .nav-link.active {
         background-color: #112D4E;
         color: #F9F7F7;
-    }
-    .nav-pills .nav-link {
-      color: #112D4E;
-    }
-    </style>
+      }
+      .nav-pills .nav-link {
+        color: #112D4E;
+      }
+      input[type="radio"] {display:none;}
+      input[type="radio"] + label {display: inline-block; padding: 15px; background: #DBE2EF; color: #112D4E; font-size: 16px; cursor: pointer;}
+      input[type="radio"]:checked + label {background: #aaa;color:#000;}
 
-    
-</head>
-<body>
-  <header data-bs-theme="dark">
-    <div class="collapse text-bg-dark" id="navbarHeader">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-8 col-md-7 py-4">
-            <h4>About</h4>
-            <p class="text-body-secondary">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
-          </div>
-          <div class="col-sm-4 offset-md-1 py-4">
-            <h4>Contact</h4>
-            <ul class="list-unstyled">
-              <li><a href="#" class="text-white">Follow on Twitter</a></li>
-              <li><a href="#" class="text-white">Like on Facebook</a></li>
-              <li><a href="#" class="text-white">Email me</a></li>
-            </ul>
-          </div>
+      .concox {width: 500px; height: 300px; background: #aaa; margin: 0 auto; display: none;}
+      input[id="tab01"]:checked ~.con1 {display: block;}
+      input[id="tab02"]:checked ~.con2 {display: block;}
+      input[id="tab03"]:checked ~.con3 {display: block;}
+    </style> 
+  </head>
+  <body>
+    <main>
+      <form id="searchForm" method="post" action="{% url 'search_action' %}">
+          {% csrf_token %}
+          <select class="form-select" name="search_option" aria-label="Default select example" onchange="submitForm()">
+              <option selected>선착장을 검색하세요</option>
+              {% for row in marina_list %}
+              <option value="{{row.mar_nm}}">{{row.mar_nm}}</option>
+              {% endfor %}
+          </select>
+      </form>
+    <section class="py-5 text-center container">
+      <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+          {% if search_result %}
+          <h1 class="fw-light">{{ search_result }}</h1>
+          {% endif %}
         </div>
       </div>
-    </div>
-    <div class="navbar navbar-dark bg-dark shadow-sm">
-      <div class="container">
-        <a href="/je/" class="navbar-brand d-flex align-items-center">
-          {% comment %} <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg> {% endcomment %}
-          <strong>BigWave</strong>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      </div>
-    </div>
-  </header>
+    </section>
 
-  <main>
-    <form id="searchForm" method="post" action="{% url 'search_action' %}">
-        {% csrf_token %}
-        <select class="form-select" name="search_option" aria-label="Default select example" onchange="submitForm()">
-            <option selected>선착장을 검색하세요</option>
-            {% for row in marina_list %}
-            <option value="{{row.mar_nm}}">{{row.mar_nm}}</option>
-            {% endfor %}
-        </select>
-    </form>
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        {% if search_result %}
-        <h1 class="fw-light">{{ search_result }}</h1>
-        {% endif %}
-      </div>
-    </div>
-  </section>
-    <nav style="color: #112D4E;" class="nav nav-pills nav-fill" >
-        <a class="nav-link active" aria-current="page" href="#" data-bs-toggle="tab">맛집</a>
-        <a class="nav-link" href="#" data-bs-toggle="tab">카페</a>
-        <a class="nav-link" href="#" data-bs-toggle="tab">관광지</a>
-        <a class="nav-link" href="#" data-bs-toggle="tab">주변교통</a>
-    </nav>
-    <div class="album py-5 bg-body-tertiary">
-          <div class="container">
+    <div class="tab_content">
+      <input type="radio" name="tabmenu" id="tab01" checked>
+      <label for="tab01">음식점</label>
+      <input type="radio" name="tabmenu" id="tab02">
+      <label for="tab02">카페</label>
+      <input type="radio" name="tabmenu" id="tab03">
+      <label for="tab03">관광지</label>
+      <input type="radio" name="tabmenu" id="tab04">
+      <label for="tab04">교통정보</label>
 
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-          <div class="col">
-            <div class="card shadow-sm">
-              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <title>Placeholder</title>
-                <image href="https://search.pstatic.net/common/?src=https%3A%2F%2Fldb-phinf.pstatic.net%2F20230831_135%2F1693450234566qHMt7_JPEG%2FSR301029.jpg" width="100%" height="100%">
-              </svg>
-              <div class="card-body">
-                <p class="card-text">{{ search_result }}</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button style="background-color: #112D4E; color: #F9F7F7;" type="button" class="btn btn-sm btn-outline-secondary">상세보기</button>
+      div
+    </div>
+
+      <nav style="color: #112D4E;" class="nav nav-pills nav-fill" onclick="alert(this.options[this.selectedIndex].text)">
+          <a class="nav-link active" aria-current="page" value="음식점" data-bs-toggle="tab">맛집</a>
+          <a class="nav-link" value="카페" data-bs-toggle="tab">카페</a>
+          <a class="nav-link" value="관광지" data-bs-toggle="tab">관광지</a>
+          <a class="nav-link" href="#" data-bs-toggle="tab">주변교통</a>
+      </nav>
+      <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            {% for row1 in services %}
+              <div class="col">
+                <div class="card shadow-sm">
+                  <svg class="bd-placeholder-img card-img-top" width="100%" height="225" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <image href="{{ row1.ser_img }}" width="100%" height="100%">
+                  </svg>
+                  <div class="card-body">
+                    <h5 class="card-text">{{ row1.ser_nm }}</h5>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <div class="btn-group">
+                        <button style="background-color: #112D4E; color: #F9F7F7;" type="button" class="btn btn-sm btn-outline-secondary">상세보기</button>
+                      </div>
+                      <small class="text-body-secondary">{{ row1.ser_distance }}m</small>
+                    </div>
                   </div>
-                  <small class="text-body-secondary">9 mins</small>
                 </div>
               </div>
-            </div>
+            {% endfor %}
           </div>
         </div>
       </div>
-    </div>
 
-  </main>
+    </main>
 
     <script>
         function submitForm() {

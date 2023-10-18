@@ -12,40 +12,23 @@ def traffic(request):
                   'jeapp/html/traffic.html',
                   {'marina_list': marinas,
                    'search_result': selected_option})
-# 부가서비스
-def tour(request):
-    marinas = Marina.objects.all()
-    selected_option = request.POST.get('search_option', None)
-    return render(request, 
-                  'jeapp/html/tour.html',
-                  {'marina_list': marinas,
-                   'search_result': selected_option})
-# 부가서비스
-def food(request):
-    marinas = Marina.objects.all()
-    selected_option = request.POST.get('search_option', None)
-    return render(request, 
-                  'jeapp/html/food.html',
-                  {'marina_list': marinas,
-                   'search_result': selected_option})
-# 부가서비스
-def cafe(request):
-    marinas = Marina.objects.all()
-    selected_option = request.POST.get('search_option', None)
-    return render(request, 
-                  'jeapp/html/cafe.html',
-                  {'marina_list': marinas,
-                   'search_result': selected_option})
+
+
  # 부가서비스   
 def service(request):
     marinas = Marina.objects.all()
     service = Service.objects.all()
-    selected_option = request.POST.get('search_option', None)
+    selected_mar = request.POST.get('search_option', None) 
+    # selected_gu = request.POST.get('selected_gu', None) , ser_gu=selected_gu
+    
+    filtered_services = Service.objects.filter(ser_mar=selected_mar)
+    
     return render(request,
                   'jeapp/html/service.html',
                   {'marina_list': marinas,
                    'service' : service,
-                   'search_result': selected_option})
+                   'search_result': selected_mar,
+                   'services': filtered_services})
 
 
 # 메인페이지에서 조회하기 버튼 클릭시 스케줄 조회 페이지 보여주기

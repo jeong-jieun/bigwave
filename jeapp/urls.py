@@ -3,15 +3,6 @@ from django.urls import path
 
 from . import views
 urlpatterns = [
-   
-    ### 부가서비스페이지 (http://127.0.0.1:8000/je/service/cafe)
-    path('service/cafe/', views.cafe),
-    ### 부가서비스페이지 (http://127.0.0.1:8000/je/service/food)
-    path('service/food/', views.food),
-    ### 부가서비스페이지 (http://127.0.0.1:8000/je/service/tour)
-    path('service/tour/', views.tour),
-    ### 부가서비스페이지 (http://127.0.0.1:8000/je/service/traffic)
-    path('service/traffic/', views.traffic),
     ### 스케줄 조회 페이지 (http://127.0.0.1:8000/je/schedule)
     path('schedule/', views.schedule),
     ### 결제버튼 클릭시 db저장 (http://127.0.0.1:8000/je/save_reservation)

@@ -1,0 +1,349 @@
+{% load static %}
+<!-- /*
+* Template Name: Tour
+* Template Author: Untree.co
+* Tempalte URI: https://untree.co/
+* License: https://creativecommons.org/licenses/by/3.0/
+*/ -->
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="Untree.co">
+	<link rel="shortcut icon" href="favicon.png">
+
+	<meta name="description" content="" />
+	<meta name="keywords" content="bootstrap, bootstrap4" />
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="{% static 'mgapp/css/bootstrap.min.css'%}">
+	<link rel="stylesheet" href="{% static 'mgapp/css/owl.carousel.min.css'%}">
+	<link rel="stylesheet" href="{% static 'mgapp/css/owl.theme.default.min.css'%}">
+	<link rel="stylesheet" href="{% static 'mgapp/css/jquery.fancybox.min.css'%}">
+	<link rel="stylesheet" href="{% static 'mgapp/fonts/icomoon/style.css'%}">
+	<link rel="stylesheet" href="{% static 'mgapp/fonts/flaticon/font/flaticon.css'%}">
+	<link rel="stylesheet" href="{% static 'mgapp/css/daterangepicker.css'%}">
+	<link rel="stylesheet" href="{% static 'mgapp/css/aos.css'%}">
+	<link rel="stylesheet" href="{% static 'mgapp/css/style.css'%}">
+	<style>
+        tr:hover {
+            background-color:skyblue;
+        }
+	</style>
+	<title>bigwave</title>
+</head>
+
+<body>
+
+
+	<div class="site-mobile-menu site-navbar-target">
+		<div class="site-mobile-menu-header">
+			<div class="site-mobile-menu-close">
+				<span class="icofont-close js-menu-toggle"></span>
+			</div>
+		</div>
+		<div class="site-mobile-menu-body"></div>
+	</div>
+
+	<nav class="site-nav">
+
+			<div class="site-navigation">
+				<a href="/mg/home/" class="logo m-0">bigwave</a> 
+				{% comment %} <span class="text-primary">bigwave</span> {% endcomment %}
+
+				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
+					<li class="active"><a href="/mg/test/">선착장</a></li>
+					<li><a href="services.html">Services</a></li>
+					<li class="has-children">
+						<a href="#">부가 서비스</a>
+						<ul class="dropdown">
+							<li class="has-children">
+								<a href="#">선착장</a>
+								<ul class="dropdown">
+									<li><a href="#">다대선착장</a></li>
+									<li><a href="#">동삼선착장</a></li>
+									<li><a href="#">미포선착장</a></li>
+									<li><a href="#">자갈치선착장</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li><a href="/login2/">로그인</a></li>
+					<li><a href="/signup2/">회원가입</a></li>
+				</ul>
+
+				<a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
+					<span></span>
+				</a>
+
+			</div>
+	</nav>
+	<div class="hero" background-color>
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-10">
+					<div class="intro-wrap">
+						<h1 class="mb-5"><span class="d-block"></span>승선권 조회 <br></h1>
+						{% comment %} <span class="typed-words"></span></h1> {% endcomment %}
+						<div class="row">
+							<div class="col-12">
+								<form class="form" id="fm" method="GET" action="/mg/test/" onsubmit="return validateForm()">
+									<div class="row mb-2">
+										<div class="col-sm-12 cl-md-6 mb-3 mb-lg-0 col-lg-6">
+											<select name="start" id="start" class="form-control custom-select" onchange="changeP_nm()">
+												<option value="" {% if not selected_start %}selected{% endif %}>출발지를 선택하세요</option>
+												{% for row in marina_list %}
+												<option value="{{row.mar_nm}}">{{row.mar_nm}}</option>
+												{% endfor %}
+											</select>
+										</div>
+										<br>
+										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-6">
+											<select name="end" id="end" class="form-control custom-select">
+												<option value="" {% if not selected_end %}selected{% endif %}>도착지를 선택하세요</option>
+											</select>
+										</div>
+										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-6">
+											<input type="text" class="form-control" name="daterange">
+										</div>
+										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-6">
+											<select name="qty" id="qty" class="form-control custom-select">
+												<option value="">인구수</option>
+												<option value="1">1인</option>
+												<option value="2">2인</option>
+												<option value="3">3인</option>
+												<option value="4">4인</option>
+												<option value="5">5인 이상</option>
+											</select>
+										</div>
+										{% comment %} <div class="col-lg-8">
+											<label class="control control--checkbox mt-3">
+												<span class="caption">Save this search</span>
+												<input type="checkbox" checked="checked" />
+												<div class="control__indicator"></div>
+											</label>
+										</div> {% endcomment %}
+									</div>
+									<div class="row align-items-center">
+										<div class="col-sm-10 col-md-3 mb-3 mb-lg-1 col-lg-11">
+											<input type="submit" class="btn btn-primary btn-block" value="검색하기">
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="untree_co-section">
+		<div class="container">
+			<div class="row mb-5 justify-content-center">
+				<div class="col-lg-10 text-center">
+					<h1 class="section-title text-center mb-3">예약리스트</h2>
+					<form id="fm" method="GET" >
+						{% for row3 in schedule %}
+					<h3 class=" text-center mb-3">도착지:{{ row3.sch_arrival }}</h2>
+					<p>{{ row3.sch_marina }}출발</p>
+					{% endfor %}
+					</form>
+					<div class="row">
+						<div class="col-12">
+							<form class="form" id="scheduleForm" method="POST" action="/je/checkout/">
+								<div class="row mb-8">
+									<table border="2" style="width: 91%;height: 100%;">
+										<tr >
+											<th style="color: black;">선택</th>
+											<th style="color: black;">출발지</th>
+											<th style="color: black;">도착지</th>
+											<th style="color: black;">출발시간</th>
+											<th style="color: black;">도착시간</th>
+										</tr>
+										{% for row3 in schedule %}
+										<tr>
+											<td style="color: black;"><input type="radio" name="selected_schedule" value="{{ row3.sch_no }}"></td>
+											<td style="color: black;">{{ row3.sch_marina }}</td>
+											<td style="color: black;">{{ row3.sch_arrival }}</td>
+											<td style="color: black;">{{ row3.sch_stime }}</td>
+											<td style="color: black;">{{ row3.sch_etime }}</td>
+										</tr>
+										{% endfor %}
+									</table>
+									<input type="hidden" name="qty" value="{{ qty }}" style="color: black;">
+									<input type="submit" value="예약하기" style="color: black;"	>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script>
+		document.getElementById('scheduleForm').addEventListener('submit', function(e) {
+			const selectedSchedule = document.querySelector('[name="selected_schedule"]:checked');
+	
+			// 스케줄 체크 안되어있을때
+			if (!selectedSchedule) {
+				alert('스케줄을 선택하여 주세요.');
+				e.preventDefault();
+				return;
+			}
+	
+			// 선택한 라디오 버튼의 sch_no 값을 가져옵니다.
+			const selectedSchNo = selectedSchedule.value;
+	
+		});
+	</script>
+
+	</div>
+	<div id="overlayer"></div>
+	<div class="loader">
+		<div class="spinner-border" role="status">
+			<span class="sr-only">Loading...</span>
+		</div>
+	</div>
+	<script>
+		function updateSearchResults(schedule) {
+			alert("===========");
+			const searchResultsDiv = document.getElementById('searchResults');
+			const table = document.createElement('table');
+			table.border = '1';
+	
+			const thead = document.createElement('thead');
+			const headerRow = document.createElement('tr');
+			headerRow.innerHTML = `
+				<th>선택</th>
+				<th>출발지</th>
+				<th>도착지</th>
+				<th>출발시간</th>
+				<th>도착시간</th>
+			`;
+			thead.appendChild(headerRow);
+			table.appendChild(thead);
+	
+			const tbody = document.createElement('tbody');
+			schedule.forEach(row => {
+				const rowElement = document.createElement('tr');
+				rowElement.innerHTML = `
+					<td><input type="radio" name="selected_schedule" value="${row.sch_no}"></td>
+					<td>${row.sch_marina}</td>
+					<td>${row.sch_arrival}</td>
+					<td>${row.sch_stime}</td>
+					<td>${row.sch_etime}</td>
+				`;
+				tbody.appendChild(rowElement);
+			});
+			table.appendChild(tbody);
+	
+			// 이전 검색 결과를 지우고 새로운 결과를 추가
+			searchResultsDiv.innerHTML = '';
+			searchResultsDiv.appendChild(table);
+		}
+	
+		function changeP_nm() {
+			const startSelect = document.getElementById('start');
+			const destinationSelect = document.getElementById('end');
+			const selectedValue = startSelect.value;
+			const selectedQty = document.getElementById('qty').value;
+	
+			// 두 번째 select 박스 초기화
+			destinationSelect.innerHTML = '<option value="">도착지를 선택하세요</option>';
+	
+			for (let option of startSelect.options) {
+				if (option.value !== "" && option.value !== selectedValue) {
+					const newOption = document.createElement('option');
+					newOption.value = option.value;
+					newOption.innerText = option.innerText;
+					destinationSelect.appendChild(newOption);
+				}
+			}
+		}
+	
+		function validateForm() {
+			const startSelect = document.getElementById('start');
+			const destinationSelect = document.getElementById('end');
+			const qtySelect = document.getElementById('qty');
+			if (!startSelect.value || !destinationSelect.value || !qtySelect.value) {
+				alert("모든 항목을 선택하여 주세요!");
+				return false;
+			}
+			// return true;
+			fm = document.getElementById('fm');
+			fm.action = "/mg/test/";
+			fm.submit();
+		}
+	
+		// 페이지가 로드되면 changeP_nm() 함수를 실행하여 도착지 셀렉트 박스를 초기화합니다.
+		window.onload = function () {
+			changeP_nm();
+		};
+	
+		// 폼 제출 시 검색 결과 업데이트
+		const form = document.getElementById('fm');
+		form.addEventListener('submit', function (event) {
+			event.preventDefault(); // 폼 제출 방지
+	
+			const formData = new FormData(form);
+			fetch('/mg/test/', {
+				method: 'POST',
+				body: formData,
+			})
+			.then(response => response.json())
+			.then(data => {
+				if (data.schedule) {
+					updateSearchResults(data.schedule);
+				}
+			})
+			.catch(error => {
+				console.error('Error:', error);
+			});
+		});
+	</script>
+	<script src="{% static 'mgapp/js/jquery-3.4.1.min.js'%}"></script>
+	<script src="{% static 'mgapp/js/popper.min.js'%}"></script>
+	<script src="{% static 'mgapp/js/bootstrap.min.js'%}"></script>
+	<script src="{% static 'mgapp/js/owl.carousel.min.js'%}"></script>
+	<script src="{% static 'mgapp/js/jquery.animateNumber.min.js'%}"></script>
+	<script src="{% static 'mgapp/js/jquery.waypoints.min.js'%}"></script>
+	<script src="{% static 'mgapp/js/jquery.fancybox.min.js'%}"></script>
+	<script src="{% static 'mgapp/js/aos.js'%}"></script>
+	<script src="{% static 'mgapp/js/moment.min.js'%}"></script>
+	<script src="{% static 'mgapp/js/daterangepicker.js'%}"></script>
+
+	<script src="{% static 'mgapp/js/typed.js'%}"></script>
+	<script>
+		$(function() {
+			var typed = new Typed('.typed-words', {
+				strings: [{% for row3 in schedule %}
+				'{{ row3.sch_marina }}','{{ row3.sch_arrival }}'
+				{% endfor %}],
+				typeSpeed: 80,
+				backSpeed: 80,
+				backDelay: 4000,
+				startDelay: 1000,
+				loop: true,
+				showCursor: true,
+				preStringTyped: (arrayPos, self) => {
+					arrayPos++;
+					console.log(arrayPos);
+					$('.slides img').removeClass('active');
+					$('.slides img[data-id="'+arrayPos+'"]').addClass('active');
+				}
+
+			});
+		})
+	</script>
+
+	<script src="{% static 'mgapp/js/custom.js'%}"></script>
+
+</body>
+
+</html>
