@@ -115,14 +115,19 @@
       .nav-pills .nav-link {
         color: #112D4E;
       }
-      input[type="radio"] {display:none;}
-      input[type="radio"] + label {display: inline-block; padding: 15px; background: #DBE2EF; color: #112D4E; font-size: 16px; cursor: pointer;}
-      input[type="radio"]:checked + label {background: #aaa;color:#000;}
+      {% comment %} .form-select {
+        width: 90%; 
+      } {% endcomment %}
 
-      .concox {width: 500px; height: 300px; background: #aaa; margin: 0 auto; display: none;}
-      input[id="tab01"]:checked ~.con1 {display: block;}
-      input[id="tab02"]:checked ~.con2 {display: block;}
-      input[id="tab03"]:checked ~.con3 {display: block;}
+
+      input[type="radio"] {display:none;}
+      input[type="radio"] + label {display: inline-block; width: 25%; text-align: center; padding: 15px; background: #DBE2EF; color: #112D4E; font-size: 18px; cursor: pointer;}
+      input[type="radio"]:checked + label {background: #112D4E; color:#F9F7F7;}
+
+      {% comment %} .conbox {width: 100%; height: 300px; background: #aaa; margin: 0 auto; display: none;} {% endcomment %}
+      {% comment %} input[id="tab01"]:checked ~.con1 {display: block;} {% endcomment %}
+      {% comment %} input[id="tab02"]:checked ~.con2 {display: block;}
+      input[id="tab03"]:checked ~.con3 {display: block;} {% endcomment %}
     </style> 
   </head>
   <body>
@@ -130,41 +135,55 @@
       <form id="searchForm" method="post" action="{% url 'search_action' %}">
           {% csrf_token %}
           <select class="form-select" name="search_option" aria-label="Default select example" onchange="submitForm()">
-              <option selected>선착장을 검색하세요</option>
-              {% for row in marina_list %}
-              <option value="{{row.mar_nm}}">{{row.mar_nm}}</option>
-              {% endfor %}
-          </select>
+            <option value="" {% if not search_result %}selected{% endif %}>선착장을 검색하세요</option>
+            {% for row in marina_list %}
+              <option value="{{row.mar_nm}}" {% if row.mar_nm == search_result %} selected{% endif %}>{{row.mar_nm}}</option>
+            {% endfor %}
+            </select>
+          <input type="hidden" name="service_type" id="serviceType" value="음식점">
       </form>
     <section class="py-5 text-center container">
       <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
-          {% if search_result %}
-          <h1 class="fw-light">{{ search_result }}</h1>
-          {% endif %}
+          {% if search_result == None %}<h1>선착장을 선택하여 주세요.</h1>
+          {% else %}<h1 class="fw-light">{{ search_result }}</h1>{% endif %}
         </div>
       </div>
     </section>
+    
+    <div class="nav nav-pills nav-fill">
+      <input class="nav-link" type="radio" name="tabmenu" id="tab01" value="음식점" 
+        {% if selected_service_type == '음식점' %}checked{% endif %} 
+        onclick="updateServiceType('음식점')">
+      <label for="tab01"><b>음식점</b></label>
 
-    <div class="tab_content">
-      <input type="radio" name="tabmenu" id="tab01" checked>
-      <label for="tab01">음식점</label>
-      <input type="radio" name="tabmenu" id="tab02">
-      <label for="tab02">카페</label>
-      <input type="radio" name="tabmenu" id="tab03">
-      <label for="tab03">관광지</label>
-      <input type="radio" name="tabmenu" id="tab04">
-      <label for="tab04">교통정보</label>
+      <input class="nav-link" type="radio" name="tabmenu" id="tab02" value="카페" 
+        {% if selected_service_type == '카페' %}checked{% endif %} 
+        onclick="updateServiceType('카페')">
+      <label for="tab02"><b>카페</b></label>
 
-      div
+      <input class="nav-link" type="radio" name="tabmenu" id="tab03" value="관광명소" 
+        {% if selected_service_type == '관광명소' %}checked{% endif %} 
+        onclick="updateServiceType('관광명소')">
+      <label for="tab03"><b>관광명소</b></label>
+
+      <input class="nav-link" type="radio" name="tabmenu" id="tab04" value="교통정보" 
+        {% if selected_service_type == '교통정보' %}checked{% endif %} 
+        onclick="updateServiceType('교통정보')">
+      <label for="tab04"><b>교통정보</b></label>
     </div>
 
-      <nav style="color: #112D4E;" class="nav nav-pills nav-fill" onclick="alert(this.options[this.selectedIndex].text)">
+      {% comment %} <nav style="color: #112D4E;" class="nav nav-pills nav-fill" onclick="alert(this.options[this.selectedIndex].text)">
           <a class="nav-link active" aria-current="page" value="음식점" data-bs-toggle="tab">맛집</a>
           <a class="nav-link" value="카페" data-bs-toggle="tab">카페</a>
           <a class="nav-link" value="관광지" data-bs-toggle="tab">관광지</a>
           <a class="nav-link" href="#" data-bs-toggle="tab">주변교통</a>
-      </nav>
+      </nav> {% endcomment %}
+      {% if selected_service_type == "교통정보" %}
+        <h1>교통정보 페이지입니다.</h1>
+      {% endif %}
+
+    
       <div class="album py-5 bg-body-tertiary">
         <div class="container">
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -176,26 +195,35 @@
                   </svg>
                   <div class="card-body">
                     <h5 class="card-text">{{ row1.ser_nm }}</h5>
+                    <small>{{ row1.ser_group }}</small>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
-                        <button style="background-color: #112D4E; color: #F9F7F7;" type="button" class="btn btn-sm btn-outline-secondary">상세보기</button>
+                        <button style="background-color: #112D4E; color: #F9F7F7;" type="button" class="btn btn-sm btn-outline-secondary">
+                          <a href="{{ row1.ser_url }}" style="color: inherit; text-decoration: none;">
+                              카카오맵 상세보기
+                          </a>
+                        </button>
                       </div>
                       <small class="text-body-secondary">{{ row1.ser_distance }}m</small>
                     </div>
                   </div>
                 </div>
               </div>
-            {% endfor %}
+            {% endfor %} 
           </div>
-        </div>
+        </div> 
       </div>
-
     </main>
 
     <script>
-        function submitForm() {
-            document.getElementById("searchForm").submit();
-        }
+      function updateServiceType(serviceValue) {
+        document.getElementById("serviceType").value = serviceValue;
+        submitForm();
+      }
+    
+      function submitForm() {
+        document.getElementById("searchForm").submit();
+      }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   </body>

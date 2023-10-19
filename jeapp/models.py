@@ -66,7 +66,7 @@ class Service(models.Model):
     ser_add = models.CharField(max_length=100, null=False)
     ser_tel = models.CharField(max_length=20)
     ser_img = models.CharField(max_length=300, null=False)
-    ser_distance = models.FloatField(null=False)
+    ser_distance = models.IntegerField(null=False)
     ser_url = models.CharField(max_length=100, null=False)
     ser_lat = models.FloatField(null=False)
     ser_lon = models.FloatField(null=False)
@@ -77,12 +77,13 @@ class Service(models.Model):
 
 class Traffic(models.Model):
     tra_mar = CharField(max_length=30, null=False)
-    tra_num = IntegerField(primary_key=True, null=False)
+    tra_id = CharField(max_length=5, primary_key=True)
     tra_nm = CharField(max_length=50, null=False)
-    tra_time = CharField(max_length=50, null=False)
-    tra_bus = CharField(max_length=20, null=False)
-    tra_way = CharField(max_length=100, null=False)
-    tra_route = CharField(max_length=100, null=False)
+    tra_route = IntegerField(null=False)
+    tra_lat = models.FloatField(null=False)
+    tra_lon = models.FloatField(null=False)
+    tra_dis = models.FloatField(null=False)
+    
     class Meta:
         db_table = "traffic"
         app_label = "jeapp"

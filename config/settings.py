@@ -115,6 +115,8 @@ DATABASE_ROUTERS = [
     'jeapp.router.DBRouter',
     'mainapp.router.DBRouter',
     'mgapp.router.DBRouter',
+
+    
 ]
 
 ### Logging 처리

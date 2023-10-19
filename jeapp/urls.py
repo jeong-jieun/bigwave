@@ -3,6 +3,9 @@ from django.urls import path
 
 from . import views
 urlpatterns = [
+    path('service_detail/<str:marina>/<str:service_type>/<str:service_name>/', views.service_detail, name='service_detail'),
+    ### 스케줄 조회 페이지 (http://127.0.0.1:8000/je/schedule/traffic)
+    path('schedule/traffic/', views.traffic),
     ### 스케줄 조회 페이지 (http://127.0.0.1:8000/je/schedule)
     path('schedule/', views.schedule),
     ### 결제버튼 클릭시 db저장 (http://127.0.0.1:8000/je/save_reservation)
@@ -15,6 +18,9 @@ urlpatterns = [
     path('checkout/', views.checkout),
     # index 페이지(http://127.0.0.1:8000/je)
     path('', views.index),
+    
+    
     # # main 페이지(http://127.0.0.1:8000/)
     # path('', views.main),
+    path('service/jong/', views.jong),
 ]

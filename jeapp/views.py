@@ -4,6 +4,15 @@ from .models import Member, Marina, Schedule, Booking, Service, Traffic
 from datetime import datetime
 
 
+
+# 서비스 상세보기
+def service_detail(request, marina, service_type, service_name):
+    # 데이터베이스에서 해당 정보와 관련된 데이터를 가져옵니다.
+    service = Service.objects.get(ser_mar=marina, ser_gu=service_type, ser_nm=service_name)
+    # 데이터를 템플릿으로 전달합니다.
+    return render(request, 'jeapp/html/service_detail.html', {'service': service})
+
+
 # 부가서비스
 def traffic(request):
     marinas = Marina.objects.all()
@@ -14,21 +23,22 @@ def traffic(request):
                    'search_result': selected_option})
 
 
- # 부가서비스   
+ # 서비스   
 def service(request):
     marinas = Marina.objects.all()
     service = Service.objects.all()
     selected_mar = request.POST.get('search_option', None) 
-    # selected_gu = request.POST.get('selected_gu', None) , ser_gu=selected_gu
-    
-    filtered_services = Service.objects.filter(ser_mar=selected_mar)
+    selected_service_type = request.POST.get('service_type', '')  # Default is '음식점'
+
+    filtered_services = Service.objects.filter(ser_mar=selected_mar, ser_gu=selected_service_type)
     
     return render(request,
                   'jeapp/html/service.html',
                   {'marina_list': marinas,
                    'service' : service,
                    'search_result': selected_mar,
-                   'services': filtered_services})
+                   'services': filtered_services,
+                   'selected_service_type': selected_service_type})
 
 
 # 메인페이지에서 조회하기 버튼 클릭시 스케줄 조회 페이지 보여주기
@@ -172,6 +182,12 @@ def index(request):
                    'marina_list': marinas,
                    'selected_start': start,
                    'selected_end': end})
+    
+def jong(request):
+    return render(request, 
+                  'jeapp/html/jong.html',
+                  {})   
+    
     
 # # main.html 처리(첫화면)
 # def main(request):
