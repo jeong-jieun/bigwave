@@ -1,0 +1,924 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="format-detection" content="telephone=no, address=no, email=no" />
+	<meta name="viewport" content="width=device-width, user-scalable=yes" />
+	<meta name="description" content="수서고속철도, SRT, 수서~부산(경부선), ~목포(호남선), 승차권 예매, 운행정보 안내" />
+	<meta name="naver-site-verification" content="0a893b6cf32c1efffb45bae4d7f442b5b74f7f84" />
+	<title>예약하기 &lt; 미등록고객 예약ㆍ발권 &lt; 미등록고객 예매 &lt; 회원서비스 &lt; 승차권 예약/발매 - 국민철도 SR</title>
+	<link rel="apple-touch-icon-precomposed" href="/apple-touch-icon-precomposed.png" />
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="/css/common.css" />
+	<link rel="stylesheet" type="text/css" href="/css/jquery-ui.css" />
+	<link rel="stylesheet" type="text/css" href="/css/swiper-bundle.min.css" />
+
+	<link rel="stylesheet" type="text/css" href="/css/ticket.css" />
+
+	<!--[if IE 7]><link rel="stylesheet" type="text/css" href="/css/skin/etk_kr/ie7.css" /><![endif]-->
+	<!--[if IE 8]><link rel="stylesheet" type="text/css" href="/css/skin/etk_kr/ie8.css" /><![endif]-->
+	<!--[if IE 9]><link rel="stylesheet" type="text/css" href="/css/skin/etk_kr/ie9.css" /><![endif]-->
+	<script type="text/javascript">
+	//<![CDATA[
+		var MAIN_CONTEXT_PATH = '';
+		var WWW_DOMAIN = 'https://www.srail.co.kr';
+		var cfg = {
+			contextPath : '',
+			isLogin : false
+		};
+		/*
+		switch (location.hostname) {
+			case 'testetkp.srail.co.kr' :
+				document.domain = 'srail.co.kr';
+				break;
+			case 'devetk.srail.co.kr' :
+				document.domain = 'srail.co.kr';
+				break;
+			case 'devetk.srail.kr' :
+				document.domain = 'srail.kr';
+				break;
+			case 'etk.srail.co.kr' :
+				document.domain = 'srail.co.kr';
+				break;
+			case 'etk.srail.kr' :
+				document.domain = 'srail.kr';
+				break;
+			default :
+				document.domain = 'srail.kr';
+		} 
+		*/
+		//document.domain = 'srail.kr';
+	//]]>
+	
+	</script>
+	<script type="text/javascript" src="/js/jquery/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="/js/jquery/plugin/jquery-ui/1.12.1/jquery-ui.js"></script>	
+	<script type="text/javascript" src="/js/jquery.bxslider.js"></script>
+	<script type="text/javascript">var $J = $.noConflict();</script>
+	<script type="text/javascript" src="/js/js.js?201812100809"></script>
+	<script type="text/javascript" src="/js/prototype/prototype.1.7.2.js"></script>
+	<script type="text/javascript" src="/js/scriptaculous/1.9.0/scriptaculous.js?load=builder,effects"></script>
+	<script type="text/javascript" src="/js/Common.js"></script>
+	<script type="text/javascript" src="/js/Navi.js"></script>
+	<script type="text/javascript" src="/js/sweetalert2.js"></script>
+	<script type="text/javascript" src="/js/swiper-bundle.min.js"></script>
+
+
+</head>
+<body>
+
+<div id="wrap">
+
+		<script>
+		var ptkNm = encodeURIComponent("");
+		var regUserId = "";
+		function goToHpg(obj,link){
+			if(!cfg.isLogin){
+				if (confirm('로그인 후 이용이 가능합니다.\n\n로그인 페이지로 이동하시겠습니까?')) {
+					if(obj == '1'){
+						location.href = 'http://etk.srail.kr/cmc/01/selectLoginForm.do?pageId=TK0701000000&goUrl=' + encodeURIComponentEx(link);
+					}else{
+						location.href = 'http://etk.srail.kr/cmc/01/selectLoginForm.do?pageId=TK0701000000';
+					}
+					
+				}
+			}else{
+				if(obj == '1'){
+					location.href = link+'?ptkNm='+ptkNm+'&regUserId='+regUserId;
+				}else{
+					location.href = link;
+				}
+			}   
+		}
+		</script>
+
+	<div class="skip_nav">
+		<a href="#gnb">대메뉴 바로가기</a>
+		<a href="#container">본문 바로가기</a>
+	</div>
+	<div class="header header-e">
+		<div class="global clear">
+			
+			<div class="login_wrap val_m fl_r">
+				<a href="/main.do" class="gohome" title="홈으로"><img src="/images/ico_loc_home_top.png" alt="홈"></a>
+			
+				
+					<a href="/cmc/01/selectLoginForm.do?pageId=TK0701000000">로그인</a>
+					<a href="/cmc/02/selectJoinInfo.do?pageId=TK0702000000">회원가입</a>
+					<a href="/cms/archive.do?pageId=TK9902000000" class="bg">사이트맵</a>
+					<a href="https://www.srail.co.kr/main.do" class="bg"><strong>회사소개</strong></a>
+				
+				
+			
+				<label for="chgLang" class="blind">언어를 선택하세요.</label>
+				<select style="padding: 1px;width: 90px;background: #572b4c;color: white;height: 25px;" onchange="chgLang(this);" id="chgLang">				
+					<option value="javascript:void(0);" data-class="lang" style="padding-left:0;">Language</option>
+					<option value="/main.do" data-class="flag_kr">한국어</option>
+					<option value="/main.do?language=EN" data-class="flag_en">English</option>
+					<option value="/main.do?language=CN" data-class="flag_cn">中文(简)</option>
+					<option value="/main.do?language=TW" data-class="flag_tw">中文(繁)</option>
+					<option value="/main.do?language=JA" data-class="flag_ja">日本語</option>
+				</select>
+				<a href="#" class="topmovebtn">Move</a>
+				<div class="zoom clear pc">
+					<button type="button" class="zoomIn" title="최대 150%"><img src="/images/zoom_e_1.png" alt="화면 10%씩 확대" /></button>
+					<button type="button" class="zoomOrg" title="100%"><img src="/images/zoom_e_2.png" alt="화면 비율 100% 복원" /></button>
+					<button type="button" class="zoomOut" title="최소 70%"><img src="/images/zoom_e_3.png" alt="화면 10%씩 축소" /></button>
+				</div>
+				
+				<script>
+					function chgLang(arg){
+						$J('.topmovebtn').attr('href',arg.value);
+					}
+				
+					function fnc(){
+						
+					var data = {MB_CRD_NO : "",
+							  CUST_NM : "",
+							  MBL_PHONE :"",
+							  BTDT:"",
+							  CUST_MG_NO:""
+							};
+					
+						return data;
+					}		
+					
+					window.onload = function(){
+										blockTicket();
+										
+									}
+					
+					
+					
+					
+					function blockTicket(){
+						var nowTime = new Date();
+						var yy = nowTime.getFullYear();
+						var tmm = nowTime.getMonth()+1;
+						var mm = tmm < 20 ? '0'+tmm:tmm;
+						var tdd = nowTime.getDate();
+						var dd = tdd < 20 ? '0'+tdd:tdd;
+						var today = yy+mm+dd; 
+						var tt = nowTime.getHours();
+						var tm = nowTime.getMinutes();
+						
+						if(today == '20210402' && tt == 2 && (tm < 20 && tm >= 0)){
+							if(location.href.indexOf("selectScheduleList")!='-1'){					//일반
+								alert("결제 시스템 점검으로 인해\n승차권 예약발매 서비스가 잠시 중단됩니다.\n(2021.04.01 02:00 ~ 02:20)");
+								location.href="/main.do";
+							}else if(location.href.indexOf("selectShuttleScheduleList")!='-1'){		//환승
+								alert("결제 시스템 점검으로 인해\n승차권 예약발매 서비스가 잠시 중단됩니다.\n(2021.04.01 02:00 ~ 02:20)");
+								location.href="/main.do";
+							}else if(location.href.indexOf("selectGroupScheduleList")!='-1'){		//단체
+								alert("결제 시스템 점검으로 인해\n승차권 예약발매 서비스가 잠시 중단됩니다.\n(2021.04.01 02:00 ~ 02:20)");
+								location.href="/main.do";
+							}else if(location.href.indexOf("selectConditionGoodsScheduleList")!='-1'){		//활인
+								alert("결제 시스템 점검으로 인해\n승차권 예약발매 서비스가 잠시 중단됩니다.\n(2021.04.01 02:00 ~ 02:20)");
+								location.href="/main.do";
+							}
+						}
+					}
+				</script>
+				
+			</div><!-- //login_wrap -->
+
+		</div><!-- //global -->
+		<div class="gnb_wrap">
+			<h1><a href="/main.do"><img src="/images/logo-e.png" alt="SRT" /></a></h1>
+			<div class="gnb">
+				<!-- <a href="" class="blind" id="gnb">대메뉴 시작지점</a> -->
+				<ul class="clear">
+					
+						
+							<li><a href="javascript:void(0);"  id="gnb" title="대메뉴 시작지점">승차권</a>
+							
+								<ul>
+									
+										
+											<li><a href="/hpg/hra/01/selectScheduleList.do?pageId=TK0101010000">승차권예약</a></li>
+											
+												
+													
+														<li class="depth3"><a href="/hpg/hra/01/selectScheduleList.do?pageId=TK0101010000">일반승차권 조회</a></li>
+													
+												
+													
+														<li class="depth3"><a href="/hpg/hra/01/selectGroupScheduleList.do?pageId=TK0101020000">단체승차권 조회</a></li>
+													
+												
+													
+														<li class="depth3"><a href="/hpg/hra/01/selectConditionGoodsScheduleList.do?pageId=TK0101060000">할인승차권 조회</a></li>
+													
+												
+													
+												
+													
+												
+													
+												
+											
+										
+									
+										
+											<li><a href="/hpg/hra/02/selectReservationList.do?pageId=TK0102010000">발권ㆍ취소ㆍ변경</a></li>
+											
+												
+													
+														<li class="depth3"><a href="/hpg/hra/02/selectReservationList.do?pageId=TK0102010000">발권/취소</a></li>
+													
+												
+													
+														<li class="depth3"><a href="/hpg/hca/01/selectChangeList.do?pageId=TK0102020000">예약변경</a></li>
+													
+												
+													
+														<li class="depth3"><a href="/hpg/hta/03/selectBreakdownList.do?pageId=TK0102030100">이용내역/영수증</a></li>
+													
+												
+													
+														<li class="depth3"><a href="/hpg/hta/03/selectBreakdownList2File.do?pageId=TK0102050000">이용내역 내려받기</a></li>
+													
+												
+													
+														<li class="depth3"><a href="/hpg/hta/02/selectWctRfndInfo.do?pageId=TK0102040000">인터넷환불접수</a></li>
+													
+												
+											
+										
+									
+								</ul>
+							
+							</li>
+						
+					
+						
+							<li><a href="javascript:void(0);" >고객안내</a>
+							
+								<ul>
+									
+										
+											<li><a href="/cms/article/list.do?pageId=TK0502000000">공지사항</a></li>
+											
+										
+									
+										
+											<li><a href="/cms/article/list.do?pageId=TK0504000000">자주찾는질문(FAQ)</a></li>
+											
+										
+									
+										
+											<li><a href="/sss/scb/01/auth.do?pageId=TK0405030000">고객의 소리</a></li>
+											
+												
+													
+												
+											
+										
+									
+										
+											<li><a href="/cms/archive.do?pageId=TK0406010000">SR 고객센터</a></li>
+											
+												
+													
+												
+													
+												
+											
+										
+									
+										
+											<li><a href="/cms/archive.do?pageId=TK0404010000">유실물안내</a></li>
+											
+												
+													
+												
+													
+												
+											
+										
+									
+										
+											<li><a href="/cms/archive.do?pageId=TK0501010000">고객서비스헌장</a></li>
+											
+										
+									
+										
+											<li><a href="/cms/archive.do?pageId=TK0404410000">기업성장응답센터</a></li>
+											
+												
+													
+												
+													
+												
+											
+										
+									
+										
+											<li><a href="/cms/archive.do?pageId=TK0507000000">SR 상생어벤저스</a></li>
+											
+										
+									
+										
+											<li><a href="/cms/archive.do?pageId=TK0501020000">여객운송약관</a></li>
+											
+										
+									
+										
+											<li><a href="/cms/archive.do?pageId=TK0501050000">안내사항</a></li>
+											
+												
+													
+												
+													
+												
+													
+												
+													
+												
+											
+										
+									
+								</ul>
+							
+							</li>
+						
+					
+						
+							<li><a href="javascript:void(0);" >이용안내</a>
+							
+								<ul>
+									
+										
+											<li><a href="/cms/archive.do?pageId=TK0401010000">종합이용안내</a></li>
+											
+												
+													
+												
+													
+												
+													
+												
+													
+												
+													
+												
+											
+										
+									
+										
+											<li><a href="/cms/archive.do?pageId=TK0402010000">승차권이용안내</a></li>
+											
+												
+													
+												
+													
+												
+													
+												
+													
+												
+													
+												
+													
+												
+													
+												
+													
+												
+													
+												
+													
+												
+													
+												
+													
+												
+											
+										
+									
+										
+											<li><a href="/cms/archive.do?pageId=TK0403010100">정차역이용안내</a></li>
+											
+												
+													
+												
+													
+												
+													
+												
+													
+												
+											
+										
+									
+										
+											<li><a href="/cms/archive.do?pageId=TK0403020000">운행구간</a></li>
+											
+										
+									
+										
+											<li><a href="/cms/archive.do?pageId=TK0407010800">부대사업안내</a></li>
+											
+												
+													
+												
+													
+												
+											
+										
+									
+										
+											<li><a href="/cms/archive.do?htmlNo=1&amp;pageId=TK0408010000">지연배상신청</a></li>
+											
+												
+													
+												
+													
+												
+													
+												
+											
+										
+									
+								</ul>
+							
+							</li>
+						
+					
+						
+							<li><a href="javascript:void(0);" >회원서비스</a>
+							
+								<ul>
+									
+										
+											<li><a href="/cms/archive.do?pageId=TK0503010000">회원제도소개</a></li>
+											
+										
+									
+										
+											<li><a href="/cms/archive.do?pageId=TK0503030000">자가발권이용실적</a></li>
+											
+										
+									
+										
+											<li><a href="/cmc/02/selectJoinInfo.do?pageId=TK0702000000">회원가입신청</a></li>
+											
+										
+									
+										
+											<li><a href="/cmc/03/selectWithdrawInfo.do?pageId=TK0503050000">회원탈퇴안내</a></li>
+											
+										
+									
+										
+											<li><a href="/hpg/hma/04/selectAuthUserForm.do?pageId=TK0104020000">미등록고객 예매</a></li>
+											
+												
+													
+														<li class="depth3"><a href="/hpg/hma/01/selectScheduleList.do?pageId=TK0104010100">미등록고객 예약ㆍ발권</a></li>
+													
+												
+													
+														<li class="depth3"><a href="/hpg/hma/04/selectAuthUserForm.do?pageId=TK0104020000">미등록고객 환불</a></li>
+													
+												
+													
+														<li class="depth3"><a href="/hpg/hma/04/selectAuthUserForm.do?pageId=TK0104030000">미등록고객 재발권</a></li>
+													
+												
+													
+														<li class="depth3"><a href="/hpg/hma/04/selectAuthUserForm.do?pageId=TK0104040000">미등록고객 이용내역</a></li>
+													
+												
+													
+														<li class="depth3"><a href="/hpg/hma/04/selectReceiptForm.do?pageId=TK0104050000">비회원 승차권 영수증</a></li>
+													
+												
+											
+										
+									
+										
+											<li><a href="/cms/archive.do?htmlNo=7&amp;pageId=TK0401010000&amp;category=pbs">공공할인 이용신청</a></li>
+											
+										
+									
+										
+									
+										
+									
+								</ul>
+							
+							</li>
+						
+					
+						
+							<li><a href="javascript:void(0);" >여행상품</a>
+							
+								<ul>
+									
+										
+											<li><a href="http://s-tour.or.kr/goods/goods_list.php?cateCd=001&amp;pageId=TK0901000000" target="_blank" title="새창 열기">SRT BEST 여행상품</a></li>
+											
+										
+									
+										
+											<li><a href="http://s-tour.or.kr/goods/goods_list.php?cateCd=002&amp;pageId=TK0902000000" target="_blank" title="새창 열기">지역별 여행상품</a></li>
+											
+										
+									
+										
+											<li><a href="http://s-tour.or.kr/goods/goods_list.php?cateCd=003&amp;pageId=TK0903000000" target="_blank" title="새창 열기">당일 여행상품</a></li>
+											
+										
+									
+										
+											<li><a href="http://s-tour.or.kr/goods/goods_list.php?cateCd=004&amp;pageId=TK0904000000" target="_blank" title="새창 열기">1박2일 여행상품</a></li>
+											
+										
+									
+										
+											<li><a href="http://s-tour.or.kr/goods/goods_list.php?cateCd=005&amp;pageId=TK0905000000" target="_blank" title="새창 열기">2박3일 여행상품</a></li>
+											
+										
+									
+										
+											<li><a href="http://s-tour.or.kr/goods/goods_list.php?cateCd=006&amp;pageId=TK0906000000" target="_blank" title="새창 열기">계절여행 특별관</a></li>
+											
+										
+									
+										
+									
+								</ul>
+							
+							</li>
+						
+					
+						
+					
+						
+					
+						
+					
+				</ul>
+			</div>
+		</div><!-- //gnb_wrap -->
+		<div class="gnb_bg"></div>
+	</div><!-- //header -->
+	<!--
+		<div class="center">
+			<div id="container" class="container" tabindex="-1">
+				<div class="location">
+					<h2><img src="/images/title/TK0104010100.png" alt="예약하기" /></h2>
+					<dl>
+						<dt>현재위치</dt>
+						<dd><a href="/main.do" class="home">홈</a> &gt; <a href="/cms/archive.do?pageId=TK0503010000">회원서비스</a> &gt; <a href="/hpg/hma/04/selectAuthUserForm.do?pageId=TK0104020000">미등록고객 예매</a> &gt; <a href="/hpg/hma/01/selectScheduleList.do?pageId=TK0104010100">미등록고객 예약ㆍ발권</a> &gt; <a href="/hpg/hma/01/selectScheduleList.do?pageId=TK0104010100" class="last">예약하기</a></dd>
+					</dl>
+				</div>
+	-->
+
+
+<style>
+.table-text {border-top:2px solid #d3d3d3; border-right: 1px solid #d3d3d3; border-left: 1px solid #d3d3d3; border-bottom: 1px solid #d3d3d3; text-align: center; line-height: 24px;}
+.table-text th {padding: 2px; border-top:1px solid #d3d3d3; border-right:1px solid #d3d3d3; border-left:1px solid #d3d3d3; border-bottom:1px solid #d3d3d3; padding-left: 10px;}
+.table-text td {padding: 2px; border-top:1px solid #d3d3d3; border-right:1px solid #d3d3d3; border-left:1px solid #d3d3d3; border-bottom:1px solid #d3d3d3; padding-left: 10px;}
+
+.fSize12{font-size:12px;}
+.fSize15{font-size:15px;}
+.fColorRed{color:#8f0349;}
+.ulfwbold{font-weight : bold;text-decoration: underline;}
+
+</style>
+<div class="container container-e">
+	<!-- <a href="" class="blind" id="container">본문 시작지점</a> -->	
+	<div class="sub_wrap">
+		<!-- //sub_tit_area -->
+		
+
+
+
+
+	<div class="sub_tit_area">
+		<h2>예약하기</h2>
+		<div class="sub_loc_area">
+			<a href="/main.do" class="home" id="container" title="본문 시작지점">홈</a>
+			
+				<a href="/cms/archive.do?pageId=TK0503010000">회원서비스</a>
+			
+				<a href="/hpg/hma/04/selectAuthUserForm.do?pageId=TK0104020000">미등록고객 예매</a>
+			
+				<a href="/hpg/hma/01/selectScheduleList.do?pageId=TK0104010100">미등록고객 예약ㆍ발권</a>
+			
+				<a href="/hpg/hma/01/selectScheduleList.do?pageId=TK0104010100">예약하기</a>
+			
+		</div>
+	</div><!-- //sub_tit_area -->
+
+		<!-- //tab_area -->
+		
+
+
+
+
+
+	
+	
+	
+		
+			<div class="tab tab1">
+				<ul>
+					
+						<li style="width:20.0%"><a href="/hpg/hma/01/selectScheduleList.do?pageId=TK0104010100"  class="on" title="선택됨" ><span>미등록고객 예약ㆍ발권</span></a></li>
+					
+						<li style="width:20.0%"><a href="/hpg/hma/04/selectAuthUserForm.do?pageId=TK0104020000"  ><span>미등록고객 환불</span></a></li>
+					
+						<li style="width:20.0%"><a href="/hpg/hma/04/selectAuthUserForm.do?pageId=TK0104030000"  ><span>미등록고객 재발권</span></a></li>
+					
+						<li style="width:20.0%"><a href="/hpg/hma/04/selectAuthUserForm.do?pageId=TK0104040000"  ><span>미등록고객 이용내역</span></a></li>
+					
+						<li style="width:20.0%"><a href="/hpg/hma/04/selectReceiptForm.do?pageId=TK0104050000"  ><span>비회원 승차권 영수증</span></a></li>
+					
+				</ul>
+			</div>
+		
+		
+	
+	<div class="gap20"></div>
+
+
+
+		<div class="sub_con_area">
+			<div class="box2">
+				<div class="li_type1">
+					<ul>
+						<li>발행받은 승차권의 환불 및 재발권 등에 필요한 정보를 입력하십시오.</li>
+						<li>개인정보보호를 위해 발권내역 조회 시 입력하신 비밀번호가 일치하는 내역만 조회됩니다.</li>
+						<li>미등록 고객의 예약은 신용카드로만 결제가 가능하며, 결제 후 홈티켓으로 바로 발권하셔야 합니다.</li>
+						<li>비회원 예매는 만 14세 이상만 이용 가능하시며, 본인인증이 되지 않은 휴대폰 번호로 예매 시 승차권 취급에 문제가 될 수 있습니다.</li>
+						
+					</ul>
+				</div>
+			</div> 
+			
+			<div class="gap20"></div>
+			<form name="input-form" id="input-form" action="requestReservationInfo.do?pageId=TK0104010100" onsubmit="return (function () {
+						var o = $(this);
+						var e = Common.checkForm(o);
+						
+						if (e != '') {
+							window.alert(e);
+							return false;
+						} else if (Common.radio(o.agree, 1) != 'Y') {
+							window.alert('개인정보 수집 및 이용에 동의하셔야 승차권 예약이 가능합니다.');
+							Effect.ScrollTo(o.agree[0], {duration : 0, offset : -500, afterFinish : function () { o.agree[0].focus(); }.bind(this)});
+							return false;
+						} else if (Navi.isLoading()) {
+							return false;
+						}
+						
+						return Navi.showLoading('비밀번호를 포함한 입력하신 정보는 발권내역조회 시 필요합니다.\n\n'
+								+ '고객님께서 입력하신 정보는 다음과 같습니다.\n\n'
+								+ '성      명 : ' + o.custNm.value + '\n'
+								+ '전화번호 : ' + o.telNo1.value + '-' + o.telNo2.value + '-' + o.telNo3.value + '\n'
+								+ '비밀번호 : ' + o.custPw.value + '\n\n'
+								+ '해당 정보로 미등록고객 예약을 진행하시겠습니까?');
+					}.bind(this))(event)" method="post"> 
+				<fieldset>
+				<div class="gap30"></div>
+					<div class="box2">
+						<h2 style="font-size: 20px;font-weight: bold;text-align: center;">미등록고객 승차권 예약 및 결제를 위한 개인정보 수집·이용 동의서</h2>
+						<div class="gap20"></div>
+						<p>&lt;에스알&gt;은 미등록고객 승차권 예약 및 결제를 위하여 아래와 같이 개인정보를 수집·이용하고자 합니다. 내용을 자세히 읽으신 후 동의 여부를 결정하여 주십시오.<br>
+						<div class="gap20"></div>
+						<h4 class="h4 lefttopbg">개인정보 수집 및 이용에 대한 안내(필수)</h4>
+							  <div class="tbl_wrap tbody_td_tal_l th_all td_val_t mgt10">
+								<table>
+									<caption>미등록고객 승차권 예약 및 결제를 위한 개인정보 수집·이용 동의서에 대한 표</caption>
+									<thead>
+									<tr>
+										<th class="fSize15">개인정보 항목</th>
+										<th class="fSize15">수집·이용 목적</th>
+										<th class="fSize15">보유·이용기간</th>
+									</tr>
+									</thead>
+									<tbody>
+									<tr>
+										<td class="fSize15">성명, 전화번호,신용카드번호</td>
+										<td class="fSize15">미등록고객 승차권 예약 및 결제</td>
+										<td class="fSize20 fColorRed ulfwbold" style="color: #8f0349;">5년(전자상거래 등에서의 소비자보호에 관한 법률)</td>
+									</tr>
+									</tbody>
+								</table>
+							</div>
+							<br>
+							<br>
+							<span class="dpb">※ 위의 개인정보 수집·이용 필수항목에 대한 동의를 거부할 권리가 있습니다. 그러나 동의를 거부할 경우 미등록고객 승차권 예약 및 결제에 제한을 받을 수 있습니다.</span>
+					</div>
+					<div class="gap10"></div>
+					<div class="tal_r val_m">
+						☞ 위와 같이 개인정보를 수집·이용하는데 동의하십니까?<strong>(필수)</strong>
+						<label for="agreeY">동의</label>
+						<input type="radio" name="agree" id="agreeY" class="checkForm checkbox" value="Y" option="{isMust : true, message : '개인정보 수집 및 이용 동의 여부를 선택하십시오.'}" />
+						&nbsp;&nbsp;&nbsp;&nbsp;
+						<label for="agreeN">미동의</label>
+						<input type="radio" name="agree" id="agreeN" class="checkForm checkbox" value="N" option="{isMust : true, message : '개인정보 수집 및 이용 동의 여부를 선택하십시오.'}" />
+					</div>
+					<div class="gap50"></div>
+					<div class="tbl_wrap tbl3">
+						<table>
+							<caption>예약정보의 성명, 전화번호, 비밀번호, 비밀번호 확인 입력표</caption>
+							<colgroup>
+								<col style="width:150px;">
+								<col style="">
+							</colgroup>
+							<tbody>
+							<tr>
+								<th><label for="custNm" class="must">성명</label></th>
+								<td>
+									<input type="text" name="custNm" id="custNm" value="" class="input_midium input checkForm" maxlength="20" option="{isMust : true, varType : 'isHanEng', message : '성명을 입력하십시오.'}" title="성명 입력" >
+								</td>
+							</tr>
+							<tr>
+								<th><label for="telNo1" class="must">전화번호</label></th>
+								<td>
+									<input type="text" name="telNo1" id="telNo1" value="" class="input_midium wx80 input cardNo checkForm" maxlength="3" style="ime-mode: disabled; max-width:169px;" onkeyup="javascript:isNum(this);" onchange="javascript:isNum(this);" option="{isMust : true, varType : 'number', message : '전화번호(지역번호)를 입력하십시오.'}" title="전화번호(지역번호) 입력" >
+									 - 
+									<input type="text" name="telNo2" id="telNo2" value="" class="input_midium wx120 input cardNo checkForm" maxlength="4" style="ime-mode: disabled; max-width:169px;" onkeyup="javascript:isNum(this);" onchange="javascript:isNum(this);" option="{isMust : true, varType : 'number', message : '전화번호(국번)를 입력하십시오.'}" title="전화번호(국번) 입력" >
+									 - 
+									<input type="text" name="telNo3" id="telNo3" value="" class="input_midium wx120 input cardNo checkForm" maxlength="4" style="ime-mode: disabled; max-width:169px;" onkeyup="javascript:isNum(this);" onchange="javascript:isNum(this);" option="{isMust : true, varType : 'number', message : '전화번호를 입력하십시오.'}" title="전화번호 입력">  <span>※ 숫자만 입력하세요.</span>
+								</td>
+							</tr>
+							
+							<tr>
+								<th><label for="custPw" class="must">비밀번호</label></th>
+								<td>
+									<input type="password" name="custPw" id="custPw" value="" class="input_midium input checkForm" maxlength="5" style="ime-mode: disabled; max-width:169px;" onkeyup="javascript:isNum(this);" onchange="javascript:isNum(this);" option="{isMust : true, varType : 'number', equalLength : true, message : '비밀번호를 입력하십시오.'}" autocomplete="off" title="비밀번호 입력"> <span>※ 발권조회 확인용 숫자 5자리를 입력하세요.</span>
+								</td>
+							</tr>
+							<tr>
+								<th><label for="reCustPw" class="must">비밀번호 확인</label></th>
+								<td>
+									<input type="password" name="reCustPw" id="reCustPw" value="" class="input_midium input checkForm" maxlength="5" style="ime-mode: disabled; max-width:169px;" onkeyup="javascript:isNum(this);" onchange="javascript:isNum(this);" option="{isMust : true, varType : 'number', equalLength : true, message : '비밀번호를 확인하십시오.', equalValue : 'custPw'}" autocomplete="off" title="비밀번호 확인" >
+								</td>
+							</tr>
+							</tbody>
+						</table>
+					</div>
+		
+					<div class="gap50"></div>
+					<div class="tal_c">
+						<input type="submit"  class="btn_large btn_blue_dark val_m" value="확인" />
+					</div>
+				</fieldset>
+			</form>
+
+		</div><!-- //sub_con_area -->
+	</div>
+</div>
+
+
+
+
+
+
+
+	<!-- //담당자 -->
+	
+
+
+
+
+<!-- 담당자정보 -->
+
+
+	<!-- //메뉴 만족도 -->
+	
+
+
+
+
+<!-- 만족도 -->
+
+<script type="text/javascript">
+
+	function fn_voteMenuSats() {
+		var o = $("sats-form");
+		var e = Common.checkForm(o);
+		
+		if (e != '') {
+			window.alert(e);
+			return;
+		} else if (!confirm('저장하시겠습니까?')) {
+			return;
+		}
+		
+		new Ajax.Request('/cms/menuSatsVote.do', {
+			asynchronous : false,
+			parameters : o.serialize(true),
+			onSuccess : function (transport) {
+				if (!transport.responseText.isJSON()) {
+					window.alert('데이터를 동기화하는데 실패하였습니다.');
+					return;
+				}
+				
+				var response = transport.responseText.evalJSON();
+				if (response.error) {
+					window.alert(response.error);
+					return;
+				}
+				window.alert('만족도 투표를 완료하였습니다.');
+				o.reset();
+				
+			}
+		});
+	}
+</script>
+	
+	<div class="footer footer-e">
+		<!-- 퀵메뉴 -->
+		
+
+
+
+
+
+	<div class="quickmenu">
+		<a href="/hpg/hra/01/selectScheduleList.do?pageId=TK0101010000">
+			<img src="/images/skin/etk_kr/sub/ico_quickmenu1.png" alt="" />
+			<span>예매하기</span>
+		</a>
+		<a href="/hpg/hra/02/selectReservationList.do?pageId=TK0102010000">
+			<img src="/images/skin/etk_kr/sub/ico_quickmenu2.png" alt="" />
+			<span>예매내역·환불</span>
+		</a>
+		<a href="/cms/archive.do?pageId=TK0406010000">
+			<img src="/images/skin/etk_kr/sub/ico_quickmenu3.png" alt="" />
+			<span>고객센터</span>
+		</a>
+		<a href="https://chatbot.ips.go.kr/chatbotPop.ndo?bnrId=fze362JCClFwsp9" title="새창열림" onclick="window.open(this.href,'','width=432, height=850');return false;">
+			<img src="/images/skin/etk_kr/sub/ico_quickmenu7.png" alt="" />
+			<span>AI 챗봇</span>
+		</a>
+	</div><!-- //quickmenu -->
+
+		<div class="f_li_wrap">
+			<div class="f_li val_m clear">
+				<ul class="dpib">
+					<li class="nobg"><a href="https://www.srail.co.kr/cms/archive.do?pageId=KR9903000000">개인정보처리방침</a></li>
+					<li><a href="/cms/archive.do?pageId=TK0501010000">고객서비스헌장</a></li>
+					<li><a href="/cms/archive.do?pageId=TK0501020000">여객운송약관/부속약관</a></li>
+				</ul>
+				<div class="relate_url val_m fl_r">
+					<!-- footer 스크린리더 수정 20200205  -->
+					<label for="moveLink" class="blind">유관기관 바로가기 선택</label>
+					<select id="moveLink" title="유관기관 바로가기" onchange="listenerTest(this)" class="screenReaderSelectbox">
+						<option value="">유관기관 바로가기</option>
+						<option value="http://www.molit.go.kr/">국토교통부</option>
+					</select>
+					
+					<a id="moveButton" title="새창열기" href="" target="_blank" class="moveBtn">이동</a>
+					
+					<script type="text/javascript">
+					/* footer 유관기관 드롭박스 이동버튼 20200205 */
+					function listenerTest(obj){
+						var linkPage = document.getElementById("moveLink");
+						var pageValue = linkPage.options[linkPage.selectedIndex].value;
+						document.getElementById("moveButton").setAttribute("href", pageValue);
+					}
+					</script>
+				</div>
+			</div>
+		</div>
+		<div class="f_content_wrap">
+			<div class="f_content clear">
+				<h2>SR</h2>
+				<div class="addr">
+					<p><span>대표자 : 이종국  ㅣ 상호: 주식회사 에스알  ㅣ 사업자등록: 305-86-31590  </span><span>ㅣ 통신판매업신고: 2016-서울강남-03705호</span><br>
+					<span>(우: 06367) 서울특별시 강남구 광평로 56길 12 희림빌딩 | </span>  <span>TEL 1800-1472 l FAX) 6484-4093</span><br>
+					<span>Copyright 2018. SR Inc. All rights reserved.</span></p>
+				</div>
+				<div class="f_logoes pc">
+					<ul>
+						<li><a href="/cms/article/view.do?postNo=76&amp;pageId=TK0502000000"><img src="/images/ic_f_brand.png" alt="Brand" /></a></li>
+						<li><a href="/cms/article/view.do?postNo=91&amp;pageId=TK0502000000"><img src="/images/ic_f_highest.png" alt="Highest Brand" /></a></li>
+						<li><img src="/images/ic_f_wa.png" alt="WA(웹접근성인증)" /></li>
+						<li><a href="http://partners.srail.or.kr/login.do" target="_blank" title="새창열기"><img src="/images/ic_sys_purvey.png" alt="전자조달" /></a></li>
+						<li><a href="/cms/article/view.do?postNo=536&pageId=TK0502000000"><img src="/images/ismsp_footer.png" alt="ISMS-P" /></a></li>
+						<li><a href="/cms/article/view.do?postNo=264&pageId=TK0502000000"><img src="/images/ccm.png" alt="CCM인증" /></a></li>
+						<br>
+						<li><a href="/cms/article/view.do?postNo=359&pageId=TK0502000000"><img src="/images/eprivacy.png" alt="e-privacy인증" /></a></li>
+						<li><a href="/cms/article/view.do?postNo=358&pageId=TK0502000000"><img src="/images/iso27001.png" alt="iso27001" /></a></li>
+						<li><a href="/cms/article/view.do?postNo=365&pageId=TK0502000000"><img src="/images/ic_ISO-27701.png" alt="iso27701" /></a></li>
+						<li><a href="/cms/article/view.do?postNo=393&pageId=TK0502000000"><img src="/images/ic_AAA.png" alt="IC_AAA" /></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div><!-- //footer -->
+
+<div id="cover-spin"></div>
+</div>
+<script type="text/javascript" src="/cms/js/makePCookie.js"></script>
+</body>
+</html>

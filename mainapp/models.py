@@ -1,4 +1,3 @@
-
 from django.db import models
 
 ### DB에서 문자열을 관리하는 타입은 CharField 사용
