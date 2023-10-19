@@ -95,7 +95,7 @@
 
 			<div class="sub_tit_area" style="width: auto;">
 				<h2 style="left: auto;">택시 예약 현황</h2>
-				<div class="sub_loc_area" style="text-align: left; font-size: 20px;">mem_id 예약현황
+				<div class="sub_loc_area" style="text-align: left; font-size: 20px;">{{boo_mem.boo_mem1.mem_name}}님의 예약페이지입니다.
 				</div>
 			</div><!-- //sub_tit_area -->			<!-- //sub_tit_area -->
 
@@ -132,12 +132,15 @@
 										{% csrf_token %}
 										<fieldset>
 											<legend><h3>[예약확인]</h3></legend>
+											* 예약자ID : <span>{{boo_mem.boo_mem1.mem_id}}</span></br>
 											* 출발지 : <span>{{boo_mem.boo_sch1.sch_marina}}</span></br>
-											* 예약 인원 : <span id="qty"></span>명</br>
-											* 결제 금액 : <span id="totalAmount"></span>원
-											<!-- 숨겨진 입력 필드로 예약 정보를 서버로 전송 -->
-											<input type="hidden" name="book_qty" id="input_qty">
-
+											* 예약 인원 : <span>{{boo_mem.book_qty}}</span></br>
+											* 결제 금액 : <span>{{boo_mem.book_price}}</span>원
+											* 탑승 장소 : <span>{{ boo_mem.boo_sch1.sch_marina }}</span></br>
+											* 도착 장소 : <span>{{ boo_mem.boo_sch1.sch_arrival }}</span></br>
+											* 승차 시간 : <span>{{boo_mem.boo_sch1.sch_stime}}</span></br>
+											* 하차 시간 : <span>{{boo_mem.boo_sch1.sch_etime}}</span></br>
+										</div>
 										</fieldset>
 									</div>
 								</div>		
@@ -150,8 +153,8 @@
 			
 						<div class="gap50"></div>
 						<div class="tal_c">
-							<button onclick="goBack()" class="btn_large btn_blue_dark val_m"><b>취소</b></button>
-							<button type="submit" class="btn_large btn_blue_dark val_m"><b>결제</b></button>	
+							<button onclick="goBack()" class="btn_large btn_blue_dark val_m"><b>돌아가기</b></button>
+	
 						</div>
 					</fieldset>
 				</form>
