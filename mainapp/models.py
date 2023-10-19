@@ -77,12 +77,13 @@ class Service(models.Model):
 
 class Traffic(models.Model):
     tra_mar = CharField(max_length=30, null=False)
-    tra_num = IntegerField(null=False)
+    tra_id = CharField(max_length=5, primary_key=True)
     tra_nm = CharField(max_length=50, null=False)
-    tra_time = CharField(max_length=50, null=False)
-    tra_bus = CharField(max_length=20, null=False)
-    tra_way = CharField(max_length=100, null=False)
-    tra_route = CharField(max_length=100, null=False)
+    tra_route = IntegerField(null=False)
+    tra_lat = models.FloatField(null=False)
+    tra_lon = models.FloatField(null=False)
+    tra_dis = models.FloatField(null=False)
+    
     class Meta:
         db_table = "traffic"
         app_label = "mainapp"
