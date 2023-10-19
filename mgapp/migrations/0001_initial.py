@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
                 ('book_price', models.IntegerField()),
             ],
             options={
-                'db_table': 'Booking',
+                'db_table': 'booking',
                 'managed': False,
             },
         ),
@@ -32,7 +32,7 @@ class Migration(migrations.Migration):
                 ('book_price', models.IntegerField()),
             ],
             options={
-                'db_table': 'Booking',
+                'db_table': 'booking',
                 'managed': False,
             },
         ),

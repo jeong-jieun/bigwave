@@ -82,17 +82,17 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'bigwave',
-        'USER': 'root',
-        'PASSWORD': 'dbdb',
-        'HOST': 'localhost',  # MySQL 호스트 주소
+        'USER': 'admin',
+        'PASSWORD': 'bigwave!',
+        'HOST': 'database-1.ch9au3xy53wl.ap-northeast-2.rds.amazonaws.com',  # MySQL 호스트 주소
         'PORT': '3306',       # MySQL 포트 번호 (기본값은 3306)
     },
     'mysql': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'bigwave',
-        'USER': 'root',
-        'PASSWORD': 'dbdb',
-        'HOST': 'localhost',
+        'USER': 'admin',
+        'PASSWORD': 'bigwave!',
+        'HOST': 'database-1.ch9au3xy53wl.ap-northeast-2.rds.amazonaws.com',
         'PORT': '3306',
     },
     # ### 오라클 사용시 추가

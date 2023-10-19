@@ -99,6 +99,6 @@ class Boo_sch(models.Model):
     boo_sch = models.ForeignKey(Schedule, to_field="sch_no", db_column="book_schedule", on_delete=models.PROTECT)
 
     class Meta:
-        db_table = 'Booking'
+        db_table = 'booking'
         app_label = "mainapp"
         managed = False
