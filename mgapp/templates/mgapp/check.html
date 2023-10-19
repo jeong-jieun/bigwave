@@ -91,18 +91,25 @@
 
 			</div>
 	</nav>
+	<div class="container container-e">
 		<!-- <a href="" class="blind" id="container">본문 시작지점</a> -->	
-
-			<div class="sub_tit_area" style="width: auto;">
-				<h2 style="left: auto;">택시 예약 현황</h2>
-				<div class="sub_loc_area" style="text-align: left; font-size: 20px;">mem_id 예약현황
-				</div>
-			</div><!-- //sub_tit_area -->			<!-- //sub_tit_area -->
-
-		</div>
-	<!-- //tab_area -->
+		<div class="sub_wrap">
+			<!-- //sub_tit_area -->
+			
+	
+	
+	
+	
+		<div class="sub_tit_area">
+			<h2>결제하기</h2>
+			<div class="sub_loc_area">
+			</div>
+		</div><!-- //sub_tit_area -->
+	
+			<!-- //tab_area -->
 
 		<div class="gap20"></div>
+	
 	
 	
 			<div class="sub_con_area">
@@ -123,7 +130,7 @@
 				</div> 
 				
 				<div class="gap20"></div>
-				<form name="input-form" method="post" action="#"> 
+				<form name="input-form" action="{% url 'save_reservation' %}" method="post"> 
 					<fieldset>
 					<div class="gap30"></div>
 						<div class="box2">
@@ -132,17 +139,30 @@
 										{% csrf_token %}
 										<fieldset>
 											<legend><h3>[예약확인]</h3></legend>
-											* 출발지 : <span>{{boo_mem.boo_sch1.sch_marina}}</span></br>
+											* 예약 일시 : <span id="reservationTime"></span></br>
+											* 탑승 장소 : {{ selected_schedule.sch_marina }}</span></br>
+											* 도착 장소 : {{ selected_schedule.sch_arrival }}</span></br>
+											* 승차 시간 : {{ selected_schedule.sch_stime }}</span></br>
+											* 하차 시간 : {{ selected_schedule.sch_etime }}</span></br>
 											* 예약 인원 : <span id="qty"></span>명</br>
 											* 결제 금액 : <span id="totalAmount"></span>원
 											<!-- 숨겨진 입력 필드로 예약 정보를 서버로 전송 -->
 											<input type="hidden" name="book_qty" id="input_qty">
-
+											<input type="hidden" name="book_schedule" value="{{ selected_schedule.id }}">
+											<input type="hidden" name="selected_schedule" id="input_selected_schedule">
 										</fieldset>
 									</div>
 								</div>		
 						</div>
 						<div class="gap10"></div>
+						<div class="tal_r val_m">
+							☞ 위와 같이  필독사항과 환불규정에 대하여 동의하십니까?<strong>(필수)</strong>
+							<label for="agreeY">동의</label>
+							<input type="radio" name="agree" id="agreeY" class="checkForm checkbox" value="Y" option="{isMust : true, message : '개인정보 수집 및 이용 동의 여부를 선택하십시오.'}" />
+							&nbsp;&nbsp;&nbsp;&nbsp;
+							<label for="agreeN">미동의</label>
+							<input type="radio" name="agree" id="agreeN" class="checkForm checkbox" value="N" option="{isMust : true, message : '개인정보 수집 및 이용 동의 여부를 선택하십시오.'}" />
+						</div>
 						<div class="gap50"></div>
 						<div class="tbl_wrap tbl3">
 
@@ -159,25 +179,7 @@
 			</div><!-- //sub_con_area -->
 		</div>
 	</div>
-
-	<div class="untree_co-section">
-		<div class="container">
-			<div class="row mb-5 justify-content-center">
-				<div class="col-lg-6 text-center">
-					<h2 class="section-title text-center mb-3">홈페이지 운영방식</h2>
-					<p>해상택시 운영 서비스를 만들게된 기반</p>
-				</div>
-			</div>
-			<div class="row align-items-stretch">
-				<div class="col-lg-4 order-lg-1">
-					<div class="h-100"><div class="frame h-100"><div class="feature-img-bg h-100" style="background-image: url('images/hero-slider-1.jpg');"></div></div></div>
-				</div>
-
-
-			</div>
-		</div>
-	</div>    
-
+    
     <script>
         //취소하기
         function goBack(){

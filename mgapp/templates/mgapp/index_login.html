@@ -94,7 +94,23 @@
 						<h1 class="mb-5"><span class="d-block">선착장</span>가보자<span class="typed-words"></span></h1>
 						<div class="row">
 							<div class="col-12">
-								<form class="form" id="fm" method="GET">
+								<form id="fm" method="post" action="/mg/home/">
+									{% csrf_token %}
+									{% if request.session.ses_mem_id == None %}
+									<script>
+									  function performAction() {
+										var fm = document.getElementById('fm'); // 'fm'에 대한 ID를 감싸는 단일 따옴표 추가 및 함수 이름 수정
+										alert("로그인 후 이용해주세요");
+										fm.action = "/mg/home/";
+										fm.submit();
+									  }
+									  
+									  // 페이지 로드 시 함수 호출 (필요에 따라 이 부분을 수정하세요)
+									  window.onload = function() {
+										performAction();
+									  }
+									</script>
+									{% else %}
 									<h1 style="color: black;">예약 일자</h1>
 									<div class="row mb-2">
 										<div class="square" style="margin-top: 5px; margin-bottom: 5px;">
@@ -107,19 +123,51 @@
 														<th style="color: black;padding-left: 70PX;">인구수</th>
 														<th style="color: black;padding-left: 90PX;">날짜</th>													
 													</tr>
-													{% for row3 in schedule %}
-													<tr style="margin-bottom: 50px; width: 90%; height: 100%;">
-														<td style="color: black;"><input type="radio" name="selected_schedule" value="{{ row3.sch_no }}"></td>
-														<td style="color: black;">{{ row3.sch_marina }}</td>
-														<td style="color: black;">{{ row3.sch_arrival }}</td>
-														<td style="color: black;">{{ row3.sch_stime }}</td>
-														<td style="color: black;">{{ row3.sch_etime }}</td>
-													</tr>
-													{% endfor %}
+													<div class="flex mx-auto">
+														<div class="uesr-info flex flex-col flex-grow">
+														  <div class="uesr-ID flex">
+															<div class="info-name" style="background-color: #3F72AF; color: white; text-align: center;" >예약 아아디</div>
+															<div class="info">{{mem_id}}</div>
+														  </div>
+														  <div class="uesr-name flex">
+															<div class="info-name" style="background-color: #3F72AF; color: white; text-align: center;">출발지</div>
+															<div class="info">{{boo_mem.boo_sch.sch_marina}}</div>
+														  </div>
+														  <div class="uesr-gender flex">
+															<div class="info-name" style="background-color: #3F72AF; color: white; text-align: center;">출발시간</div>
+															<div class="info">{{boo_mem.boo_sch.sch_stime}}</div>
+														  </div>
+														  <div class="uesr-gender flex">
+															<div class="info-name" style="background-color: #3F72AF; color: white; text-align: center;">도착지</div>
+															<div class="info">{{boo_mem.boo_sch.sch_arrival}}</div>
+														  </div>
+														  <div class="uesr-gender flex">
+															<div class="info-name" style="background-color: #3F72AF; color: white; text-align: center;">도착시간</div>
+															<div class="info">{{boo_mem.boo_sch.sch_etime}}</div>
+														  </div>
+														  <div class="uesr-gender flex">
+															<div class="info-name" style="background-color: #3F72AF; color: white; text-align: center;">탑승 인원수</div>
+															<div class="info">{{boo_mem.book_qty}}</div>
+														  </div>
+														  <div class="uesr-gender flex">
+															<div class="info-name" style="background-color: #3F72AF; color: white; text-align: center;">결제 금액</div>
+															<div class="info">{{boo_mem.book_price}}</div>
+														  </div>
+															<div class="info">
+															  <div class="post flex">
+															</div>
+														  </div>
+														</div>
+													  </div>
+													  <div class="btn-info-change flex justify-center">
+														<button class="btn btn-outline" href="#" style="background-color: #3F72AF;">예약 취소</button>
+													  </div>
+													</div>
 												</table>
 											</section>
 										</div>	
 									</div>
+								{% endif %}
 								</form>
 							</div>
 						</div>

@@ -50,6 +50,12 @@ urlpatterns = [
     path('home/', views.index),
     ### mainapp (http://127.0.0.1:8000/mg/home2/)
     path('home2/', views.index2),
-    ### mainapp (http://127.0.0.1:8000/mg/home2/)
+    ### mainapp (http://127.0.0.1:8000/mg/test/)
     path('test/', views.test),
+    ### mainapp (http://127.0.0.1:8000/mg/check/)
+    path('check/', views.check),
+    ### mainapp (http://127.0.0.1:8000/mg/check/)
+    path('temp3/', views.temptemp),
+    ### mainapp (http://127.0.0.1:8000/mg/save2/)
+    path('save2/', views.save2_reservation, name='save2_reservation'),
 ]
