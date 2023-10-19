@@ -123,7 +123,7 @@ def index(request):
         start = request.POST.get('start')
         end = request.POST.get('end')
     if mem_id is not None:
-        boo_mem = Boo_sch.objects.filter(book_mem=mem_id).first()        
+        boo_mem = Boo_mem.objects.filter(boo_mem1=mem_id).first()        
     return render(request,
                   'mgapp/index.html',
                   {"mem_list" : mem_list,
@@ -139,12 +139,14 @@ def index2(request):
                   {})
 def test(request):
     mem_id = request.session.get('ses_mem_id', None)
-    boo_mem = Boo_sch.objects.get(book_mem=mem_id)
-    schedules = []
+    boo_mem = None
     schedules = []
     mem_list = Member.objects.all()
     marinas = Marina.objects.all()
     start, end = None, None
+    
+    if mem_id is not None:
+        boo_mem = Boo_sch.objects.filter(book_mem=mem_id).first()    
     if request.method == 'POST':
         start = request.POST.get('start')
         end = request.POST.get('end')
@@ -162,7 +164,8 @@ def test(request):
                    'marina_list': marinas,
                    'selected_start': start,
                    'selected_end': end,
-                   'qty' : qty})
+                   'qty' : qty,
+                   'boo_mem': boo_mem,})
 def save2_reservation(request):
     try:
         # 예약번호 생성

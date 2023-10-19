@@ -42,6 +42,8 @@
 	}
 	
 	.ticket {
+		width: 80% ;
+		height: 80% ;
 		margin: auto;
 		background: white;
 		box-shadow: -1px 14px 14px -3px rgba(125, 123, 123, 0.43);
@@ -49,6 +51,8 @@
 		-moz-box-shadow: -1px 14px 14px -3px rgba(125, 123, 123, 0.43);
 	}
 	.airline {
+		width: 90% ;
+		height: auto;
 		border-radius: 10px;
 		overflow: hidden;
 	}
@@ -64,12 +68,13 @@
 		color: white;
 	}
 	.airline h2 {
-		font-size: 3em;
+		font-size: 1.5em;
 		font-family: "Roboto", sans-serif;
 		margin: 0;
 		color: white;
 	}
 	.airline h3 {
+		font-size: 1.5em;		
 		font-family: "Roboto", sans-serif;
 		text-align: center;
 		font-weight: semibold;
@@ -127,10 +132,8 @@
 
 				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right" style="width: 70%;">
 					<li class="active"><a href="/mg/test/">선착장예약</a></li>
-					<li><a href="services.html">Services</a></li>
-					<li class="has-children">
-						<a href="#">부가 서비스</a>
-						<ul class="dropdown">
+					<li><a href="/je/service/">교통/관광 서비스</a></li>
+						{% comment %} <ul class="dropdown">
 							<li class="has-children">
 								<a href="#">선착장</a>
 								<ul class="dropdown">
@@ -140,7 +143,7 @@
 									<li><a href="#">자갈치선착장</a></li>
 								</ul>
 							</li>
-						</ul>
+						</ul> {% endcomment %}
 					</li>
 					{% if request.session.ses_mem_id == None %}
 					<li><a href="/login2/">로그인</a></li>
@@ -234,21 +237,21 @@
 								<div class="ticket airline">
 									<div class="header">
 										<h3>PASS</h3> <!-- pitle = pass + title -->
-										<h1>{{boo_mem.boo_sch.sch_marina}}</h1>
-										<h1>{{boo_mem.boo_sch.sch_arrival}}</h1>
+										<h2>출발: {{boo_mem.boo_sch1.sch_marina}}</h2>
+										<h2>도착: {{boo_mem.boo_sch1.sch_arrival}}</h2>
 									</div>
 									<div class="grid">
 										<div class="col">
 											<p>예약자</p>
-											<p>{{mem_id}}</p>
+											<p>{{boo_mem.boo_mem1.mem_id}}</p>
 										</div>
 										<div class="col">
 											<p>예약이름</p>
-											<p>{{mem_list.mem_name}}</p>
+											<p>{{boo_mem.boo_mem1.mem_name}}</p>
 										</div>
 										<div class="col">
 											<p>출발시간</p>
-											<p>{{boo_mem.boo_sch.sch_stime}}</p>
+											<p>{{boo_mem.boo_sch1.sch_stime}}</p>
 										</div>
 									</div>
 									<div class="grid">
@@ -262,7 +265,7 @@
 										</div>
 										<div class="col">
 											<p>도착시간</p>
-											<p>{{boo_mem.boo_sch.sch_etime}}</p>
+											<p>{{boo_mem.boo_sch1.sch_etime}}</p>
 										</div>
 									</div>
 								</div>
