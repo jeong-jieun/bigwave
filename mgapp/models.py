@@ -77,12 +77,13 @@ class Service(models.Model):
 
 class Traffic(models.Model):
     tra_mar = CharField(max_length=30, null=False)
-    tra_num = IntegerField(null=False)
+    tra_id = CharField(max_length=5, primary_key=True)
     tra_nm = CharField(max_length=50, null=False)
-    tra_time = CharField(max_length=50, null=False)
-    tra_bus = CharField(max_length=20, null=False)
-    tra_way = CharField(max_length=100, null=False)
-    tra_route = CharField(max_length=100, null=False)
+    tra_route = IntegerField(null=False)
+    tra_lat = models.FloatField(null=False)
+    tra_lon = models.FloatField(null=False)
+    tra_dis = models.FloatField(null=False)
+    
     class Meta:
         db_table = "traffic"
         app_label = "mgapp"
@@ -95,6 +96,19 @@ class Boo_sch(models.Model):
     book_price = IntegerField(null=False)
 
     boo_sch = models.ForeignKey(Schedule, to_field="sch_no", db_column="book_schedule", on_delete=models.PROTECT)
+
+    class Meta:
+        db_table = 'Booking'
+        app_label = "mgapp"
+        managed = False
+        
+class Boo_mem(models.Model):
+    book_no = BigIntegerField(primary_key=True, null=False)
+    book_qty = IntegerField(null=False)
+    book_price = IntegerField(null=False)
+
+    boo_mem1 = models.ForeignKey(Member, to_field="mem_id", db_column="book_mem", on_delete=models.PROTECT)
+    boo_sch1 = models.ForeignKey(Schedule, to_field="sch_no", db_column="book_schedule", on_delete=models.PROTECT)
 
     class Meta:
         db_table = 'Booking'

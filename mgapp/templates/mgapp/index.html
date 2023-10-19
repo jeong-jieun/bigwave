@@ -29,7 +29,81 @@
 	<link rel="stylesheet" href="{% static 'mgapp/css/daterangepicker.css'%}">
 	<link rel="stylesheet" href="{% static 'mgapp/css/aos.css'%}">
 	<link rel="stylesheet" href="{% static 'mgapp/css/style.css'%}">
-
+<style>
+	@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+	body,
+	html {
+		height: 100%;
+		display: grid;
+		background: #eef1ff;
+	}
+	p {
+		margin: 0;
+	}
+	
+	.ticket {
+		margin: auto;
+		background: white;
+		box-shadow: -1px 14px 14px -3px rgba(125, 123, 123, 0.43);
+		-webkit-box-shadow: -1px 14px 14px -3px rgba(125, 123, 123, 0.43);
+		-moz-box-shadow: -1px 14px 14px -3px rgba(125, 123, 123, 0.43);
+	}
+	.airline {
+		border-radius: 10px;
+		overflow: hidden;
+	}
+	.header {
+		background: #6499E9;
+		padding: 1em;
+	}
+	.header h1 {
+		font-family: "Roboto", sans-serif;
+		font-size: 4em;
+		margin: 0;
+		padding: 0;
+		color: white;
+	}
+	.airline h2 {
+		font-size: 3em;
+		font-family: "Roboto", sans-serif;
+		margin: 0;
+		color: white;
+	}
+	.airline h3 {
+		font-family: "Roboto", sans-serif;
+		text-align: center;
+		font-weight: semibold;
+	}
+	.grid {
+		padding: 1em;
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		margin-top: 0.5em;
+		padding: 1em;
+		border-bottom: 1px solid lightgray;
+	}
+	.col {
+		padding: 5px 10px;
+		display: flex;
+		flex-direction: column;
+	}
+	.col p {
+		font-weight: 600;
+		color: black;
+		font-family: "Roboto", sans-serif;
+	}
+	.col p:nth-child(2) {
+		font-weight: 100;
+		margin-top: 10px;
+	}
+	.basic {
+		box-shadow: none;
+		background-color: transparent;
+		font-family: "Roboto", sans-serif;
+		font-size: 2em;
+	}
+	
+</style>
 	<title>bigwave</title>
 </head>
 
@@ -142,40 +216,133 @@
 								</form>
 							</div>
 							{% else %}
-							<div class="col-12">
-								<form class="form" id="fm" method="GET">
-									<h1 style="color: black;">예약 일자</h1>
-									<div class="row mb-2">
-										<div class="square" style="margin-top: 5px; margin-bottom: 5px;">
-											<section class="passengers-table">
-												<table class="passengers-desktop">
-													<tr style="margin-bottom: 100px;">
-														<th style="color: black;">예약자</th>
-														<th style="color: black; padding-left: 70PX;">출발지</th>
-														<th style="color: black;padding-left: 80PX;">목적지</th>
-														<th style="color: black;padding-left: 70PX;">인구수</th>
-														<th style="color: black;padding-left: 90PX;">날짜</th>													
-													</tr>
-													{% for row3 in schedule %}
-													<tr style="margin-bottom: 50px; width: 90%; height: 100%;">
-														<td style="color: black;"><input type="radio" name="selected_schedule" value="{{ row3.sch_no }}"></td>
-														<td style="color: black;">{{ row3.sch_marina }}</td>
-														<td style="color: black;">{{ row3.sch_arrival }}</td>
-														<td style="color: black;">{{ row3.sch_stime }}</td>
-														<td style="color: black;">{{ row3.sch_etime }}</td>
-													</tr>
-													{% endfor %}
-												</table>
-											</section>
-										</div>	
+							<form id="fm" method="post" action="/mg/home/">
+								{% csrf_token %}
+								<script>
+									function performAction() {
+									  var fm = document.getElementById('fm'); // 'fm'에 대한 ID를 감싸는 단일 따옴표 추가 및 함수 이름 수정
+									  alert("로그인 후 이용해주세요");
+									  fm.action = "/mg/home/";
+									  fm.submit();
+									}
+									
+									// 페이지 로드 시 함수 호출 (필요에 따라 이 부분을 수정하세요)
+									window.onload = function() {
+									  performAction();
+									}
+								</script>							
+								<div class="ticket airline">
+									<div class="header">
+										<h3>PASS</h3> <!-- pitle = pass + title -->
+										<h1>{{boo_mem.boo_sch.sch_marina}}</h1>
+										<h1>{{boo_mem.boo_sch.sch_arrival}}</h1>
 									</div>
-								</form>
-							</div>
+									<div class="grid">
+										<div class="col">
+											<p>예약자</p>
+											<p>{{mem_id}}</p>
+										</div>
+										<div class="col">
+											<p>예약이름</p>
+											<p>{{mem_list.mem_name}}</p>
+										</div>
+										<div class="col">
+											<p>출발시간</p>
+											<p>{{boo_mem.boo_sch.sch_stime}}</p>
+										</div>
+									</div>
+									<div class="grid">
+										<div class="col">
+											<p>결제금액</p>
+											<p>{{boo_mem.book_price}}</p>
+										</div>
+										<div class="col">
+											<p>인원수</p>
+											<p>{{boo_mem.book_qty}}</p>
+										</div>
+										<div class="col">
+											<p>도착시간</p>
+											<p>{{boo_mem.boo_sch.sch_etime}}</p>
+										</div>
+									</div>
+								</div>
+							
 							{% endif %}
 						</div>
 					</div>
 				</div>
+				{% comment %} <form id="fm" method="post" action="/mg/home/">
+					{% csrf_token %}
+					{% if request.session.ses_mem_id == None %}
+					<script>
+					  function performAction() {
+						var fm = document.getElementById('fm'); // 'fm'에 대한 ID를 감싸는 단일 따옴표 추가 및 함수 이름 수정
+						alert("로그인 후 이용해주세요");
+						fm.action = "/mg/home/";
+						fm.submit();
+					  }
+					  
+					  // 페이지 로드 시 함수 호출 (필요에 따라 이 부분을 수정하세요)
+					  window.onload = function() {
+						performAction();
+					  }
+					</script>
+					{% else %}
+					  <main>
+						<div>
+						  <span class="flex justify-center">예약 내역</span>
+								  <div class="flex mx-auto">
+									<div class="uesr-info flex flex-col flex-grow">
+									  <div class="uesr-ID flex">
+										<div class="info-name" style="background-color: #3F72AF; color: white; text-align: center;" >예약 아아디</div>
+										<div class="info">{{mem_id}}</div>
+									  </div>
+									  <div class="uesr-name flex">
+										<div class="info-name" style="background-color: #3F72AF; color: white; text-align: center;">출발지</div>
+										<div class="info">{{boo_mem.boo_sch.sch_marina}}</div>
+									  </div>
+									  <div class="uesr-gender flex">
+										<div class="info-name" style="background-color: #3F72AF; color: white; text-align: center;">출발시간</div>
+										<div class="info">{{boo_mem.boo_sch.sch_stime}}</div>
+									  </div>
+									  <div class="uesr-gender flex">
+										<div class="info-name" style="background-color: #3F72AF; color: white; text-align: center;">도착지</div>
+										<div class="info">{{boo_mem.boo_sch.sch_arrival}}</div>
+									  </div>
+									  <div class="uesr-gender flex">
+										<div class="info-name" style="background-color: #3F72AF; color: white; text-align: center;">도착시간</div>
+										<div class="info">{{boo_mem.boo_sch.sch_etime}}</div>
+									  </div>
+									  <div class="uesr-gender flex">
+										<div class="info-name" style="background-color: #3F72AF; color: white; text-align: center;">탑승 인원수</div>
+										<div class="info">{{boo_mem.book_qty}}</div>
+									  </div>
+									  <div class="uesr-gender flex">
+										<div class="info-name" style="background-color: #3F72AF; color: white; text-align: center;">결제 금액</div>
+										<div class="info">{{boo_mem.book_price}}</div>
+									  </div>
+										<div class="info">
+										  <div class="post flex">
+										</div>
+									  </div>
+									</div>
+								  </div>
+								  <div class="btn-info-change flex justify-center">
+									<button class="btn btn-outline" href="#" style="background-color: #3F72AF;">예약 취소</button>
+								  </div>
+								</div>
+							  </main>
+							</section>
+							<footer class="con mx-auto p-4 text-base-content">
+							  <div>
+								<p>Copyright © 2022 - All right reserved by SongSujeong</p>
+							  </div>
+							</footer>
+						  </div>
+					{% endif %}
+				  </form> {% endcomment %}
 				<div class="col-lg-5">
+
 					<div class="slides">
 						<img src="{% static 'mgapp/images/hero-slider-1.jpg'%}" alt="Image" class="img-fluid active">
 						<img src="{% static 'mgapp/images/hero-slider-2.jpg'%}" alt="Image" class="img-fluid">

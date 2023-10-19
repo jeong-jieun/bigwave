@@ -56,4 +56,6 @@ urlpatterns = [
     path('check/', views.check),
     ### mainapp (http://127.0.0.1:8000/mg/check/)
     path('temp3/', views.temptemp),
+    ### mainapp (http://127.0.0.1:8000/mg/save2/)
+    path('save2/', views.save2_reservation, name='save2_reservation'),
 ]

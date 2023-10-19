@@ -92,7 +92,7 @@
 	<div class="hero" background-color>
 		<div class="container">
 			<div class="row align-items-center">
-				<div class="col-lg-10">
+				<div class="col-lg-12">
 					<div class="intro-wrap">
 						<h1 class="mb-5"><span class="d-block"></span>승선권 조회 <br></h1>
 						{% comment %} <span class="typed-words"></span></h1> {% endcomment %}
@@ -136,7 +136,7 @@
 										</div> {% endcomment %}
 									</div>
 									<div class="row align-items-center">
-										<div class="col-sm-10 col-md-3 mb-3 mb-lg-1 col-lg-11">
+										<div class="col-sm-10 col-md-3 mb-3 mb-lg-1 col-lg-12">
 											<input type="submit" class="btn btn-primary btn-block" value="검색하기">
 										</div>
 									</div>
@@ -152,7 +152,7 @@
 	<div class="untree_co-section">
 		<div class="container">
 			<div class="row mb-5 justify-content-center">
-				<div class="col-lg-10 text-center">
+				<div class="col-lg-12 text-center">
 					<h1 class="section-title text-center mb-3">예약리스트</h2>
 					<form id="fm" method="GET" >
 						{% for row3 in schedule %}
@@ -162,7 +162,7 @@
 					</form>
 					<div class="row">
 						<div class="col-12">
-							<form class="form" id="scheduleForm" method="POST" action="/mg/check/">
+							<form class="form" id="scheduleForm" method="GET" action="/mg/check/">
 								<div class="row mb-8">
 									<table border="2" style="width: 91%;height: 100%;">
 										<tr >
@@ -312,6 +312,22 @@
 			.catch(error => {
 				console.error('Error:', error);
 			});
+		});
+		document.addEventListener('DOMContentLoaded', function () {
+			// 이동할 대상 요소를 선택합니다. 클래스 이름이 "untree_co-section"인 첫 번째 요소를 선택합니다.
+			var targetElement = document.querySelector('.untree_co-section');
+		
+			if (targetElement) {
+				// 스크롤 애니메이션 옵션 설정
+				var scrollOptions = {
+					top: targetElement.offsetTop, // 대상 요소의 상단 위치로 이동
+					left: 0, // 가로 스크롤은 0으로 설정
+					behavior: 'smooth' // 부드러운 스크롤 애니메이션 사용
+				};
+		
+				// 스크롤 이동 실행
+				window.scrollTo(scrollOptions);
+			}
 		});
 	</script>
 	<script src="{% static 'mgapp/js/jquery-3.4.1.min.js'%}"></script>
