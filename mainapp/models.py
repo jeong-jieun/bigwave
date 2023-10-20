@@ -102,3 +102,16 @@ class Boo_sch(models.Model):
         db_table = 'booking'
         app_label = "mainapp"
         managed = False
+
+class Boo_mem(models.Model):
+    book_no = BigIntegerField(primary_key=True, null=False)
+    book_qty = IntegerField(null=False)
+    book_price = IntegerField(null=False)
+
+    boo_mem1 = models.ForeignKey(Member, to_field="mem_id", db_column="book_mem", on_delete=models.PROTECT)
+    boo_sch1 = models.ForeignKey(Schedule, to_field="sch_no", db_column="book_schedule", on_delete=models.PROTECT)
+
+    class Meta:
+        db_table = 'booking'
+        app_label = "mainapp"
+        managed = False
