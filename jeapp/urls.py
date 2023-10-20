@@ -3,14 +3,16 @@ from django.urls import path
 
 from . import views
 urlpatterns = [
-    path('service_detail/<str:marina>/<str:service_type>/<str:service_name>/', views.service_detail, name='service_detail'),
-    ### 스케줄 조회 페이지 (http://127.0.0.1:8000/je/schedule/traffic)
+    
+    # 서비스 페이지 상세보기 처리
+    path('service_detail/', views.service_detail, name='service_detail'),
+    ### 서비스(교통) 조회 페이지 (http://127.0.0.1:8000/je/schedule/traffic)
     path('schedule/traffic/', views.traffic),
     ### 스케줄 조회 페이지 (http://127.0.0.1:8000/je/schedule)
     path('schedule/', views.schedule),
     ### 결제버튼 클릭시 db저장 (http://127.0.0.1:8000/je/save_reservation)
     path('save_reservation/', views.save_reservation, name='save_reservation'),
-    ### 부가서비스페이지 (http://127.0.0.1:8000/je/service)
+    ### 서비스페이지 (http://127.0.0.1:8000/je/service)
     path('service/', views.service, name='search_action'),
     ### 로그인페이지 (http://127.0.0.1:8000/je/login)
     path('login/', views.login),
