@@ -80,7 +80,6 @@ def save_reservation(request):
         # Booking 모델에 데이터 저장
         Booking.objects.create(
             book_no=book_no,
-            # book_mem=book_mem,
             book_mem=book_mem,
             book_qty=book_qty,
             book_price=book_price,
