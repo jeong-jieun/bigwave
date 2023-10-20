@@ -47,6 +47,8 @@ urlpatterns = [
     ### mainapp (http://127.0.0.1:8000/mg/home/)
     path('index_test/', views.index_t),
     ### mainapp (http://127.0.0.1:8000/mg/home/)
+    path('service/', views.service),
+    ### mainapp (http://127.0.0.1:8000/mg/home/)
     path('home/', views.index),
     ### mainapp (http://127.0.0.1:8000/mg/home2/)
     path('home2/', views.index2),
