@@ -5,6 +5,16 @@ from .models import Member, Booking, Schedule, Boo_sch
 
 # Create your views here.
 
+# mypage.html 처리
+def mypage(request):
+    mem_id = request.session.get('ses_mem_id', None)
+    boo_mem = Member.objects.get(mem_id=mem_id)
+
+    return render(request, 'mainapp/mypage.html', {
+        "mem_id": mem_id,
+        "boo_mem": boo_mem,
+    })
+
 def mygjlist(request):
     mem_id = request.session.get('ses_mem_id', None)
     boo_mem = Boo_sch.objects.get(book_mem=mem_id)
@@ -13,6 +23,7 @@ def mygjlist(request):
         "mem_id": mem_id,
         "boo_mem": boo_mem,
     })
+    
 ### signupafter 회원가입 후 페이지
 def signupafter(request):
     try :
@@ -148,13 +159,6 @@ def logout(request):
         """
     
     return HttpResponse(msg)
-
-
-# mypage.html 처리
-def mypage(request):
-    return render(request,
-                  'mainapp/mypage.html',
-                  {})
 
 # hwsj.html 처리
 def hwsj(request):

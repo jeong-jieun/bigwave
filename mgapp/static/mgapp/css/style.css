@@ -1,5 +1,7 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css");
+
 body {
-  font-family: "Inter", sans-serif;
+  font-family: 'Pretendard';
   line-height: 1.5;
   background: #ffffff;
   overflow-x: hidden;
