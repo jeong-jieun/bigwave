@@ -29,6 +29,10 @@
     <link rel="stylesheet" href="{% static 'mgapp/css/aos.css'%}">
     <link rel="stylesheet" href="{% static 'mgapp/css/style.css'%}">
 
+    <!--프리텐다드 글꼴 링크-->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css" />
+
+
     <!--네이버로 로그인하기 링크-->
     <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -230,7 +234,7 @@
 </script>
 
 </head>
-<body style="background-color: #DBE2EF;">
+<body style="background-color: #F9F7F7; font-family: Pretendard;">
   <form id="fm" method="post" action="#">
     {% csrf_token %}
     <div class="site-mobile-menu site-navbar-target" style="background-color: #3F72AF;">
@@ -244,28 +248,14 @@
     <nav class="site-nav" style="background-color: #3F72AF;">
 
       <div class="site-navigation">
-        <a href="/mg/home/" class="logo m-0">bigwave</a> 
+        <a href="/" class="logo m-0" style="font-family: Pretendard;">bigwave</a> 
         {% comment %} <span class="text-primary">bigwave</span> {% endcomment %}
 
         <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-          <li class="active"><a href="/" style="color: #DBE2EF; font-size: 20px;">선착장</a></li>
-          <li><a href="services.html" style="color: #DBE2EF; font-size: 20px;">Services</a></li>
-          <li class="has-children">
-            <a href="#" style="color: #DBE2EF; font-size: 20px;">부가 서비스</a>
-            <ul class="dropdown" style="background-color: #3F72AF;">
-              <li class="has-children">
-                <a href="#" style="color: #DBE2EF; font-size: 17px;">선착장</a>
-                <ul class="dropdown" style="background-color: #3F72AF;">
-                  <li><a href="#" style="color: #DBE2EF;">다대선착장</a></li>
-                  <li><a href="#" style="color: #DBE2EF;">동삼선착장</a></li>
-                  <li><a href="#" style="color: #DBE2EF;">미포선착장</a></li>
-                  <li><a href="#" style="color: #DBE2EF;">자갈치선착장</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          <li><a href="/login2/" style="color: #DBE2EF; font-size: 20px;">로그인</a></li>
-          <li><a href="/signup2/" style="color: #DBE2EF; font-size: 20px;">회원가입</a></li>
+          <li class="active"><a href="/mg/test/" style="color: #DBE2EF; font-size: 20px; font-family: Pretendard;">선착장 예약</a></li>
+          <li><a href="services.html" style="color: #DBE2EF; font-size: 20px; font-family: Pretendard;">교통/관광 서비스</a></li>
+          <li><a href="/login2/" style="color: #DBE2EF; font-size: 20px; font-family: Pretendard;">로그인</a></li>
+          <li><a href="/signup2/" style="color: #DBE2EF; font-size: 20px; font-family: Pretendard;">회원가입</a></li>
         </ul>
 
         <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
@@ -276,8 +266,8 @@
     </nav>
     <br>
       <article class="find1">
-        <h2 style="color: #112D4E; font-family: 굴림; font-weight: bolder;">회원가입</h2>
-        <p style="color: #112D4E; font-family: 굴림; font-weight: bolder;">bigwave 회원가입을 환영합니다.<br>회원으로 가입하시면 다양한 혜택과 서비스를 이용하실 수 있습니다.</p>
+        <h2 style="color: #112D4E; font-family: Pretendard; font-weight: bolder; font-size: 50px;">회 원 가 입</h2>
+        <p style="color: #112D4E; font-family: Pretendard; font-weight: bolder;">bigwave 회원가입을 환영합니다.<br>회원으로 가입하시면 다양한 혜택과 서비스를 이용하실 수 있습니다.</p>
     
         <div>
           <input id="tab1" type="radio" name="tabs" checked>
@@ -295,16 +285,16 @@
     
           <section id="content1">
             <div>
-              <h4 style="color: #112D4E; font-family: 굴림; font-weight: bolder; font-size: 30px;">bigwave 회원가입</h4>
-              <p style="color: #112D4E; font-family: 굴림; font-weight: bolder;">bigwave 회원으로 가입합니다.</p><br>
+              <h4 style="color: #112D4E; font-family: Pretendard; font-weight: bolder; font-size: 30px;">bigwave 회원가입</h4>
+              <p style="color: #112D4E; font-family: Pretendard; font-weight: bolder;">bigwave 회원으로 가입합니다.</p><br>
               <input type="button" class="signup-go" onclick="goToContent2()" value="회원가입 하기"
               style="margin-top: 1rem; background: #3F72AF; padding: 13px; width: 55%; color: white; 
-              transition: 0.6s; font-family: 굴림; font-weight: bolder; font-size: 17px;">
+              transition: 0.6s; font-family: Pretendard; font-weight: bolder; font-size: 17px;">
             </div>
     
             <div class="second-login">
                 <br>
-                <h4 style="color: #112D4E; font-family: 굴림; font-weight: bolder; font-size: 30px;">간편 로그인</h4>
+                <h4 style="color: #112D4E; font-family: Pretendard; font-weight: bolder; font-size: 30px;">간편 로그인</h4>
                 <br>
                 <div id="naver_id_login"></div>
                 <!-- //네이버 로그인 버튼 노출 영역 -->
@@ -383,34 +373,34 @@
           </section>
   
           <section id="content2" style="display: none;">
-            <label style="color: #112D4E; font-family: 굴림; font-weight: bolder;"><input type="checkbox" onclick="checkAll()">　전체 동의</label>
+            <label style="color: #112D4E; font-family: Pretendard; font-weight: bolder;"><input type="checkbox" onclick="checkAll()">　전체 동의</label>
             <hr>
-            <label style="color: #112D4E; font-family: 굴림; font-weight: bolder;"><input type="checkbox" id="termsAgreed">　회원 이용 약관 (필수)　〉</label><br>
-            <label style="color: #112D4E; font-family: 굴림; font-weight: bolder;"><input type="checkbox" id="privacyAgreed">　개인정보 처리방침 (필수)　〉</label><br>
-            <label style="color: #112D4E; font-family: 굴림; font-weight: bolder;"><input type="checkbox" id="dataAgreed">　개인정보 수집 및 이용 (필수)　〉</label><br>
-            <label style="color: #112D4E; font-family: 굴림; font-weight: bolder;"><input type="checkbox">　이메일 마케팅 수신 동의 (선택)</label><br>
-            <label style="color: #112D4E; font-family: 굴림; font-weight: bolder;"><input type="checkbox">　SMS 마케팅 수신 동의 (선택)</label><br>
+            <label style="color: #112D4E; font-family: Pretendard; font-weight: bolder;"><input type="checkbox" id="termsAgreed">　회원 이용 약관 (필수)　〉</label><br>
+            <label style="color: #112D4E; font-family: Pretendard; font-weight: bolder;"><input type="checkbox" id="privacyAgreed">　개인정보 처리방침 (필수)　〉</label><br>
+            <label style="color: #112D4E; font-family: Pretendard; font-weight: bolder;"><input type="checkbox" id="dataAgreed">　개인정보 수집 및 이용 (필수)　〉</label><br>
+            <label style="color: #112D4E; font-family: Pretendard; font-weight: bolder;"><input type="checkbox">　이메일 마케팅 수신 동의 (선택)</label><br>
+            <label style="color: #112D4E; font-family: Pretendard; font-weight: bolder;"><input type="checkbox">　SMS 마케팅 수신 동의 (선택)</label><br>
             <p>정보수신에 동의하지 않아도 정상적인 서비스 이용이 가능합니다. 거래 정보, 결제/교환/환불 등과 관련된 내용은 거래 안전을 위하여 수신동의 여부와 관계없이 발송됩니다.</p>
             <input type="button" onclick="goToContent3()" value="다음으로"
             style="margin-top: 1rem; background: #3F72AF; padding: 15px; width: 55%; color: white;
-            transition: 0.6s; margin: 2.5rem auto 0 6rem; font-family: 굴림; font-weight: bolder; font-size: 17px;">
+            transition: 0.6s; margin: 2.5rem auto 0 6rem; font-family: Pretendard; font-weight: bolder; font-size: 17px;">
           </section>
 
           
             <section id="content3" style="display: none;">
-              <h5  style="color: #112D4E; font-family: 굴림; font-weight: bolder;">회원가입 입력 정보</h5>
+              <h5  style="color: #112D4E; font-family: Pretendard; font-weight: bolder;">회원가입 입력 정보</h5>
       
               <div>
                 <div>
-                  <p style="color: #112D4E; font-family: 굴림; font-weight: bolder;">아이디</p>
+                  <p style="color: #112D4E; font-family: Pretendard; font-weight: bolder;">아이디</p>
                   <br><br>
-                  <p style="color: #112D4E; font-family: 굴림; font-weight: bolder;">이메일</p>
+                  <p style="color: #112D4E; font-family: Pretendard; font-weight: bolder;">이메일</p>
                   <br>
-                  <p style="color: #112D4E; font-family: 굴림; font-weight: bolder;">비밀번호</p>
-                  <p style="color: #112D4E; font-family: 굴림; font-weight: bolder;">비밀번호 확인</p>
-                  <p style="color: #112D4E; font-family: 굴림; font-weight: bolder;">이름</p><br>
-                  <p style="color: #112D4E; font-family: 굴림; font-weight: bolder;">생년월일</p><br>
-                  <p style="color: #112D4E; font-family: 굴림; font-weight: bolder;">휴대전화</p>
+                  <p style="color: #112D4E; font-family: Pretendard; font-weight: bolder;">비밀번호</p>
+                  <p style="color: #112D4E; font-family: Pretendard; font-weight: bolder;">비밀번호 <br>확인</p>
+                  <p style="color: #112D4E; font-family: Pretendard; font-weight: bolder;">이름</p><br>
+                  <p style="color: #112D4E; font-family: Pretendard; font-weight: bolder;">생년월일</p><br>
+                  <p style="color: #112D4E; font-family: Pretendard; font-weight: bolder;">휴대전화</p>
                 </div>
       
                 <div>
@@ -436,10 +426,10 @@
 
               <hr style="margin: 1.3rem 0 1.3rem 0;">
               <div class="join2">
-                <h5 style="color: #112D4E; font-family: 굴림; font-weight: bolder;">주소지 입력</h5>
+                <h5 style="color: #112D4E; font-family: Pretendard; font-weight: bolder;">주소지 입력</h5>
                 <div>
                   <div>
-                    <p style="color: #112D4E; font-family: 굴림; font-weight: bolder;">주소</p>
+                    <p style="color: #112D4E; font-family: Pretendard; font-weight: bolder;">주소</p>
                   </div>
       
                   <div>
@@ -460,9 +450,9 @@
           
           <section id="content4" style="display: none;">
             <img src="{% static 'mainapp/img/가입완료.gif'%}">
-            <h4>회원가입이 완료되었습니다!</h4>
-            <p>모든 회원가입 절차가 완료되었습니다.<br>로그인 후 다양한 혜택과 서비스를 이용하실 수 있습니다.</p>
-            <input type="button" onclick="goCreate()" value="로그인하기" style="font-family: 굴림; font-weight: bolder; font-size: 17px;">
+            <h4 style="font-family: Pretendard;">회원가입이 완료되었습니다!</h4>
+            <p style="font-family: Pretendard;">모든 회원가입 절차가 완료되었습니다.<br>로그인 후 다양한 혜택과 서비스를 이용하실 수 있습니다.</p>
+            <input type="button" onclick="goCreate()" value="로그인하기" style="font-family: Pretendard; font-weight: bolder; font-size: 17px;">
           </section>
         </form>
         </div>
