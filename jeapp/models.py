@@ -78,7 +78,6 @@ class Traffic(models.Model):
     tra_lat = models.FloatField(null=False)
     tra_lon = models.FloatField(null=False)
     tra_dis = models.FloatField(null=False)
-    
     class Meta:
         db_table = "traffic"
         app_label = "jeapp"
