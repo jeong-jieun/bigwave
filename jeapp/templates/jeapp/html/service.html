@@ -42,15 +42,15 @@
         -moz-user-select: none;
         user-select: none;
       }
-
-      @font-face {
+      @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css");
+      {% comment %} @font-face {
         font-family: 'NanumSquareRound';
         src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff') format('woff');
         font-weight: normal;
         font-style: normal;
-      }
+      } {% endcomment %}
       body {
-        font-family: 'NanumSquareRound', sans-serif;
+        font-family: 'Pretendard';
         }
 
       .b-example-divider {
@@ -171,7 +171,7 @@
         --bs-btn-border-radius: var(--bs-border-radius-sm);
       }
       input[type="radio"] {display:none;}
-      input[type="radio"] + label {display: inline-block; width: 25%; text-align: center; padding: 15px; background: #DBE2EF; color: #112D4E; font-size: 18px; cursor: pointer;}
+      input[type="radio"] + label {display: inline-block; width: 25%; text-align: center; padding: 13px; background: #DBE2EF; color: #112D4E; font-size: 18px; cursor: pointer;}
       input[type="radio"]:checked + label {background: #112D4E; color:#F9F7F7;}
     </style> 
   </head>
@@ -185,30 +185,33 @@
         </div>
         <div class="site-mobile-menu-body"></div>
       </div>
+      
       <nav class="site-nav">
-        <div class="site-navigation">
-          <a href="/mg/home/" class="logo m-0">bigwave</a> 
-          {% comment %} <span class="text-primary">bigwave</span> {% endcomment %}
-  
-          <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right" style="width: 70%;">
-            <li class="active"><a href="/mg/test/">선착장예약</a></li>
-            <li><a href="/je/service/">교통/관광 서비스</a></li>
-            </li>
-            {% if request.session.ses_mem_id == None %}
-            <li><a href="/login2/">로그인</a></li>
-            <li><a href="/signup2/">회원가입</a></li>
-            {% else %}
-            <li><a href="/mg/booking/">예약확인</a></li>
-            <li><a href="/mypage/">회원정보</a></li>
-            <li><a href="/mg/logout/">로그아웃</a></li>
-            {% endif %}
-          </ul>
-  
-          <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
-            <span></span>
-          </a>
-  
-        </div>
+      
+          <div class="site-navigation">
+            <a href="/" class="logo m-0"><img src="{% static "mainapp/free-css/images/로고색.png" %}" alt="" style="width: 300px; height: 50px;" ></a> 
+            {% comment %} <span class="text-primary">bigwave</span> {% endcomment %}
+      
+            <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
+              <li class="active"><a href="/mg/test/">선착장예약</a></li>
+              <li><a href="/je/service/">교통/관광 서비스</a></li>
+              <li><a href="/je/service/">챗봇 서비스</a></li>
+              </li>
+              {% if request.session.ses_mem_id == None %}
+              <li><a href="/login2/">로그인</a></li>
+              <li><a href="/signup2/">회원가입</a></li>
+              {% else %}
+              <li><a href="/mg/booking/">예약확인</a></li>
+              <li><a href="/mypage/">회원정보</a></li>
+              <li><a href="/logout/">로그아웃</a></li>
+              {% endif %}
+            </ul>
+      
+            <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
+              <span></span>
+            </a>
+      
+          </div>
       </nav>
     </header>
     <main>

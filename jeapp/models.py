@@ -63,13 +63,9 @@ class Service(models.Model):
     ser_gu = models.CharField(max_length=10, null=False)
     ser_group = models.CharField(max_length=50, null=False)
     ser_nm = models.CharField(primary_key=True, max_length=50, null=False)
-    ser_add = models.CharField(max_length=100, null=False)
-    ser_tel = models.CharField(max_length=20)
     ser_img = models.CharField(max_length=300, null=False)
     ser_distance = models.IntegerField(null=False)
     ser_url = models.CharField(max_length=100, null=False)
-    ser_lat = models.FloatField(null=False)
-    ser_lon = models.FloatField(null=False)
     class Meta:
         db_table = "service"
         app_label = "jeapp"
@@ -79,12 +75,27 @@ class Traffic(models.Model):
     tra_mar = CharField(max_length=30, null=False)
     tra_id = CharField(max_length=5, primary_key=True)
     tra_nm = CharField(max_length=50, null=False)
-    tra_route = IntegerField(null=False)
     tra_lat = models.FloatField(null=False)
     tra_lon = models.FloatField(null=False)
     tra_dis = models.FloatField(null=False)
-    
     class Meta:
         db_table = "traffic"
+        app_label = "jeapp"
+        managed = False
+        
+class Businfo(models.Model):
+    bus_stop = CharField(max_length=5, primary_key=True, null=False)
+    bus_no = CharField(max_length=10,null=False)
+    bus_time = CharField(max_length=10)
+    bus_remain = IntegerField()
+    class Meta:
+        db_table = "businfo"
+        app_label = "jeapp"
+        managed = False
+        
+class Busstop(models.Model):
+    stop_id = CharField(max_length=5, primary_key=True)
+    class Meta:
+        db_table = "busstop"
         app_label = "jeapp"
         managed = False

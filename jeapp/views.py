@@ -60,6 +60,7 @@ def schedule(request):
 # 결제하기 버튼 클릭시 DB에 저장시키기
 def save_reservation(request):
     try:
+        mem_id = request.session.get('ses_mem_id', None)
         # 예약번호 생성
         now = datetime.now()
         book_no_format = now.strftime('%y%m%d%H%M')
@@ -72,7 +73,7 @@ def save_reservation(request):
 
         # 로그인한 사용자의 ID 가져오기 (이 예제에서는 `request.user.id`를 사용하였으나 실제 구현에 따라 다를 수 있습니다.)
         # book_mem = request.user.id
-        book_mem = 'abc001'
+        book_mem = mem_id
         book_qty = int(request.POST.get("book_qty"))  # 정수형으로 변환
         book_price = book_qty * 20000  # 예약금액 계산
         book_schedule = int(request.POST.get("selected_schedule")) # 예약 스케줄 번호
