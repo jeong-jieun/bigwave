@@ -21,7 +21,8 @@ from . import views
 
 urlpatterns = [
     
-    
+    ### mainapp (http://127.0.0.1:8000/mygjlist/)
+    path('main/', views.main),
     ### mainapp (http://127.0.0.1:8000/mygjlist/)
     path('logout/', views.logout),
     ### mainapp (http://127.0.0.1:8000/mygjlist/)

@@ -234,10 +234,10 @@
 </script>
 
 </head>
-<body style="background-color: #F9F7F7; font-family: Pretendard;">
+<body style="background-color: #fff; font-family: Pretendard;">
   <form id="fm" method="post" action="#">
     {% csrf_token %}
-    <div class="site-mobile-menu site-navbar-target" style="background-color: #3F72AF;">
+    <div class="site-mobile-menu site-navbar-target">
       <div class="site-mobile-menu-header">
         <div class="site-mobile-menu-close">
           <span class="icofont-close js-menu-toggle"></span>
@@ -245,18 +245,20 @@
       </div>
       <div class="site-mobile-menu-body"></div>
     </div>
-    <nav class="site-nav" style="background-color: #3F72AF;">
+    <nav class="site-nav">
 
       <div class="site-navigation">
-        <a href="/" class="logo m-0" style="font-family: Pretendard;">bigwave</a> 
+        <a href="/" class="logo m-0"><img src="{% static "mainapp/free-css/images/로고색.png" %}" alt="" style="width: 300px; height: 50px;"></a> 
         {% comment %} <span class="text-primary">bigwave</span> {% endcomment %}
 
         <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-          <li class="active"><a href="/mg/test/" style="color: #DBE2EF; font-size: 20px; font-family: Pretendard;">선착장 예약</a></li>
-          <li><a href="services.html" style="color: #DBE2EF; font-size: 20px; font-family: Pretendard;">교통/관광 서비스</a></li>
-          <li><a href="/login2/" style="color: #DBE2EF; font-size: 20px; font-family: Pretendard;">로그인</a></li>
-          <li><a href="/signup2/" style="color: #DBE2EF; font-size: 20px; font-family: Pretendard;">회원가입</a></li>
-        </ul>
+          <li class="active"><a href="/mg/test/">선착장예약</a></li>
+          <li><a href="/je/service/">교통/관광 서비스</a></li>
+          <li><a href="/je/service/">챗봇 서비스</a></li>
+          </li>
+          <li><a href="/login2/">로그인</a></li>
+          <li><a href="/signup2/">회원가입</a></li>
+          </ul>
 
         <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
           <span></span>
@@ -288,88 +290,9 @@
               <h4 style="color: #112D4E; font-family: Pretendard; font-weight: bolder; font-size: 30px;">bigwave 회원가입</h4>
               <p style="color: #112D4E; font-family: Pretendard; font-weight: bolder;">bigwave 회원으로 가입합니다.</p><br>
               <input type="button" class="signup-go" onclick="goToContent2()" value="회원가입 하기"
-              style="margin-top: 1rem; background: #3F72AF; padding: 13px; width: 55%; color: white; 
+              style="margin-top: 1rem; background: linear-gradient(to left, #3F72AF, #b4caf2); padding: 13px; width: 55%; color: white; 
               transition: 0.6s; font-family: Pretendard; font-weight: bolder; font-size: 17px;">
             </div>
-    
-            <div class="second-login">
-                <br>
-                <h4 style="color: #112D4E; font-family: Pretendard; font-weight: bolder; font-size: 30px;">간편 로그인</h4>
-                <br>
-                <div id="naver_id_login"></div>
-                <!-- //네이버 로그인 버튼 노출 영역 -->
-                <script type="text/javascript">
-                  var naver_id_login = new naver_id_login("YOUR_CLIENT_ID", "YOUR_CALLBACK_URL");
-                  var state = naver_id_login.getUniqState();
-                  naver_id_login.setButton("green", 25,50);
-                  naver_id_login.setDomain("YOUR_SERVICE_URL");
-                  naver_id_login.setState(state);
-                  naver_id_login.setPopup();
-                  naver_id_login.init_naver_id_login();
-                </script>
-    
-                <!--카카오로 로그인하기-->
-                <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.4.0/kakao.min.js"
-                integrity="sha384-mXVrIX2T/Kszp6Z0aEWaA8Nm7J6/ZeWXbL8UpGRjKwWe56Srd/iyNmWMBhcItAjH" crossorigin="anonymous"></script>
-              <script>
-                Kakao.init('c089c8172def97eb00c07217cae17495'); // 사용하려는 앱의 JavaScript 키 입력
-              </script>
-              <br>
-
-            <!--카카오로 로그인하기-->
-            <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.4.0/kakao.min.js"
-            integrity="sha384-mXVrIX2T/Kszp6Z0aEWaA8Nm7J6/ZeWXbL8UpGRjKwWe56Srd/iyNmWMBhcItAjH" crossorigin="anonymous"></script>
-          <script>
-            Kakao.init('c089c8172def97eb00c07217cae17495'); // 사용하려는 앱의 JavaScript 키 입력
-          </script>
-          
-          <a id="kakao-login-btn" href="javascript:loginWithKakao()">
-            <img src="https://k.kakaocdn.net/14/dn/btroDszwNrM/I6efHub1SN5KCJqLm1Ovx1/o.jpg" width="235" height="50"
-              alt="카카오 로그인 버튼" />
-          </a>
-          <p id="token-result"></p>
-          <button class="api-btn" onclick="requestUserInfo()" style="visibility:hidden">사용자 정보 가져오기</button>
-          
-          <script>
-            function loginWithKakao() {
-              Kakao.Auth.authorize({
-                redirectUri: 'https://developers.kakao.com/tool/demo/oauth',
-                state: 'userme',
-              });
-            }
-          
-            function requestUserInfo() {
-              Kakao.API.request({
-                url: '/v2/user/me',
-              })
-                .then(function(res) {
-                  alert(JSON.stringify(res));
-                })
-                .catch(function(err) {
-                  alert(
-                    'failed to request user information: ' + JSON.stringify(err)
-                  );
-                });
-            }
-          
-            // 아래는 데모를 위한 UI 코드입니다.
-            displayToken()
-            function displayToken() {
-              var token = getCookie('authorize-access-token');
-          
-              if(token) {
-                Kakao.Auth.setAccessToken(token);
-                document.querySelector('#token-result').innerText = 'login success, ready to request API';
-                document.querySelector('button.api-btn').style.visibility = 'visible';
-              }
-            }
-          
-            function getCookie(name) {
-              var parts = document.cookie.split(name + '=');
-              if (parts.length === 2) { return parts[1].split(';')[0]; }
-            }
-          </script>
-              </div>
           </section>
   
           <section id="content2" style="display: none;">
@@ -382,7 +305,7 @@
             <label style="color: #112D4E; font-family: Pretendard; font-weight: bolder;"><input type="checkbox">　SMS 마케팅 수신 동의 (선택)</label><br>
             <p>정보수신에 동의하지 않아도 정상적인 서비스 이용이 가능합니다. 거래 정보, 결제/교환/환불 등과 관련된 내용은 거래 안전을 위하여 수신동의 여부와 관계없이 발송됩니다.</p>
             <input type="button" onclick="goToContent3()" value="다음으로"
-            style="margin-top: 1rem; background: #3F72AF; padding: 15px; width: 55%; color: white;
+            style="margin-top: 1rem; background: linear-gradient(to left, #3F72AF, #b4caf2); padding: 15px; width: 55%; color: white;
             transition: 0.6s; margin: 2.5rem auto 0 6rem; font-family: Pretendard; font-weight: bolder; font-size: 17px;">
           </section>
 

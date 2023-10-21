@@ -48,29 +48,17 @@
 		</div>
 		<div class="site-mobile-menu-body"></div>
 	</div>
-
+	
 	<nav class="site-nav">
-
+	
 			<div class="site-navigation">
-				<a href="/mg/home/" class="logo m-0">bigwave</a> 
+				<a href="/" class="logo m-0"><img src="{% static "mainapp/free-css/images/로고색.png" %}" alt="" style="width: 300px; height: 50px;" ></a> 
 				{% comment %} <span class="text-primary">bigwave</span> {% endcomment %}
-
+	
 				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-					<li class="active"><a href="/mg/test/">선착장</a></li>
-					<li><a href="services.html">Services</a></li>
-					<li class="has-children">
-						<a href="#">부가 서비스</a>
-						<ul class="dropdown">
-							<li class="has-children">
-								<a href="#">선착장</a>
-								<ul class="dropdown">
-									<li><a href="#">다대선착장</a></li>
-									<li><a href="#">동삼선착장</a></li>
-									<li><a href="#">미포선착장</a></li>
-									<li><a href="#">자갈치선착장</a></li>
-								</ul>
-							</li>
-						</ul>
+					<li class="active"><a href="/mg/test/">선착장예약</a></li>
+					<li><a href="/je/service/">교통/관광 서비스</a></li>
+					<li><a href="/je/service/">챗봇 서비스</a></li>
 					</li>
 					{% if request.session.ses_mem_id == None %}
 					<li><a href="/login2/">로그인</a></li>
@@ -78,18 +66,17 @@
 					{% else %}
 					<li><a href="/mg/booking/">예약확인</a></li>
 					<li><a href="/mypage/">회원정보</a></li>
-					<li><a href="/mg/logout/">로그아웃</a></li>
+					<li><a href="/logout/">로그아웃</a></li>
 					{% endif %}
 				</ul>
-
-
+	
 				<a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
 					<span></span>
 				</a>
-
+	
 			</div>
 	</nav>
-	<div class="hero" background-color>
+	<div class="hero" background-color style="background: linear-gradient(to left, #3F72AF, #b4caf2);">
 		<div class="container">
 			<div class="row align-items-center">
 				<div class="col-lg-12">
@@ -119,12 +106,12 @@
 										</div>
 										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-6">
 											<select name="qty" id="qty" class="form-control custom-select">
-												<option value="">인구수</option>
+												<option value="">탑승객수</option>
 												<option value="1">1인</option>
 												<option value="2">2인</option>
 												<option value="3">3인</option>
 												<option value="4">4인</option>
-												<option value="5">5인 이상</option>
+												<option value="5">5인</option>
 											</select>
 										</div>
 										{% comment %} <div class="col-lg-8">
@@ -153,35 +140,34 @@
 		<div class="container">
 			<div class="row mb-5 justify-content-center">
 				<div class="col-lg-12 text-center">
-					<h1 class="section-title text-center mb-3">예약리스트</h2>
-					<form id="fm" method="GET" >
-					<h3 class=" text-center mb-3">도착지:{{ selected_end }}</h2>
-					<p>{{ selected_start }}출발</p>
-					</form>
 					<div class="row">
 						<div class="col-12">
 							<form class="form" id="scheduleForm" method="GET" action="/mg/check/">
-								<div class="row mb-8">
+								<div class="row mb-8 lg-12" style="padding-top: 50px;">
 									<table border="2" style="width: 91%;height: 100%;">
 										<tr >
-											<th style="color: black;">선택</th>
-											<th style="color: black;">출발지</th>
-											<th style="color: black;">도착지</th>
-											<th style="color: black;">출발시간</th>
-											<th style="color: black;">도착시간</th>
+											<th style="color: black;">번호</th>
+											<th style="color: black; font-size: 27px;" >출발지</th>
+											<th style="color: black; font-size: 27px;">도착지</th>
+											<th style="color: black;">예약하기</th>
+
 										</tr>
 										{% for row3 in schedule %}
 										<tr>
 											<td style="color: black;"><input type="radio" name="selected_schedule" value="{{ row3.sch_no }}"></td>
-											<td style="color: black;">{{ row3.sch_marina }}</td>
-											<td style="color: black;">{{ row3.sch_arrival }}</td>
-											<td style="color: black;">{{ row3.sch_stime }}</td>
-											<td style="color: black;">{{ row3.sch_etime }}</td>
+											
+											<td style="color: black;"><p2 style="font-size: 35px;font-weight: 700;">1</td>
+											<td style="color: black;"><p2 style="font-size: 35px;font-weight: 700;">{{ row3.sch_marina }}</p2>
+												<br><p style="font-size: 18px;">{{ row3.sch_stime }}</p></td>
+											<td style="color: black;"><p2 style="font-size: 35px;font-weight: 700;">{{ row3.sch_arrival }}</p2>
+												<br><p style="font-size: 18px;">{{ row3.sch_stime }}</p></td>
+												<input type="hidden" name="qty" value="{{ qty }}" style="color: black;">
+											<td><input type="submit" value="예약" style="color: black;height: 100%;width: 100%;"	></td>
 										</tr>
 										{% endfor %}
 									</table>
-									<input type="hidden" name="qty" value="{{ qty }}" style="color: black;">
-									<input type="submit" value="예약하기" style="color: black;"	>
+									{% comment %} <input type="hidden" name="qty" value="{{ qty }}" style="color: black;">
+									<input type="submit" value="예약하기" style="color: black;"	> {% endcomment %}
 								</div>
 							</form>
 						</div>

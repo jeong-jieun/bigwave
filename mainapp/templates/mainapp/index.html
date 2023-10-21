@@ -1,174 +1,162 @@
 {% load static %}
-<!-- /*
-* Template Name: Tour
-* Template Author: Untree.co
-* Tempalte URI: https://untree.co/
-* License: https://creativecommons.org/licenses/by/3.0/
-*/ -->
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="author" content="Untree.co">
-	<link rel="shortcut icon" href="favicon.png">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Applight Template By W3 Template</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+<link rel="stylesheet" href="{% static 'mainapp/free-css/css/animate.css' %}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+<link rel="stylesheet" href="{% static 'mainapp/free-css/style.css' %}">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/cssWatch Now/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+<!-- Font Google -->
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<meta name="description" content="" />
-	<meta name="keywords" content="bootstrap, bootstrap4" />
+<link rel="shortcut icon" href="favicon.png">
 
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
+<meta name="description" content="" />
+<meta name="keywords" content="bootstrap, bootstrap4" />
 
-	<link rel="stylesheet" href="{% static 'mgapp/css/bootstrap.min.css'%}">
-	<link rel="stylesheet" href="{% static 'mgapp/css/owl.carousel.min.css'%}">
-	<link rel="stylesheet" href="{% static 'mgapp/css/owl.theme.default.min.css'%}">
-	<link rel="stylesheet" href="{% static 'mgapp/css/jquery.fancybox.min.css'%}">
-	<link rel="stylesheet" href="{% static 'mgapp/fonts/icomoon/style.css'%}">
-	<link rel="stylesheet" href="{% static 'mgapp/fonts/flaticon/font/flaticon.css'%}">
-	<link rel="stylesheet" href="{% static 'mgapp/css/daterangepicker.css'%}">
-	<link rel="stylesheet" href="{% static 'mgapp/css/aos.css'%}">
-	<link rel="stylesheet" href="{% static 'mgapp/css/style.css'%}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
 
-	<!--네이버 로그인 콜백함수 링크-->
-	<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<link rel="stylesheet" href="{% static 'mgapp/css/bootstrap.min.css'%}">
+<link rel="stylesheet" href="{% static 'mgapp/css/owl.carousel.min.css'%}">
+<link rel="stylesheet" href="{% static 'mgapp/css/owl.theme.default.min.css'%}">
+<link rel="stylesheet" href="{% static 'mgapp/css/jquery.fancybox.min.css'%}">
+<link rel="stylesheet" href="{% static 'mgapp/fonts/icomoon/style.css'%}">
+<link rel="stylesheet" href="{% static 'mgapp/fonts/flaticon/font/flaticon.css'%}">
+<link rel="stylesheet" href="{% static 'mgapp/css/daterangepicker.css'%}">
+<link rel="stylesheet" href="{% static 'mgapp/css/aos.css'%}">
+<link rel="stylesheet" href="{% static 'mgapp/css/style.css'%}">
+
 
 <style>
-	@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-	body,
-	html {
-		height: 100%;
-		display: grid;
-		background: #eef1ff;
-	}
-	p {
-		margin: 0;
-	}
-	
-	.ticket {
-		width: 80% ;
-		height: 80% ;
-		margin: auto;
-		background: white;
-		box-shadow: -1px 14px 14px -3px rgba(125, 123, 123, 0.43);
-		-webkit-box-shadow: -1px 14px 14px -3px rgba(125, 123, 123, 0.43);
-		-moz-box-shadow: -1px 14px 14px -3px rgba(125, 123, 123, 0.43);
-	}
-	.airline {
-		width: 90% ;
-		height: auto;
-		border-radius: 10px;
-		overflow: hidden;
-	}
-	.header {
-		background: #6499E9;
-		padding: 1em;
-	}
-	.header h1 {
-		font-family: "Roboto", sans-serif;
-		font-size: 4em;
-		margin: 0;
-		padding: 0;
-		color: white;
-	}
-	.airline h2 {
-		font-size: 1.5em;
-		font-family: "Roboto", sans-serif;
-		margin: 0;
-		color: white;
-	}
-	.airline h3 {
-		font-size: 1.5em;		
-		font-family: "Roboto", sans-serif;
-		text-align: center;
-		font-weight: semibold;
-	}
-	.grid {
-		padding: 1em;
-		display: grid;
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-		margin-top: 0.5em;
-		padding: 1em;
-		border-bottom: 1px solid lightgray;
-	}
-	.col {
-		padding: 5px 10px;
-		display: flex;
-		flex-direction: column;
-	}
-	.col p {
-		font-weight: 600;
-		color: black;
-		font-family: "Roboto", sans-serif;
-	}
-	.col p:nth-child(2) {
-		font-weight: 100;
-		margin-top: 10px;
-	}
-	.basic {
-		box-shadow: none;
-		background-color: transparent;
-		font-family: "Roboto", sans-serif;
-		font-size: 2em;
-	}
-	
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+body,
+html {
+    height: 100%;
+    display: grid;
+    background: #eef1ff;
+}
+p {
+    margin: 0;
+}
+
+.ticket {
+    width: 80% ;
+    height: 80% ;
+    margin: auto;
+    background: white;
+    box-shadow: -1px 14px 14px -3px rgba(125, 123, 123, 0.43);
+    -webkit-box-shadow: -1px 14px 14px -3px rgba(125, 123, 123, 0.43);
+    -moz-box-shadow: -1px 14px 14px -3px rgba(125, 123, 123, 0.43);
+}
+.airline {
+    width: 90% ;
+    height: auto;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.header {
+    background: #6499E9;
+    padding: 1em;
+}
+.header h1 {
+    font-family: "Roboto", sans-serif;
+    font-size: 4em;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+.airline h2 {
+    font-size: 1.5em;
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+    color: white;
+}
+.airline h3 {
+    font-size: 1.5em;		
+    font-family: "Roboto", sans-serif;
+    text-align: center;
+    font-weight: semibold;
+}
+.grid {
+    padding: 1em;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 0.5em;
+    padding: 1em;
+    border-bottom: 1px solid lightgray;
+}
+.col {
+    padding: 5px 10px;
+    display: flex;
+    flex-direction: column;
+}
+.col p {
+    font-weight: 600;
+    color: black;
+    font-family: "Roboto", sans-serif;
+}
+.col p:nth-child(2) {
+    font-weight: 100;
+    margin-top: 10px;
+}
+.basic {
+    box-shadow: none;
+    background-color: transparent;
+    font-family: "Roboto", sans-serif;
+    font-size: 2em;
+}
+
 </style>
-	<title>bigwave</title>
 </head>
 
 <body>
+<!-- Navbar -->
+<div class="site-mobile-menu site-navbar-target">
+    <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close">
+            <span class="icofont-close js-menu-toggle"></span>
+        </div>
+    </div>
+    <div class="site-mobile-menu-body"></div>
+</div>
 
+<nav class="site-nav">
 
-	<div class="site-mobile-menu site-navbar-target">
-		<div class="site-mobile-menu-header">
-			<div class="site-mobile-menu-close">
-				<span class="icofont-close js-menu-toggle"></span>
-			</div>
-		</div>
-		<div class="site-mobile-menu-body"></div>
-	</div>
+        <div class="site-navigation">
+            <a href="/" class="logo m-0"><img src="{% static "mainapp/free-css/images/로고색.png" %}" alt="" style="width: 300px; height: 50px;" ></a> 
+            {% comment %} <span class="text-primary">bigwave</span> {% endcomment %}
 
-	<nav class="site-nav">
+            <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
+                <li class="active"><a class="nav-link" href="#" data-scroll-nav="0">서비스 소개</a></li>
+                <li class="active"><a href="/mg/test/">선착장예약</a></li>
+                <li><a href="/je/service/">교통/관광 서비스</a></li>
+                <li><a href="/je/service/">챗봇 서비스</a></li>
+                </li>
+                {% if request.session.ses_mem_id == None %}
+                <li><a href="/login2/">로그인</a></li>
+                <li><a href="/signup2/">회원가입</a></li>
+                {% else %}
+                <li><a href="/mg/booking/">예약확인</a></li>
+                <li><a href="/mypage/">회원정보</a></li>
+                <li><a href="/logout/">로그아웃</a></li>
+                {% endif %}
+            </ul>
 
-			<div class="site-navigation">
-				<a href="/" class="logo m-0">bigwave</a> 
-				{% comment %} <span class="text-primary">bigwave</span> {% endcomment %}
+            <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
+                <span></span>
+            </a>
 
-				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right" style="width: 70%;">
-					<li class="active"><a href="/mg/test/">선착장예약</a></li>
-					<li><a href="/je/service/">교통/관광 서비스</a></li>
-						{% comment %} <ul class="dropdown">
-							<li class="has-children">
-								<a href="#">선착장</a>
-								<ul class="dropdown">
-									<li><a href="#">다대선착장</a></li>
-									<li><a href="#">동삼선착장</a></li>
-									<li><a href="#">미포선착장</a></li>
-									<li><a href="#">자갈치선착장</a></li>
-								</ul>
-							</li>
-						</ul> {% endcomment %}
-					</li>
-					{% if request.session.ses_mem_id == None %}
-					<li><a href="/login2/">로그인</a></li>
-					<li><a href="/signup2/">회원가입</a></li>
-					{% else %}
-					<li><a href="/mg/booking/">예약확인</a></li>
-					<li><a href="/mypage/">회원정보</a></li>
-					<li><a href="/mg/logout/">로그아웃</a></li>
-					{% endif %}
-				</ul>
+        </div>
+</nav>
 
-				<a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
-					<span></span>
-				</a>
-
-			</div>
-	</nav>
-
-
-	<div class="hero">
+<section class="feature section-padding" data-scroll-index='2' style="background: linear-gradient(to left, #3F72AF, #b4caf2);" >
+	<div class="hero" style="background: linear-gradient(to left, #3F72AF, #b4caf2);" >
 
 		<div class="container">
 			<div class="row align-items-center">
@@ -178,7 +166,7 @@
 							<br><span class="typed-words"></span></h1>
 						<div class="row">
 							{% if request.session.ses_mem_id == None %}
-							<div class="col-12">
+							<div class="col-12" >
 								<form class="form" id="fm" method="GET" action="/mg/test/" onsubmit="return validateForm()" >
 									<div class="row mb-2">
 											<div class="col-sm-12 cl-md-6 mb-3 mb-lg-0 col-lg-6">
@@ -208,13 +196,6 @@
 												<option value="5">5인 이상</option>
 											  </select>
 											</div>
-												{% comment %} <div class="col-lg-8">
-													<label class="control control--checkbox mt-3">
-														<span class="caption">Save this search</span>
-														<input type="checkbox" checked="checked" />
-														<div class="control__indicator"></div>
-													</label>
-												</div> {% endcomment %}
 											</div>
 									<div class="row align-items-center">
 										<div class="col-sm-10 col-md-3 mb-3 mb-lg-1 col-lg-11">
@@ -224,7 +205,7 @@
 								</form>
 							</div>
 							{% else %}
-							<form id="fm" method="post" action="/mg/home/">
+							<form id="fm" method="post" action="/">
 								{% csrf_token %}
 								<script>
 									function performAction() {
@@ -279,76 +260,6 @@
 						</div>
 					</div>
 				</div>
-				{% comment %} <form id="fm" method="post" action="/mg/home/">
-					{% csrf_token %}
-					{% if request.session.ses_mem_id == None %}
-					<script>
-					  function performAction() {
-						var fm = document.getElementById('fm'); // 'fm'에 대한 ID를 감싸는 단일 따옴표 추가 및 함수 이름 수정
-						alert("로그인 후 이용해주세요");
-						fm.action = "/mg/home/";
-						fm.submit();
-					  }
-					  
-					  // 페이지 로드 시 함수 호출 (필요에 따라 이 부분을 수정하세요)
-					  window.onload = function() {
-						performAction();
-					  }
-					</script>
-					{% else %}
-					  <main>
-						<div>
-						  <span class="flex justify-center">예약 내역</span>
-								  <div class="flex mx-auto">
-									<div class="uesr-info flex flex-col flex-grow">
-									  <div class="uesr-ID flex">
-										<div class="info-name" style="background-color: #3F72AF; color: white; text-align: center;" >예약 아아디</div>
-										<div class="info">{{mem_id}}</div>
-									  </div>
-									  <div class="uesr-name flex">
-										<div class="info-name" style="background-color: #3F72AF; color: white; text-align: center;">출발지</div>
-										<div class="info">{{boo_mem.boo_sch.sch_marina}}</div>
-									  </div>
-									  <div class="uesr-gender flex">
-										<div class="info-name" style="background-color: #3F72AF; color: white; text-align: center;">출발시간</div>
-										<div class="info">{{boo_mem.boo_sch.sch_stime}}</div>
-									  </div>
-									  <div class="uesr-gender flex">
-										<div class="info-name" style="background-color: #3F72AF; color: white; text-align: center;">도착지</div>
-										<div class="info">{{boo_mem.boo_sch.sch_arrival}}</div>
-									  </div>
-									  <div class="uesr-gender flex">
-										<div class="info-name" style="background-color: #3F72AF; color: white; text-align: center;">도착시간</div>
-										<div class="info">{{boo_mem.boo_sch.sch_etime}}</div>
-									  </div>
-									  <div class="uesr-gender flex">
-										<div class="info-name" style="background-color: #3F72AF; color: white; text-align: center;">탑승 인원수</div>
-										<div class="info">{{boo_mem.book_qty}}</div>
-									  </div>
-									  <div class="uesr-gender flex">
-										<div class="info-name" style="background-color: #3F72AF; color: white; text-align: center;">결제 금액</div>
-										<div class="info">{{boo_mem.book_price}}</div>
-									  </div>
-										<div class="info">
-										  <div class="post flex">
-										</div>
-									  </div>
-									</div>
-								  </div>
-								  <div class="btn-info-change flex justify-center">
-									<button class="btn btn-outline" href="#" style="background-color: #3F72AF;">예약 취소</button>
-								  </div>
-								</div>
-							  </main>
-							</section>
-							<footer class="con mx-auto p-4 text-base-content">
-							  <div>
-								<p>Copyright © 2022 - All right reserved by SongSujeong</p>
-							  </div>
-							</footer>
-						  </div>
-					{% endif %}
-				  </form> {% endcomment %}
 				<div class="col-lg-5">
 
 					<div class="slides">
@@ -363,440 +274,6 @@
 		</div>
 	</div>
 
-
-	<div class="untree_co-section">
-		<div class="container">
-			<div class="row mb-5 justify-content-center">
-				<div class="col-lg-6 text-center">
-					<h2 class="section-title text-center mb-3">홈페이지 운영방식</h2>
-					<p>해상택시 운영 서비스를 만들게된 기반</p>
-				</div>
-			</div>
-			<div class="row align-items-stretch">
-				<div class="col-lg-4 order-lg-1">
-					<div class="h-100"><div class="frame h-100"><div class="feature-img-bg h-100" style="background-image: url('images/hero-slider-1.jpg');"></div></div></div>
-				</div>
-
-				{% comment %} <div class="col-6 col-sm-6 col-lg-4 feature-1-wrap d-md-flex flex-md-column order-lg-1" >
-
-					<div class="feature-1 d-md-flex">
-						<div class="align-self-center">
-							<span class="flaticon-house display-4 text-primary"></span>
-							<h3>Beautiful Condo</h3>
-							<p class="mb-0">Even the all-powerful Pointing has no control about the blind texts.</p>
-						</div>
-					</div>
-
-					<div class="feature-1 ">
-						<div class="align-self-center">
-							<span class="flaticon-restaurant display-4 text-primary"></span>
-							<h3>Restaurants & Cafe</h3>
-							<p class="mb-0">Even the all-powerful Pointing has no control about the blind texts.</p>
-						</div>
-					</div>
-
-				</div>
-
-				<div class="col-6 col-sm-6 col-lg-4 feature-1-wrap d-md-flex flex-md-column order-lg-3" >
-
-					<div class="feature-1 d-md-flex">
-						<div class="align-self-center">
-							<span class="flaticon-mail display-4 text-primary"></span>
-							<h3>Easy to Connect</h3>
-							<p class="mb-0">Even the all-powerful Pointing has no control about the blind texts.</p>
-						</div>
-					</div>
-
-					<div class="feature-1 d-md-flex">
-						<div class="align-self-center">
-							<span class="flaticon-phone-call display-4 text-primary"></span>
-							<h3>24/7 Support</h3>
-							<p class="mb-0">Even the all-powerful Pointing has no control about the blind texts.</p>
-						</div>
-					</div>
-
-				</div> {% endcomment %}
-
-			</div>
-		</div>
-	</div>
-
-	{% comment %} <div class="untree_co-section count-numbers py-5">
-		<div class="container">
-			<div class="row">
-				<div class="col-6 col-sm-6 col-md-6 col-lg-3">
-					<div class="counter-wrap">
-						<div class="counter">
-							<span class="" data-number="9313">0</span>
-						</div>
-						<span class="caption">No. of Travels</span>
-					</div>
-				</div>
-				<div class="col-6 col-sm-6 col-md-6 col-lg-3">
-					<div class="counter-wrap">
-						<div class="counter">
-							<span class="" data-number="8492">0</span>
-						</div>
-						<span class="caption">No. of Clients</span>
-					</div>
-				</div>
-				<div class="col-6 col-sm-6 col-md-6 col-lg-3">
-					<div class="counter-wrap">
-						<div class="counter">
-							<span class="" data-number="100">0</span>
-						</div>
-						<span class="caption">No. of Employees</span>
-					</div>
-				</div>
-				<div class="col-6 col-sm-6 col-md-6 col-lg-3">
-					<div class="counter-wrap">
-						<div class="counter">
-							<span class="" data-number="120">0</span>
-						</div>
-						<span class="caption">No. of Countries</span>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div> {% endcomment %}
-
-
-
-	{% comment %} <div class="untree_co-section">
-		<div class="container">
-			<div class="row text-center justify-content-center mb-5">
-				<div class="col-lg-7"><h2 class="section-title text-center">Popular Destination</h2></div>
-			</div>
-
-			<div class="owl-carousel owl-3-slider">
-
-				<div class="item">
-					<a class="media-thumb" href="{% static 'mgapp/images/hero-slider-1.jpg'%}" data-fancybox="gallery">
-						<div class="media-text">
-							<h3>Pragser Wildsee</h3>
-							<span class="location">Italy</span>
-						</div>
-						<img src="{% static 'mgapp/images/hero-slider-1.jpg'%}" alt="Image" class="img-fluid">
-					</a> 
-				</div>
-
-				<div class="item">
-					<a class="media-thumb" href="{% static 'mgapp/images/hero-slider-2.jpg'%}" data-fancybox="gallery">
-						<div class="media-text">
-							<h3>Oia</h3>
-							<span class="location">Greece</span>
-						</div>
-						<img src="{% static 'mgapp/images/hero-slider-2.jpg'%}" alt="Image" class="img-fluid">
-					</a> 
-				</div>
-
-				<div class="item">
-					<a class="media-thumb" href="{% static 'mgapp/images/hero-slider-3.jpg'%}" data-fancybox="gallery">
-						<div class="media-text">
-							<h3>Perhentian Islands</h3>
-							<span class="location">Malaysia</span>
-						</div>
-						<img src="{% static 'mgapp/images/hero-slider-3.jpg'%}" alt="Image" class="img-fluid">
-					</a> 
-				</div>
-
-
-				<div class="item">
-					<a class="media-thumb" href="{% static 'mgapp/images/hero-slider-4.jpg'%}" data-fancybox="gallery">
-						<div class="media-text">
-							<h3>Rialto Bridge</h3>
-							<span class="location">Italy</span>
-						</div>
-						<img src="{% static 'mgapp/images/hero-slider-4.jpg'%}" alt="Image" class="img-fluid">
-					</a> 
-				</div>
-
-				<div class="item">
-					<a class="media-thumb" href="{% static 'mgapp/images/hero-slider-5.jpg'%}" data-fancybox="gallery">
-						<div class="media-text">
-							<h3>San Francisco, United States</h3>
-							<span class="location">United States</span>
-						</div>
-						<img src="{% static 'mgapp/images/hero-slider-5.jpg'%}" alt="Image" class="img-fluid">
-					</a> 
-				</div>
-
-				<div class="item">
-					<a class="media-thumb" href="{% static 'mgapp/images/hero-slider-1.jpg'%}" data-fancybox="gallery">
-						<div class="media-text">
-							<h3>Lake Thun</h3>
-							<span class="location">Switzerland</span>
-						</div>
-						<img src="{% static 'mgapp/images/hero-slider-2.jpg'%}" alt="Image" class="img-fluid">
-					</a> 
-				</div>
-
-			</div>
-
-		</div>
-	</div> {% endcomment %}
-
-
-	{% comment %} <div class="untree_co-section testimonial-section mt-5">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-lg-7 text-center">
-					<h2 class="section-title text-center mb-5">Testimonials</h2>
-
-					<div class="owl-single owl-carousel no-nav">
-						<div class="testimonial mx-auto">
-							<figure class="img-wrap">
-								<img src="{% static 'mgapp/images/person_2.jpg'%}" alt="Image" class="img-fluid">
-							</figure>
-							<h3 class="name">Adam Aderson</h3>
-							<blockquote>
-								<p>&ldquo;There live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-							</blockquote>
-						</div>
-
-						<div class="testimonial mx-auto">
-							<figure class="img-wrap">
-								<img src="{% static 'mgapp/images/person_3.jpg'%}" alt="Image" class="img-fluid">
-							</figure>
-							<h3 class="name">Lukas Devlin</h3>
-							<blockquote>
-								<p>&ldquo;There live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-							</blockquote>
-						</div>
-
-						<div class="testimonial mx-auto">
-							<figure class="img-wrap">
-								<img src="{% static 'mgapp/images/person_4.jpg'%}" alt="Image" class="img-fluid">
-							</figure>
-							<h3 class="name">Kayla Bryant</h3>
-							<blockquote>
-								<p>&ldquo;There live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
-							</blockquote>
-						</div>
-
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<div class="untree_co-section">
-		<div class="container">
-			<div class="row justify-content-center text-center mb-5">
-				<div class="col-lg-6">
-					<h2 class="section-title text-center mb-3">Special Offers &amp; Discounts</h2>
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-					<div class="media-1">
-						<a href="#" class="d-block mb-3"><img src="{% static 'mgapp/images/hero-slider-1.jpg'%}" alt="Image" class="img-fluid"></a>
-						<span class="d-flex align-items-center loc mb-2">
-							<span class="icon-room mr-3"></span>
-							<span>Italy</span>
-						</span>
-						<div class="d-flex align-items-center">
-							<div>
-								<h3><a href="#">Rialto Mountains</a></h3>
-								<div class="price ml-auto">
-									<span>$520.00</span>
-								</div>
-							</div>
-							
-						</div>
-						
-					</div>
-				</div> {% endcomment %}
-				{% comment %} <div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-					<div class="media-1">
-						<a href="#" class="d-block mb-3"><img src="{% static 'mgapp/images/hero-slider-2.jpg'%}" alt="Image" class="img-fluid"></a>
-						<span class="d-flex align-items-center loc mb-2">
-							<span class="icon-room mr-3"></span>
-							<span>United States</span>
-						</span>
-						<div class="d-flex align-items-center">
-							<div>
-								<h3><a href="#">San Francisco</a></h3>
-								<div class="price ml-auto">
-									<span>$520.00</span>
-								</div>
-							</div>
-							
-						</div>
-						
-					</div>
-				</div>
-				<div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-					<div class="media-1">
-						<a href="#" class="d-block mb-3"><img src="{% static 'mgapp/images/hero-slider-3.jpg'%}" alt="Image" class="img-fluid"></a>
-						<span class="d-flex align-items-center loc mb-2">
-							<span class="icon-room mr-3"></span>
-							<span>Malaysia</span>
-						</span>
-						<div class="d-flex align-items-center">
-							<div>
-								<h3><a href="#">Perhentian Islands</a></h3>
-								<div class="price ml-auto">
-									<span>$750.00</span>
-								</div>
-							</div>
-							
-						</div>
-						
-					</div>
-				</div>
-				<div class="col-6 col-sm-6 col-md-6 col-lg-3 mb-4 mb-lg-0">
-					<div class="media-1">
-						<a href="#" class="d-block mb-3"><img src="{% static 'mgapp/images/hero-slider-4.jpg'%}" alt="Image" class="img-fluid"></a>
-
-						<span class="d-flex align-items-center loc mb-2">
-							<span class="icon-room mr-3"></span>
-							<span>Switzerland</span>
-						</span>
-
-						<div class="d-flex align-items-center">
-							<div>
-								<h3><a href="#">Lake Thun</a></h3>
-								<div class="price ml-auto">
-									<span>$520.00</span>
-								</div>
-							</div>
-							
-						</div>
-						
-					</div>
-				</div>
-			</div>
-		</div>
-	</div> {% endcomment %}
-
-	{% comment %} <div class="untree_co-section">
-		<div class="container">
-			<div class="row justify-content-between align-items-center">
-				
-				<div class="col-lg-6">
-					<figure class="img-play-video">
-						<a id="play-video" class="video-play-button" href="https://www.youtube.com/watch?v=mwtbEGNABWU" data-fancybox>
-							<span></span>
-						</a>
-						<img src="{% static 'mgapp/images/hero-slider-2.jpg'%}" alt="Image" class="img-fluid rounded-20">
-					</figure>
-				</div>
-
-				<div class="col-lg-5">
-					<h2 class="section-title text-left mb-4">Take a look at Tour Video</h2>
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-
-					<p class="mb-4">A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-
-					<ul class="list-unstyled two-col clearfix">
-						<li>Outdoor recreation activities</li>
-						<li>Airlines</li>
-						<li>Car Rentals</li>
-						<li>Cruise Lines</li>
-						<li>Hotels</li>
-						<li>Railways</li>
-						<li>Travel Insurance</li>
-						<li>Package Tours</li>
-						<li>Insurance</li>
-						<li>Guide Books</li>
-					</ul>
-
-					<p><a href="#" class="btn btn-primary">Get Started</a></p>
-
-					
-				</div>
-			</div>
-		</div>
-	</div>
-
-	
-	
-	<div class="py-5 cta-section">
-		<div class="container">
-			<div class="row text-center">
-				<div class="col-md-12">
-					<h2 class="mb-2 text-white">Lets you Explore the Best. Contact Us Now</h2>
-					<p class="mb-4 lead text-white text-white-opacity">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, fugit?</p>
-					<p class="mb-0"><a href="mgapp/booking.html" class="btn btn-outline-white text-white btn-md font-weight-bold">Get in touch</a></p>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<div class="site-footer">
-		<div class="inner first">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-lg-4">
-						<div class="widget">
-							<h3 class="heading">About Tour</h3>
-							<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-						</div>
-						<div class="widget">
-							<ul class="list-unstyled social">
-								<li><a href="#"><span class="icon-twitter"></span></a></li>
-								<li><a href="#"><span class="icon-instagram"></span></a></li>
-								<li><a href="#"><span class="icon-facebook"></span></a></li>
-								<li><a href="#"><span class="icon-linkedin"></span></a></li>
-								<li><a href="#"><span class="icon-dribbble"></span></a></li>
-								<li><a href="#"><span class="icon-pinterest"></span></a></li>
-								<li><a href="#"><span class="icon-apple"></span></a></li>
-								<li><a href="#"><span class="icon-google"></span></a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-2 pl-lg-5">
-						<div class="widget">
-							<h3 class="heading">Pages</h3>
-							<ul class="links list-unstyled">
-								<li><a href="#">Blog</a></li>
-								<li><a href="#">About</a></li>
-								<li><a href="#">Contact</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-2">
-						<div class="widget">
-							<h3 class="heading">Resources</h3>
-							<ul class="links list-unstyled">
-								<li><a href="#">Blog</a></li>
-								<li><a href="#">About</a></li>
-								<li><a href="#">Contact</a></li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-md-6 col-lg-4">
-						<div class="widget">
-							<h3 class="heading">Contact</h3>
-							<ul class="list-unstyled quick-info links">
-								<li class="email"><a href="#">mail@example.com</a></li>
-								<li class="phone"><a href="#">+1 222 212 3819</a></li>
-								<li class="address"><a href="#">43 Raymouth Rd. Baltemoer, London 3910</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div> {% endcomment %}
-
-
-
-		{% comment %} <div class="inner dark">
-			<div class="container">
-				<div class="row text-center">
-					<div class="col-md-8 mb-3 mb-md-0 mx-auto">
-						<p>Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co" class="link-highlight">Untree.co</a> <!-- License information: https://untree.co/license/ -->Distributed By <a href="https://themewagon.com" target="_blank" >ThemeWagon</a>
-						</p>
-					</div>
-					
-				</div>
-			</div>
-		</div> {% endcomment %}
-	</div>
 
 	<div id="overlayer"></div>
 	<div class="loader">
@@ -897,8 +374,202 @@
 		})
 	</script>
 
-	<script src="{% static 'mgapp/js/custom.js'%}"></script>
+	               
+</section>
+<br><br><br>
 
+<section class="banner" data-scroll-index='0'>
+  <div class="banner-overlay">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8 col-sm-12">
+          <div class="banner-text">
+            <h2 class="white">부산해양택시 예약서비스</h2>
+            <h6 class="white">This awesome template designed by <a href="http://w3Template.com" target="_blank" rel="dofollow" class="weblink">W3 Template</a>.</h6>
+            <p class="banner-text white">해양의 도시, 부산에서 새로운 여행 경험을 선사합니다! 부산의 아름다운 바다를 다른 시각으로 느껴보세요. 앞으로 도입 될 '부산 해양 택시'로 탁 트인 바다 위에서의 특별한 여행을 즐겨보세요. 더 이상 지상의 교통만의 경험이 아닌, 바다 위에서의 편리하고 새로운 이동 방법을 경험해보세요. 빅웨이브와 함께하는 여행, 시작합니다!</p>
+          </div>
+        </div>
+        <div class="col-md-4 col-sm-12"> <img src="{% static 'mainapp/free-css/images/iphone-screen.png' %}" class="img-fluid wow fadeInUp"/> </div>
+      </div>
+    </div>
+  </div>
+  <span class="svg-wave"> <img class="svg-hero" src="{% static 'mainapp/free-css/images/applight-wave.png' %}"> </span> </section>
+
+
+
+<section class="about section-padding prelative" data-scroll-index='1'>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="sectioner-header text-center">
+          <h3>서비스 소개</h3>
+          <span class="line"></span>
+          <p>Sed quis nisi nisi. Proin consectetur porttitor dui sit amet viverra. Fusce sit amet lorem faucibus, vestibulum ante in, pharetra ante.</p>
+        </div>
+        <div class="section-content text-center">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="icon-box wow fadeInUp" data-wow-delay="0.2s"> <i class="" aria-hidden="true"><img style="width: 50px;" src="{% static 'mainapp/free-css/images/예약1.png' %}" alt=""></i>
+                <h5>예약서비스</h5>
+                <p>휴대폰만 있으면 선착장 스케줄을 확인하고 승차권을 예매할 수 있습니다. 여행의 시작부터 간편하게!</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="icon-box wow fadeInUp" data-wow-delay="0.4s"> <i class="" aria-hidden="true"><img style="width: 50px; height: auto;" src="{% static 'mainapp/free-css/images/챗봇1.png' %}" alt=""></i>
+                <h5>챗봇 서비스</h5>
+                <p>도착 후 어디로 갈지, 어떤 음식점이 좋을지 고민이신가요? 빅데이터 기반의 CHAT GPT가 여러분에게 관광 코스를 알려드립니다.  CHAT-GPT와 함께라면 여행 중 모르는 것은 없습니다!</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="icon-box wow fadeInUp" data-wow-delay="0.6s"> <i class="" aria-hidden="true"><img style="width: 50px;" src="{% static 'mainapp/free-css/images/정보제공1.png' %}" alt=""></i>
+                <h5>주변 정보 제공</h5>
+                <p>선착장 주변에서 가장 가까운 음식점, 카페, 버스 정류장은 어디에 위치해 있을까요? 주변 시설 및 서비스에 대한 상세한 안내와 위치 정보를 통해 여러분의 편리한 이용을 돕습니다.</p>
+              </div>
+            </div>
+          </div>
+          <a href="#" class="about-btn">Learn More</a> </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="team section-padding" data-scroll-index='3'>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="sectioner-header text-center">
+          <h3>팀원 소개</h3>
+          <span class="line"></span>
+          <p>Sed quis nisi nisi. Proin consectetur porttitor dui sit amet viverra. Fusce sit amet lorem faucibus, vestibulum ante in, pharetra ante.</p>
+        </div>
+        <div class="section-content text-center">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="team-detail wow bounce" data-wow-delay="0.2s"> <img src="{% static 'mainapp/free-css/images/user1.jpg' %}" class="img-fluid"/>
+                <h4>김명기</h4>
+                <p>웹개발</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="team-detail wow bounce" data-wow-delay="0.4s"> <img src="{% static 'mainapp/free-css/images/user2.jpg' %}" class="img-fluid"/>
+                <h4>Yogesh Singh</h4>
+                <p>CEO & Founder</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="team-detail wow bounce" data-wow-delay="0.6s"> <img src="{% static 'mainapp/free-css/images/user3.jpg' %}" class="img-fluid"/>
+                <h4>Nisha Sharma</h4>
+                <p>Web Developer</p>
+              </div>
+            </div>
+            <div class="col-md-4">
+                <div class="team-detail wow bounce" data-wow-delay="0.2s"> <img src="{% static 'mainapp/free-css/images/user1.jpg' %}" class="img-fluid"/>
+                  <h4>Nitu Singh</h4>
+                  <p>Marketing Specialist</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="team-detail wow bounce" data-wow-delay="0.4s"> <img src="{% static 'mainapp/free-css/images/user2.jpg' %}" class="img-fluid"/>
+                  <h4>Yogesh Singh</h4>
+                  <p>CEO & Founder</p>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="team-detail wow bounce" data-wow-delay="0.6s"> <img src="{% static 'mainapp/free-css/images/user3.jpg' %}" class="img-fluid"/>
+                  <h4>Nisha Sharma</h4>
+                  <p>Web Developer</p>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<footer class="footer-copy">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <p>2018 &copy; Applight. Website Designed by <a href="http://w3Template.com" target="_blank" rel="dofollow">W3 Template</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script> 
+<script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script> 
+<!-- scrollIt js --> 
+<script src="{% static 'mainapp/free-css/js/scrollIt.min.js' %}"></script> 
+<script src="{% static 'mainapp/free-css/js/wow.min.js' %}"></script> 
+<script>
+	wow = new WOW();
+	wow.init();
+$(document).ready(function(e) {
+
+	$('#video-icon').on('click',function(e){
+	e.preventDefault();
+	$('.video-popup').css('display','flex');
+	$('.iframe-src').slideDown();
+	});
+	$('.video-popup').on('click',function(e){
+	var $target = e.target.nodeName;
+	var video_src = $(this).find('iframe').attr('src');
+	if($target != 'IFRAME'){
+	$('.video-popup').fadeOut();
+	$('.iframe-src').slideUp();
+	$('.video-popup iframe').attr('src'," ");
+	$('.video-popup iframe').attr('src',video_src);
+	}
+	});
+
+	$('.slider').bxSlider({
+	pager: false
+	});
+});
+    
+$(window).on("scroll",function () {
+
+	var bodyScroll = $(window).scrollTop(),
+	navbar = $(".navbar");
+	
+	if(bodyScroll > 50){
+	$('.navbar-logo img').attr('src','static/mainapp/free-css/images/로고.png');
+	navbar.addClass("nav-scroll");
+
+}else{
+	$('.navbar-logo img').attr('src','static/mainapp/free-css/images/로고.png');
+	navbar.removeClass("nav-scroll");
+}
+
+});
+$(window).on("load",function (){
+	var bodyScroll = $(window).scrollTop(),
+	navbar = $(".navbar");
+	
+	if(bodyScroll > 50){
+	$('.navbar-logo img').attr('src','static/mainapp/free-css/images/로고.png');
+	navbar.addClass("nav-scroll");
+	}else{
+	$('.navbar-logo img').attr('src','static/mainapp/free-css/images/로고.png');
+	navbar.removeClass("nav-scroll");
+	}
+
+	$.scrollIt({
+	
+	easing: 'swing',      // the easing function for animation
+	scrollTime: 900,       // how long (in ms) the animation takes
+	activeClass: 'active', // class given to the active nav element
+	onPageChange: null,    // function(pageIndex) that is called when page is changed
+	topOffset: -63
+	});
+});
+
+</script>
+<script src="{% static 'mgapp/js/custom.js'%}"></script> 
 </body>
-
 </html>
