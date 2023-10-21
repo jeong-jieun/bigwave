@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from .models import Member, Booking, Schedule, Boo_sch
+from .models import Member, Booking, Schedule, Boo_sch, Marina, Boo_mem
 
 # Create your views here.
 
@@ -119,7 +119,7 @@ def loginafter(request):
             msg = f"""
                 <script type="text/javascript">
                     alert('{mem.mem_name}님 정상적으로 로그인 되었습니다.');
-                    location.href='/mg/home/';
+                    location.href='/';
                 </script>
             """
             request.session["ses_mem_id"] = mem_id
@@ -190,6 +190,30 @@ def login2(request):
                   'mainapp/login2.html',
                   {})
 
+# main.html 처리
+def main(request):
+    mem_id = request.session.get('ses_mem_id', None)
+    boo_mem = None
+    schedules = []
+    mem_list = Member.objects.all()
+    marinas = Marina.objects.all()
+    start, end = None, None
+    
+    if request.method == 'POST':
+        start = request.POST.get('start')
+        end = request.POST.get('end')
+    if mem_id is not None:
+        boo_mem = Boo_mem.objects.filter(boo_mem1=mem_id).first()        
+    return render(request,
+                  'mainapp/main.html',
+                  {"mem_list" : mem_list,
+                   'schedule': schedules,
+                   'marina_list': marinas,
+                   'selected_start': start,
+                   'selected_end': end,
+                    "mem_id": mem_id,
+                    "boo_mem": boo_mem,})
+
 # imsi.html 처리
 def imsi(request):
     return render(request,
@@ -198,7 +222,25 @@ def imsi(request):
 
 # index.html 처리
 def index(request):
+    mem_id = request.session.get('ses_mem_id', None)
+    boo_mem = None
+    schedules = []
+    mem_list = Member.objects.all()
+    marinas = Marina.objects.all()
+    start, end = None, None
+    
+    if request.method == 'POST':
+        start = request.POST.get('start')
+        end = request.POST.get('end')
+    if mem_id is not None:
+        boo_mem = Boo_mem.objects.filter(boo_mem1=mem_id).first()        
     return render(request,
                   'mainapp/index.html',
-                  {})
+                  {"mem_list" : mem_list,
+                   'schedule': schedules,
+                   'marina_list': marinas,
+                   'selected_start': start,
+                   'selected_end': end,
+                    "mem_id": mem_id,
+                    "boo_mem": boo_mem,})
     
