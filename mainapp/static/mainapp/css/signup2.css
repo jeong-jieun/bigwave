@@ -59,9 +59,10 @@ option {
 button {
   margin-top: 1rem;
   background: linear-gradient(to left, #3F72AF, #b4caf2);
-  padding: 15px;
-  width: 55%;
-  color: white;
+  padding: 1rem;
+  width: 5vw;
+  height: 2vh;
+  color: #3F72AF;
   transition: 0.6s;
 }
 find
@@ -71,8 +72,9 @@ button:hover {
 }
 
 .find1 {
-  padding: 5rem 0 6.5rem 0;
-  width: 550px;
+  padding: 3rem 0 3rem 0;
+  width: 75vmin;
+  height: 50vmax;
   margin: 0 auto;
   text-align: center;
 }
@@ -91,6 +93,7 @@ button:hover {
 
 .find1 input[type="radio"] {
   display: none;
+  width: 10vw;
 }
 
 .find1 input[type="email"],
@@ -173,24 +176,21 @@ button:hover {
   margin: 2.5rem auto 0 6rem;
 }
 
-#content3 {
-  text-align: left;
-}
 
 #content3 p {
-  text-align: left;
-  width : 75px;
+  text-align: center;
+  width: 10vmin;
 }
 
 #content3 input {
-  width: 100%;
-  padding: 10px;
+  width: 90%;
+  padding: 0.5rem;
   margin-bottom: 0.2rem;
 }
 
 #content3 select {
-  width: 125px;
-  height: 43px;
+  width: 28%;
+  height: 5vh;
 }
 
 #content3 hr {
@@ -198,16 +198,21 @@ button:hover {
 }
 
 #content3 input[type="email"] {
-  width: 30%;
+  width: 10vw;
+  height: 5vh;
 }
 
 #content3>:nth-child(2) {
-  display: flex;
+  display: inline-flex;
   justify-content: space-between;
+  align-content: flex-start;
+  align-items: baseline;
 }
 
 #content3>:nth-child(2)>:nth-child(1) {
-  width: 30%;
+  width: 20%;
+  font-size: 1rem;
+  text-align: center;
 }
 
 #content3>:nth-child(2) p {
@@ -221,13 +226,15 @@ button:hover {
 
 #content3 button {
   background: none;
+  margin: 0 0 0 20rem;
   padding: 0;
   color: linear-gradient(to left, #3F72AF, #b4caf2);
   font-size: 0.75rem;
-  margin: 0 0 1rem 21rem;
-  text-align: right;
+  text-align: end;
   text-decoration: underline;
-  width : 75px;
+  width: 5vw;
+  height: 2vh;
+  text-align: right;
 }
 
 #content3 button:hover{
@@ -251,16 +258,16 @@ button:hover {
 
 
 #content3>.join2>div {
-  display: flex;
-  justify-content: space-between;
+  display: inline-flex;
 }
 
 #content3>.join2>:nth-child(2)>:nth-child(1) {
-  width: 30%;
+  text-align: center;
+  width: 10vw;
 }
 
 #content3>.join2>:nth-child(2)>:nth-child(2) {
-  width: 70%;
+  width: 60%;
 }
 
 #content3>.join2>:nth-child(2)>:nth-child(2)>:nth-child(1) {
@@ -289,9 +296,6 @@ button:hover {
   margin-bottom: 0;
 }
 
-#content3>.join2 select {
-  height: 37px;
-}
 
 #content3>.join2 input[type="text"] {
   width: 64.2%;
@@ -313,11 +317,9 @@ button:hover {
 
 #content3>:last-child {
   margin: 3rem auto 0 7rem;
-  font-size: 0.9rem;
-  text-decoration: none;
-  text-align: center;
+  margin-top: 1rem;
   background: linear-gradient(to left, #3F72AF, #b4caf2);
-  padding: 15px;
+  padding: 13px;
   width: 55%;
   color: white;
   transition: 0.6s;
@@ -481,3 +483,4 @@ footer h4 {
   margin-bottom: 1.4rem;
   color: #777;
 }
+

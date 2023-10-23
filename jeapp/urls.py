@@ -4,6 +4,10 @@ from django.urls import path
 from . import views
 urlpatterns = [
     
+    # main페이지
+    path('test/', views.test),
+    # main페이지
+    path('main/', views.main),
     # 서비스 페이지 상세보기 처리
     path('service_detail/', views.service_detail, name='service_detail'),
     ### 서비스(교통) 조회 페이지 (http://127.0.0.1:8000/je/schedule/traffic)

@@ -4,6 +4,17 @@ from .models import Member, Marina, Schedule, Booking, Service, Traffic
 from datetime import datetime
 
 
+# test.html
+def test(request):
+    return render(request,
+                  'jeapp/html/test.html',
+                  {})
+# main.html
+def main(request):
+    return render(request,
+                  'jeapp/html/main.html',
+                  {})
+
 
 # 서비스 상세보기
 def service_detail(request, marina, service_type, service_name):
