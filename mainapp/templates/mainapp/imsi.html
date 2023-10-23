@@ -1,126 +1,67 @@
-{% load static  %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <script src="https://kit.fontawesome.com/a32c0865ec.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="{% static 'mainapp/css/imsi.css'%}">
-  <link rel="script" src="{% static 'mainapp/js/imsi.js'%}">
-  <script src="{% static 'mainapp/js/imsi.js'%}"></script>
+  <title>문서</title>
+  <script src="http://code.jquery.com/jquery-1.11.0.js"></script>
 </head>
 <body>
-  <body class="bg-light">   
-    <nav class="navbar navbar-expand-lg fixed-top">
-       
-     <div id="nav-icon3" class="navbar-toggler p-0 border-0" data-toggle="offcanvas">
-           <span></span>
-           <span></span>
-           <span></span>
-           <span></span>
-        </div>
-       
-     <a class="navbar-brand h1" href="#">MODORI</a>
-      
-     <div class="offcanvas-collapse" id="accordian">
-       <ul class="navbar-nav">
-         <li class="nav-item active">
-           <h3><a href="#"><i class="fas fa-store"></i>중고거래</a></h3>
-               <ul>
-                   <li>
-                     <a href="#">의류&잡화</a>
-                     <ul>
-                           <li><a href="#">여성신발</a></li>
-                           <li><a href="#">여성가방</a></li>
-                           <li><a href="#">언더웨어</a></li>
-                           <li><a href="#">지갑&벨트</a></li>
-                           <li><a href="#">쥬얼리</a></li>
-                           <li><a href="#">시계</a></li>
-                           <li><a href="#">잡화/소품</a></li>
-                       </ul>
-                 </li>
-                   <li><a href="#">뷰티</a>
-                     <ul>
-                           <li><a href="#">스킨케어</a></li>
-                           <li><a href="#">메이크업</a></li>
-                           <li><a href="#">선케어</a></li>
-                           <li><a href="#">향수</a></li>
-                           <li><a href="#">뷰티소품</a></li>
-                           <li><a href="#">네일</a></li>
-                       </ul>
-                 </li>
-                   <li><a href="#">생필품</a></li>
-                   <li><a href="#">가전디지털</a></li>
-                   <li><a href="#">반려동물용품</a></li>
-                   <li><a href="#">e티켓&공연&여행</a></li>
-               </ul>
-         </li>
-         
-         <li class="nav-item">
-           <h3><a href="#"><i class="fas fa-book"></i>도서 바자회</a></h3>
-               <ul>
-                   <li><a href="#">Reports</a></li>
-                   <li><a href="#">Search</a></li>
-                   <li><a href="#">Graphs</a></li>
-                   <li><a href="#">Settings</a></li>
-               </ul>
-         </li>
-        <li class="nav-item">
-           <h3><a href="#"><i class="fas fa-bookmark"></i>도서 대여&예약</a></h3>
-               <ul>
-                   <li><a href="#">Reports</a></li>
-                   <li><a href="#">Search</a></li>
-                   <li><a href="#">Graphs</a></li>
-                   <li><a href="#">Settings</a></li>
-               </ul>
-         </li>
-        <li class="nav-item">
-           <h3><a href="#"><i class="fas fa-users"></i>공동구매</a></h3>
-               <ul>
-                   <li><a href="#">Reports</a></li>
-                   <li><a href="#">Search</a></li>
-                   <li><a href="#">Graphs</a></li>
-                   <li><a href="#">Settings</a></li>
-               </ul>
-         </li>
-        <li class="nav-item">
-           <h3><a href="#"><i class="fas fa-money-bill-wave"></i>경매</a></h3>
-               <ul>
-                   <li><a href="#">Reports</a></li>
-                   <li><a href="#">Search</a></li>
-                   <li><a href="#">Graphs</a></li>
-                   <li><a href="#">Settings</a></li>
-               </ul>
-         </li>
-         <hr class="style7">
-          <li class="nav-item">
-           <h3><a href="#"><i class="fas fa-sign-out-alt aa"></i>로그아웃</a></h3>   
-         </li>
-        <li class="nav-item">
-           <h3><a href="#"><i class="fas fa-user aa"></i>마이페이지</a></h3> 
-         </li>
-       </ul> 
-     </div>
-      
-     <div>
-      <form class="form my-0 my-lg-0">
-       <div class="cntr">
-         <div class="cntr-innr">
-         <label class="search" for="inpt_search">
-           <input id="inpt_search" type="text" />
-         </label>
-         </div>
-       </div>
-     </form>
-      </div>   
-     
-   </nav>
-     
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  
+  <div id="map" style="width:100%;height:350px;"></div>
+
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5da392d3bc0f2c1ea91f895109afcb78"></script>
+  <div id="myLocationInfo">
+    <script>
+      /* 비동기적으로 현재 위치를 알아내어 지정된 요소에 출력합니다. */
+      function whereami(elt) {
+        var options = {
+          enableHighAccuracy: true,
+          maximumAge: 30000,
+          timeout: 15000
+        }
+
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(success, error, options);
+        } else {
+          elt.innerHTML = "이 브라우저에서는 Geolocation이 지원되지 않습니다.";
+        }
+
+        function error(e) {
+          elt.innerHTML = "Geolocation 오류 " + e.code + ": " + e.message;
+        }
+
+        function success(pos) {
+          // 이제 'success' 함수 내부에서 맞는 위도 및 경도 값을 사용하여 지도를 초기화합니다.
+          var mapContainer = document.getElementById('map');
+          var mapOption = {
+            center: new kakao.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
+            level: 4
+          };
+
+          var map = new kakao.maps.Map(mapContainer, mapOption);
+
+          var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png';
+          var imageSize = new kakao.maps.Size(64, 69);
+          var imageOption = { offset: new kakao.maps.Point(27, 69) };
+
+          var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+          var markerPosition = new kakao.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+
+          var marker = new kakao.maps.Marker({
+            position: markerPosition,
+            image: markerImage
+          });
+
+          marker.setMap(map);
+        }
+      }
+
+      // 위치 정보를 출력할 요소 가져오기
+      var elt = document.getElementById("myLocationInfo");
+
+      // 위치 정보 출력
+      whereami(elt);
+    </script>
+  </div>
 </body>
 </html>

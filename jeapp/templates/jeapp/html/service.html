@@ -179,41 +179,43 @@
     <header>
       <div class="site-mobile-menu site-navbar-target">
         <div class="site-mobile-menu-header">
-          <div class="site-mobile-menu-close">
-            <span class="icofont-close js-menu-toggle"></span>
-          </div>
+            <div class="site-mobile-menu-close">
+                <span class="icofont-close js-menu-toggle"></span>
+            </div>
         </div>
         <div class="site-mobile-menu-body"></div>
-      </div>
-      
-      <nav class="site-nav">
-      
-          <div class="site-navigation">
-            <a href="/" class="logo m-0"><img src="{% static "mainapp/free-css/images/로고색.png" %}" alt="" style="width: 300px; height: 50px;" ></a> 
-            {% comment %} <span class="text-primary">bigwave</span> {% endcomment %}
-      
-            <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-              <li class="active"><a href="/mg/test/">선착장예약</a></li>
-              <li><a href="/je/service/">교통/관광 서비스</a></li>
-              <li><a href="/je/service/">챗봇 서비스</a></li>
-              </li>
-              {% if request.session.ses_mem_id == None %}
-              <li><a href="/login2/">로그인</a></li>
-              <li><a href="/signup2/">회원가입</a></li>
-              {% else %}
-              <li><a href="/mg/booking/">예약확인</a></li>
-              <li><a href="/mypage/">회원정보</a></li>
-              <li><a href="/logout/">로그아웃</a></li>
-              {% endif %}
-            </ul>
-      
-            <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
-              <span></span>
-            </a>
-      
-          </div>
-      </nav>
+    </div>
+    
+    <nav class="site-nav">
+    
+            <div class="site-navigation">
+                <a href="/" class="logo m-0"><img src="{% static "mainapp/free-css/images/로고색.png" %}" alt="" style="width: 300px; height: 50px;" ></a> 
+                {% comment %} <span class="text-primary">bigwave</span> {% endcomment %}
+    
+                <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
+                    <li class="active"><a href="/">서비스 소개</a></li>
+                    <li class="active"><a href="/mg/test/">선착장예약</a></li>
+                    <li><a href="/je/service/">교통/관광 서비스</a></li>
+                    <li><a href="/je/service/">챗봇 서비스</a></li>
+                    </li>
+                    {% if request.session.ses_mem_id == None %}
+                    <li><a href="/login2/">로그인</a></li>
+                    <li><a href="/signup2/">회원가입</a></li>
+                    {% else %}
+                    <li><a href="/mg/booking/">예약확인</a></li>
+                    <li><a href="/mypage/">회원정보</a></li>
+                    <li><a href="/logout/">로그아웃</a></li>
+                    {% endif %}
+                </ul>
+    
+                <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
+                    <span></span>
+                </a>
+    
+            </div>
+    </nav>
     </header>
+    
     <main>
       <br><br><br>
         <form id="searchForm" method="post" action="{% url 'search_action' %}">
@@ -226,6 +228,61 @@
               </select>
             <input type="hidden" name="service_type" id="serviceType" value="음식점">
         </form>
+        <div id="map" style="width:100%;height:350px;"></div>
+
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5da392d3bc0f2c1ea91f895109afcb78"></script>
+        <div id="myLocationInfo">
+          <script>
+            /* 비동기적으로 현재 위치를 알아내어 지정된 요소에 출력합니다. */
+            function whereami(elt) {
+              var options = {
+                enableHighAccuracy: true,
+                maximumAge: 30000,
+                timeout: 15000
+              }
+      
+              if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(success, error, options);
+              } else {
+                elt.innerHTML = "이 브라우저에서는 Geolocation이 지원되지 않습니다.";
+              }
+      
+              function error(e) {
+                elt.innerHTML = "Geolocation 오류 " + e.code + ": " + e.message;
+              }
+      
+              function success(pos) {
+                // 이제 'success' 함수 내부에서 맞는 위도 및 경도 값을 사용하여 지도를 초기화합니다.
+                var mapContainer = document.getElementById('map');
+                var mapOption = {
+                  center: new kakao.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
+                  level: 4
+                };
+      
+                var map = new kakao.maps.Map(mapContainer, mapOption);
+      
+                var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png';
+                var imageSize = new kakao.maps.Size(64, 69);
+                var imageOption = { offset: new kakao.maps.Point(27, 69) };
+      
+                var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+                var markerPosition = new kakao.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+      
+                var marker = new kakao.maps.Marker({
+                  position: markerPosition,
+                  image: markerImage
+                });
+      
+                marker.setMap(map);
+              }
+            }
+      
+            // 위치 정보를 출력할 요소 가져오기
+            var elt = document.getElementById("myLocationInfo");
+      
+            // 위치 정보 출력
+            whereami(elt);
+          </script>
         
     <section class="py-5 text-center container">
       <div class="row py-lg-5">
@@ -234,6 +291,7 @@
           {% else %}<h1 class="fw-light">{{ search_result }}</h1>{% endif %}
         </div>
       </div>
+      
     </section>
     <div class="nav nav-pills nav-fill">
       <input class="nav-link" type="radio" name="tabmenu" id="tab01" value="음식점" 
