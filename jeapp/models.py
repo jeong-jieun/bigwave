@@ -66,6 +66,8 @@ class Service(models.Model):
     ser_img = models.CharField(max_length=300, null=False)
     ser_distance = models.IntegerField(null=False)
     ser_url = models.CharField(max_length=100, null=False)
+    ser_lat = models.FloatField(null=False)
+    ser_lon = models.FloatField(null=False)
     class Meta:
         db_table = "service"
         app_label = "jeapp"

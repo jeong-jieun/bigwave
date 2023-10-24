@@ -427,17 +427,62 @@
             </div>
         </nav>
     </header>
+    <br><br>
+    <div id="map" style="width:100%;height:350px;"></div>
 
-<header class="ScriptHeader">
-    <div class="rt-container">
-    	<div class="col-rt-12">
-        	<div class="rt-heading">
-            	<h1>CSS Tabs with Sliding Underline Example</h1>
-                <p>A tabs navigation with sliding underline animation.</p>
-            </div>
-        </div>
-    </div>
-</header>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5da392d3bc0f2c1ea91f895109afcb78"></script>
+    <div id="myLocationInfo">
+      <script>
+        /* 비동기적으로 현재 위치를 알아내어 지정된 요소에 출력합니다. */
+        function whereami(elt) {
+          var options = {
+            enableHighAccuracy: true,
+            maximumAge: 30000,
+            timeout: 15000
+          }
+  
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(success, error, options);
+          } else {
+            elt.innerHTML = "이 브라우저에서는 Geolocation이 지원되지 않습니다.";
+          }
+  
+          function error(e) {
+            elt.innerHTML = "Geolocation 오류 " + e.code + ": " + e.message;
+          }
+  
+          function success(pos) {
+            // 이제 'success' 함수 내부에서 맞는 위도 및 경도 값을 사용하여 지도를 초기화합니다.
+            var mapContainer = document.getElementById('map');
+            var mapOption = {
+              center: new kakao.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
+              level: 4
+            };
+  
+            var map = new kakao.maps.Map(mapContainer, mapOption);
+  
+            var imageSrc = 'https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png';
+            var imageSize = new kakao.maps.Size(64, 69);
+            var imageOption = { offset: new kakao.maps.Point(27, 69) };
+  
+            var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
+            var markerPosition = new kakao.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+  
+            var marker = new kakao.maps.Marker({
+              position: markerPosition,
+              image: markerImage
+            });
+  
+            marker.setMap(map);
+          }
+        }
+  
+        // 위치 정보를 출력할 요소 가져오기
+        var elt = document.getElementById("myLocationInfo");
+  
+        // 위치 정보 출력
+        whereami(elt);
+      </script>
 
 <section>
     <div class="rt-container">
