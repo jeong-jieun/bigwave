@@ -38,54 +38,55 @@
 </head>
 
 <body>
-
-
-	<div class="site-mobile-menu site-navbar-target">
-		<div class="site-mobile-menu-header">
-			<div class="site-mobile-menu-close">
-				<span class="icofont-close js-menu-toggle"></span>
-			</div>
-		</div>
-		<div class="site-mobile-menu-body"></div>
-	</div>
-	
-	<nav class="site-nav">
-	
-			<div class="site-navigation">
-				<a href="/" class="logo m-0"><img src="{% static "mainapp/free-css/images/로고색.png" %}" alt="" style="width: 300px; height: 50px;" ></a> 
-				{% comment %} <span class="text-primary">bigwave</span> {% endcomment %}
-	
-				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-					<li class="active"><a href="/mg/test/">선착장예약</a></li>
-					<li><a href="/je/service/">교통/관광 서비스</a></li>
-					<li><a href="/je/service/">챗봇 서비스</a></li>
-					</li>
-					{% if request.session.ses_mem_id == None %}
-					<li><a href="/login2/">로그인</a></li>
-					<li><a href="/signup2/">회원가입</a></li>
-					{% else %}
-					<li><a href="/mg/booking/">예약확인</a></li>
-					<li><a href="/mypage/">회원정보</a></li>
-					<li><a href="/logout/">로그아웃</a></li>
-					{% endif %}
-				</ul>
-	
-				<a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
-					<span></span>
-				</a>
-	
-			</div>
-	</nav>
+    <header>
+		<div class="site-mobile-menu site-navbar-target">
+		  <div class="site-mobile-menu-header">
+			  <div class="site-mobile-menu-close">
+				  <span class="icofont-close js-menu-toggle"></span>
+			  </div>
+		  </div>
+		  <div class="site-mobile-menu-body"></div>
+	  </div>
+	  
+	  <nav class="site-nav">
+	  
+			  <div class="site-navigation">
+				  <a href="/" class="logo m-0"><img src="{% static "mainapp/free-css/images/로고색.png" %}" alt="" style="width: 300px; height: 50px;" ></a> 
+				  {% comment %} <span class="text-primary">bigwave</span> {% endcomment %}
+	  
+				  <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
+					  <li class="active"><a href="/">서비스 소개</a></li>
+					  <li class="active"><a href="/mg/test/">선착장예약</a></li>
+					  <li><a href="/je/service/">교통/관광 서비스</a></li>
+					  <li><a href="/je/service/">챗봇 서비스</a></li>
+					  </li>
+					  {% if request.session.ses_mem_id == None %}
+					  <li><a href="/login2/">로그인</a></li>
+					  <li><a href="/signup2/">회원가입</a></li>
+					  {% else %}
+					  <li><a href="/mg/booking/">예약확인</a></li>
+					  <li><a href="/mypage/">회원정보</a></li>
+					  <li><a href="/logout/">로그아웃</a></li>
+					  {% endif %}
+				  </ul>
+	  
+				  <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
+					  <span></span>
+				  </a>
+	  
+			  </div>
+	  </nav>
+	  </header>
 	<div class="hero" background-color style="background: linear-gradient(to left, #3F72AF, #b4caf2);">
 		<div class="container">
 			<div class="row align-items-center">
-				<div class="col-lg-12">
+				<div class="col-lg-7">
 					<div class="intro-wrap">
-						<h1 class="mb-5"><span class="d-block"></span>승선권 조회 <br></h1>
-						{% comment %} <span class="typed-words"></span></h1> {% endcomment %}
+						<h1 class="mb-5"><span class="d-block">Marine Taxi</span>Booking service
+							<br><span class="typed-words"></span></h1>
 						<div class="row">
 							<div class="col-12">
-								<form class="form" id="fm" method="GET" action="/mg/test/" onsubmit="return validateForm()">
+								<form class="form" id="fm" method="GET" action="#" onsubmit="return validateForm()">
 									<div class="row mb-2">
 										<div class="col-sm-12 cl-md-6 mb-3 mb-lg-0 col-lg-6">
 											<select name="start" id="start" class="form-control custom-select" onchange="changeP_nm()">
@@ -129,7 +130,18 @@
 									</div>
 								</form>
 							</div>
+
 						</div>
+					</div>
+				</div>
+				<div class="col-lg-5">
+
+					<div class="slides">
+						<img src="{% static 'mgapp/images/hero-slider-1.jpg'%}" alt="Image" class="img-fluid active">
+						<img src="{% static 'mgapp/images/hero-slider-2.jpg'%}" alt="Image" class="img-fluid">
+						<img src="{% static 'mgapp/images/hero-slider-3.jpg'%}" alt="Image" class="img-fluid">
+						<img src="{% static 'mgapp/images/hero-slider-4.jpg'%}" alt="Image" class="img-fluid">
+						<img src="{% static 'mgapp/images/hero-slider-5.jpg'%}" alt="Image" class="img-fluid">
 					</div>
 				</div>
 			</div>
@@ -137,18 +149,46 @@
 	</div>
 	
 	<div class="untree_co-section">
+		
 		<div class="container">
-			<div class="row mb-5 justify-content-center">
+			<div class="row mb-5 justify-content-center" style="padding-top: 50px;">
 				<div class="col-lg-12 text-center">
 					<div class="row">
 						<div class="col-12">
 							<form class="form" id="scheduleForm" method="GET" action="/mg/check/">
-								<div class="row mb-8 lg-12" style="padding-top: 50px;">
+								<table  class="rwd-table">
+									<tbody>
+										<tr>
+											<th style="font-size: 20px;">선택하기</th>
+											<th style="font-size: 20px;">번호</th>
+											<th style="font-size: 20px;">출발지</th>
+											<th style="font-size: 20px;">도착지</th>
+
+										</tr>
+										{% if schedule %}
+										{% for row3 in schedule %}
+										<tr class="KOTRA-fontsize-80">
+											<td><input type="radio" name="selected_schedule" value="{{ row3.sch_no }}"></td>
+											<td><p2 style="font-size: 25px;font-weight: 700;">1</p2></td>
+											<td><p2 style="font-size: 25px;font-weight: 700;">{{ row3.sch_marina }}</p2><br><p style="font-size: 18px;">{{ row3.sch_stime }}</p></td>
+											<td><p2 style="font-size: 25px;font-weight: 700;">{{ row3.sch_arrival }}</p2><br><p style="font-size: 18px;">{{ row3.sch_stime }}</p></td>
+										</tr>
+										{% endfor %}
+										{% endif %}
+										
+										<tr class="KOTRA-fontsize-80" {% if not schedule %}style="display: none;"{% endif %}>
+											<input type="hidden" name="qty" value="{{ qty }}">
+											<td colspan="4"><input type="submit" value="예약" style="height: 50px; width: 100%;"></td>
+										</tr>
+									
+									</tbody>
+								</table>
+								{% comment %} <div class="row mb-8 lg-12" style="padding-top: 50px;">
 									<table border="2" style="width: 91%;height: 100%;">
 										<tr >
 											<th style="color: black;">번호</th>
 											<th style="color: black; font-size: 27px;" >출발지</th>
-											<th style="color: black; font-size: 27px;">도착지</th>
+											<th style="font-size: 27px;">도착지</th>
 											<th style="color: black;">예약하기</th>
 
 										</tr>
@@ -156,7 +196,7 @@
 										<tr>
 											<td style="color: black;"><input type="radio" name="selected_schedule" value="{{ row3.sch_no }}"></td>
 											
-											<td style="color: black;"><p2 style="font-size: 35px;font-weight: 700;">1</td>
+											<td style="color: black;"><p2 style="font-size: 35px;font-weight: 700;">1</td></p2>
 											<td style="color: black;"><p2 style="font-size: 35px;font-weight: 700;">{{ row3.sch_marina }}</p2>
 												<br><p style="font-size: 18px;">{{ row3.sch_stime }}</p></td>
 											<td style="color: black;"><p2 style="font-size: 35px;font-weight: 700;">{{ row3.sch_arrival }}</p2>
@@ -166,9 +206,7 @@
 										</tr>
 										{% endfor %}
 									</table>
-									{% comment %} <input type="hidden" name="qty" value="{{ qty }}" style="color: black;">
-									<input type="submit" value="예약하기" style="color: black;"	> {% endcomment %}
-								</div>
+								</div> {% endcomment %}
 							</form>
 						</div>
 					</div>
@@ -328,10 +366,15 @@
 	<script src="{% static 'mgapp/js/typed.js'%}"></script>
 	<script>
 		$(function() {
+			var slides = $('.slides'),
+			images = slides.find('img');
+
+			images.each(function(i) {
+				$(this).attr('data-id', i + 1);
+			})
+
 			var typed = new Typed('.typed-words', {
-				strings: [{% for row3 in schedule %}
-				'{{ row3.sch_marina }}','{{ row3.sch_arrival }}'
-				{% endfor %}],
+				strings: ["다대포 ","영도 ","자갈치 ", "송도",],
 				typeSpeed: 80,
 				backSpeed: 80,
 				backDelay: 4000,

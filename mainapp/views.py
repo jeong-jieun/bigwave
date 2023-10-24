@@ -177,6 +177,14 @@ def signup(request):
     return render(request,
                   'mainapp/signup.html',
                   {})
+    
+# login.html 처리
+def geo(request):
+    latitude = request.GET.get("latitude")
+    
+    return render(request,
+                  'mainapp/imsi.html',
+                  {"latitude":latitude,})
 
 # login.html 처리
 def login(request):
@@ -216,6 +224,7 @@ def main(request):
 
 # imsi.html 처리
 def imsi(request):
+    
     return render(request,
                   'mainapp/imsi.html',
                   {})
