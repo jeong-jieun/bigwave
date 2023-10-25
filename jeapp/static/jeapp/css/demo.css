@@ -20,9 +20,9 @@ article, header, section, aside, details, figcaption, figure, footer, header, hg
     display: block;
 }
 body {
-    background: #9796f0;  /* fallback for old browsers */
+    background: #9796f000;  /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #fbc7d4, #9796f0);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #fbc7d4, #9796f0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #f9f7f700, #dbe2ef00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     color: #222;
     font-size: 100%;
     line-height: 24px;

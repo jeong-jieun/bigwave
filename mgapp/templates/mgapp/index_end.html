@@ -1,0 +1,506 @@
+{% load static %}
+<!-- /*
+* Template Name: Tour
+* Template Author: Untree.co
+* Tempalte URI: https://untree.co/
+* License: https://creativecommons.org/licenses/by/3.0/
+*/ -->
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="Untree.co">
+	<link rel="shortcut icon" href="favicon.png">
+
+	<meta name="description" content="" />
+	<meta name="keywords" content="bootstrap, bootstrap4" />
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="{% static 'mgapp/css/bootstrap.min.css'%}">
+	<link rel="stylesheet" href="{% static 'mgapp/css/owl.carousel.min.css'%}">
+	<link rel="stylesheet" href="{% static 'mgapp/css/owl.theme.default.min.css'%}">
+	<link rel="stylesheet" href="{% static 'mgapp/css/jquery.fancybox.min.css'%}">
+	<link rel="stylesheet" href="{% static 'mgapp/fonts/icomoon/style.css'%}">
+	<link rel="stylesheet" href="{% static 'mgapp/fonts/flaticon/font/flaticon.css'%}">
+	<link rel="stylesheet" href="{% static 'mgapp/css/daterangepicker.css'%}">
+	<link rel="stylesheet" href="{% static 'mgapp/css/aos.css'%}">
+	<link rel="stylesheet" href="{% static 'mgapp/css/style.css'%}">
+<style>
+	@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+	body,
+	html {
+		height: 100%;
+		display: grid;
+		background: #eef1ff;
+	}
+	p {
+		margin: 0;
+	}
+	
+	.ticket {
+		width: 80% ;
+		height: 80% ;
+		margin: auto;
+		background: white;
+		box-shadow: -1px 14px 14px -3px rgba(125, 123, 123, 0.43);
+		-webkit-box-shadow: -1px 14px 14px -3px rgba(125, 123, 123, 0.43);
+		-moz-box-shadow: -1px 14px 14px -3px rgba(125, 123, 123, 0.43);
+	}
+	.airline {
+		width: 90% ;
+		height: auto;
+		border-radius: 10px;
+		overflow: hidden;
+	}
+	.header {
+		background: #6499E9;
+		padding: 1em;
+	}
+	.header h1 {
+		font-family: "Roboto", sans-serif;
+		font-size: 4em;
+		margin: 0;
+		padding: 0;
+		color: white;
+	}
+	.airline h2 {
+		font-size: 1.5em;
+		font-family: "Roboto", sans-serif;
+		margin: 0;
+		color: white;
+	}
+	.airline h3 {
+		font-size: 1.5em;		
+		font-family: "Roboto", sans-serif;
+		text-align: center;
+		font-weight: semibold;
+	}
+	.grid {
+		padding: 1em;
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		margin-top: 0.5em;
+		padding: 1em;
+		border-bottom: 1px solid lightgray;
+	}
+	.col {
+		padding: 5px 10px;
+		display: flex;
+		flex-direction: column;
+	}
+	.col p {
+		font-weight: 600;
+		color: black;
+		font-family: "Roboto", sans-serif;
+	}
+	.col p:nth-child(2) {
+		font-weight: 100;
+		margin-top: 10px;
+	}
+	.basic {
+		box-shadow: none;
+		background-color: transparent;
+		font-family: "Roboto", sans-serif;
+		font-size: 2em;
+	}
+</style>
+	<title>bigwave</title>
+</head>
+
+<body>
+
+
+	<div class="site-mobile-menu site-navbar-target">
+		<div class="site-mobile-menu-header">
+			<div class="site-mobile-menu-close">
+				<span class="icofont-close js-menu-toggle"></span>
+			</div>
+		</div>
+		<div class="site-mobile-menu-body"></div>
+	</div>
+
+	<nav class="site-nav">
+
+			<div class="site-navigation">
+				<a href="/mg/home/" class="logo m-0">bigwave</a> 
+				{% comment %} <span class="text-primary">bigwave</span> {% endcomment %}
+
+				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right" style="width: 70%;">
+					<li class="active"><a href="/mg/test/">선착장예약</a></li>
+					<li><a href="/je/service/">교통/관광 서비스</a></li>
+					{% comment %} <ul class="dropdown">
+						<li class="has-children">
+							<a href="#">선착장</a>
+							<ul class="dropdown">
+								<li><a href="#">다대선착장</a></li>
+								<li><a href="#">동삼선착장</a></li>
+								<li><a href="#">미포선착장</a></li>
+								<li><a href="#">자갈치선착장</a></li>
+							</ul>
+						</li>
+					</ul> {% endcomment %}
+					
+					<li><a href="/je/service/">chatBOT</a></li>
+					{% if request.session.ses_mem_id == None %}
+					<li><a href="/login2/">로그인</a></li>
+					<li><a href="/signup2/">회원가입</a></li>
+					{% else %}
+					<li><a href="/mg/booking/">예약확인</a></li>
+					<li><a href="/mypage/">회원정보</a></li>
+					<li><a href="/mg/logout/">로그아웃</a></li>
+					{% endif %}
+				</ul>
+
+				<a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
+					<span></span>
+				</a>
+				<div class="sticky_click">stst</div>
+			</div>
+	
+	</nav>
+
+
+	<div class="hero">
+
+		<div class="container">
+			<div class="row align-items-center">
+				<div class="col-lg-7">
+					<div class="intro-wrap">
+						<h1 class="mb-5"><span class="d-block">Marine Taxi</span>Booking service
+							<br><span class="typed-words"></span></h1>
+						<div class="row">
+							{% if request.session.ses_mem_id == None %}
+							<div class="col-12">
+								<form class="form" id="fm" method="GET" action="/mg/test/" onsubmit="return validateForm()" >
+									<div class="row mb-2">
+											<div class="col-sm-12 cl-md-6 mb-3 mb-lg-0 col-lg-6">
+											  <select name="start"o id="start" class="form-control custom-select" onchange="changeP_nm()">
+												<option value="" {% if not selected_start %}selected{% endif %}>출발지를 선택하세요</option>
+												{% for row in marina_list %}
+												<option value="{{row.mar_nm}}" {% if row.mar_nm == selected_start %}selected{% endif %}>{{row.mar_nm}}</option>
+												{% endfor %}
+											  </select>
+											</div>
+											<br>
+											<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-6">
+											  <select name="end" id="end" class="form-control custom-select">
+												<option value="" {% if not selected_end %}selected{% endif %}>도착지를 선택하세요</option>
+											  </select>
+											</div>
+											<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-6">
+											  <input type="text" class="form-control" name="daterange">
+											</div>
+											<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-6">
+											  <select name="qty" id="qty" class="form-control custom-select">
+												<option value="">인구수</option>
+												<option value="1">1인</option>
+												<option value="2">2인</option>
+												<option value="3">3인</option>
+												<option value="4">4인</option>
+												<option value="5">5인 이상</option>
+											  </select>
+											</div>
+												{% comment %} <div class="col-lg-8">
+													<label class="control control--checkbox mt-3">
+														<span class="caption">Save this search</span>
+														<input type="checkbox" checked="checked" />
+														<div class="control__indicator"></div>
+													</label>
+												</div> {% endcomment %}
+											</div>
+									<div class="row align-items-center">
+										<div class="col-sm-10 col-md-3 mb-3 mb-lg-1 col-lg-11">
+										<input type="submit" class="btn btn-primary btn-block" value="검색하기">
+										</DIV>
+									</div>
+								</form>
+							</div>
+							{% else %}
+							<form id="fm" method="post" action="/mg/home/">
+								{% csrf_token %}
+								<script>
+									function performAction() {
+									  var fm = document.getElementById('fm'); // 'fm'에 대한 ID를 감싸는 단일 따옴표 추가 및 함수 이름 수정
+									  alert("로그인 후 이용해주세요");
+									  fm.action = "/mg/home/";
+									  fm.submit();
+									}
+									
+									// 페이지 로드 시 함수 호출 (필요에 따라 이 부분을 수정하세요)
+									window.onload = function() {
+									  performAction();
+									}
+								</script>							
+								<div class="ticket airline">
+									<div class="header">
+										<h3>PASS</h3> <!-- pitle = pass + title -->
+										<h2>출발: {{boo_mem.boo_sch1.sch_marina}}</h2>
+										<h2>도착: {{boo_mem.boo_sch1.sch_arrival}}</h2>
+									</div>
+									<div class="grid">
+										<div class="col">
+											<p>예약자</p>
+											<p>{{boo_mem.boo_mem1.mem_id}}</p>
+										</div>
+										<div class="col">
+											<p>예약이름</p>
+											<p>{{boo_mem.boo_mem1.mem_name}}</p>
+										</div>
+										<div class="col">
+											<p>출발시간</p>
+											<p>{{boo_mem.boo_sch1.sch_stime}}</p>
+										</div>
+									</div>
+									<div class="grid">
+										<div class="col">
+											<p>결제금액</p>
+											<p>{{boo_mem.book_price}}</p>
+										</div>
+										<div class="col">
+											<p>인원수</p>
+											<p>{{boo_mem.book_qty}}</p>
+										</div>
+										<div class="col">
+											<p>도착시간</p>
+											<p>{{boo_mem.boo_sch1.sch_etime}}</p>
+										</div>
+									</div>
+								</div>
+							
+							{% endif %}
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-5">
+
+					<div class="slides">
+						<img src="{% static 'mgapp/images/hero-slider-1.jpg'%}" alt="Image" class="img-fluid active">
+						<img src="{% static 'mgapp/images/hero-slider-2.jpg'%}" alt="Image" class="img-fluid">
+						<img src="{% static 'mgapp/images/hero-slider-3.jpg'%}" alt="Image" class="img-fluid">
+						<img src="{% static 'mgapp/images/hero-slider-4.jpg'%}" alt="Image" class="img-fluid">
+						<img src="{% static 'mgapp/images/hero-slider-5.jpg'%}" alt="Image" class="img-fluid">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="untree_co-section">
+		<div class="container">
+		</div>
+	</div>
+
+	{% comment %} <div class="untree_co-section count-numbers py-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-6 col-sm-6 col-md-6 col-lg-3">
+					<div class="counter-wrap">
+						<div class="counter">
+							<span class="" data-number="9313">0</span>
+						</div>
+						<span class="caption">No. of Travels</span>
+					</div>
+				</div>
+				<div class="col-6 col-sm-6 col-md-6 col-lg-3">
+					<div class="counter-wrap">
+						<div class="counter">
+							<span class="" data-number="8492">0</span>
+						</div>
+						<span class="caption">No. of Clients</span>
+					</div>
+				</div>
+				<div class="col-6 col-sm-6 col-md-6 col-lg-3">
+					<div class="counter-wrap">
+						<div class="counter">
+							<span class="" data-number="100">0</span>
+						</div>
+						<span class="caption">No. of Employees</span>
+					</div>
+				</div>
+				<div class="col-6 col-sm-6 col-md-6 col-lg-3">
+					<div class="counter-wrap">
+						<div class="counter">
+							<span class="" data-number="120">0</span>
+						</div>
+						<span class="caption">No. of Countries</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> {% endcomment %}
+
+
+
+
+
+
+	{% comment %} <div class="untree_co-section testimonial-section mt-5">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-lg-7 text-center">
+					<h2 class="section-title text-center mb-5">Testimonials</h2>
+
+					<div class="owl-single owl-carousel no-nav">
+						<div class="testimonial mx-auto">
+							<figure class="img-wrap">
+								<img src="{% static 'mgapp/images/person_2.jpg'%}" alt="Image" class="img-fluid">
+							</figure>
+							<h3 class="name">Adam Aderson</h3>
+							<blockquote>
+								<p>&ldquo;There live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
+							</blockquote>
+						</div>
+
+						<div class="testimonial mx-auto">
+							<figure class="img-wrap">
+								<img src="{% static 'mgapp/images/person_3.jpg'%}" alt="Image" class="img-fluid">
+							</figure>
+							<h3 class="name">Lukas Devlin</h3>
+							<blockquote>
+								<p>&ldquo;There live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
+							</blockquote>
+						</div>
+
+						<div class="testimonial mx-auto">
+							<figure class="img-wrap">
+								<img src="{% static 'mgapp/images/person_4.jpg'%}" alt="Image" class="img-fluid">
+							</figure>
+							<h3 class="name">Kayla Bryant</h3>
+							<blockquote>
+								<p>&ldquo;There live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.&rdquo;</p>
+							</blockquote>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+		{% comment %} <div class="inner dark">
+			<div class="container">
+				<div class="row text-center">
+					<div class="col-md-8 mb-3 mb-md-0 mx-auto">
+						<p>Copyright &copy;<script>document.write(new Date().getFullYear());</script>. All Rights Reserved. &mdash; Designed with love by <a href="https://untree.co" class="link-highlight">Untree.co</a> <!-- License information: https://untree.co/license/ -->Distributed By <a href="https://themewagon.com" target="_blank" >ThemeWagon</a>
+						</p>
+					</div>
+					
+				</div>
+			</div>
+		</div> {% endcomment %}
+	</div>
+
+	<div id="overlayer"></div>
+	<div class="loader">
+		<div class="spinner-border" role="status">
+			<span class="sr-only">Loading...</span>
+		</div>
+	</div>
+	<script>
+		// 출,도착지 셀렉박스 설정
+		function changeP_nm() {
+		  const startSelect = document.getElementById('start');
+		  const destinationSelect = document.getElementById('end');
+		  const selectedValue = startSelect.value;
+		  const selectedQty = document.getElementById('qty').value;
+	  
+		  // 두 번째 select 박스 초기화
+		  destinationSelect.innerHTML = '<option value="">도착지를 선택하세요</option>';
+	  
+		  for (let option of startSelect.options) {
+			if (option.value !== "" && option.value !== selectedValue) {
+			  const newOption = document.createElement('option');
+			  newOption.value = option.value;
+			  newOption.innerText = option.innerText;
+			  destinationSelect.appendChild(newOption);
+			}
+		  }
+	  
+		  // 현재 선택된 end 값을 기반으로 도착지 옵션을 선택합니다.
+		  const selectedEnd = "{{ selected_end }}";
+		  if (selectedEnd) {
+			for (let option of destinationSelect.options) {
+			  if (option.value === selectedEnd) {
+				option.selected = true;
+				break;
+			  }
+			}
+		  }
+		}
+	  
+		function validateForm() {
+		  const startSelect = document.getElementById('start');
+		  const destinationSelect = document.getElementById('end');
+		  const qtySelect = document.getElementById('qty');
+	  
+		  if (!startSelect.value || !destinationSelect.value || !qtySelect.value) {
+			alert("모든 항목을 선택하여 주세요!");
+			return false;
+		  }
+		  return true;
+		}
+	  
+		// 페이지가 로드되면 changeP_nm() 함수를 실행하여 도착지 셀렉트 박스를 초기화합니다.
+		window.onload = function () {
+		  changeP_nm();
+		};
+		function submitForm() {
+			// 폼을 JavaScript로 제출
+			document.getElementById("fm").submit();
+		}
+	</script>
+	<script src="{% static 'mgapp/js/jquery-3.4.1.min.js'%}"></script>
+	<script src="{% static 'mgapp/js/popper.min.js'%}"></script>
+	<script src="{% static 'mgapp/js/bootstrap.min.js'%}"></script>
+	<script src="{% static 'mgapp/js/owl.carousel.min.js'%}"></script>
+	<script src="{% static 'mgapp/js/jquery.animateNumber.min.js'%}"></script>
+	<script src="{% static 'mgapp/js/jquery.waypoints.min.js'%}"></script>
+	<script src="{% static 'mgapp/js/jquery.fancybox.min.js'%}"></script>
+	<script src="{% static 'mgapp/js/aos.js'%}"></script>
+	<script src="{% static 'mgapp/js/moment.min.js'%}"></script>
+	<script src="{% static 'mgapp/js/daterangepicker.js'%}"></script>
+
+	<script src="{% static 'mgapp/js/typed.js'%}"></script>
+	<script>
+		$(function() {
+			var slides = $('.slides'),
+			images = slides.find('img');
+
+			images.each(function(i) {
+				$(this).attr('data-id', i + 1);
+			})
+
+			var typed = new Typed('.typed-words', {
+				strings: ["다대포 ","영도 ","자갈치 ", "송도",],
+				typeSpeed: 80,
+				backSpeed: 80,
+				backDelay: 4000,
+				startDelay: 1000,
+				loop: true,
+				showCursor: true,
+				preStringTyped: (arrayPos, self) => {
+					arrayPos++;
+					console.log(arrayPos);
+					$('.slides img').removeClass('active');
+					$('.slides img[data-id="'+arrayPos+'"]').addClass('active');
+				}
+
+			});
+		})
+	</script>
+
+	<script src="{% static 'mgapp/js/custom.js'%}"></script>
+
+</body>
+
+</html>
