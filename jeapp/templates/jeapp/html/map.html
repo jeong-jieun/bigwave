@@ -401,18 +401,16 @@
     <header>
         <div class="site-mobile-menu site-navbar-target">
             <div class="site-mobile-menu-header">
-            <div class="site-mobile-menu-close">
-                <span class="icofont-close js-menu-toggle"></span>
-            </div>
+                <div class="site-mobile-menu-close">
+                    <span class="icofont-close js-menu-toggle"></span>
+                </div>
             </div>
             <div class="site-mobile-menu-body"></div>
         </div>
         
         <nav class="site-nav">
-        
             <div class="site-navigation">
                 <a href="/" class="logo m-0"><img src="{% static "mainapp/free-css/images/로고색.png" %}" alt="" style="width: 300px; height: 50px;" ></a> 
-        
                 <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
                 <li class="active"><a href="/mg/test/">선착장예약</a></li>
                 <li><a href="/je/service/">교통/관광 서비스</a></li>
@@ -431,104 +429,163 @@
                 <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
                 <span></span>
                 </a>
-    
             </div>
         </nav>
     </header>
-    <br><br>
-    {% comment %} <br> <h3>현재위치</h3>(1km정도의 오차가 발생할 수 있습니다.) {% endcomment %}
+    <br><br><br>
+    <form id="searchForm" method="post" action="{% url 'search_action' %}">
+        {% csrf_token %}
+        <select class="form-select" name="search_option" aria-label="Default select example" onchange="updateMap()">
+            <option value="" {% if not search_result %}selected{% endif %}>선착장을 검색하세요</option>
+            {% for row in marina_list %}
+                <option value="{{ row.mar_nm }}" data-lat="{{ row.mar_lat }}" data-lon="{{ row.mar_lon }}" {% if row.mar_nm == search_result %} selected{% endif %}>{{ row.mar_nm }}</option>
+            {% endfor %}
+        </select>
+        <input type="hidden" name="service_type" id="serviceType" value="{{ selected_service_type }}">
+    </form>
     <div id="map" style="width:100%;height:350px;"></div>
 
-        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5da392d3bc0f2c1ea91f895109afcb78"></script>
-        <div id="myLocationInfo">
-          <script>
-            /* 비동기적으로 현재 위치를 알아내어 지정된 요소에 출력합니다. */
-            function whereami(elt) {
-              var options = {
-                enableHighAccuracy: true,
-                maximumAge: 30000,
-                timeout: 15000
-              }
-      
-              if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(success, error, options);
-              } else {
-                elt.innerHTML = "이 브라우저에서는 Geolocation이 지원되지 않습니다.";
-              }
-      
-              function error(e) {
-                elt.innerHTML = "Geolocation 오류 " + e.code + ": " + e.message;
-              }
-      
-              function success(pos) {
-                // 이제 'success' 함수 내부에서 맞는 위도 및 경도 값을 사용하여 지도를 초기화합니다.
-                var mapContainer = document.getElementById('map');
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5da392d3bc0f2c1ea91f895109afcb78"></script>
+    <script>
+        var mapContainer = document.getElementById('map');
+        var map;
+    
+        function updateMap() {
+            var select = document.querySelector('select[name="search_option"]');
+            var selectedOption = select.options[select.selectedIndex];
+            var lat = parseFloat(selectedOption.getAttribute('data-lat'));
+            var lon = parseFloat(selectedOption.getAttribute('data-lon'));
+            
+            if (!isNaN(lat) && !isNaN(lon) && mapContainer) {
                 var mapOption = {
-                  center: new kakao.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
-                  level: 4
+                    center: new kakao.maps.LatLng(lat, lon),
+                    level: 4
                 };
-      
-                var map = new kakao.maps.Map(mapContainer, mapOption);
-      
-                var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/2018/pc/img/marker_spot.png';
-                var imageSize = new kakao.maps.Size(50, 69);
-                var imageOption = { offset: new kakao.maps.Point(27, 69) };
-      
-                var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption);
-                var markerPosition = new kakao.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
                 
-                // 사용자의 현재 위치 (위도 및 경도)
-                var userLatitude = pos.coords.latitude;
-                var userLongitude = pos.coords.longitude;
-
-                var marker = new kakao.maps.Marker({
-                  position: markerPosition,
-                  image: markerImage
-                });
-      
-                marker.setMap(map);
-              }
+                if (map) {
+                    map.setCenter(mapOption.center);
+                } else {
+                    map = new kakao.maps.Map(mapContainer, mapOption);
+                }
             }
-      
-            // 위치 정보를 출력할 요소 가져오기
-            var elt = document.getElementById("myLocationInfo");
-      
-            // 위치 정보 출력
-            whereami(elt);
-          </script>
+        }
+    
+        // 페이지 로딩 시 초기 지도를 설정
+        updateMap();
+    // 마커를 표시할 위치와 title 객체 배열입니다 
+    var positions = [
+        {
+            title: '카카오', 
+            latlng: new kakao.maps.LatLng(33.450705, 126.570677)
+        },
+        {
+            title: '생태연못', 
+            latlng: new kakao.maps.LatLng(33.450936, 126.569477)
+        },
+        {
+            title: '텃밭', 
+            latlng: new kakao.maps.LatLng(33.450879, 126.569940)
+        },
+        {
+            title: '근린공원',
+            latlng: new kakao.maps.LatLng(33.451393, 126.570738)
+        }
+    ];
 
-<section>
-    <div class="rt-container">
-          <div class="col-rt-12">
-              <div class="Scriptcontent">
-              
-              <!-- START DEMO -->
-    		<div class="tile" id="tile-1">
+    // 마커 이미지의 이미지 주소입니다
+    var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+        
+    for (var i = 0; i < positions.length; i ++) {
+        
+        // 마커 이미지의 이미지 크기 입니다
+        var imageSize = new kakao.maps.Size(24, 35); 
+        
+        // 마커 이미지를 생성합니다    
+        var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+        
+        // 마커를 생성합니다
+        var marker = new kakao.maps.Marker({
+            map: map, // 마커를 표시할 지도
+            position: positions[i].latlng, // 마커를 표시할 위치
+            title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+            image : markerImage // 마커 이미지 
+        });
+    }
+    </script>
+<div class="rt-container">
+    <div class="col-rt-12">
+        <div class="Scriptcontent">
+        
+        <!-- START DEMO -->
+      <div class="tile" id="tile-1">
 
-                
-  <!-- Nav tabs -->
-  <ul class="nav nav-tabs nav-justified" role="tablist">
+          
+<!-- Nav tabs -->
+<ul class="nav nav-tabs nav-justified" role="tablist">
     <div class="slider"></div>
     <li class="nav-item">
-      <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true" data-service="음식점"><i class="fas fa-hamburger"></i> 음식점</a>
+        <a class="nav-link active" id="home-tab" data-toggle="tab" role="tab" aria-controls="home" aria-selected="true" data-service="음식점"><i class="fas fa-hamburger"></i> 음식점</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false" data-service="카페"><i class="fas fa-mug-hot"></i> 카페</a>
+        <a class="nav-link" id="profile-tab" data-toggle="tab" role="tab" aria-controls="profile" aria-selected="false" data-service="카페"><i class="fas fa-mug-hot"></i> 카페</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false" data-service="관광명소"><i class="fas fa-map-signs"></i> 관광명소</a>
+        <a class="nav-link" id="contact-tab" data-toggle="tab" role="tab" aria-controls="contact" aria-selected="false" data-service="관광명소"><i class="fas fa-map-signs"></i> 관광명소</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" id="setting-tab" data-toggle="tab" href="#setting" role="tab" aria-controls="setting" aria-selected="false" data-service="교통정보"><i class="fas fa-bus"></i> 교통정보</a>
+        <a class="nav-link" id="setting-tab" data-toggle="tab" role="tab" aria-controls="setting" aria-selected="false" data-service="교통정보"><i class="fas fa-bus"></i> 교통정보</a>
     </li>
-  </ul>
-  
-  <!-- Tab panes -->
-  <div class="tab-content">
-    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">음식점</div>
-    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">카페</div>
-    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">관광명소</div>
-    <div class="tab-pane fade" id="setting" role="tabpanel" aria-labelledby="setting-tab">교통정보</div>
+</ul>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // 탭 버튼 클릭 이벤트 리스너
+        const tabButtons = document.querySelectorAll('.nav-link');
+        tabButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const selectedService = this.getAttribute('data-service');
+
+                // 선택한 서비스 결과를 표시할 <div> 요소를 가져옵니다.
+                const selectedServiceResultsDiv = document.getElementById('selected-service-results');
+
+                // AJAX 요청을 사용하여 서버에서 데이터 가져오기
+                // 여기서는 jQuery의 $.get 메서드를 사용합니다.
+                $.get('/get-services/', { service: selectedService }, function(data) {
+                    // 서버에서 반환된 데이터를 사용하여 <div>에 결과를 표시합니다.
+                    selectedServiceResultsDiv.innerHTML = data;
+                });
+            });
+        });
+    });
+  </script>
+<!-- Tab panes -->
+<div class="album py-3 bg-body-tertiary">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            {% for row1 in services %}
+                <div class="col">
+                    <div class="card shadow-sm">
+                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                            <image href="{{ row1.ser_img }}" width="100%" height="100%">
+                        </svg>
+                        <div class="card-body">
+                            <h5 class="card-text">{{ row1.ser_nm }}</h5>
+                            <small>{{ row1.ser_group }}</small>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button style="background-color: #112D4E; color: #F9F7F7;" type="button" class="btn btn-sm btn-outline-secondary">
+                                        <a href="{{ row1.ser_url }}" style="color: inherit; text-decoration: none;">
+                                            카카오맵 상세보기
+                                        </a>
+                                    </button>
+                                </div>
+                                <small class="text-body-secondary">{{ row1.ser_distance }}m</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+      </div>
+    </div> 
   </div>
 
 </div>
@@ -536,45 +593,66 @@
 <!-- jQuery JS -->
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
 <!-- Bootstrap JS -->
-<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js'></script><script>
-$(document).ready(function(){
-                      
-  $("#tile-1 .nav-tabs a").click(function() {
-      
-  var position = $(this).parent().position();
-      
-  var width = $(this).parent().width();
-      
-    $("#tile-1 .slider").css({"left":+ position.left,"width":width});
-      
-   });
-var actWidth = $("#tile-1 .nav-tabs").find(".active").parent("li").width();
-    
-var actPosition = $("#tile-1 .nav-tabs .active").position();
-    
-$("#tile-1 .slider").css({"left":+ actPosition.left,"width": actWidth});
-    
-});        
-</script>
-                  <!-- END DEMO -->
-           
-    		</div>
-		</div>
-    </div>
-</section>
-     
-    <script src="{% static 'mgapp/js/jquery-3.4.1.min.js'%}"></script>
-    <script src="{% static 'mgapp/js/popper.min.js'%}"></script>
-    <script src="{% static 'mgapp/js/bootstrap.min.js'%}"></script>
-    <script src="{% static 'mgapp/js/owl.carousel.min.js'%}"></script>
-    <script src="{% static 'mgapp/js/jquery.animateNumber.min.js'%}"></script>
-    <script src="{% static 'mgapp/js/jquery.waypoints.min.js'%}"></script>
-    <script src="{% static 'mgapp/js/jquery.fancybox.min.js'%}"></script>
-    <script src="{% static 'mgapp/js/aos.js'%}"></script>
-    <script src="{% static 'mgapp/js/moment.min.js'%}"></script>
-    <script src="{% static 'mgapp/js/daterangepicker.js'%}"></script>
-    <script src="{% static 'mgapp/js/typed.js'%}"></script>
-    <script src="{% static 'mgapp/js/custom.js'%}"></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js'></script>
+<script>
+    $(document).ready(function() {
+        // 탭 메뉴 슬라이더 이벤트 처리
+        $("#tile-1 .nav-tabs a").click(function() {
+            var position = $(this).parent().position();
+            var width = $(this).parent().width();
+            $("#tile-1 .slider").css({"left":+ position.left,"width":width});
+        });
 
-	</body>
+        var actWidth = $("#tile-1 .nav-tabs").find(".active").parent("li").width();
+        var actPosition = $("#tile-1 .nav-tabs .active").position();
+        $("#tile-1 .slider").css({"left":+ actPosition.left,"width": actWidth});
+    });
+
+    function updateMap() {
+        var select = document.querySelector('select[name="search_option"]');
+        var selectedOption = select.options[select.selectedIndex];
+        var lat = parseFloat(selectedOption.getAttribute('data-lat'));
+        var lon = parseFloat(selectedOption.getAttribute('data-lon'));
+    
+        if (!isNaN(lat) && !isNaN(lon) && mapContainer) {
+            var mapOption = {
+                center: new kakao.maps.LatLng(lat, lon),
+                level: 4
+            };
+    
+            if (map) {
+                map.setCenter(mapOption.center);
+            } else {
+                map = new kakao.maps.Map(mapContainer, mapOption);
+            }
+        }
+    }
+    
+    function submitForm() {
+        document.getElementById("searchForm").submit();
+    }
+
+    const tabButtons = document.querySelectorAll('.nav-link');
+</script>
+            <!-- END DEMO -->
+     
+      </div>
+  </div>
+</div>
+</section>
+
+<script src="{% static 'mgapp/js/jquery-3.4.1.min.js'%}"></script>
+<script src="{% static 'mgapp/js/popper.min.js'%}"></script>
+<script src="{% static 'mgapp/js/bootstrap.min.js'%}"></script>
+<script src="{% static 'mgapp/js/owl.carousel.min.js'%}"></script>
+<script src="{% static 'mgapp/js/jquery.animateNumber.min.js'%}"></script>
+<script src="{% static 'mgapp/js/jquery.waypoints.min.js'%}"></script>
+<script src="{% static 'mgapp/js/jquery.fancybox.min.js'%}"></script>
+<script src="{% static 'mgapp/js/aos.js'%}"></script>
+<script src="{% static 'mgapp/js/moment.min.js'%}"></script>
+<script src="{% static 'mgapp/js/daterangepicker.js'%}"></script>
+<script src="{% static 'mgapp/js/typed.js'%}"></script>
+<script src="{% static 'mgapp/js/custom.js'%}"></script>
+
+</body>
 </html>
