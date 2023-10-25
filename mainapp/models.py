@@ -59,17 +59,16 @@ class Booking(models.Model):
         managed = False
 
 class Service(models.Model):
-    ser_mar = CharField(max_length=30, null=False)
-    ser_gu = CharField(max_length=10, null=False)
-    ser_group = CharField(max_length=50, null=False)
-    ser_nm = CharField(primary_key=True, max_length=50, null=False)
-    ser_add = CharField(max_length=100, null=False)
-    ser_tel = CharField(max_length=20)
-    ser_img = CharField(max_length=300, null=False)
-    ser_distance = IntegerField(null=False)
-    ser_url = CharField(max_length=100, null=False)
-    ser_lat = FloatField(null=False)
-    ser_lon = FloatField(null=False)
+    ser_mar = models.CharField(max_length=30, null=False)
+    ser_gu = models.CharField(max_length=10, null=False)
+    ser_group = models.CharField(max_length=50, null=False)
+    ser_nm = models.CharField(primary_key=True, max_length=50, null=False)
+    ser_img = models.CharField(max_length=300, null=False)
+    ser_distance = models.IntegerField(null=False)
+    ser_url = models.CharField(max_length=100, null=False)
+    ser_lat = models.FloatField(null=False)
+    ser_lon = models.FloatField(null=False)
+
     class Meta:
         db_table = "service"
         app_label = "mainapp"

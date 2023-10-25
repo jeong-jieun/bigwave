@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from .models import Member, Booking, Schedule, Boo_sch, Marina, Boo_mem
+from .models import Member, Booking, Schedule, Boo_sch, Marina, Boo_mem, Service
+
+# 시각화 보여주는 라이브러리
+from mainapp.mappy.map import Service_Map_View
 
 # Create your views here.
 
@@ -224,10 +227,27 @@ def main(request):
 
 # imsi.html 처리
 def imsi(request):
+    marinas = Marina.objects.all()
+    service = Service.objects.all()
+    ser_mar = "자갈치유선장"#request.POST.get('search_option', None) 
+    ser_gu = "음식점"#request.POST.get('service_type', '')
     
+    filtered_services = Service.objects.filter(ser_mar=ser_mar, ser_gu=ser_gu)
+
+    ### 지도 클래스 불러오기
+    map_view = Service_Map_View(ser_mar, ser_gu)
+    
+    ### 지도맵 시각화 HTML로 받아오기
+    map_html = map_view.getMap()
+
     return render(request,
                   'mainapp/imsi.html',
-                  {})
+                  {'marina_list': marinas,
+                   'service' : service,
+                   'ser_mar': ser_mar,
+                   'services': filtered_services,
+                   'ser_gu': ser_gu,
+                   'map_html':map_html,})
 
 # index.html 처리
 def index(request):

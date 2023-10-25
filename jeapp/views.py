@@ -72,6 +72,7 @@ def service(request):
     selected_service_type = request.POST.get('service_type', '')  # Default is '음식점'
 
     filtered_services = Service.objects.filter(ser_mar=selected_mar, ser_gu=selected_service_type)
+    filtered_marinas = Marina.objects.all()
     
     return render(request,
                   'jeapp/html/service.html',
@@ -79,6 +80,10 @@ def service(request):
                    'service' : service,
                    'search_result': selected_mar,
                    'services': filtered_services,
+<<<<<<< HEAD
+                   'selected_service_type': selected_service_type,
+                   "filtered_marinas":filtered_marinas})
+=======
                    'selected_service_type': selected_service_type})
     
  # 서비스_first
@@ -97,6 +102,7 @@ def fservice(request):
                    'search_result': selected_mar,
                    'services': filtered_services,
                    'selected_service_type': selected_service_type})
+>>>>>>> 0776b1f51cce39d98f1ed13f16db2db7eb587720
 
 
 # 메인페이지에서 조회하기 버튼 클릭시 스케줄 조회 페이지 보여주기
