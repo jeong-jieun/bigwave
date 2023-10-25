@@ -47,7 +47,7 @@ urlpatterns = [
     ### mainapp (http://127.0.0.1:8000/login2/)
     path('login2/', views.login2),
     ### mainapp (http://127.0.0.1:8000/imsi/)
-    path('imsi/', views.imsi),
+    path('imsi/', views.imsi, name='search_action'),
     ### mainapp (http://127.0.0.1:8000/)
     path('', views.index),
 
