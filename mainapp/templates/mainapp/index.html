@@ -32,7 +32,13 @@
 <link rel="stylesheet" href="{% static 'mgapp/css/aos.css'%}">
 <link rel="stylesheet" href="{% static 'mgapp/css/style.css'%}">
 
+<<<<<<< HEAD
 <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
+=======
+<script type="text/javascript" src="{% static "mainapp/js/imsi.js" %}"></script>
+<link rel="stylesheet" href="{% static 'mainapp/css/imsi.css' %}">
+
+>>>>>>> f51981476a6aa18929bac750e40e7c141c0e4947
 
     
 <script src="{% static 'mgapp/css/assets/js/color-modes.js'%}"></script>
@@ -236,6 +242,7 @@ p {
 </head>
 
 <body>
+<<<<<<< HEAD
   <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
     <symbol id="arrow-up" viewBox="0 0 16 16">
       <path d="M7.646 1.646a.5.5 0 0 1 .708 0l5 5a.5.5 0 0 1-.708.708L8 2.707 2.354 8.354a.5.5 0 0 1-.708-.708l5-5z"/>
@@ -381,6 +388,10 @@ p {
       </div>
     </div>
     <span class="svg-wave"> <img class="svg-hero" src="{% static 'mainapp/free-css/images/iconizer-applight-wave.svg' %}" style="width: 100%;"> </span> </section>
+=======
+<!-- Navbar -->
+
+>>>>>>> f51981476a6aa18929bac750e40e7c141c0e4947
 
 
   <script>
@@ -393,7 +404,78 @@ p {
   });
   </script>
 
+<<<<<<< HEAD
   <section class="about section-padding prelative" data-scroll-index='1' style="z-index: 5;">
+=======
+            <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
+                <li class="active"><a href="/">서비스 소개</a></li>
+                <li class="active"><a href="/mg/test/">선착장예약</a></li>
+                <li><a href="/je/service/">교통/관광 서비스</a></li>
+                <li><a href="/je/service/">챗봇 서비스</a></li>
+                </li>
+                {% if request.session.ses_mem_id == None %}
+                <li><a href="/login2/">로그인</a></li>
+                <li><a href="/signup2/">회원가입</a></li>
+                {% else %}
+                <li><a href="/mg/booking/">예약확인</a></li>
+                <li><a href="/mypage/">회원정보</a></li>
+                <li><a href="/logout/">로그아웃</a></li>
+                {% endif %}
+            </ul>
+
+            <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
+                <span></span>
+            </a>
+
+        </div>
+</nav>
+
+	<script src="{% static 'mgapp/js/jquery-3.4.1.min.js'%}"></script>
+	<script src="{% static 'mgapp/js/popper.min.js'%}"></script>
+	<script src="{% static 'mgapp/js/bootstrap.min.js'%}"></script>
+	<script src="{% static 'mgapp/js/owl.carousel.min.js'%}"></script>
+	<script src="{% static 'mgapp/js/jquery.animateNumber.min.js'%}"></script>
+	<script src="{% static 'mgapp/js/jquery.waypoints.min.js'%}"></script>
+	<script src="{% static 'mgapp/js/jquery.fancybox.min.js'%}"></script>
+	<script src="{% static 'mgapp/js/aos.js'%}"></script>
+	<script src="{% static 'mgapp/js/moment.min.js'%}"></script>
+	<script src="{% static 'mgapp/js/daterangepicker.js'%}"></script>
+
+	<script src="{% static 'mgapp/js/typed.js'%}"></script>
+	<script>
+		$(function() {
+			var slides = $('.slides'),
+			images = slides.find('img');
+
+			images.each(function(i) {
+				$(this).attr('data-id', i + 1);
+			})
+
+			var typed = new Typed('.typed-words', {
+				strings: ["다대포 ","영도 ","자갈치 ", "송도",],
+				typeSpeed: 80,
+				backSpeed: 80,
+				backDelay: 4000,
+				startDelay: 1000,
+				loop: true,
+				showCursor: true,
+				preStringTyped: (arrayPos, self) => {
+					arrayPos++;
+					console.log(arrayPos);
+					$('.slides img').removeClass('active');
+					$('.slides img[data-id="'+arrayPos+'"]').addClass('active');
+				}
+
+			});
+		})
+	</script>
+
+
+<br><br><br>
+
+<section class="banner" data-scroll-index='0'>
+  <div class="banner-overlay">
+>>>>>>> f51981476a6aa18929bac750e40e7c141c0e4947
     <div class="container">
       <div class="row">
         <div class="col-md-12">

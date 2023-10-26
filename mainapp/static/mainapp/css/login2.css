@@ -1,7 +1,8 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css");
 body {
   background-color: #33628792;
   margin:0px;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Pretendard';
 	background-size: 100% 130%;
 }
 h1, h2, h3, h4, h5, h6, a{
@@ -34,7 +35,7 @@ hr {
   max-width:400px;
 	width: 80%;
   line-height:3em;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Pretendard';
   margin:1em 2em;
   border-radius:5px;
   border:3px solid #DBE2EF;
@@ -50,7 +51,7 @@ hr {
   border-radius:20px;
   color: #F9F7F7;
   text-transform:uppercase;
-  font-family: 돋음;
+  font-family: 'Pretendard';
   font-size: large;
   font-weight: bolder;
   cursor:pointer;
@@ -69,7 +70,7 @@ border:0px solid #000;
   border-radius:100px;
   color: #fff;
   text-transform:uppercase;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Pretendard';
   cursor:pointer;
 }
 .a-bimli {
