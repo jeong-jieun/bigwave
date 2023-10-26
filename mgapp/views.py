@@ -6,6 +6,10 @@ from datetime import datetime
 
 
 # index.html 처리
+def chat(request):
+    return render(request,
+                  'jeapp/html/chatbot.html',
+                  {})
 def logout(request):
     
     ### 로그아웃 처리는 session 딕셔너리의 key를 없애주면 됩니다
