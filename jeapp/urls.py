@@ -26,7 +26,27 @@ urlpatterns = [
     path('', views.index),
     
     
+
+    
     # # main 페이지(http://127.0.0.1:8000/)
     # path('', views.main),
     path('service/jong/', views.jong),
+    # # main 페이지(http://127.0.0.1:8000/je/service/jong/)
+    path('service/jongkakao/', views.jong_kakao),
+    # # main 페이지(http://127.0.0.1:8000/je/service/jongjongkakao/)
+    path('service/bus_station/', views.bus_station),
+    # # main 페이지(http://127.0.0.1:8000/je/service/bus_station/)
+    path('service/chatbot/', views.chatbot),
+    # # main 페이지(http://127.0.0.1:8000/je/service/chatbot/)
+    path('service/chatbot_back11/', views.chatbot_back11),
+    # # main 페이지(http://127.0.0.1:8000/je/service/chatbot_back/)
+    
+    path('service/f_bus_station/', views.f_bus_station),
+    # # main 페이지(http://127.0.0.1:8000/je/service/f_bus_station/)
+    path('service/busmaker/', views.bus_maker),
+    # # main 페이지(http://127.0.0.1:8000/je/service/busmaker/)
+    path('service/bus_min/', views.bus_min),
+    # # main 페이지(http://127.0.0.1:8000/je/service/bus_min/)
+    path('service/chatbotiframe/', views.iframe),
+    # # main 페이지(http://127.0.0.1:8000/je/service/chatbotiframe/)
 ]
