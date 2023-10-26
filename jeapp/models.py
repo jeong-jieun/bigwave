@@ -86,10 +86,12 @@ class Traffic(models.Model):
         managed = False
         
 class Businfo(models.Model):
-    bus_stop = CharField(max_length=5, primary_key=True, null=False)
-    bus_no = CharField(max_length=10,null=False)
+    bus_index = CharField(max_length=5, primary_key=True, null=False)
+    bus_stop = CharField(max_length=5)
+    bus_no = CharField(max_length=10)
+    bus_nm = CharField(max_length=50)
     bus_time = CharField(max_length=10)
-    bus_remain = IntegerField()
+    bus_remain= CharField(max_length=10)
     class Meta:
         db_table = "businfo"
         app_label = "jeapp"
