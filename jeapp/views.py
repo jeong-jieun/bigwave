@@ -1,7 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Member, Marina, Schedule, Booking, Service, Traffic
+from .models import Member, Marina, Schedule, Booking, Service, Traffic, Boo_mem
 from datetime import datetime
+from django.http import JsonResponse
+from django.shortcuts import render
+import json
+
+from mainapp.mappy.map import Service_Map_View
 
 
 # test.html
@@ -65,22 +70,46 @@ def traffic(request):
 
 
  # 서비스
+    
 def service(request):
+    #if request.method == "POST":
+        #lat = request.POST.get("lat")
+        #lon = request.POST.get("lon")
+    
+    mem_id = request.session.get('ses_mem_id', None)
+    boo_mem = Boo_mem.objects.filter(boo_mem1=mem_id).first()
     marinas = Marina.objects.all()
     service = Service.objects.all()
+    #ser_mar = "자갈치유선장"#request.POST.get('search_option', None) 
+    #ser_gu = "음식점"#request.POST.get('service_type', '')
     selected_mar = request.POST.get('search_option', None) 
     selected_service_type = request.POST.get('service_type', '')  # Default is '음식점'
 
     filtered_services = Service.objects.filter(ser_mar=selected_mar, ser_gu=selected_service_type)
-    filtered_marinas = Marina.objects.all()
     
+    if selected_mar is None and selected_service_type == '':
+        # 만약 둘 다 None이라면, "selected_mar"와 "selected_service_type"를 "boo_mem"에서의 도착 지점으로 설정합니다.
+        selected_mar = boo_mem.boo_sch1.sch_arrival
+        selected_service_type = "음식점"
+    #filtered_services = Service.objects.filter(ser_mar=ser_mar, ser_gu=ser_gu)
+
+    ### 지도 클래스 불러오기
+    map_view = Service_Map_View(selected_mar, selected_service_type)
+    
+    ### 지도맵 시각화 HTML로 받아오기
+    map_html = map_view.getMap()
+
     return render(request,
                   'jeapp/html/service.html',
                   {'marina_list': marinas,
                    'service' : service,
                    'search_result': selected_mar,
                    'services': filtered_services,
-                   'selected_service_type': selected_service_type})
+                   'selected_service_type': selected_service_type,
+                   'marina_list': marinas,
+                   'service' : service,
+                   'services': filtered_services,
+                   'map_html':map_html,})
     
  # 서비스_first
 def fservice(request):
