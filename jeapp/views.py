@@ -9,14 +9,44 @@ from django.http import JsonResponse
 
 # test.html
 def test(request):
+    service = Service.objects.all()
+    selected_service_type = request.POST.get('service_type', '')
+    services = Service.objects.filter(ser_gu=selected_service_type)
     return render(request,
                   'jeapp/html/test.html',
-                  {})
+                  {'service' : service,
+                   'services' : services})
 # main.html
 def main(request):
     return render(request,
                   'jeapp/html/main.html',
                   {})
+# map.html
+def map(request):
+    marinas = Marina.objects.all()
+    services = Service.objects.all()
+    
+    selected_mar = request.POST.get('search_option', None)
+    selected_service_type = request.POST.get('service_type', '음식점')  # 기본값 설정
+
+    # 필터링된 서비스 가져오기
+    if selected_mar:
+        if selected_service_type in ['음식점', '카페', '관광명소', '교통정보']:
+            filtered_services = services.filter(ser_mar=selected_mar, ser_gu=selected_service_type)
+        else:
+            # 선택한 `ser_mar` 및 `ser_gu`가 없거나 올바르지 않은 경우, 모든 음식점 정보 반환
+            filtered_services = services.filter(ser_mar=selected_mar, ser_gu='음식점')
+    else:
+        # 선택한 `ser_mar` 및 `ser_gu`가 없는 경우, 모든 음식점 정보 반환
+        filtered_services = services.filter(ser_mar=selected_mar, ser_gu='음식점')
+
+    return render(request, 'jeapp/html/map.html', {
+        'marina_list': marinas,
+        'service': services,
+        'search_result': selected_mar,
+        'services': filtered_services,
+        'selected_service_type': selected_service_type,
+    })
 
 
 # 서비스 상세보기
@@ -37,8 +67,26 @@ def traffic(request):
                    'search_result': selected_option})
 
 
- # 서비스   
+ # 서비스
 def service(request):
+    marinas = Marina.objects.all()
+    service = Service.objects.all()
+    selected_mar = request.POST.get('search_option', None) 
+    selected_service_type = request.POST.get('service_type', '')  # Default is '음식점'
+
+    filtered_services = Service.objects.filter(ser_mar=selected_mar, ser_gu=selected_service_type)
+    filtered_marinas = Marina.objects.all()
+    
+    return render(request,
+                  'jeapp/html/service.html',
+                  {'marina_list': marinas,
+                   'service' : service,
+                   'search_result': selected_mar,
+                   'services': filtered_services,
+                   'selected_service_type': selected_service_type})
+    
+ # 서비스_first
+def fservice(request):
     marinas = Marina.objects.all()
     service = Service.objects.all()
     selected_mar = request.POST.get('search_option', None) 

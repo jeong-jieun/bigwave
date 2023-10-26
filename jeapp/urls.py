@@ -4,7 +4,9 @@ from django.urls import path
 from . import views
 urlpatterns = [
     
-    # main페이지
+    # map
+    path('map/', views.map),
+    # test
     path('test/', views.test),
     # main페이지
     path('main/', views.main),
@@ -16,8 +18,10 @@ urlpatterns = [
     path('schedule/', views.schedule),
     ### 결제버튼 클릭시 db저장 (http://127.0.0.1:8000/je/save_reservation)
     path('save_reservation/', views.save_reservation, name='save_reservation'),
-    ### 서비스페이지 (http://127.0.0.1:8000/je/service)
+    ### 서비스페이지 (http://127.0.0.1:8000/je/service2)
     path('service/', views.service, name='search_action'),
+    ### 서비스페이지 (http://127.0.0.1:8000/je/service)
+    path('fservice/', views.fservice),
     ### 로그인페이지 (http://127.0.0.1:8000/je/login)
     path('login/', views.login),
     ### 결제확인페이지 (http://127.0.0.1:8000/je/checkout)
