@@ -210,7 +210,8 @@ p {
   position: fixed;
   bottom: 10px;
   right: 10px;
-  width: 300px;
+  width: 500px;
+  height: 500px;
   background-color: #fff;
   border: 1px solid #ccc;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -218,12 +219,15 @@ p {
 }
 
 #popupContent {
-  padding: 10px;
+  right: 10px;
+  width: 500px;
+  height: 435px;
+
 }
 
 #closePopup {
-  background-color: #f00;
-  color: #fff;
+  background-color: #;
+  color: black;
   border: none;
   cursor: pointer;
 }
@@ -241,11 +245,11 @@ p {
 
   <div class="dropdown position-fixed bottom-0 end-0 mb-2 me-3 bd-mode-toggle">
     <button class="btn btn-bd-primary2 py-2 dropdown-toggle d-flex align-items-center"
-            id="bd-theme"
+            id="openPopup"
             type="button"
             aria-expanded="false"
             aria-label="Toggle theme (auto)"
-            onclick="scrollToTop()">
+            onclick="">
       <img src="{% static "\mgapp\images\dbdb.png" %}" style="max-width: 50px; max-height: 50px;" alt="챗봇">
       <span class="visually-hidden" id="bd-theme-text">sadas</span>
     </button>
@@ -262,14 +266,15 @@ p {
       <span class="visually-hidden" id="bd-theme-text">sadas</span>
     </button>
   </div>
-  <button id="openPopup">Open Popup</button>
   <div id="popupContainer">
-      <iframe id="popupContent">
-          <h2>Popup Title</h2>
-          <p>인ㄱ;ㅐ머기ㅏㅁ너김나건미ㅏ거미ㅏㄱ이 이런게아닐텐데</p>
-          <button id="closePopup">Close</button>
-      </iframe>
+    <iframe id="popupContent" src="/mg/chat/" frameborder="0">
+      <h2>Popup Title</h2>
+    </iframe>
+    <hr>
+    <button id="closePopup">닫기</button>
   </div>
+
+
 {% comment %} <div style=" z-index: 1;">
   <div class="sticky_click" style="top: 50px;">ststststst</div> {% endcomment %}
 
@@ -338,7 +343,7 @@ p {
         })
 
         var typed = new Typed('.typed-words', {
-          strings: ["다대포 ","영도 ","자갈치 ", "송도",],
+          strings: ["다대포 ","영도 ","자갈치 ", "송도",'해운대'],
           typeSpeed: 80,
           backSpeed: 80,
           backDelay: 4000,
@@ -375,7 +380,7 @@ p {
         </div>
       </div>
     </div>
-    <span class="svg-wave"> <img class="svg-hero" src="{% static 'mainapp/free-css/images/applight-wave.png' %}"> </span> </section>
+    <span class="svg-wave"> <img class="svg-hero" src="{% static 'mainapp/free-css/images/iconizer-applight-wave.svg' %}" style="width: 100%;"> </span> </section>
 
 
   <script>
@@ -387,7 +392,6 @@ p {
       document.getElementById('popupContainer').style.display = 'none';
   });
   </script>
-  <div id="floatingElement">항상 여기에 있어요!</div>
 
   <section class="about section-padding prelative" data-scroll-index='1' style="z-index: 5;">
     <div class="container">
