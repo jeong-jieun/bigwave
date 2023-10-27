@@ -12,31 +12,6 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Boo_mem',
-            fields=[
-                ('book_no', models.BigIntegerField(primary_key=True, serialize=False)),
-                ('book_qty', models.IntegerField()),
-                ('book_price', models.IntegerField()),
-            ],
-            options={
-                'db_table': 'booking',
-                'managed': False,
-            },
-        ),
-        migrations.CreateModel(
-            name='Boo_sch',
-            fields=[
-                ('book_no', models.BigIntegerField(primary_key=True, serialize=False)),
-                ('book_mem', models.CharField(db_column='book_mem', max_length=30)),
-                ('book_qty', models.IntegerField()),
-                ('book_price', models.IntegerField()),
-            ],
-            options={
-                'db_table': 'booking',
-                'managed': False,
-            },
-        ),
-        migrations.CreateModel(
             name='Booking',
             fields=[
                 ('book_no', models.BigIntegerField(primary_key=True, serialize=False)),
@@ -47,6 +22,31 @@ class Migration(migrations.Migration):
             ],
             options={
                 'db_table': 'booking',
+                'managed': False,
+            },
+        ),
+        migrations.CreateModel(
+            name='Businfo',
+            fields=[
+                ('bus_index', models.CharField(max_length=5, primary_key=True, serialize=False)),
+                ('bus_stop', models.CharField(max_length=5)),
+                ('bus_no', models.CharField(max_length=10)),
+                ('bus_nm', models.CharField(max_length=50)),
+                ('bus_time', models.CharField(max_length=10)),
+                ('bus_remain', models.CharField(max_length=10)),
+            ],
+            options={
+                'db_table': 'businfo',
+                'managed': False,
+            },
+        ),
+        migrations.CreateModel(
+            name='Busstop',
+            fields=[
+                ('stop_id', models.CharField(max_length=5, primary_key=True, serialize=False)),
+            ],
+            options={
+                'db_table': 'busstop',
                 'managed': False,
             },
         ),
@@ -120,7 +120,6 @@ class Migration(migrations.Migration):
                 ('tra_mar', models.CharField(max_length=30)),
                 ('tra_id', models.CharField(max_length=5, primary_key=True, serialize=False)),
                 ('tra_nm', models.CharField(max_length=50)),
-                ('tra_route', models.IntegerField()),
                 ('tra_lat', models.FloatField()),
                 ('tra_lon', models.FloatField()),
                 ('tra_dis', models.FloatField()),

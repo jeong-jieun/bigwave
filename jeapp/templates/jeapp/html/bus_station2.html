@@ -269,12 +269,14 @@ $(document).ready(function(){
     }
     
     alert("연결");
-    alert(">>>>>>>>>>>>>>> " + data["traffic_db3"][0].bus_stop);
+    alert(">>>>>>>>>>>>>>> " + data["businfo_data"][0].bus_stop);
     
     // traffic_db3 데이터에 접근
-    var trafficDb3 = data.traffic_db3;
+    var businfo_data = data.businfo_data;
     var body = document.querySelector('body');
 
+
+	
     // 새로운 테이블 생성
     var table = document.createElement('table');
     table.id = "myTable"; // 테이블에 아이디를 추가
@@ -296,8 +298,8 @@ $(document).ready(function(){
 
 
     // traffic_db3 배열을 반복
-    for (var i = 0; i < trafficDb3.length; i++) {
-        var item = trafficDb3[i];
+    for (var i = 0; i < businfo_data.length; i++) {
+        var item = businfo_data[i];
         var bus_stop = item.bus_stop;
         var bus_no = item.bus_no;
         var bus_nm = item.bus_nm;
@@ -318,11 +320,87 @@ $(document).ready(function(){
         cell2.innerHTML = bus_no;
         cell3.innerHTML = bus_nm;
         cell4.innerHTML = bus_time;
-		cell5.innerHTML=bus_remain
+		cell5.innerHTML = bus_remain
     }
 
     // body에 새로운 테이블 추가
     body.appendChild(table);
+
+	// 새로운 테이블
+
+
+		// 테이블 내용 생성
+		var tbody = document.createElement('tbody');
+		var tr = document.createElement('tr');
+		var th = document.createElement('th');
+		th.textContent = '버스 정류장 번호';
+		var th2 = document.createElement('th');
+		th2.textContent = '버스 번호';
+		var th3 = document.createElement('th');
+		th3.textContent = '정류장 번호';
+		var th4 = document.createElement('th');
+		th4.textContent = '남은 시간';
+		var th5 = document.createElement('th');
+		th5.textContent = '남은 정거장 수';
+
+		tr.appendChild(th);
+		tr.appendChild(th2);
+		tr.appendChild(th3);
+		tr.appendChild(th4);
+		tr.appendChild(th5);
+		tbody.appendChild(tr);
+
+		// businfo_data 배열을 반복
+		for (var i = 0; i < businfo_data.length; i++) {
+			var item = businfo_data[i];
+			var bus_stop = item.bus_stop;
+			var bus_no = item.bus_no;
+			var bus_nm = item.bus_nm;
+			var bus_time = item.bus_time;
+			var bus_remain = item.bus_remain;
+	
+			// 새로운 테이블을 생성
+			var table2 = document.createElement('table');
+			table2.className = 'rwd-table';
+	
+
+	
+			var td = document.createElement('td');
+			td.textContent = bus_stop;
+			var td2 = document.createElement('td');
+			td2.textContent = bus_no;
+			var td3 = document.createElement('td');
+			td3.textContent = bus_nm;
+			var td4 = document.createElement('td');
+			td4.textContent = bus_time;
+			var td5 = document.createElement('td');
+			td5.textContent = bus_remain;
+	
+
+	
+			var tr2 = document.createElement('tr');
+			tr2.className = 'KOTRA-fontsize-80';
+			tr2.appendChild(td);
+			tr2.appendChild(td2);
+			tr2.appendChild(td3);
+			tr2.appendChild(td4);
+			tr2.appendChild(td5);
+			tbody.appendChild(tr2);
+	
+			table2.appendChild(tbody);
+	
+			// 생성한 테이블을 body에 추가
+			body.appendChild(table2);
+		}
+
+
+
+
+
+
+
+
+
 
 
 				// id 속성값으로 문서 객체 생성 : 캐스팅

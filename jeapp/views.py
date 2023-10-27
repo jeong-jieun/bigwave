@@ -405,15 +405,14 @@ def bus_min(request):
     lat=request.POST.get("lat","None")
     busno=request.POST.get("busno","None")
     print(f"bus_station()>>>>>>>>>>>>>> busno[{busno}")
-    businfo = Businfo.objects.filter(busno=busno)
-    print(f"bus_station()>>>>>>>>>>>>>> [] <<<<<<<<</ / busno[{busno}]")
+    businfo = Businfo.objects.filter(bus_stop=busno)
+    print(f"bus_station()>>>>>>>>>>>>>> [{businfo}] <<<<<<<<</ / busno[{busno}]")
     businfo_data = [model_to_dict(item) for item in businfo]
     contexts = {"businfo_data": businfo_data}
     print(f">>>>>>>>>>>>>>>{businfo_data}<<<<<<<<<")
 
     return JsonResponse(contexts, safe=False)
                
-
 
 
 def chatbot(request):
