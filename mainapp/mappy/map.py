@@ -6,6 +6,7 @@ import folium
 import plotly.express as px
 from geopy.geocoders import Nominatim
 from geopy.distance import geodesic
+from folium import CustomIcon
 
 
 ### 서비스 지도 시각화
@@ -23,25 +24,43 @@ class Service_Map_View:
 
         self.service_map = folium.Map(location=[self.selected_data['선착장위도'].mean(), self.selected_data['선착장경도'].mean()], zoom_start=16)
 
+        arr_icon = CustomIcon(icon_image='mainapp/static/mainapp/img/arr.png', icon_size=(60, 60))
+               
         # 회원 위치 마커 표시
         folium.Marker([self.selected_data['선착장위도'].mean(), self.selected_data['선착장경도'].mean()],
-                      icon=folium.Icon(color='red', icon='home')
+                      icon=arr_icon 
                       ).add_to(self.service_map)
+        
+        #bus_icon = CustomIcon(icon_image='mainapp/static/mainapp/img/bus.png', icon_size=(60, 60))
+               
+        # 회원 위치 마커 표시
+        #folium.Marker([self.lat, self.lon],
+                      #icon=bus_icon 
+                      #).add_to(self.service_map)
 
         # 가게 마커 표시
         for j in range(len(self.selected_data)):
-            service_name = self.selected_data.iloc[j, 0]
+            service_name = self.selected_data.iloc[j, 3]
             service_gu = self.selected_data.iloc[j, 1]
 
             popup_html = "-"*69+"<br>"
-            popup_html += f"<b>가게명:</b> {service_name}<br>"
+            popup_html += f"<b>이름:</b> {service_name}<br>"
             popup_html += f"<b>음식점 종류:</b> {service_gu}<br>"
             popup_html += "-"*69+"<br>"
+            
+            
 
             popup = folium.Popup(popup_html, max_width=250)
+            # 가게 종류에 따라 아이콘 선택
+            if service_gu == '음식점':
+                selected_icon = CustomIcon(icon_image='mainapp/static/mainapp/img/ham.png', icon_size=(40, 40))
+            elif service_gu == '카페':
+                selected_icon = CustomIcon(icon_image='mainapp/static/mainapp/img/cafe.png', icon_size=(40, 40))
+            elif service_gu == '관광명소':
+                selected_icon = CustomIcon(icon_image='mainapp/static/mainapp/img/gk.png', icon_size=(40, 40))
             folium.Marker([self.selected_data.iloc[j, 5], self.selected_data.iloc[j, 6],
                           ],
-                          popup=popup, icon=folium.Icon(icon='plus')
+                          popup=popup, icon=selected_icon 
                           ).add_to(self.service_map)
         
     # 지도맵 데이터를 HTML로 반환
