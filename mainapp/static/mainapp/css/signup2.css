@@ -381,7 +381,7 @@ section {
 
 /*input 클릭시, label 스타일*/
 input:checked+label {
-  background: linear-gradient(to left, #3F72AF, #b4caf2);
+  background: #5082ee;
   color: white;
   font-weight: 500;
 }
@@ -483,4 +483,3 @@ footer h4 {
   margin-bottom: 1.4rem;
   color: #777;
 }
-

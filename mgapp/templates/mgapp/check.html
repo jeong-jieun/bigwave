@@ -30,156 +30,325 @@
 	<link rel="stylesheet" href="{% static 'mgapp/css/aos.css'%}">
 	<link rel="stylesheet" href="{% static 'mgapp/css/style.css'%}">
 	<link rel="stylesheet" type="text/css" href="https://etk.srail.kr/css/common.css" />
-	<link rel="stylesheet" type="text/css" href="https://etk.srail.kr/css/jquery-ui.css" />
-	<link rel="stylesheet" type="text/css" href="https://etk.srail.kr/css/swiper-bundle.min.css" />
 
-	<link rel="stylesheet" type="text/css" href="https://etk.srail.kr/css/ticket.css" />
+	<link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.css" />
 
+   <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
+
+    
+   <script src="{% static 'mgapp/css/assets/js/color-modes.js'%}"></script>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/n pm/@docsearch/css@3">
+   <link href="{% static 'mgapp/css/assets/dist/css/bootstrap.min.css'%}" rel="stylesheet">
+   <style>
+   @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 	<title>해상택시 예약 서비스</title>
 	<style>
-		
+
+
+/* Add Styles for your cards here */
+
+/* ------ */
+
+/* Animation SCSS */
+{% comment %} .come-in {
+-webkit-transform: translateY(150px);
+   -ms-transform: translateY(150px);
+      transform: translateY(150px);
+-webkit-animation: come-in 0.8s ease forwards;
+      animation: come-in 0.8s ease forwards;
+} {% endcomment %}
+
+.come-in:nth-child(odd) {
+-webkit-animation-duration: 0.6s;
+      animation-duration: 0.6s;
+}
+
+.already-visible {
+-webkit-transform: translateY(0);
+   -ms-transform: translateY(0);
+      transform: translateY(0);
+-webkit-animation: none;
+      animation: none;
+}
+
+@-webkit-keyframes come-in {
+to {
+   -webkit-transform: translateY(0);
+         transform: translateY(0);
+}
+}
+
+@keyframes come-in {
+to {
+   -webkit-transform: translateY(0);
+         transform: translateY(0);
+}
+}		
+html, body, div, p, span, strong, b, em, iframe, pre, h1, h2, h3, h4, h5, h6, img, dl, dt, dd, fieldset, form, legend, label, table, caption, thead, tbody, tfoot, tr, th, td, button, ul, ol, li, a, input, select, textarea {
+   margin: 0;
+   padding: 0;
+   border: 0 none;
+   font-family: 'Pretendard', 'ng', MalgunGothic, '맑은 고딕', '돋움', Dotum, AppleGothic, Sans-serif, Arial;
+   font-size: 14px;
+}
+body {
+   font-family: 'Pretendard';
+   line-height: 1.5;
+   background: #ffffff;
+   overflow-x: hidden;
+   font-size: 14px;
+}
+.sticky_click {
+position: sticky;
+top:100px;
+}
+.btn-bd-primary {
+--bd-violet-bg: #712cf9;
+--bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+--bs-btn-font-weight: 600;
+--bs-btn-color: var(--bs-white);
+--bs-btn-bg: var(--bd-violet-bg);
+--bs-btn-border-color: var(--bd-violet-bg);
+--bs-btn-hover-color: var(--bs-white);
+--bs-btn-hover-bg: #6528e0;
+--bs-btn-hover-border-color: #6528e0;
+--bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+--bs-btn-active-color: var(--bs-btn-hover-color);
+--bs-btn-active-bg: #5a23c8;
+--bs-btn-active-border-color: #5a23c8;
+}
+.btn-bd-primary2 {
+--bd-violet-bg: #ffffff00;
+--bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+--bs-btn-font-weight: 600;
+--bs-btn-color: var(--bs-white);
+--bs-btn-bg: var(--bd-violet-bg);
+--bs-btn-border-color: var(--bd-violet-bg);
+--bs-btn-hover-color: var(--bs-white);
+--bs-btn-hover-bg: #6528e0;
+--bs-btn-hover-border-color: #6528e0;
+--bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+--bs-btn-active-color: var(--bs-btn-hover-color);
+--bs-btn-active-bg: #5a23c8;
+--bs-btn-active-border-color: #5a23c8;
+}
+.bd-mode-toggle {
+z-index: 1500;
+}
+.mb-2 {
+margin-bottom: 5.5rem!important;
+}
+#popupContainer {
+display: none;
+position: fixed;
+bottom: 10px;
+right: 10px;
+width: 500px;
+height: 500px;
+background-color: #fff;
+border: 1px solid #ccc;
+box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+z-index: 9999; /* 팝업을 항상 위에 띄우기 위해 z-index 사용 */
+}  @media (min-width: 340.98px)and (max-width: 530px) {
+#popupContainer {  width: 250px;
+   height: 300px;} }
+
+#popupContent {
+right: 10px;
+width: 500px;
+height: 435px;
+
+}  @media (min-width: 340.98px)and (max-width: 530px) {
+#popupContent {  width: 250px;
+   height: 250px;} }
+
+#closePopup {
+background-color: #;
+color: black;
+border: none;
+cursor: pointer;
+}
 	</style>
 </head>
 
 <body>
+   <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+      <symbol id="arrow-up" viewBox="0 0 16 16">
+        <path d="M7.646 1.646a.5.5 0 0 1 .708 0l5 5a.5.5 0 0 1-.708.708L8 2.707 2.354 8.354a.5.5 0 0 1-.708-.708l5-5z"/>
+      </symbol>
+    </svg>
+  
+  
+    <div class="dropdown position-fixed bottom-0 end-0 mb-2 me-3 bd-mode-toggle">
+      <button class="btn btn-bd-primary2 py-2 dropdown-toggle d-flex align-items-center"
+              id="openPopup"
+              type="button"
+              aria-expanded="false"
+              aria-label="Toggle theme (auto)"
+              onclick="">
+        <img src="{% static "\mgapp\images\dbdb.png" %}" style="max-width: 50px; max-height: 50px;" alt="챗봇">
+        <span class="visually-hidden" id="bd-theme-text">sadas</span>
+      </button>
+    </div>
+    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+      <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
+              id="bd-theme"
+              type="button"
+              aria-expanded="false"
+              aria-label="Toggle theme (auto)"
+              onclick="scrollToTop()">
+        <svg class="bi my-1 theme-icon-active" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor">
+          <use xlink:href="#arrow-up"></use>
+        <span class="visually-hidden" id="bd-theme-text">sadas</span>
+      </button>
+    </div>
+    <div id="popupContainer">
+      <iframe id="popupContent" src="/mg/chat/" frameborder="0">
+        <h2>Popup Title</h2>
+      </iframe>
+      <hr>
+      <button id="closePopup">닫기</button>
+    </div>
+  
+  
+  {% comment %} <div style=" z-index: 1;">
+    <div class="sticky_click" style="top: 50px;">ststststst</div> {% endcomment %}
+  
+    <!-- Navbar -->
+    <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close">
+                <span class="icofont-close js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+  
+    <nav class="site-nav" style="z-index: 5;">
+  
+  
+            <div class="site-navigation">
+                <a href="/" class="logo m-0"><img src="{% static "mainapp/free-css/images/로고색.png" %}" alt="" style="width: 300px; height: 50px;" ></a> 
+                {% comment %} <span class="text-primary">bigwave</span> {% endcomment %}
+  
+                <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
+                    <li class="active"><a href="/">서비스 소개</a></li>
+                    <li class="active"><a href="/mg/test/">선착장예약</a></li>
+                    <li><a href="/je/service/">교통/관광 서비스</a></li>
+                    <li><a href="/je/service/chatbotiframe/">챗봇 서비스</a></li>
+                    </li>
+                    {% if request.session.ses_mem_id == None %}
+                    <li><a href="/login2/">로그인</a></li>
+                    <li><a href="/signup2/">회원가입</a></li>
+                    {% else %}
+                    <li><a href="/mg/booking/">예약확인</a></li>
+                    <li><a href="/mypage/">회원정보</a></li>
+                    <li><a href="/logout/">로그아웃</a></li>
+                    
+                    {% endif %}
+                    
+                </ul>
+                
+                <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
+                    <span></span>
+                </a>
+  
+            </div>
+  
+    </nav>
+	  {% comment %} <div class="sticky_click" style=" width:50px;
+	  height:50px;
+	  background:red;
+	  margin:10px;
+	  display: inline-block
+	  z-index: 10 ;">stst</div> {% endcomment %}
 
-
-	<div class="site-mobile-menu site-navbar-target">
-		<div class="site-mobile-menu-header">
-			<div class="site-mobile-menu-close">
-				<span class="icofont-close js-menu-toggle"></span>
-			</div>
-		</div>
-		<div class="site-mobile-menu-body"></div>
-	</div>
-
-	<nav class="site-nav">
-
-			<div class="site-navigation">
-				<a href="/" class="logo m-0">bigwave</a> 
-				{% comment %} <span class="text-primary">bigwave</span> {% endcomment %}
-
-				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-					<li class="active"><a href="/mg/test/">선착장예약</a></li>
-					<li class="has-children">
-						<a href="#">부가 서비스</a>
-						<ul class="dropdown">
-							<li class="has-children">
-								<a href="#">선착장</a>
-								<ul class="dropdown">
-									<li><a href="#">다대선착장</a></li>
-									<li><a href="#">동삼선착장</a></li>
-									<li><a href="#">미포선착장</a></li>
-									<li><a href="#">자갈치선착장</a></li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-					{% if request.session.ses_mem_id == None %}
-					<li><a href="/login2/">로그인</a></li>
-					<li><a href="/signup2/">회원가입</a></li>
-					{% else %}
-					<li><a href="/mg/booking/">예약확인</a></li>
-					<li><a href="/mypage/">회원정보</a></li>
-					<li><a href="/mg/logout/">로그아웃</a></li>
-					{% endif %}
-				</ul>
-
-				<a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
-					<span></span>
-				</a>
-
-			</div>
-	</nav>
-
-	<div class="container container-e">
 		<!-- <a href="" class="blind" id="container">본문 시작지점</a> -->	
-		<div class="sub_wrap">
-			<!-- //sub_tit_area -->
 			
 	
 	
 	
-	
-		<div class="sub_tit_area">
-			<h2>결제하기</h2>
-			<div class="sub_loc_area">
-			</div>
-		</div><!-- //sub_tit_area -->
-	
-			<!-- //tab_area -->
+<div id="container-fluid" style="padding-top: 60px;line-height: 150%;">
+         <div class="sub_tit_area">
+            <h2 style="font-family: Pretendard;">결제하기</h2>
+            <div class="sub_loc_area">
+            </div>
+         </div><!-- //sub_tit_area -->
+      <div class="gap20"></div>
+            <form name="input-form" action="{% url 'save_reservation' %}" method="post"> 
+               <fieldset>
+               <div class="gap30"></div>
+                  <div class="box2" style="background-color: white;">
+                        <div class="row">
+                           <div class="col-12">
+                              {% csrf_token %}
+                              <fieldset>
+                                 <legend><h3>[예약확인]</h3></legend>
+                                 <p style="font-size: 130%;font-family: Pretendard;">* 예약 일시 : <span id="reservationTime" style="font-size: 105%;"></span></br></p>
+                                 <p style="font-size: 130%;font-family: Pretendard;">* 탑승 장소 : {{ selected_schedule.sch_marina }}</span></br></p>
+                                 <p style="font-size: 130%;font-family: Pretendard;">* 도착 장소 : {{ selected_schedule.sch_arrival }}</span></br></p>
+                                 <p style="font-size: 130%;font-family: Pretendard;">* 승차 시간 : {{ selected_schedule.sch_stime }}</span></br></p>
+                                 <p style="font-size: 130%;font-family: Pretendard;">* 하차 시간 : {{ selected_schedule.sch_etime }}</span></br></p>
+                                 <p style="font-size: 130%;font-family: Pretendard;">* 예약 인원 : <span id="qty" style="font-size: 105%;"></span>명</br></p>
+                                 <p style="font-size: 130%;font-family: Pretendard;">* 결제 금액 : <span id="totalAmount" style="font-size: 105%;"></span>원</p>
+                                 <!-- 숨겨진 입력 필드로 예약 정보를 서버로 전송 -->
+                                 <input type="hidden" name="book_qty" id="input_qty">
+                                 <input type="hidden" name="book_schedule" value="{{ selected_schedule.id }}">
+                                 <input type="hidden" name="selected_schedule" id="input_selected_schedule">
+                              </fieldset>
+                           </div>
+                        </div>      
+         <!-- //tab_area -->
 
-		<div class="gap20"></div>
-	
-	
-	
-			<div class="sub_con_area">
-				<div class="box2">
-					<div class="li_type1">
-						<fieldset>
-							<h3 style="color: red; font-size: 30px; text-align: center;">[주의사항]</h3>
-							<b>본 약관을 확인하지 않고 예약을 진행하여 발생한 모든 불이익에 대해 책임지지 않습니다.</br>
-							예약하시는 고객님은 본 필독사항과 환불규정에 대하여 동의한 것으로 간주합니다.</b></br></br>
-							<p style="font-size: 120%;"><span style="color: red;">></span> 승선시 반드시 신분증 지참해 주세요. 미성년자 증빙서류(등본 등) 지참하셔야 합니다. (*미지참시 승선 불가)</br></p>
-							<p style="font-size: 120%;"><span style="color: red;">></span> 승선마감시간 까지 탑승하지 못 할 경우 탑승이 거부될 수 있습니다.</br></p>
-							<p style="font-size: 120%;"><span style="color: red;">></span> 주의사항 미이행 및 본인부주의로 사고 발생시 책임을 지지 않습니다.</br></p>
-							<p style="font-size: 120%;"><span style="color: red;">></span> 음식물 반입이 금지되어 있습니다.</br></p>
-							<p style="font-size: 120%;"><span style="color: red;">></span> 기상상태, 천재지변, 선박의 이상상태 등의 예기치 못한 사항으로 운행이 불가할 경우 출항시간이 지연 또는 취소될 수 있으며 문자메세지를 통해 공지합니다. 해당 사항의 경우 전액환불됩니다.</br></p>
-							<p style="font-size: 120%;"><span style="color: red;">></span> 비상상황발생 및 승무원의 지시가 있을 경우 구명조끼를 착용하여 주세요.</br></p>
-						</fieldset>	
-					</div>
-				</div> 
-				
-				<div class="gap20"></div>
-				<form name="input-form" action="{% url 'save_reservation' %}" method="post"> 
-					<fieldset>
-					<div class="gap30"></div>
-						<div class="box2">
-								<div class="row">
-									<div class="col-12">
-										{% csrf_token %}
-										<fieldset>
-											<legend><h3>[예약확인]</h3></legend>
-											<p style="font-size: 130%;">* 예약 일시 : <span id="reservationTime" style="font-size: 105%;"></span></br></p>
-											<p style="font-size: 130%;">* 탑승 장소 : {{ selected_schedule.sch_marina }}</span></br></p>
-											<p style="font-size: 130%;">* 도착 장소 : {{ selected_schedule.sch_arrival }}</span></br></p>
-											<p style="font-size: 130%;">* 승차 시간 : {{ selected_schedule.sch_stime }}</span></br></p>
-											<p style="font-size: 130%;">* 하차 시간 : {{ selected_schedule.sch_etime }}</span></br></p>
-											<p style="font-size: 130%;">* 예약 인원 : <span id="qty" style="font-size: 105%;"></span>명</br></p>
-											<p style="font-size: 130%;">* 결제 금액 : <span id="totalAmount" style="font-size: 105%;"></span>원</p>
-											<!-- 숨겨진 입력 필드로 예약 정보를 서버로 전송 -->
-											<input type="hidden" name="book_qty" id="input_qty">
-											<input type="hidden" name="book_schedule" value="{{ selected_schedule.id }}">
-											<input type="hidden" name="selected_schedule" id="input_selected_schedule">
-										</fieldset>
-									</div>
-								</div>		
-						</div>
-						<div class="gap10"></div>
-						<div class="tal_r val_m">
-							☞ 위와 같이  필독사항과 환불규정에 대하여 동의하십니까?<strong>(필수)</strong>
-							<label for="agreeY">동의</label>
-							<input type="radio" name="agree" id="agreeY" class="checkForm checkbox" value="Y" option="{isMust : true, message : '개인정보 수집 및 이용 동의 여부를 선택하십시오.'}" />
-							&nbsp;&nbsp;&nbsp;&nbsp;
-							<label for="agreeN">미동의</label>
-							<input type="radio" name="agree" id="agreeN" class="checkForm checkbox" value="N" option="{isMust : true, message : '개인정보 수집 및 이용 동의 여부를 선택하십시오.'}" />
-						</div>
-						<div class="gap50"></div>
-						<div class="tbl_wrap tbl3">
+      <div class="gap20"></div>
+   
+   
+         <div class="sub_con_area">
+            
+            <div class="box2">
+               <div class="li_type1">
+                  <fieldset>
+                     <h3 style="color: red; font-size: 30px; text-align: center; font-family: Pretendard;" >[주의사항]</h3>
+                     <br>
+                     <b>본 약관을 확인하지 않고 예약을 진행하여 발생한 모든 불이익에 대해 책임지지 않습니다.</br>
+                     예약하시는 고객님은 본 필독사항과 환불규정에 대하여 동의한 것으로 간주합니다.</b></br></br>
+                     <p style="font-size: 120%;"><span style="color: red;font-family: Pretendard;">></span> 승선시 반드시 신분증 지참해 주세요. 미성년자 증빙서류(등본 등) 지참하셔야 합니다. (*미지참시 승선 불가)</br></p>
+                     <p style="font-size: 120%;"><span style="color: red;font-family: Pretendard;">></span> 승선마감시간 까지 탑승하지 못 할 경우 탑승이 거부될 수 있습니다.</br></p>
+                     <p style="font-size: 120%;"><span style="color: red;font-family: Pretendard;">></span> 주의사항 미이행 및 본인부주의로 사고 발생시 책임을 지지 않습니다.</br></p>
+                     <p style="font-size: 120%;"><span style="color: red;font-family: Pretendard;">></span> 음식물 반입이 금지되어 있습니다.</br></p>
+                     <p style="font-size: 120%;"><span style="color: red;font-family: Pretendard;">></span> 기상상태, 천재지변, 선박의 이상상태 등의 예기치 못한 사항으로 운행이 불가할 경우 출항시간이 지연 또는 취소될 수 있으며 문자메세지를 통해 공지합니다. 해당 사항의 경우 전액환불됩니다.</br></p>
+                     <p style="font-size: 120%;"><span style="color: red;font-family: Pretendard;">></span> 비상상황발생 및 승무원의 지시가 있을 경우 구명조끼를 착용하여 주세요.</br></p>
+                  </fieldset>   
+               </div>
+            </div> 
+            
+                  </div>
+                  <div class="gap10"></div>
+                  <div class="tal_r val_m">
+                     ☞ 위와 같이  필독사항과 환불규정에 대하여 동의하십니까?<strong>(필수)</strong>
+                     <label for="agreeY">동의</label>
+                     <input type="radio" name="agree" id="agreeY" class="checkForm checkbox" value="Y" option="{isMust : true, message : '개인정보 수집 및 이용 동의 여부를 선택하십시오.'}" />
+                     &nbsp;&nbsp;&nbsp;&nbsp;
+                     <label for="agreeN">미동의</label>
+                     <input type="radio" name="agree" id="agreeN" class="checkForm checkbox" value="N" option="{isMust : true, message : '개인정보 수집 및 이용 동의 여부를 선택하십시오.'}" />
+                  </div>
+                  <div class="gap50"></div>
+                  <div class="tbl_wrap tbl3">
 
-						</div>
-			
-						<div class="gap50"></div>
-						<div class="tal_c">
-							<button type="submit" class="btn_large btn_blue_dark val_m"><b>결제</b></button>	
-							<button onclick="goBack()" class="btn_large btn_blue_dark val_m"><b>취소</b></button>
-						</div>
-					</fieldset>
-				</form>
-	
-			</div><!-- //sub_con_area -->
-		</div>
-	</div>
+                  </div>
+         
+                  <div class="gap50"></div>
+                  <div class="tal_c">
+                     <button type="submit" class="btn_large btn_blue_dark val_m"><b>결제</b></button>   
+                     <button onclick="goBack()" class="btn_large btn_blue_dark val_m"><b>취소</b></button>
+                  </div>
+               </fieldset>
+            </form>
+   
+         </div><!-- //sub_con_area -->
+      </div>
+   </div>
     
     <script>
         //취소하기
@@ -207,80 +376,145 @@
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 
-	<div id="overlayer"></div>
-	<div class="loader">
-		<div class="spinner-border" role="status">
-			<span class="sr-only">Loading...</span>
-		</div>
-	</div>
-	<script>
-		//취소하기
-		function goBack(){
-			history.go(-1);
-		}
-		const now = new Date();
-		const formattedTime = `${now.getFullYear()}년 ${String(now.getMonth() + 1).padStart(2, '0')}월 ${String(now.getDate()).padStart(2, '0')}일 ${String(now.getHours()).padStart(2, '0')}시 ${String(now.getMinutes()).padStart(2, '0')}분`;
+   <div id="overlayer"></div>
+   <div class="loader">
+      <div class="spinner-border" role="status">
+         <span class="sr-only">Loading...</span>
+      </div>
+   </div>
+   <script>
+      //취소하기
+      function goBack(){
+         history.go(-1);
+      }
+      const now = new Date();
+      const formattedTime = `${now.getFullYear()}년 ${String(now.getMonth() + 1).padStart(2, '0')}월 ${String(now.getDate()).padStart(2, '0')}일 ${String(now.getHours()).padStart(2, '0')}시 ${String(now.getMinutes()).padStart(2, '0')}분`;
 
-		document.getElementById('reservationTime').innerText = formattedTime;
+      document.getElementById('reservationTime').innerText = formattedTime;
 
-		// URL의 쿼리 매개변수를 추출하고 표시하는 JavaScript 코드
-		const urlParams = new URLSearchParams(window.location.search);
-		const selectedSchNo = urlParams.get('selected_schedule');
-		const qtyValue = urlParams.get('qty');
+      // URL의 쿼리 매개변수를 추출하고 표시하는 JavaScript 코드
+      const urlParams = new URLSearchParams(window.location.search);
+      const selectedSchNo = urlParams.get('selected_schedule');
+      const qtyValue = urlParams.get('qty');
 
-		document.getElementById('input_selected_schedule').value = selectedSchNo;
-		document.getElementById('qty').innerText = qtyValue;
-		document.getElementById('input_qty').value = qtyValue;
+      document.getElementById('input_selected_schedule').value = selectedSchNo;
+      document.getElementById('qty').innerText = qtyValue;
+      document.getElementById('input_qty').value = qtyValue;
 
-		const paymentAmount = qtyValue * 20000;
-		document.getElementById('totalAmount').innerText = paymentAmount.toLocaleString();
-		document.getElementById('input_totalAmount').value = paymentAmount;
-	</script>
+      const paymentAmount = qtyValue * 20000;
+      document.getElementById('totalAmount').innerText = paymentAmount.toLocaleString();
+      document.getElementById('input_totalAmount').value = paymentAmount;
+   </script>
 
-	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
-		
-	<script src="{% static 'mgapp/js/jquery-3.4.1.min.js'%}"></script>
-	<script src="{% static 'mgapp/js/popper.min.js'%}"></script>
-	<script src="{% static 'mgapp/js/bootstrap.min.js'%}"></script>
-	<script src="{% static 'mgapp/js/owl.carousel.min.js'%}"></script>
-	<script src="{% static 'mgapp/js/jquery.animateNumber.min.js'%}"></script>
-	<script src="{% static 'mgapp/js/jquery.waypoints.min.js'%}"></script>
-	<script src="{% static 'mgapp/js/jquery.fancybox.min.js'%}"></script>
-	<script src="{% static 'mgapp/js/aos.js'%}"></script>
-	<script src="{% static 'mgapp/js/moment.min.js'%}"></script>
-	<script src="{% static 'mgapp/js/daterangepicker.js'%}"></script>
+   <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+      
+   <script src="{% static 'mgapp/js/jquery-3.4.1.min.js'%}"></script>
+   <script src="{% static 'mgapp/js/popper.min.js'%}"></script>
+   <script src="{% static 'mgapp/js/bootstrap.min.js'%}"></script>
+   <script src="{% static 'mgapp/js/owl.carousel.min.js'%}"></script>
+   <script src="{% static 'mgapp/js/jquery.animateNumber.min.js'%}"></script>
+   <script src="{% static 'mgapp/js/jquery.waypoints.min.js'%}"></script>
+   <script src="{% static 'mgapp/js/jquery.fancybox.min.js'%}"></script>
+   <script src="{% static 'mgapp/js/aos.js'%}"></script>
+   <script src="{% static 'mgapp/js/moment.min.js'%}"></script>
+   <script src="{% static 'mgapp/js/daterangepicker.js'%}"></script>
 
-	<script src="{% static 'mgapp/js/typed.js'%}"></script>
-	<script>
-		$(function() {
-			var slides = $('.slides'),
-			images = slides.find('img');
+   <script src="{% static 'mgapp/js/typed.js'%}"></script>
+   <script>
+      $(function() {
+         var slides = $('.slides'),
+         images = slides.find('img');
 
-			images.each(function(i) {
-				$(this).attr('data-id', i + 1);
-			})
+         images.each(function(i) {
+            $(this).attr('data-id', i + 1);
+         })
 
-			var typed = new Typed('.typed-words', {
-				strings: ["다대포 ","영도 ","자갈치 ", "송도",],
-				typeSpeed: 80,
-				backSpeed: 80,
-				backDelay: 4000,
-				startDelay: 1000,
-				loop: true,
-				showCursor: true,
-				preStringTyped: (arrayPos, self) => {
-					arrayPos++;
-					console.log(arrayPos);
-					$('.slides img').removeClass('active');
-					$('.slides img[data-id="'+arrayPos+'"]').addClass('active');
-				}
+         var typed = new Typed('.typed-words', {
+            strings: ["다대포 ","영도 ","자갈치 ", "송도",],
+            typeSpeed: 80,
+            backSpeed: 80,
+            backDelay: 4000,
+            startDelay: 1000,
+            loop: true,
+            showCursor: true,
+            preStringTyped: (arrayPos, self) => {
+               arrayPos++;
+               console.log(arrayPos);
+               $('.slides img').removeClass('active');
+               $('.slides img[data-id="'+arrayPos+'"]').addClass('active');
+            }
 
-			});
-		})
-	</script>
+         });
+      })
+   </script>
+   <script>
+      document.getElementById('openPopup').addEventListener('click', function () {
+        document.getElementById('popupContainer').style.display = 'block';
+    });
+    
+    document.getElementById('closePopup').addEventListener('click', function () {
+        document.getElementById('popupContainer').style.display = 'none';
+    });
+   </script>
+   $(window).on("load",function (){
+	var bodyScroll = $(window).scrollTop(),
+	navbar = $(".navbar");
+	
+	if(bodyScroll > 50){
+	$('.navbar-logo img').attr('src','static/mainapp/free-css/images/로고.png');
+	navbar.addClass("nav-scroll");
+	}else{
+	$('.navbar-logo img').attr('src','static/mainapp/free-css/images/로고.png');
+	navbar.removeClass("nav-scroll");
+	}
 
-	<script src="{% static 'mgapp/js/custom.js'%}"></script>
-	<script type="text/javascript" src="/cms/js/makePCookie.js"></script>
+	$.scrollIt({
+	
+	easing: 'swing',      // the easing function for animation
+	scrollTime: 900,       // how long (in ms) the animation takes
+	activeClass: 'active', // class given to the active nav element
+	onPageChange: null,    // function(pageIndex) that is called when page is changed
+	topOffset: -63
+	});
+});
+
+</script>
+<script>
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+</script>
+<script>
+   $(window).on("load",function (){
+      var bodyScroll = $(window).scrollTop(),
+      navbar = $(".navbar");
+      
+      if(bodyScroll > 50){
+      $('.navbar-logo img').attr('src','static/mainapp/free-css/images/로고.png');
+      navbar.addClass("nav-scroll");
+      }else{
+      $('.navbar-logo img').attr('src','static/mainapp/free-css/images/로고.png');
+      navbar.removeClass("nav-scroll");
+      }
+
+      $.scrollIt({
+      
+      easing: 'swing',      // the easing function for animation
+      scrollTime: 900,       // how long (in ms) the animation takes
+      activeClass: 'active', // class given to the active nav element
+      onPageChange: null,    // function(pageIndex) that is called when page is changed
+      topOffset: -63
+      });
+   });
+
+   </script>
+   <script>
+   function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+   }
+   </script>
+   <script src="{% static 'mgapp/js/custom.js'%}"></script>
+   <script type="text/javascript" src="/cms/js/makePCookie.js"></script>
 </body>
 
 </html>

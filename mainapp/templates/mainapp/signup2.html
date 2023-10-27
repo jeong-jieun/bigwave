@@ -38,7 +38,6 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
     <script type="text/javascript" src="{% static "mainapp/js/imsi.js" %}"></script>
-    <link rel="stylesheet" href="{% static 'mainapp/css/imsi.css' %}">
 
 
   <!--goToContent2 : 가입하기에서 약관동의 이동 버튼-->
@@ -279,29 +278,29 @@
   </nav>
     <br>
       <article class="find1">
-        <h2 style="color: #112D4E; font-family: Pretendard; font-weight: bolder; font-size: 50px;">회 원 가 입</h2>
-        <p style="color: #112D4E; font-family: Pretendard; font-weight: bolder;">bigwave 회원가입을 환영합니다.<br>회원으로 가입하시면 다양한 혜택과 서비스를 이용하실 수 있습니다.</p>
+        <h1 style="color: #112D4E; font-family: Pretendard; font-weight: bolder; font-size: 50px;"><br/>WELCOME TO BIGWAVE</h1>
+        <h5 style="color: #112D4E; font-family: Pretendard; font-weight: bolder;">회원으로 가입하시면 다양한 혜택과 서비스를 이용하실 수 있습니다.</h5>
     
         <div>
           <input id="tab1" type="radio" name="tabs" checked>
           <!--디폴트 메뉴-->
-          <label for="tab1"><img src="{% static 'mainapp/img/가입하기.gif'%}"><br>STEP 1<br>가입하기</label>
+          <label for="tab1"><img src=""><br>STEP 1<br>가입하기</label>
           　
           <input id="tab2" type="radio" name="tabs">
-          <label for="tab2"><img src="{% static 'mainapp/img/체크리스트.gif'%}"><br>STEP 2<br>약관동의</label>
+          <label for="tab2"><img src=""><br>STEP 2<br>약관동의</label>
     
           <input id="tab3" type="radio" name="tabs">
-          <label for="tab3"><img src="{% static 'mainapp/img/회원가입.gif'%}"><br>STEP 3<br>정보입력</label>
+          <label for="tab3"><img src=""><br>STEP 3<br>정보입력</label>
     
           <input id="tab4" type="radio" name="tabs">
-          <label for="tab4"><img src="{% static 'mainapp/img/가입완료.gif'%}"><br>STEP 4<br>가입완료</label>
+          <label for="tab4"><img src=""><br>STEP 4<br>가입완료</label>
     
           <section id="content1">
             <div>
-              <h4 style="color: #112D4E; font-family: Pretendard; font-weight: bolder; font-size: 30px;">bigwave 회원가입</h4>
-              <p style="color: #112D4E; font-family: Pretendard; font-weight: bolder;">bigwave 회원으로 가입합니다.</p><br>
+              <!-- <h4 style="color: #112D4E; font-family: Pretendard; font-weight: bolder; font-size: 30px;">bigwave 회원가입</h4> -->
+              <p style="color: #112D4E; font-family: Pretendard; font-weight: bolder;font-size: 25px;"> 해상 택시로 즐기는 부산, 함께 하시겠습니까? <p><br>
               <input type="button" class="signup-go" onclick="goToContent2()" value="회원가입 하기"
-              style="margin-top: 1rem; background: linear-gradient(to left, #3F72AF, #b4caf2); padding: 13px; width: 55%; color: white; 
+              style="margin-top: 1rem; background: #5082ee; padding: 13px; width: 55%; color: white; 
               transition: 0.6s; font-family: Pretendard; font-weight: bolder; font-size: 17px;">
             </div>
           </section>
@@ -316,7 +315,7 @@
             <label style="color: #112D4E; font-family: Pretendard; font-weight: bolder;"><input type="checkbox">　SMS 마케팅 수신 동의 (선택)</label><br>
             <p>정보수신에 동의하지 않아도 정상적인 서비스 이용이 가능합니다. 거래 정보, 결제/교환/환불 등과 관련된 내용은 거래 안전을 위하여 수신동의 여부와 관계없이 발송됩니다.</p>
             <input type="button" onclick="goToContent3()" value="다음으로"
-            style="margin-top: 1rem; background: linear-gradient(to left, #3F72AF, #b4caf2); padding: 15px; width: 55%; color: white;
+            style="margin-top: 1rem; background: #5082ee; padding: 15px; width: 55%; color: white;
             transition: 0.6s; margin: 2.5rem auto 0 6rem; font-family: Pretendard; font-weight: bolder; font-size: 17px;">
           </section>
 
@@ -363,7 +362,7 @@
                   <input type="address" name="mem_add3" id="sample6_detailAddress" placeholder="상세주소">
                 </div>
               </div>
-              <input type="button" onclick="goToContent4FromContent3()" value="가입하기" style="font-family: 굴림; font-weight: bolder; font-size: 1rem;">
+              <input type="button" onclick="goToContent4FromContent3()" value="가입하기" style="font-family: 굴림; font-weight: bolder; font-size: 20;">
             
               
             </section>
