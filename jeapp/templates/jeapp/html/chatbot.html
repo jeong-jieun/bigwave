@@ -71,6 +71,12 @@
         }
 		.chat{
 			width: 100%;
+			
+		} @media (min-width:340px) and (max-width: 660px){
+			.chat {
+				width: 500px;
+				border-radius: 0;
+			}
 		}
 	</style>
 </head>
@@ -81,7 +87,7 @@
 <script type="text/javascript" 
 		src = "https://code.jquery.com/jquery-3.6.0.min.js">
 </script>
-<script >
+<script>
 	messages=[]
 	var isUserMessage = true;
 
@@ -164,7 +170,7 @@ function cc(){
     <script src="{% static 'mgapp/chatbot.js'%}"></script>
 
 <body>
-	<div class="chat" >
+	<div class="chat">
 		<div class="chat-title">
 		  <h1>ai챗봇 서비스</h1>
 		  <figure class="avatar">
