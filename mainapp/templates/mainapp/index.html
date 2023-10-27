@@ -588,7 +588,7 @@ $(document).ready(function(e) {
 	});
 });
     
-$(window).on("scroll",function () {
+{% comment %} $(window).on("scroll",function () {
 
 	var bodyScroll = $(window).scrollTop(),
 	navbar = $(".navbar");
@@ -613,7 +613,7 @@ $(window).on("load",function (){
 	}else{
 	$('.navbar-logo img').attr('src','static/mainapp/free-css/images/로고.png');
 	navbar.removeClass("nav-scroll");
-	}
+	} {% endcomment %}
 
 	$.scrollIt({
 	

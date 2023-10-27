@@ -249,7 +249,7 @@
       {% else %}
       <div class="album py-3 bg-body-tertiary">
         <div class="container">
-          <div id="map" style="width: 100%; height: 5%;">{{ map_html | safe }}</div>
+          <div id="map" style="width: 100%; height: 3%;">{{ map_html | safe }}</div>
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             {% for row1 in services %}
               <div class="col">
@@ -267,10 +267,9 @@
                           <a href="{{ row1.ser_url }}" style="color: inherit; text-decoration: none;">
                             카카오맵 상세보기
                           </a>
-                          
                         </button>
                       </div>
-                      <small class="text-body-secondary">{{ row1.ser_distance }}</small>
+                      <small class="text-body-secondary">{{ row1.ser_distance }}m</small>
                     </div>
                   </div>
                 </div>
@@ -281,6 +280,7 @@
       </div>
       {% endif %}
     </main>
+
 
     <script>
       function updateServiceType(serviceValue) {

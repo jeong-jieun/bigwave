@@ -219,7 +219,7 @@
     
     <main>
       <br><br><br>
-        <form id="searchForm" method="post" action="{% url 'search_action' %}">
+        <form id="searchForm" method="post" action="{% url 'search_action1' %}">
             {% csrf_token %}
             <select class="form-select" name="search_option" aria-label="Default select example" onchange="submitForm()">
               <option value="" {% if not search_result %}selected{% endif %}>선착장을 검색하세요</option>
