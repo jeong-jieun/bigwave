@@ -86,10 +86,12 @@ class Traffic(models.Model):
         managed = False
         
 class Businfo(models.Model):
-    bus_stop = CharField(max_length=5, primary_key=True, null=False)
-    bus_no = CharField(max_length=10,null=False)
+    bus_index = CharField(max_length=5, primary_key=True, null=False)
+    bus_stop = CharField(max_length=5)
+    bus_no = CharField(max_length=10)
+    bus_nm = CharField(max_length=50)
     bus_time = CharField(max_length=10)
-    bus_remain = IntegerField()
+    bus_remain= CharField(max_length=10)
     class Meta:
         db_table = "businfo"
         app_label = "jeapp"
@@ -99,5 +101,18 @@ class Busstop(models.Model):
     stop_id = CharField(max_length=5, primary_key=True)
     class Meta:
         db_table = "busstop"
+        app_label = "jeapp"
+        managed = False
+        
+class Boo_mem(models.Model):
+    book_no = BigIntegerField(primary_key=True, null=False)
+    book_qty = IntegerField(null=False)
+    book_price = IntegerField(null=False)
+
+    boo_mem1 = models.ForeignKey(Member, to_field="mem_id", db_column="book_mem", on_delete=models.PROTECT)
+    boo_sch1 = models.ForeignKey(Schedule, to_field="sch_no", db_column="book_schedule", on_delete=models.PROTECT)
+
+    class Meta:
+        db_table = 'booking'
         app_label = "jeapp"
         managed = False

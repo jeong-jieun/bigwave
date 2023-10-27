@@ -31,6 +31,18 @@
 	<link rel="stylesheet" href="{% static 'mgapp/css/style.css'%}">
 
 	<title>Tour Free Bootstrap Template for Travel Agency by Untree.co</title>
+    {% comment %} 아래는 종민이 추가한 것 {% endcomment %}
+    <style>
+        table {
+            border: 2px solid red;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid blue;
+        }
+    </style>
+    
+
 </head>
 
 <body>
@@ -146,7 +158,7 @@ $(document).ready(function(){
 	// Ajax 요청을 통해 데이터를 가져오고 마커를 생성합니다
 	$.ajax({
 		// 수정 필요
-		url: "/je/service/jongkakao/", 
+		url: "/je/service/busmaker/", 
 		datatype: "json",
 		success: function(data) {
 			
@@ -168,7 +180,6 @@ $(document).ready(function(){
 				positions.push(position);
 
 			}
-
 			var markers = [];
 			var infowindows = [];
 
@@ -240,7 +251,7 @@ $(document).ready(function(){
 		alert(p_lat + " / " + p_lng + " / " + p_busno);
 
 		$.ajax({
-			url: "/je/service/bus_station/", 
+			url: "/je/service/bus_min/", 
 			type : "post",
 			datatype: "json",
 			data : {
@@ -251,25 +262,80 @@ $(document).ready(function(){
 			},
 			success: function(data) {
 				// 받아 온값 처리영역...
-				
-				alert("연결");
-				alert(">>>>>>>>>>>>>>> " + data["lineno"]);
+                // 기존 테이블 삭제
+    var existingTable = document.querySelector('#myTable');
+    if (existingTable) {
+        existingTable.parentNode.removeChild(existingTable);
+    }
+    
+    alert("연결");
+    alert(">>>>>>>>>>>>>>> " + data["traffic_db3"][0].bus_stop);
+    
+    // traffic_db3 데이터에 접근
+    var trafficDb3 = data.traffic_db3;
+    var body = document.querySelector('body');
+
+    // 새로운 테이블 생성
+    var table = document.createElement('table');
+    table.id = "myTable"; // 테이블에 아이디를 추가
+
+    // 테이블 헤더 생성
+    var thead = table.createTHead();
+    var headerRow = thead.insertRow(0);
+    var header1 = headerRow.insertCell(0);
+    var header2 = headerRow.insertCell(1);
+    var header3 = headerRow.insertCell(2);
+	var header4 = headerRow.insertCell(3);
+	var header5 = headerRow.insertCell(4);
+
+    header1.innerHTML = "<b>bus_stop</b>";
+    header2.innerHTML = "<b>bus_no</b>";
+    header3.innerHTML = "<b>bus_nm</b";
+	header4.innerHTML = "<b>bus_time</b";
+	header5.innerHTML = "<b>bus_remain</b";
 
 
+    // traffic_db3 배열을 반복
+    for (var i = 0; i < trafficDb3.length; i++) {
+        var item = trafficDb3[i];
+        var bus_stop = item.bus_stop;
+        var bus_no = item.bus_no;
+        var bus_nm = item.bus_nm;
+        var bus_time = item.bus_time;
+		var bus_remain =item.bus_remain;
 
-				//html 문서의 요소를 문서 객체로 만들기
+        // 새로운 행 추가
+        var row = table.insertRow(i + 1);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+		var cell5 = row.insertCell(4);
+
+
+        // 데이터 추가
+        cell1.innerHTML = bus_stop;
+        cell2.innerHTML = bus_no;
+        cell3.innerHTML = bus_nm;
+        cell4.innerHTML = bus_time;
+		cell5.innerHTML=bus_remain
+    }
+
+    // body에 새로운 테이블 추가
+    body.appendChild(table);
+
+
 				// id 속성값으로 문서 객체 생성 : 캐스팅
 				// document.getElementById('아이디속성값');
 				var header1 = document.getElementById('header-1');
 				var header2 = document.getElementById('header-2');
 	
 				// 문서 객체의 속성 변경
-				header1.innerHTML = data["lineno"];
-				header2.textContent = '<i>문서객체 생성</i>';
+				//header1.innerHTML = data["traffic_db3"];
+				//header2.textContent = '<i>문서객체 생성</i>';
 
 
 
-//div 하나 만들고 태그에 for문 돌려서 !
 			}, beforeSend:function(){
 				console.log("1111")
 			}, complete:function(){
@@ -298,33 +364,11 @@ $(document).ready(function(){
 <div id="header-1">1</div>
 <div id="header-2">2</div>
 
-{{lineno}}
-{{min1}}
-{% for ll in lineno %}
-{{ll}}
-{% endfor %}
-{{myValue.}}
-
-{% for zz in min1 %}
-{{zz}}
-{% endfor %}
+<div id="stationname"> 여기부터입니다.</div>
 
 # 3번째 레코드의 3번째 칼럼 값 가져오기
 value = record.field3
 
-{{lat}}
 
-<table border="1">
-	<tr>
-	<th>버스 번호
-		
-	</th>
-		<th> 몇분후도착</th>
-	</tr>
-	<tr>
-		<td>{{lineno}}</td>
-		<td>{{min1}}</td>
-	</tr>
-</table>
-{{traf_1}}
+
 </body>

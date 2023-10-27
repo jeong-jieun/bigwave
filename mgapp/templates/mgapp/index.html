@@ -216,14 +216,18 @@ p {
   border: 1px solid #ccc;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   z-index: 9999; /* 팝업을 항상 위에 띄우기 위해 z-index 사용 */
-}
+}  @media (min-width: 340.98px)and (max-width: 500px) {
+  #popupContainer {  width: 250px;
+    height: 250px;} }
 
 #popupContent {
   right: 10px;
   width: 500px;
   height: 435px;
 
-}
+}  @media (min-width: 340.98px)and (max-width: 450px) {
+  #popupContent {  width: 250px;
+    height: 250px;} }
 
 #closePopup {
   background-color: #;
@@ -231,6 +235,7 @@ p {
   border: none;
   cursor: pointer;
 }
+
 
 </style>
 </head>
@@ -279,48 +284,46 @@ p {
   <div class="sticky_click" style="top: 50px;">ststststst</div> {% endcomment %}
 
   <!-- Navbar -->
-  <div class="site-mobile-menu site-navbar-target">
-      <div class="site-mobile-menu-header">
-          <div class="site-mobile-menu-close">
-              <span class="icofont-close js-menu-toggle"></span>
-          </div>
-      </div>
-      <div class="site-mobile-menu-body"></div>
-  </div>
 
-  <nav class="site-nav" style="z-index: 5;">
-
-
-          <div class="site-navigation">
-              <a href="/" class="logo m-0"><img src="{% static "mainapp/free-css/images/로고색.png" %}" alt="" style="width: 300px; height: 50px;" ></a> 
-              {% comment %} <span class="text-primary">bigwave</span> {% endcomment %}
-
-              <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-                  <li class="active"><a href="/">서비스 소개</a></li>
-                  <li class="active"><a href="/mg/test/">선착장예약</a></li>
-                  <li><a href="/je/service/">교통/관광 서비스</a></li>
-                  <li><a href="/je/service/">챗봇 서비스</a></li>
-                  </li>
-                  {% if request.session.ses_mem_id == None %}
-                  <li><a href="/login2/">로그인</a></li>
-                  <li><a href="/signup2/">회원가입</a></li>
-                  {% else %}
-                  <li><a href="/mg/booking/">예약확인</a></li>
-                  <li><a href="/mypage/">회원정보</a></li>
-                  <li><a href="/logout/">로그아웃</a></li>
-                  
-                  {% endif %}
-                  
-              </ul>
-              
-              <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
-                  <span></span>
-              </a>
-
-          </div>
-
-  </nav>
-
+  <header>
+		<div class="site-mobile-menu site-navbar-target">
+		  <div class="site-mobile-menu-header">
+			  <div class="site-mobile-menu-close">
+				  <span class="icofont-close js-menu-toggle"></span>
+			  </div>
+		  </div>
+		  <div class="site-mobile-menu-body"></div>
+	  </div>
+	  
+	  <nav class="site-nav">
+	  
+			  <div class="site-navigation">
+				  <a href="/" class="logo m-0"><img src="{% static "mainapp/free-css/images/로고색.png" %}" alt="" style="width: 300px; height: 50px;" ></a> 
+				  {% comment %} <span class="text-primary">bigwave</span> {% endcomment %}
+	  
+				  <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
+					  <li class="active"><a href="/">서비스 소개</a></li>
+					  <li class="active"><a href="/mg/test/">선착장예약</a></li>
+					  <li><a href="/je/service/">교통/관광 서비스</a></li>
+					  <li><a href="/je/service/">챗봇 서비스</a></li>
+					  </li>
+					  {% if request.session.ses_mem_id == None %}
+					  <li><a href="/login2/">로그인</a></li>
+					  <li><a href="/signup2/">회원가입</a></li>
+					  {% else %}
+					  <li><a href="/mg/booking/">예약확인</a></li>
+					  <li><a href="/mypage/">회원정보</a></li>
+					  <li><a href="/logout/">로그아웃</a></li>
+					  {% endif %}
+				  </ul>
+	  
+				  <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
+					  <span></span>
+				  </a>
+	  
+			  </div>
+	  </nav>
+	</header>
     <script src="{% static 'mgapp/js/jquery-3.4.1.min.js'%}"></script>
     <script src="{% static 'mgapp/js/popper.min.js'%}"></script>
     <script src="{% static 'mgapp/js/bootstrap.min.js'%}"></script>
@@ -376,11 +379,16 @@ p {
               <p class="banner-text white">해양의 도시, 부산에서 새로운 여행 경험을 선사합니다! 부산의 아름다운 바다를 다른 시각으로 느껴보세요. 앞으로 도입 될 '부산 해양 택시'로 탁 트인 바다 위에서의 특별한 여행을 즐겨보세요. 더 이상 지상의 교통만의 경험이 아닌, 바다 위에서의 편리하고 새로운 이동 방법을 경험해보세요. 빅웨이브와 함께하는 여행, 시작합니다!</p>
             </div>
           </div>
-          <div class="col-md-4 col-sm-12"> <img src="{% static 'mainapp/free-css/images/iphone-screen.png' %}" class="img-fluid wow fadeInUp"/> </div>
+          <div class="col-md-4 col-sm-12"> <img src="}" class="img-fluid wow fadeInUp"/> </div>
         </div>
+        <br><br>
       </div>
+      <br><br><br>
     </div>
-    <span class="svg-wave"> <img class="svg-hero" src="{% static 'mainapp/free-css/images/iconizer-applight-wave.svg' %}" style="width: 100%;"> </span> </section>
+    <br>
+    <br><br><br>
+    <span class="svg-wave" style="padding-top: 100px;"> <img class="svg-hero" src="{% static 'mainapp/free-css/images/iconizer-applight-wave.svg' %}" style="width: 100%;"> </span> 
+  </section>
 
 
   <script>
