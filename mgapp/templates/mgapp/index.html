@@ -216,16 +216,16 @@ p {
   border: 1px solid #ccc;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   z-index: 9999; /* 팝업을 항상 위에 띄우기 위해 z-index 사용 */
-}  @media (min-width: 340.98px)and (max-width: 500px) {
+}  @media (min-width: 340.98px)and (max-width: 530px) {
   #popupContainer {  width: 250px;
-    height: 250px;} }
+    height: 300px;} }
 
 #popupContent {
   right: 10px;
   width: 500px;
   height: 435px;
 
-}  @media (min-width: 340.98px)and (max-width: 450px) {
+}  @media (min-width: 340.98px)and (max-width: 530px) {
   #popupContent {  width: 250px;
     height: 250px;} }
 
@@ -275,7 +275,6 @@ p {
     <iframe id="popupContent" src="/mg/chat/" frameborder="0">
       <h2>Popup Title</h2>
     </iframe>
-    <hr>
     <button id="closePopup">닫기</button>
   </div>
 
@@ -537,7 +536,7 @@ $(document).ready(function(e) {
 	});
 });
     
-$(window).on("scroll",function () {
+{% comment %} $(window).on("scroll",function () {
 
 	var bodyScroll = $(window).scrollTop(),
 	navbar = $(".navbar");
@@ -551,8 +550,8 @@ $(window).on("scroll",function () {
 	navbar.removeClass("nav-scroll");
 }
 
-});
-$(window).on("load",function (){
+}); {% endcomment %}
+{% comment %} $(window).on("load",function (){
 	var bodyScroll = $(window).scrollTop(),
 	navbar = $(".navbar");
 	
@@ -572,13 +571,13 @@ $(window).on("load",function (){
 	onPageChange: null,    // function(pageIndex) that is called when page is changed
 	topOffset: -63
 	});
-});
+}); {% endcomment %}
 
-</script>
+{% comment %} </script>
 <script>
   function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
+  } {% endcomment %}
 </script>
 <script src="{% static 'mgapp/css/assets/dist/js/bootstrap.bundle.min.js'%}"></script>
 <script src="{% static 'mgapp/js/custom.js'%}"></script> 
