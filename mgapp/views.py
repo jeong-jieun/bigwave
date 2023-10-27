@@ -8,7 +8,7 @@ from datetime import datetime
 # index.html 처리
 def chat(request):
     return render(request,
-                  'jeapp/html/chatbot.html',
+                  'mgapp/chatbot.html',
                   {})
 def logout(request):
     
