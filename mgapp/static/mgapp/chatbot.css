@@ -134,7 +134,9 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 
-
+#popupContainer{
+  background-color: transparent;
+}
 
 .chat {
   position: absolute;
@@ -143,7 +145,7 @@ input[type="range"]::-webkit-slider-thumb {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   width: 400px;
-  height: 80vh;
+  height: 100vh;
   max-height: 500px;
   z-index: 2;
   overflow: hidden;
