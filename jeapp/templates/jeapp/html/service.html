@@ -41,7 +41,10 @@
     <link rel="stylesheet" href="{% static 'mgapp/css/aos.css'%}">
     <link rel="stylesheet" href="{% static 'mgapp/css/style.css'%}">
 
-
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
+    <script src="{% static 'mgapp/css/assets/js/color-modes.js'%}"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/n pm/@docsearch/css@3">
+    <link href="{% static 'mgapp/css/assets/dist/css/bootstrap.min.css'%}" rel="stylesheet">
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -156,47 +159,140 @@
       input[type="radio"] {display:none;}
       input[type="radio"] + label {display: inline-block; width: 25%; text-align: center; padding: 13px;color: #112D4E; font-size: 18px; cursor: pointer;}
       input[type="radio"]:checked + label {background: #112D4E; color:#F9F7F7;}
+      .mb-2 {
+        margin-bottom: 5.5rem!important;
+      }
+      #popupContainer {
+        display: none;
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        width: 500px;
+        height: 500px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 9999; /* 팝업을 항상 위에 띄우기 위해 z-index 사용 */
+      } @media (min-width:350px) and (max-width:660px) {
+        #popupContainer{
+         width: 300px;
+         height: 400px;
+        }
+       }
+      
+      #popupContent {
+        right: 10px;
+        width: 500px;
+        height: 435px;
+      
+      }
+       @media (min-width:350px) and (max-width:660px) {
+       #popupContent{
+        width: 300px;
+        height: 300px;
+       }
+      }
+      
+      #closePopup {
+        background-color: #;
+        color: black;
+        border: none;
+        cursor: pointer;
+      }
+      @font-face {
+        font-family: 'IAMAPLAYER';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/IAMAPLAYER.woff2') format('woff2');
+        font-weight: normal;
+        font-style: normal;
+      }
     </style> 
   </head>
+	
   <body>
-    <header>
-      <div class="site-mobile-menu site-navbar-target">
-        <div class="site-mobile-menu-header">
-            <div class="site-mobile-menu-close">
-                <span class="icofont-close js-menu-toggle"></span>
-            </div>
-        </div>
-        <div class="site-mobile-menu-body"></div>
-    </div>
-    
-    <nav class="site-nav">
-    
-            <div class="site-navigation">
-                <a href="/" class="logo m-0"><img src="{% static "mainapp/free-css/images/로고색.png" %}" alt="" style="width: 300px; height: 50px;" ></a> 
-                {% comment %} <span class="text-primary">bigwave</span> {% endcomment %}
-    
-                <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-                    <li class="active"><a href="/">서비스 소개</a></li>
-                    <li class="active"><a href="/mg/test/">선착장예약</a></li>
-                    <li><a href="/je/service/">교통/관광 서비스</a></li>
-                    <li><a href="/je/service/chatbotiframe/">챗봇 서비스</a></li>
-                    </li>
-                    {% if request.session.ses_mem_id == None %}
-                    <li><a href="/login2/">로그인</a></li>
-                    <li><a href="/signup2/">회원가입</a></li>
-                    {% else %}
-                    <li><a href="/mg/booking/">예약확인</a></li>
-                    <li><a href="/mypage/">회원정보</a></li>
-                    <li><a href="/logout/">로그아웃</a></li>
-                    {% endif %}
-                </ul>
-    
-                <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
-                    <span></span>
-                </a>
-            </div>
-    </nav>
-    </header>
+	  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+		<symbol id="arrow-up" viewBox="0 0 16 16">
+		  <path d="M7.646 1.646a.5.5 0 0 1 .708 0l5 5a.5.5 0 0 1-.708.708L8 2.707 2.354 8.354a.5.5 0 0 1-.708-.708l5-5z"/>
+		</symbol>
+	  </svg>
+	
+	
+	  <div class="dropdown position-fixed bottom-0 end-0 mb-2 me-3 bd-mode-toggle">
+		<button class="btn btn-bd-primary2 py-2 dropdown-toggle d-flex align-items-center"
+				id="openPopup"
+				type="button"
+				aria-expanded="false"
+				aria-label="Toggle theme (auto)"
+				onclick="">
+		  <img src="{% static "\mgapp\images\dbdb.png" %}" style="max-width: 50px; max-height: 50px;" alt="챗봇">
+		  <span class="visually-hidden" id="bd-theme-text">sadas</span>
+		</button>
+	  </div>
+	  <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+		<button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
+				id="bd-theme"
+				type="button"
+				aria-expanded="false"
+				aria-label="Toggle theme (auto)"
+				onclick="scrollToTop()">
+		  <svg class="bi my-1 theme-icon-active" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor">
+			<use xlink:href="#arrow-up"></use>
+		  <span class="visually-hidden" id="bd-theme-text">sadas</span>
+		</button>
+	  </div>
+	  <div id="popupContainer">
+		<iframe id="popupContent" src="/mg/chat/" frameborder="0">
+		  <h2>Popup Title</h2>
+		</iframe>
+		<hr>
+		<button id="closePopup">닫기</button>
+	  </div>
+	
+	
+	{% comment %} <div style=" z-index: 1;">
+	  <div class="sticky_click" style="top: 50px;">ststststst</div> {% endcomment %}
+	
+	  <!-- Navbar -->
+	  <div class="site-mobile-menu site-navbar-target">
+		  <div class="site-mobile-menu-header">
+			  <div class="site-mobile-menu-close">
+				  <span class="icofont-close js-menu-toggle"></span>
+			  </div>
+		  </div>
+		  <div class="site-mobile-menu-body"></div>
+	  </div>
+	
+	  <nav class="site-nav" style="z-index: 5;">
+	
+	
+			  <div class="site-navigation">
+				  <a href="/" class="logo m-0"><img src="{% static "mainapp/free-css/images/로고색.png" %}" alt="" style="width: 300px; height: 50px;" ></a> 
+				  {% comment %} <span class="text-primary">bigwave</span> {% endcomment %}
+	
+				  <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
+					  <li class="active"><a href="/">서비스 소개</a></li>
+					  <li class="active"><a href="/mg/test/">선착장예약</a></li>
+					  <li><a href="/je/service/">교통/관광 서비스</a></li>
+					  <li><a href="/je/service/chatbotiframe/">챗봇 서비스</a></li>
+					  </li>
+					  {% if request.session.ses_mem_id == None %}
+					  <li><a href="/login2/">로그인</a></li>
+					  <li><a href="/signup2/">회원가입</a></li>
+					  {% else %}
+					  <li><a href="/mg/booking/">예약확인</a></li>
+					  <li><a href="/mypage/">회원정보</a></li>
+					  <li><a href="/logout/">로그아웃</a></li>
+					  
+					  {% endif %}
+					  
+				  </ul>
+				  
+				  <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
+					  <span></span>
+				  </a>
+	
+			  </div>
+	
+	  </nav>
     <main>
       <br><br><br>
     <div class="rt-container">
@@ -318,7 +414,31 @@
             console.error('Error:', error);
         });
     });
-  </script>
+    $.scrollIt({
+	
+      easing: 'swing',      // the easing function for animation
+      scrollTime: 900,       // how long (in ms) the animation takes
+      activeClass: 'active', // class given to the active nav element
+      onPageChange: null,    // function(pageIndex) that is called when page is changed
+      topOffset: -63
+      });
+    });
+    
+    </script>
+    <script>
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    </script>
+    <script>
+      document.getElementById('openPopup').addEventListener('click', function () {
+        document.getElementById('popupContainer').style.display = 'block';
+    });
+    
+    document.getElementById('closePopup').addEventListener('click', function () {
+        document.getElementById('popupContainer').style.display = 'none';
+    });
+    </script>
     <script src="{% static 'mgapp/js/jquery-3.4.1.min.js'%}"></script>
     <script src="{% static 'mgapp/js/popper.min.js'%}"></script>
     <script src="{% static 'mgapp/js/bootstrap.min.js'%}"></script>
