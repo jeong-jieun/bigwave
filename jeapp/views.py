@@ -18,6 +18,11 @@ def main(request):
     return render(request,
                   'jeapp/html/main.html',
                   {})
+# ser_test.html
+def ser(request):
+    return render(request,
+                  'jeapp/html/ser_test.html',
+                  {})
 # map.html
 def map(request):
     marinas = Marina.objects.all()

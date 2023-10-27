@@ -97,10 +97,12 @@ h6 {
 	position: relative;
 }
 .banner {
-	background: #3F72AF;
-	background: linear-gradient(to left, #3F72AF, #b4caf2);
+	background: url(images/gwangan2.png);
+	background-size: cover;
 	padding:100px 0px;
 	position:relative;
+	background-repeat: no-repeat; /* 이미지 반복 제거 */
+  	background-position: center center;
 }
 .banner::before {
 	content: "";
@@ -110,7 +112,6 @@ h6 {
 	top: 0;
 	width: 100%;
 	height: 100%;
-	background: url(images/pattern.png);
 }
 .banner a.weblink {
 	color:#ffffff;
@@ -188,7 +189,6 @@ h6 {
 	height: 135px;
 	border-radius: 100px;
 	background: #3F72AF;
-	background:  linear-gradient(to left, #3F72AF, #b4caf2);
 	color: #ffffff;
 	font-size: 50px;
 	line-height: 135px;
