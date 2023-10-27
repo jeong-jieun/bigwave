@@ -147,8 +147,15 @@
 <script >
 $(document).ready(function(){
 	var mapContainer = document.getElementById('map');
+		navigator.geolocation.getCurrentPosition(function(position) {
+			var lat1 = position.coords.latitude;
+			var lon1 = position.coords.longitude;
+				})
+		alert("dd")
+
+		//35.100811303038, 129.036429658218
 	var mapOption = {
-		center: new kakao.maps.LatLng(35.100811303038, 129.036429658218),
+		center: new kakao.maps.LatLng(lat1,lon1),
 		level: 3
 	};
 

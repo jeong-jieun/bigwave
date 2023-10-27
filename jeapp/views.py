@@ -487,4 +487,6 @@ def iframe(request):
     
     return render(request,'jeapp/html/chatbotiframe.html',{})
 
-
+#################################################
+def geo(request):
+    return render(request,'jeapp/html/geolocation_pra.html',{})

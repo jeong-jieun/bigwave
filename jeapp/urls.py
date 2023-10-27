@@ -55,4 +55,8 @@ urlpatterns = [
     # # main 페이지(http://127.0.0.1:8000/je/service/bus_min/)
     path('service/chatbotiframe/', views.iframe),
     # # main 페이지(http://127.0.0.1:8000/je/service/chatbotiframe/)
+    
+    ##별개의 페이지
+    path('service/geogeo/', views.geo),
+    # # main 페이지(http://127.0.0.1:8000/je/service/geogeo/)
 ]
