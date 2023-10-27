@@ -80,16 +80,10 @@ def traffic(request):
  # 서비스
     
 def service(request):
-    #if request.method == "POST":
-        #lat = request.POST.get("lat")
-        #lon = request.POST.get("lon")
-    
     mem_id = request.session.get('ses_mem_id', None)
-    boo_mem = Boo_mem.objects.filter(boo_mem1=mem_id).first()
+    boo_mem = Boo_mem.objects.filter(boo_mem1=mem_id).last()
     marinas = Marina.objects.all()
     service = Service.objects.all()
-    #ser_mar = "자갈치유선장"#request.POST.get('search_option', None) 
-    #ser_gu = "음식점"#request.POST.get('service_type', '')
     selected_mar = request.POST.get('search_option', None) 
     selected_service_type = request.POST.get('service_type', '')  # Default is '음식점'
 
@@ -129,7 +123,7 @@ def fservice(request):
     filtered_services = Service.objects.filter(ser_mar=selected_mar, ser_gu=selected_service_type)
     
     return render(request,
-                  'jeapp/html/service.html',
+                  'jeapp/html/service_first.html',
                   {'marina_list': marinas,
                    'service' : service,
                    'search_result': selected_mar,
