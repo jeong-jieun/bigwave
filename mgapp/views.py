@@ -8,7 +8,7 @@ from datetime import datetime
 # index.html 처리
 def chat(request):
     return render(request,
-                  'jeapp/html/chatbot.html',
+                  'mgapp/chatbot.html',
                   {})
 def logout(request):
     
@@ -25,7 +25,7 @@ def logout(request):
     return HttpResponse(msg)
 def booking(request):
     mem_id = request.session.get('ses_mem_id', None)
-    boo_mem = Boo_mem.objects.get(boo_mem1=mem_id)
+    boo_mem = Boo_mem.objects.filter(boo_mem1=mem_id).first()
 
 
     # DB에서 선택한 스케줄 정보 조회

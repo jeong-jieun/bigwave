@@ -4,6 +4,8 @@ from django.urls import path
 from . import views
 urlpatterns = [
     
+    # ser_test
+    path('ser/', views.ser),
     # map
     path('map/', views.map),
     # test

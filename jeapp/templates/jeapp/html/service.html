@@ -179,7 +179,7 @@
                     <li class="active"><a href="/">서비스 소개</a></li>
                     <li class="active"><a href="/mg/test/">선착장예약</a></li>
                     <li><a href="/je/service/">교통/관광 서비스</a></li>
-                    <li><a href="/je/service/">챗봇 서비스</a></li>
+                    <li><a href="/je/service/chatbotiframe/">챗봇 서비스</a></li>
                     </li>
                     {% if request.session.ses_mem_id == None %}
                     <li><a href="/login2/">로그인</a></li>
@@ -249,19 +249,7 @@
       {% else %}
       <div class="album py-3 bg-body-tertiary">
         <div class="container">
-          <div id="map" style="width:100%;height:350px;"></div>
-          <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=5da392d3bc0f2c1ea91f895109afcb78"></script>
-          <script>
-            var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-                mapOption = { 
-                    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-                    level: 3 // 지도의 확대 레벨
-                };
-
-            // 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
-            var map = new kakao.maps.Map(mapContainer, mapOption); 
-          </script>
-          <br>
+          <div id="map" style="width: 100%; height: 5%;">{{ map_html | safe }}</div>
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             {% for row1 in services %}
               <div class="col">
@@ -279,9 +267,10 @@
                           <a href="{{ row1.ser_url }}" style="color: inherit; text-decoration: none;">
                             카카오맵 상세보기
                           </a>
+                          
                         </button>
                       </div>
-                      <small class="text-body-secondary">{{ row1.ser_distance }}m</small>
+                      <small class="text-body-secondary">{{ row1.ser_distance }}</small>
                     </div>
                   </div>
                 </div>
@@ -303,6 +292,33 @@
         document.getElementById("searchForm").submit();
       }
     </script>
+    <script>
+      navigator.geolocation.getCurrentPosition(function(position) {
+        map = document.getElementById("map")
+        var lat = position.coords.latitude;
+        var lon = position.coords.longitude;
+    
+        console.log("lat:", lat, "lon:", lon);
+    
+        var formData = new FormData();
+        formData.append("lat", lat);
+        formData.append("lon", lon);
+    
+        fetch("{% url 'search_action' %}", {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            // 서버에서 반환한 응답을 처리합니다.
+          
+
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+  </script>
     <script src="{% static 'mgapp/js/jquery-3.4.1.min.js'%}"></script>
     <script src="{% static 'mgapp/js/popper.min.js'%}"></script>
     <script src="{% static 'mgapp/js/bootstrap.min.js'%}"></script>
