@@ -6,6 +6,7 @@ from geopy.distance import geodesic
 import mysql.connector
 import qrcode
 from io import BytesIO
+import base64
 
 class Qrcode:
     def __init__(self, mem_id, sch_marina, book_qty, book_price, sch_arrival, sch_stime, sch_etime):
@@ -50,5 +51,5 @@ class Qrcode:
         qr_bytes_io = self.generate_qr_code()
         qr_data = qr_bytes_io.read()
         qr_base64 = base64.b64encode(qr_data).decode("utf-8")
-        return f'<img src="data:image/png;base64,{qr_base64}"/>'
+        return qr_base64
         

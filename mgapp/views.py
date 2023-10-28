@@ -3,6 +3,9 @@ from django.http import HttpResponse
 from .models import Member, Marina, Schedule, Booking, Boo_sch, Boo_mem
 from datetime import datetime
 from mainapp.qrcodepy.qrcode import Qrcode
+import qrcode
+from io import BytesIO
+import base64
 # Create your views here.
 
 
@@ -24,9 +27,14 @@ def logout(request):
         """
     
     return HttpResponse(msg)
+
 def booking(request):
     mem_id = request.session.get('ses_mem_id', None)
     boo_mem = Boo_mem.objects.filter(boo_mem1=mem_id).last()
+
+    # 클래스 인스턴스와 변수 이름을 구분
+    my_qrcode = Qrcode(boo_mem.boo_mem1.mem_id, boo_mem.boo_sch1.sch_marina, boo_mem.book_qty, boo_mem.book_price, boo_mem.boo_sch1.sch_arrival, boo_mem.boo_sch1.sch_stime, boo_mem.boo_sch1.sch_etime)
+    get_qr = my_qrcode.get_html()
 
 
     # DB에서 선택한 스케줄 정보 조회
@@ -43,7 +51,8 @@ def booking(request):
 
     return render(request,
                   'mgapp/booking.html',
-                  {'boo_mem' : boo_mem,})
+                  {'boo_mem' : boo_mem,
+                   'get_qr':get_qr})
     
 def login(request):
     mem_id = request.session.get('ses_mem_id', None)
