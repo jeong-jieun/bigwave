@@ -308,35 +308,28 @@ p {
   </div>
 
   <nav class="site-nav" style="z-index: 5;">
-
-
-          <div class="site-navigation">
-              <a href="/" class="logo m-0"><img src="{% static "mainapp/free-css/images/로고색.png" %}" alt="" style="width: 300px; height: 50px;" ></a> 
-              {% comment %} <span class="text-primary">bigwave</span> {% endcomment %}
-
-              <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-                  <li class="active"><a href="/">서비스 소개</a></li>
-                  <li class="active"><a href="/mg/test/">선착장예약</a></li>
-                  <li><a href="/je/service/">교통/관광 서비스</a></li>
-                  </li>
-                  {% if request.session.ses_mem_id == None %}
-                  <li><a href="/login2/">로그인</a></li>
-                  <li><a href="/signup2/">회원가입</a></li>
-                  {% else %}
-                  <li><a href="/mg/booking/">예약확인</a></li>
-                  <li><a href="/mypage/">회원정보</a></li>
-                  <li><a href="/logout/">로그아웃</a></li>
-                  
-                  {% endif %}
-                  
-              </ul>
-              
-              <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
-                  <span></span>
-              </a>
-
-          </div>
-
+    <div class="site-navigation">
+      <a href="/" class="logo m-0"><img src="{% static "mainapp/free-css/images/로고색.png" %}" alt="" style="width: 300px; height: 50px;" ></a> 
+      <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
+          {% if request.session.ses_mem_id == None %}
+          <li class="active"><a href="/">서비스 소개</a></li>
+          <li class="active"><a href="/mg/test/">선착장예약</a></li>
+          <li><a href="/je/service/">교통/관광 서비스</a></li>
+          <li><a href="/login2/">로그인</a></li>
+          <li><a href="/signup2/">회원가입</a></li>
+          {% else %}
+          <li class="active"><a href="/">서비스 소개</a></li>
+          <li class="active"><a href="/mg/test/">선착장예약</a></li>
+          <li><a href="/mg/booking/">예약확인</a></li>
+          <li><a href="/je/service/">교통/관광 서비스</a></li>
+          <li><a href="/mypage/">회원정보</a></li>
+          <li><a href="/logout/">로그아웃</a></li>
+          {% endif %} 
+      </ul>
+      <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
+          <span></span>
+      </a>
+    </div>
   </nav>
 
     <script src="{% static 'mgapp/js/jquery-3.4.1.min.js'%}"></script>
@@ -598,7 +591,6 @@ $(window).on("load",function (){
 	onPageChange: null,    // function(pageIndex) that is called when page is changed
 	topOffset: -63
 	});
-});
 
 </script>
 <script>
