@@ -75,6 +75,11 @@ def main(request):
     return render(request,
                   'jeapp/html/main.html',
                   {})
+# ser_test.html
+def ser(request):
+    return render(request,
+                  'jeapp/html/ser_test.html',
+                  {})
 # map.html
 def map(request):
     marinas = Marina.objects.all()
@@ -125,10 +130,6 @@ def traffic(request):
     
 # service.html
 def service(request):
-    #if request.method == "POST":
-        #lat = request.POST.get("lat")
-        #lon = request.POST.get("lon")
-    
     mem_id = request.session.get('ses_mem_id', None)
     boo_mem = Boo_mem.objects.filter(boo_mem1=mem_id).last()
     marinas = Marina.objects.all()
@@ -180,7 +181,7 @@ def fservice(request):
     filtered_services = Service.objects.filter(ser_mar=selected_mar, ser_gu=selected_service_type)
     
     return render(request,
-                  'jeapp/html/service.html',
+                  'jeapp/html/service_first.html',
                   {'marina_list': marinas,
                    'service' : service,
                    'search_result': selected_mar,
@@ -236,7 +237,7 @@ def save_reservation(request):
         msg = """
                 <script type='text/javascript'>
                     alert('정상적으로 저장되었습니다.');
-                    location.href='/je/'
+                    location.href='/'
                 </script>
             """
         return HttpResponse(msg)
@@ -490,15 +491,14 @@ def bus_min(request):
     lat=request.POST.get("lat","None")
     busno=request.POST.get("busno","None")
     print(f"bus_station()>>>>>>>>>>>>>> busno[{busno}")
-    businfo = Businfo.objects.filter(busno=busno)
-    print(f"bus_station()>>>>>>>>>>>>>> [] <<<<<<<<</ / busno[{busno}]")
+    businfo = Businfo.objects.filter(bus_stop=busno)
+    print(f"bus_station()>>>>>>>>>>>>>> [{businfo}] <<<<<<<<</ / busno[{busno}]")
     businfo_data = [model_to_dict(item) for item in businfo]
     contexts = {"businfo_data": businfo_data}
     print(f">>>>>>>>>>>>>>>{businfo_data}<<<<<<<<<")
 
     return JsonResponse(contexts, safe=False)
                
-
 
 
 def chatbot(request):

@@ -4,6 +4,8 @@ from django.urls import path
 from . import views
 urlpatterns = [
     
+    # ser_test
+    path('ser/', views.ser),
     # map
     path('map/', views.map),
     # test
@@ -23,7 +25,9 @@ urlpatterns = [
     ### 서비스페이지 (http://127.0.0.1:8000/je/service2)
     path('service/', views.service, name='search_action'),
     ### 서비스페이지 (http://127.0.0.1:8000/je/service)
-    path('fservice/', views.fservice),
+    path('service/', views.service, name='search_action'),
+    ### 서비스페이지 (http://127.0.0.1:8000/je/fservice)
+    path('fservice/', views.fservice, name='search_action1'),
     ### 로그인페이지 (http://127.0.0.1:8000/je/login)
     path('login/', views.login),
     ### 결제확인페이지 (http://127.0.0.1:8000/je/checkout)
