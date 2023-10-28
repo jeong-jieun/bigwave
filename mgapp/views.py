@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Member, Marina, Schedule, Booking, Boo_sch, Boo_mem
 from datetime import datetime
+from mainapp.qrcodepy.qrcode import Qrcode
 # Create your views here.
 
 
@@ -25,7 +26,7 @@ def logout(request):
     return HttpResponse(msg)
 def booking(request):
     mem_id = request.session.get('ses_mem_id', None)
-    boo_mem = Boo_mem.objects.filter(boo_mem1=mem_id).first()
+    boo_mem = Boo_mem.objects.filter(boo_mem1=mem_id).last()
 
 
     # DB에서 선택한 스케줄 정보 조회
