@@ -330,17 +330,12 @@ cursor: pointer;
                   </div>
                   <div class="gap10"></div>
                   <div></div>
-                  <div class="tal_r val_m" >
-                     <label for="agreeY">
-                        ☞ 위와 같이 필독사항과 환불규정에 대하여 동의하십니까?<strong>(필수)</strong>
-                        <p>동의</p>
-                        <input type="radio" name="agree" id="agreeY" class="checkForm checkbox" value="Y" option="{isMust : true, message : '개인정보 수집 및 이용 동의 여부를 선택하십시오.'}"  style="margin-left: 93%;"/>
-                    </label>
-                    <label for="agreeN" style="margin-left: 5%;"> 
-                     <br>
-                        <p>미동의</p>
-                        <input type="radio" name="agree" id="agreeN" class="checkForm checkbox" value="N" option="{isMust : true, message : '개인정보 수집 및 이용 동의 여부를 선택하십시오.'}" />
-                    </label>
+                  <div class="tal_r val_m" style="text-align: center;">
+                     <form id="paymentForm" action="결제 처리 URL" method="post">
+                     <p>☞ 위와 같이 필독사항과 환불규정에 대하여 동의하십니까?<strong>(필수)</strong></p>
+                     <input type="radio" class="agree" name="agree" id="yes"><label>동의</label>
+                     <input type="radio" class="agree" name="agree" id="no"><label> 비동의</label>
+                  <div class="gap50"></div>
                     
                   <div class="gap50"></div>
                   <div class="tbl_wrap tbl3">
