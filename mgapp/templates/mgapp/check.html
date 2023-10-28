@@ -270,12 +270,18 @@ cursor: pointer;
 	
 	
 <div id="container-fluid" style="padding-top: 60px;line-height: 150%;">
-         <div class="sub_tit_area">
+         <div class="sub_tit_area" style="border-bottom: 0px;">
             <h2 style="font-family: Pretendard;">결제하기</h2>
             <div class="sub_loc_area">
             </div>
          </div><!-- //sub_tit_area -->
-      <div class="gap20"></div>
+         
+    <div class="row come-in">
+      <div class="col-sm-12 cl-md-6 mb-3 mb-lg-0 col-lg-0">
+			<div class="panel panel-info" style="margin-bottom: -5px;">
+			  <div class="panel-heading" style="color: black;">예약 상세</div>
+
+			</div>      
             <form name="input-form" action="{% url 'save_reservation' %}" method="post"> 
                <fieldset>
                <div class="gap30"></div>
@@ -304,10 +310,10 @@ cursor: pointer;
       <div class="gap20"></div>
    
    
-         <div class="sub_con_area">
+
             
             <div class="box2">
-               <div class="li_type1">
+
                   <fieldset>
                      <h3 style="color: red; font-size: 30px; text-align: center; font-family: Pretendard;" >[주의사항]</h3>
                      <br>
@@ -320,19 +326,23 @@ cursor: pointer;
                      <p style="font-size: 120%;"><span style="color: red;font-family: Pretendard;">></span> 기상상태, 천재지변, 선박의 이상상태 등의 예기치 못한 사항으로 운행이 불가할 경우 출항시간이 지연 또는 취소될 수 있으며 문자메세지를 통해 공지합니다. 해당 사항의 경우 전액환불됩니다.</br></p>
                      <p style="font-size: 120%;"><span style="color: red;font-family: Pretendard;">></span> 비상상황발생 및 승무원의 지시가 있을 경우 구명조끼를 착용하여 주세요.</br></p>
                   </fieldset>   
-               </div>
             </div> 
             
                   </div>
                   <div class="gap10"></div>
-                  <div class="tal_r val_m">
-                     ☞ 위와 같이  필독사항과 환불규정에 대하여 동의하십니까?<strong>(필수)</strong>
-                     <label for="agreeY">동의</label>
-                     <input type="radio" name="agree" id="agreeY" class="checkForm checkbox" value="Y" option="{isMust : true, message : '개인정보 수집 및 이용 동의 여부를 선택하십시오.'}" />
-                     &nbsp;&nbsp;&nbsp;&nbsp;
-                     <label for="agreeN">미동의</label>
-                     <input type="radio" name="agree" id="agreeN" class="checkForm checkbox" value="N" option="{isMust : true, message : '개인정보 수집 및 이용 동의 여부를 선택하십시오.'}" />
-                  </div>
+                  <div></div>
+                  <div class="tal_r val_m" >
+                     <label for="agreeY">
+                        ☞ 위와 같이 필독사항과 환불규정에 대하여 동의하십니까?<strong>(필수)</strong>
+                        <p>동의</p>
+                        <input type="radio" name="agree" id="agreeY" class="checkForm checkbox" value="Y" option="{isMust : true, message : '개인정보 수집 및 이용 동의 여부를 선택하십시오.'}"  style="margin-left: 93%;"/>
+                    </label>
+                    <label for="agreeN" style="margin-left: 5%;"> 
+                     <br>
+                        <p>미동의</p>
+                        <input type="radio" name="agree" id="agreeN" class="checkForm checkbox" value="N" option="{isMust : true, message : '개인정보 수집 및 이용 동의 여부를 선택하십시오.'}" />
+                    </label>
+                    
                   <div class="gap50"></div>
                   <div class="tbl_wrap tbl3">
 
