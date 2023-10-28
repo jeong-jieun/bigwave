@@ -6,6 +6,9 @@ from .models import Member, Booking, Schedule, Boo_sch, Marina, Boo_mem, Service
 # 시각화 보여주는 라이브러리
 from mainapp.mappy.map import Service_Map_View
 
+import json
+from django.http import JsonResponse
+
 # Create your views here.
 
 # mypage.html 처리
@@ -165,9 +168,34 @@ def logout(request):
 
 # hwsj.html 처리
 def hwsj(request):
-    return render(request,
-                  'mainapp/hwsj.html',
-                  {})
+    service = Service.objects.all()
+    print("================>>\n", service, "\n<<================")
+    print("222222222222222222222222")
+    test_df = ["test_df-data"]
+    
+    df_list = []
+    df_list2 = []
+    df_list3 = []
+    df_list4 = []
+    df_list5 = []
+    
+    for i in range(0, len(service)) :
+        df_list.append({"ser_mar" : service[i].ser_mar})
+        df_list2.append({"ser_gu" : service[i].ser_gu})
+        df_list3.append({"ser_distance" : service[i].ser_distance})
+        df_list4.append({"ser_lat" : service[i].ser_lat})
+        df_list5.append({"ser_lon" : service[i].ser_lon})
+    
+    
+    contexts = {"df_list":df_list,
+                "df_list2":df_list2,
+                "df_list3":df_list3,
+                "df_list4":df_list4,
+                "df_list5":df_list5,
+                "test_df" : test_df}
+    
+    return JsonResponse(contexts)
+    
 
 # signup.html 처리
 def signup2(request):
@@ -227,27 +255,10 @@ def main(request):
 
 # imsi.html 처리
 def imsi(request):
-    marinas = Marina.objects.all()
-    service = Service.objects.all()
-    ser_mar = "자갈치유선장"#request.POST.get('search_option', None) 
-    ser_gu = "음식점"#request.POST.get('service_type', '')
-    
-    filtered_services = Service.objects.filter(ser_mar=ser_mar, ser_gu=ser_gu)
-
-    ### 지도 클래스 불러오기
-    map_view = Service_Map_View(ser_mar, ser_gu)
-    
-    ### 지도맵 시각화 HTML로 받아오기
-    map_html = map_view.getMap()
 
     return render(request,
                   'mainapp/imsi.html',
-                  {'marina_list': marinas,
-                   'service' : service,
-                   'ser_mar': ser_mar,
-                   'services': filtered_services,
-                   'ser_gu': ser_gu,
-                   'map_html':map_html,})
+                  {})
 
 # index.html 처리
 def index(request):

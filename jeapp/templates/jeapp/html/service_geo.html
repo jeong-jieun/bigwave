@@ -49,10 +49,6 @@
     <script src="https://cdn.polymer-project.org/1.0.0/polymer/polymer.js"></script>
 
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
-    <script src="{% static 'mgapp/css/assets/js/color-modes.js'%}"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/n pm/@docsearch/css@3">
-    <link href="{% static 'mgapp/css/assets/dist/css/bootstrap.min.css'%}" rel="stylesheet">
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -215,7 +211,7 @@
         <div class="Scriptcontent">
           <!-- START DEMO -->
           <div class="tile" id="tile-1">
-            <form id="searchForm" method="GET" action="/je/service/">
+            <form id="searchForm" method="GET" action="/je/service_geo/">
               {% csrf_token %}
               <div>
                 <label for="lat"></label>

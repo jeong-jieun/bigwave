@@ -69,8 +69,128 @@
 			level: 3
 		};
 
+<<<<<<< HEAD
+	<script src="{% static 'mgapp/js/custom.js'%}"></script>
+    
+
+    
+ 
+<div id="map" style="width:100%;height:500px;"></div>
+
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	06fff07d3b1e45e728e0edc10adc7218"></script>
+<!-- jquery 자바스크립트 적용하기-->
+<script type="text/javascript" 
+		src = "https://code.jquery.com/jquery-3.6.0.min.js">
+</script>
+<script >
+$(document).ready(function(){
+	var mapContainer = document.getElementById('map');
+	var mapOption = {
+		center: new kakao.maps.LatLng(35.100811303038, 129.036429658218),
+		level: 3
+	};
+
+	var map = new kakao.maps.Map(mapContainer, mapOption);
+	var positions = [];
+
+	// Ajax 요청을 통해 데이터를 가져오고 마커를 생성합니다
+	$.ajax({
+		// 수정 필요
+		url: "/je/service/busmaker/", 
+		datatype: "json",
+		success: function(data) {
+			
+			/*for (var i =0; i < 2; i++){
+							alert(data["df_list"][0]["tra_nm"]),
+							alert(data["df_list2"][0]["tra_lon"]),
+							alert(data["df_list3"][0]["tra_lat"])};
+				
+			*/
+			var ppp = [];
+			for (var i = 0; i < data["df_list"].length; i++) {
+				var position = {
+					content: '<div>' +data["df_list3"][i]["tra_lat"]+ "<br>"+ data["df_list"][i]["tra_nm"] + '</div>',
+					latlng: new kakao.maps.LatLng(data["df_list3"][i]["tra_lat"],data["df_list2"][i]["tra_lon"] ),
+					busno: data["df_list4"][i]["tra_id"]
+					
+				};
+				//ppp.push(data["df_list3"][i]["tra_lat"],data["df_list2"][i]["tra_lon"])
+				positions.push(position);
+
+			}
+			var markers = [];
+			var infowindows = [];
+
+			for (var i = 0; i < positions.length; i++) {				
+				var marker = new kakao.maps.Marker({
+					map: map,
+					position: positions[i].latlng
+				});
+				
+				markers.push(marker);
+					
+				var infowindow = new kakao.maps.InfoWindow({
+					content: positions[i].content
+				});
+				
+				infowindows.push(infowindow);
+
+				kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+				kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+				kakao.maps.event.addListener(marker, 'click',function(){
+				
+				var getcnn = infowindow.getContent();
+				//alert(getcnn)
+				} );
+
+				var lat = i;//cls.getLat();
+				var lng = i;//cls.getLng();
+				//alert(positions[i].latlng);
+
+				// 버스번호를 임시로 입력
+				marker.text = positions[i].busno;
+
+				kakao.maps.event.addListener(marker, 'click', function() {
+					// 버스번호를 임시로 입력
+					// marker.text = positions[i].busno;
+					//alert(this.text);
+					//markers[i].addListener("click", function(mouseEvent)) {
+					var getLatlng = this.getPosition();
+					//var getCn = this.getContent();
+					//alert(getcn);
+					//alert("------------>>> " + chk.getLat() + " / " + chk.getLng())
+
+					
+					//alert("xxx---" + lat);
+					//alert("xxx---" + lng);
+					//var latlng = positions[i].latlng;
+					//alert("---------------------/////" + this.bus_no);
+					busNumber(getLatlng.getLat(), getLatlng.getLng(), this.text);
+					
+				});
+
+				//alert(ppp)
+
+			}
+			
+		}, beforeSend:function(){
+			console.log("1111")
+		}, complete:function(){
+			console.log("22222")
+		}, error:function(request, status, error){
+			console.log("333333")
+		}
+	});
+});
+ 
+	function busNumber(p_lat, p_lng, p_busno){
+		
+
+		alert(p_lat + " / " + p_lng + " / " + p_busno);
+=======
 		var map = new kakao.maps.Map(mapContainer, mapOption);
 		var positions = [];
+>>>>>>> a767f7192ed57bd1728e3af2d984393fc17e2911
 
 		// Ajax 요청을 통해 데이터를 가져오고 마커를 생성합니다
 		$.ajax({
