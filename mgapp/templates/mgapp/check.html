@@ -88,7 +88,7 @@ html, body, div, p, span, strong, b, em, iframe, pre, h1, h2, h3, h4, h5, h6, im
    margin: 0;
    padding: 0;
    border: 0 none;
-   font-family: 'Pretendard', 'ng', MalgunGothic, '맑은 고딕', '돋움', Dotum, AppleGothic, Sans-serif, Arial;
+   font-family: 'Pretendard';
    font-size: 14px;
 }
 body {
@@ -140,35 +140,42 @@ z-index: 1500;
 margin-bottom: 5.5rem!important;
 }
 #popupContainer {
-display: none;
-position: fixed;
-bottom: 10px;
-right: 10px;
-width: 500px;
-height: 500px;
-background-color: #fff;
-border: 1px solid #ccc;
-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-z-index: 9999; /* 팝업을 항상 위에 띄우기 위해 z-index 사용 */
-}  @media (min-width: 340.98px)and (max-width: 530px) {
-#popupContainer {  width: 250px;
-   height: 300px;} }
-
-#popupContent {
-right: 10px;
-width: 500px;
-height: 435px;
-
-}  @media (min-width: 340.98px)and (max-width: 530px) {
-#popupContent {  width: 250px;
-   height: 250px;} }
-
-#closePopup {
-background-color: #;
-color: black;
-border: none;
-cursor: pointer;
-}
+   display: none;
+   position: fixed;
+   bottom: 10px;
+   right: 10px;
+   width: 500px;
+   height: 500px;
+   background-color: transparent;
+   z-index: 9999; /* 팝업을 항상 위에 띄우기 위해 z-index 사용 */
+ } @media (min-width:350px) and (max-width:660px) {
+   #popupContainer{
+    width: 300px;
+    height: 400px;
+   }
+  }
+ 
+ #popupContent {
+   right: 10px;
+   width: 500px;
+   height: 435px;
+ 
+ }
+  @media (min-width:350px) and (max-width:660px) {
+  #popupContent{
+   width: 300px;
+   height: 300px;
+  }
+ }
+ 
+ #closePopup {
+   background-color: #248A52;
+   color: white;
+   padding: 5px 15PX;
+   border: none;
+   cursor: pointer;
+   float: right;
+ }
 	</style>
 </head>
 
@@ -204,11 +211,10 @@ cursor: pointer;
       </button>
     </div>
     <div id="popupContainer">
+      <button id="closePopup" style="font-size: 20px;">X</button>
       <iframe id="popupContent" src="/mg/chat/" frameborder="0">
         <h2>Popup Title</h2>
       </iframe>
-      <hr>
-      <button id="closePopup">닫기</button>
     </div>
   
   
@@ -225,37 +231,30 @@ cursor: pointer;
         <div class="site-mobile-menu-body"></div>
     </div>
   
-    <nav class="site-nav" style="z-index: 5;">
-  
-  
-            <div class="site-navigation">
-                <a href="/" class="logo m-0"><img src="{% static "mainapp/free-css/images/로고색.png" %}" alt="" style="width: 300px; height: 50px;" ></a> 
-                {% comment %} <span class="text-primary">bigwave</span> {% endcomment %}
-  
-                <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-                    <li class="active"><a href="/">서비스 소개</a></li>
-                    <li class="active"><a href="/mg/test/">선착장예약</a></li>
-                    <li><a href="/je/service/">교통/관광 서비스</a></li>
-                    </li>
-                    {% if request.session.ses_mem_id == None %}
-                    <li><a href="/login2/">로그인</a></li>
-                    <li><a href="/signup2/">회원가입</a></li>
-                    {% else %}
-                    <li><a href="/mg/booking/">예약확인</a></li>
-                    <li><a href="/mypage/">회원정보</a></li>
-                    <li><a href="/logout/">로그아웃</a></li>
-                    
-                    {% endif %}
-                    
-                </ul>
-                
-                <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
-                    <span></span>
-                </a>
-  
-            </div>
-  
-    </nav>
+   <nav class="site-nav" style="z-index: 5;">
+      <div class="site-navigation">
+         <a href="/" class="logo m-0"><img src="{% static "mainapp/free-css/images/로고색.png" %}" alt="" style="width: 300px; height: 50px;" ></a> 
+         <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
+            {% if request.session.ses_mem_id == None %}
+            <li class="active"><a href="/">서비스 소개</a></li>
+            <li class="active"><a href="/mg/test/">선착장예약</a></li>
+            <li><a href="/je/service/">교통/관광 서비스</a></li>
+            <li><a href="/login2/">로그인</a></li>
+            <li><a href="/signup2/">회원가입</a></li>
+            {% else %}
+            <li class="active"><a href="/">서비스 소개</a></li>
+            <li class="active"><a href="/mg/test/">선착장예약</a></li>
+            <li><a href="/mg/booking/">예약확인</a></li>
+            <li><a href="/je/service/">교통/관광 서비스</a></li>
+            <li><a href="/mypage/">회원정보</a></li>
+            <li><a href="/logout/">로그아웃</a></li>
+            {% endif %} 
+         </ul>
+         <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
+            <span></span>
+         </a>
+      </div>
+   </nav>
 	  {% comment %} <div class="sticky_click" style=" width:50px;
 	  height:50px;
 	  background:red;
@@ -330,18 +329,11 @@ cursor: pointer;
                   </div>
                   <div class="gap10"></div>
                   <div></div>
-                  <div class="tal_r val_m" >
-                     <label for="agreeY">
-                        ☞ 위와 같이 필독사항과 환불규정에 대하여 동의하십니까?<strong>(필수)</strong>
-                        <p>동의</p>
-                        <input type="radio" name="agree" id="agreeY" class="checkForm checkbox" value="Y" option="{isMust : true, message : '개인정보 수집 및 이용 동의 여부를 선택하십시오.'}"  style="margin-left: 93%;"/>
-                    </label>
-                    <label for="agreeN" style="margin-left: 5%;"> 
-                     <br>
-                        <p>미동의</p>
-                        <input type="radio" name="agree" id="agreeN" class="checkForm checkbox" value="N" option="{isMust : true, message : '개인정보 수집 및 이용 동의 여부를 선택하십시오.'}" />
-                    </label>
-                    
+                  <div class="tal_r val_m" style="text-align: center;">
+                     <form id="paymentForm" action="결제 처리 URL" method="post">
+                     <p>☞ 위와 같이 필독사항과 환불규정에 대하여 동의하십니까?<strong>(필수)</strong></p>
+                     <input type="radio" class="agree" name="agree" id="yes"><label>동의</label>
+                     <input type="radio" class="agree" name="agree" id="no"><label> 비동의</label>
                   <div class="gap50"></div>
                   <div class="tbl_wrap tbl3">
 
