@@ -1,166 +1,372 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+{% load static %}
+<!-- /*
+* Template Name: Tour
+* Template Author: Untree.co
+* Tempalte URI: https://untree.co/
+* License: https://creativecommons.org/licenses/by/3.0/
+*/ -->
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="Untree.co">
+	<link rel="shortcut icon" href="favicon.png">
 
+	<meta name="description" content="" />
+	<meta name="keywords" content="bootstrap, bootstrap4" />
 
-<section class="h-screen flex justify-center">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" href="{% static 'mgapp/css/bootstrap.min.css'%}">
+	<link rel="stylesheet" href="{% static 'mgapp/css/owl.carousel.min.css'%}">
+	<link rel="stylesheet" href="{% static 'mgapp/css/owl.theme.default.min.css'%}">
+	<link rel="stylesheet" href="{% static 'mgapp/css/jquery.fancybox.min.css'%}">
+	<link rel="stylesheet" href="{% static 'mgapp/fonts/icomoon/style.css'%}">
+	<link rel="stylesheet" href="{% static 'mgapp/fonts/flaticon/font/flaticon.css'%}">
+	<link rel="stylesheet" href="{% static 'mgapp/css/daterangepicker.css'%}">
+	<link rel="stylesheet" href="{% static 'mgapp/css/aos.css'%}">
+	<link rel="stylesheet" href="{% static 'mgapp/css/style.css'%}">
+
+	<title>Tour Free Bootstrap Template for Travel Agency by Untree.co</title>
+    {% comment %} 아래는 종민이 추가한 것 {% endcomment %}
+    <style>
+        table {
+            border: 2px solid red;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid blue;
+        }
+    </style>
     
-  <div class="container px-6 py-12 h-full">
-    <div class="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
-            <form class="w-full">
-          <!-- userId input -->
-          <div class="mb-6 flex">
-            <input
-              type="text"
-              class="form-control mr-3 flex w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              placeholder="이메일"
-              />
-              <button
-            type="submit"
-            class="flex justify-center w-2/5 items-center h-11 bg-green-500 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700"
-            data-mdb-ripple="true"
-            data-mdb-ripple-color="light"
-          >
-            인증번호 발송
-          </button>
-          </div>
-                
-          <div class="mb-6 flex">
-            <input
-              type="text"
-              class="form-control mr-3 flex w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              placeholder="인증번호를 입력하세요"
-              />
-              <button
-            type="submit"
-            class="flex justify-center w-2/5 items-center h-11 bg-green-500 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700"
-            data-mdb-ripple="true"
-            data-mdb-ripple-color="light"
-          >
-            확인
-          </button>
-          </div>
-          <!-- Password input -->
-          <div class="mb-6">
-            <input
-              type="password"
-              class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              placeholder="비밀번호"
-            />
-          </div>
-            
-          <div class="mb-6 flex">
-            <input
-              type="text"
-              class="form-control flex w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              placeholder="비밀번호 확인"
-              />
-          </div>
-            
-          <div class="mb-6 flex">
-            <input
-              type="text"
-              class="form-control flex w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              placeholder="이름"
-              />
-          </div>
-            
-          <div class="mb-6 flex">
-              
-              <input class="flex w-1/3 px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" type="text" id="sample6_postcode" placeholder="우편번호" readonly/>
-              
-<input class="flex w-1/3 px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none justify-center" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" readonly/><br>
-          </div>
-          
-          <div class="mb-6 flex">
-              
-              <input class="flex w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" type="text" id="sample6_address" placeholder="주소" readonly/>
-              <br>
-          </div>    
-                
-          <div class="mb-6 flex">    
-          <input class="flex w-1/2 px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" type="text" id="sample6_extraAddress" placeholder="동" readonly/>
-              
-          <input class="flex w-1/2 px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" type="text" id="sample6_detailAddress" placeholder="상세주소" readonly/>
-          </div>
+
+</head>
+
+<body>
+
+    <div class="site-mobile-menu site-navbar-target">
+		<div class="site-mobile-menu-header">
+			<div class="site-mobile-menu-close">
+				<span class="icofont-close js-menu-toggle"></span>
+			</div>
+		</div>
+		<div class="site-mobile-menu-body"></div>
+	</div>
+
+	<nav class="site-nav">
+
+			<div class="site-navigation">
+				<a href="/mg/home/" class="logo m-0">bigwave</a> 
+				{% comment %} <span class="text-primary">bigwave</span> {% endcomment %}
+
+				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
+					<li class="active"><a href="/">선착장</a></li>
+					<li><a href="services.html">Services</a></li>
+					<li class="has-children">
+						<a href="#">부가 서비스</a>
+						<ul class="dropdown">
+							<li class="has-children">
+								<a href="#">선착장</a>
+								<ul class="dropdown">
+									<li><a href="#">다대선착장</a></li>
+									<li><a href="#">동삼선착장</a></li>
+									<li><a href="#">미포선착장</a></li>
+									<li><a href="#">자갈치선착장</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li><a href="/login2/">로그인</a></li>
+					<li><a href="/signup2/">회원가입</a></li>
+				</ul>
+
+				<a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
+					<span></span>
+				</a>
+
+			</div>
+	</nav>
+
+    <script src="{% static 'mgapp/js/jquery-3.4.1.min.js'%}"></script>
+	<script src="{% static 'mgapp/js/popper.min.js'%}"></script>
+	<script src="{% static 'mgapp/js/bootstrap.min.js'%}"></script>
+	<script src="{% static 'mgapp/js/owl.carousel.min.js'%}"></script>
+	<script src="{% static 'mgapp/js/jquery.animateNumber.min.js'%}"></script>
+	<script src="{% static 'mgapp/js/jquery.waypoints.min.js'%}"></script>
+	<script src="{% static 'mgapp/js/jquery.fancybox.min.js'%}"></script>
+	<script src="{% static 'mgapp/js/aos.js'%}"></script>
+	<script src="{% static 'mgapp/js/moment.min.js'%}"></script>
+	<script src="{% static 'mgapp/js/daterangepicker.js'%}"></script>
+
+	<script src="{% static 'mgapp/js/typed.js'%}"></script>
+	<script>
+		$(function() {
+			var slides = $('.slides'),
+			images = slides.find('img');
+
+			images.each(function(i) {
+				$(this).attr('data-id', i + 1);
+			})
+
+			var typed = new Typed('.typed-words', {
+				strings: ["다대포 ","영도 ","자갈치 ", "송도",],
+				typeSpeed: 80,
+				backSpeed: 80,
+				backDelay: 4000,
+				startDelay: 1000,
+				loop: true,
+				showCursor: true,
+				preStringTyped: (arrayPos, self) => {
+					arrayPos++;
+					console.log(arrayPos);
+					$('.slides img').removeClass('active');
+					$('.slides img[data-id="'+arrayPos+'"]').addClass('active');
+				}
+
+			});
+		})
+	</script>
+
+	<script src="{% static 'mgapp/js/custom.js'%}"></script>
     
-        <div class="mb-6 flex">
-            <input
-              type="text"
-              class="form-control flex w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              placeholder="생년월일 앞6자리"
-              />
-          </div>
-                
-        <div class="mb-6 flex">
-              <input
-              type="text"
-              class="form-control flex w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-              placeholder="핸드폰 번호"
-              />
-          </div>
-            
 
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script>
-    function sample6_execDaumPostcode() {
-        new daum.Postcode({
-            oncomplete: function(data) {
-                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+    
+ 
+<div id="map" style="width:100%;height:500px;"></div>
 
-                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
-                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
-                var addr = ''; // 주소 변수
-                var extraAddr = ''; // 참고항목 변수
-
-                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
-                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
-                    addr = data.roadAddress;
-                } else { // 사용자가 지번 주소를 선택했을 경우(J)
-                    addr = data.jibunAddress;
-                }
-
-                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-                if(data.userSelectedType === 'R'){
-                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
-                        extraAddr += data.bname;
-                    }
-                    // 건물명이 있고, 공동주택일 경우 추가한다.
-                    if(data.buildingName !== '' && data.apartment === 'Y'){
-                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
-                    }
-                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-                    if(extraAddr !== ''){
-                        extraAddr = ' (' + extraAddr + ')';
-                    }
-                    // 조합된 참고항목을 해당 필드에 넣는다.
-                    document.getElementById("sample6_extraAddress").value = extraAddr;
-                
-                } else {
-                    document.getElementById("sample6_extraAddress").value = '';
-                }
-
-                // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('sample6_postcode').value = data.zonecode;
-                document.getElementById("sample6_address").value = addr;
-                // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("sample6_detailAddress").focus();
-            }
-        }).open();
-    }
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	06fff07d3b1e45e728e0edc10adc7218"></script>
+<!-- jquery 자바스크립트 적용하기-->
+<script type="text/javascript" 
+		src = "https://code.jquery.com/jquery-3.6.0.min.js">
 </script>
-          <!-- Submit button -->
-          <div class="flex">
-          <button
-            type="submit"
-            class="flex w-2/1 justify-center items-center h-11 mr-2 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
-            data-mdb-ripple="true"
-            data-mdb-ripple-color="light"
-          >
-            가입하기
-          </button>
-                 
-      </div>
-    </div>
-</section>
-           
+<script >
+$(document).ready(function(){
+	var mapContainer = document.getElementById('map');
+	var mapOption = {
+		center: new kakao.maps.LatLng(35.100811303038, 129.036429658218),
+		level: 3
+	};
+
+	var map = new kakao.maps.Map(mapContainer, mapOption);
+	var positions = [];
+
+	// Ajax 요청을 통해 데이터를 가져오고 마커를 생성합니다
+	$.ajax({
+		// 수정 필요
+		url: "/je/service/busmaker/", 
+		datatype: "json",
+		success: function(data) {
+			
+			/*for (var i =0; i < 2; i++){
+							alert(data["df_list"][0]["tra_nm"]),
+							alert(data["df_list2"][0]["tra_lon"]),
+							alert(data["df_list3"][0]["tra_lat"])};
+				
+			*/
+			var ppp = [];
+			for (var i = 0; i < data["df_list"].length; i++) {
+				var position = {
+					content: '<div>' +data["df_list3"][i]["tra_lat"]+ "<br>"+ data["df_list"][i]["ser_mar"] + '</div>',
+					latlng: new kakao.maps.LatLng(data["df_list3"][i]["tra_lat"],data["df_list2"][i]["tra_lon"] ),
+					busno: data["df_list4"][i]["tra_id"]
+					
+				};
+				//ppp.push(data["df_list3"][i]["tra_lat"],data["df_list2"][i]["tra_lon"])
+				positions.push(position);
+
+			}
+			var markers = [];
+			var infowindows = [];
+
+			for (var i = 0; i < positions.length; i++) {				
+				var marker = new kakao.maps.Marker({
+					map: map,
+					position: positions[i].latlng
+				});
+				
+				markers.push(marker);
+					
+				var infowindow = new kakao.maps.InfoWindow({
+					content: positions[i].content
+				});
+				
+				infowindows.push(infowindow);
+
+				kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+				kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+				kakao.maps.event.addListener(marker, 'click',function(){
+				
+				var getcnn = infowindow.getContent();
+				//alert(getcnn)
+				} );
+
+				var lat = i;//cls.getLat();
+				var lng = i;//cls.getLng();
+				//alert(positions[i].latlng);
+
+				// 버스번호를 임시로 입력
+				marker.text = positions[i].busno;
+
+				kakao.maps.event.addListener(marker, 'click', function() {
+					// 버스번호를 임시로 입력
+					// marker.text = positions[i].busno;
+					//alert(this.text);
+					//markers[i].addListener("click", function(mouseEvent)) {
+					var getLatlng = this.getPosition();
+					//var getCn = this.getContent();
+					//alert(getcn);
+					//alert("------------>>> " + chk.getLat() + " / " + chk.getLng())
+
+					
+					//alert("xxx---" + lat);
+					//alert("xxx---" + lng);
+					//var latlng = positions[i].latlng;
+					//alert("---------------------/////" + this.bus_no);
+					busNumber(getLatlng.getLat(), getLatlng.getLng(), this.text);
+					
+				});
+
+				//alert(ppp)
+
+			}
+			
+		}, beforeSend:function(){
+			console.log("1111")
+		}, complete:function(){
+			console.log("22222")
+		}, error:function(request, status, error){
+			console.log("333333")
+		}
+	});
+});
+ 
+	function busNumber(p_lat, p_lng, p_busno){
+		
+
+		alert(p_lat + " / " + p_lng + " / " + p_busno);
+
+		$.ajax({
+			url: "/je/service/bus_min/", 
+			type : "post",
+			datatype: "json",
+			data : {
+				lat:p_lat, 
+				lng:p_lng, 
+				busno:p_busno,
+				csrfmiddlewaretoken:"{{csrf_token}}",
+			},
+			success: function(data) {
+				// 받아 온값 처리영역...
+                // 기존 테이블 삭제
+    var existingTable = document.querySelector('#myTable');
+    if (existingTable) {
+        existingTable.parentNode.removeChild(existingTable);
+    }
+    
+    alert("연결");
+    alert(">>>>>>>>>>>>>>> " + data["traffic_db3"][0].bus_stop);
+    
+    // traffic_db3 데이터에 접근
+    var trafficDb3 = data.traffic_db3;
+    var body = document.querySelector('body');
+
+    // 새로운 테이블 생성
+    var table = document.createElement('table');
+    table.id = "myTable"; // 테이블에 아이디를 추가
+
+    // 테이블 헤더 생성
+    var thead = table.createTHead();
+    var headerRow = thead.insertRow(0);
+    var header1 = headerRow.insertCell(0);
+    var header2 = headerRow.insertCell(1);
+    var header3 = headerRow.insertCell(2);
+	var header4 = headerRow.insertCell(3);
+	var header5 = headerRow.insertCell(4);
+
+    header1.innerHTML = "<b>bus_stop</b>";
+    header2.innerHTML = "<b>bus_no</b>";
+    header3.innerHTML = "<b>bus_nm</b";
+	header4.innerHTML = "<b>bus_time</b";
+	header5.innerHTML = "<b>bus_remain</b";
+
+
+    // traffic_db3 배열을 반복
+    for (var i = 0; i < trafficDb3.length; i++) {
+        var item = trafficDb3[i];
+        var bus_stop = item.bus_stop;
+        var bus_no = item.bus_no;
+        var bus_nm = item.bus_nm;
+        var bus_time = item.bus_time;
+		var bus_remain =item.bus_remain;
+
+        // 새로운 행 추가
+        var row = table.insertRow(i + 1);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+		var cell5 = row.insertCell(4);
+
+
+        // 데이터 추가
+        cell1.innerHTML = bus_stop;
+        cell2.innerHTML = bus_no;
+        cell3.innerHTML = bus_nm;
+        cell4.innerHTML = bus_time;
+		cell5.innerHTML=bus_remain
+    }
+
+    // body에 새로운 테이블 추가
+    body.appendChild(table);
+
+
+				// id 속성값으로 문서 객체 생성 : 캐스팅
+				// document.getElementById('아이디속성값');
+				var header1 = document.getElementById('header-1');
+				var header2 = document.getElementById('header-2');
+	
+				// 문서 객체의 속성 변경
+				//header1.innerHTML = data["traffic_db3"];
+				//header2.textContent = '<i>문서객체 생성</i>';
+
+
+
+			}, beforeSend:function(){
+				console.log("1111")
+			}, complete:function(){
+				console.log("22222")
+			}, error:function(request, status, error){
+				console.log("333333")
+			}
+		});
+
+	}
+
+	function makeOverListener(map, marker, infowindow) {
+		return function() {
+			infowindow.open(map, marker);
+		};
+	}
+
+	function makeOutListener(infowindow) {
+		return function() {
+			infowindow.close();
+		};
+	}
+
+</script>
+
+<div id="header-1">1</div>
+<div id="header-2">2</div>
+
+<div id="stationname"> 여기부터입니다.</div>
+
+# 3번째 레코드의 3번째 칼럼 값 가져오기
+value = record.field3
+
+
+
+</body>
