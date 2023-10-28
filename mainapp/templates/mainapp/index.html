@@ -352,36 +352,7 @@ p {
     <script src="{% static 'mgapp/js/moment.min.js'%}"></script>
     <script src="{% static 'mgapp/js/daterangepicker.js'%}"></script>
 
-    <script src="{% static 'mgapp/js/typed.js'%}"></script>
-    <script>
-      $(function() {
-        var slides = $('.slides'),
-        images = slides.find('img');
-
-        images.each(function(i) {
-          $(this).attr('data-id', i + 1);
-        })
-
-        var typed = new Typed('.typed-words', {
-          strings: ["다대포 ","영도 ","자갈치 ", "송도",'해운대'],
-          typeSpeed: 80,
-          backSpeed: 80,
-          backDelay: 4000,
-          startDelay: 1000,
-          loop: true,
-          showCursor: true,
-          preStringTyped: (arrayPos, self) => {
-            arrayPos++;
-            console.log(arrayPos);
-            $('.slides img').removeClass('active');
-            $('.slides img[data-id="'+arrayPos+'"]').addClass('active');
-          }
-
-        });
-      })
-    </script>
-
-                  
+    <script src="{% static 'mgapp/js/typed.js'%}"></script>             
   </section>
   <br><br><br>
 
@@ -478,9 +449,9 @@ p {
                 <img src="{% static 'jeapp/images/c2.png' %}" alt="" />
               </div>
               <div class="detail-box">
-                <h4>
+                <h5>
                   Tourist Information
-                </h4>
+                </h5>
                 <p>
                   선착장 주변에서 가장 가까운 음식점, 카페, 버스 정류장은 어디에 위치해 있을까요? 주변 시설 및 서비스에 대한 상세한 안내와 위치 정보를 통해 여러분의 편리한 이용을 돕습니다.
                 </p>
