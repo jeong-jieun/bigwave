@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Big-Wave Marine-Taxi</title>
+<title>Applight Template By W3 Template</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
 <link rel="stylesheet" href="{% static 'mainapp/free-css/css/animate.css' %}">
 {% comment %} <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous"> {% endcomment %}
@@ -217,7 +217,9 @@ p {
   right: 10px;
   width: 500px;
   height: 500px;
-  background-color: transparent;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   z-index: 9999; /* 팝업을 항상 위에 띄우기 위해 z-index 사용 */
 } @media (min-width:350px) and (max-width:660px) {
   #popupContainer{
@@ -240,12 +242,10 @@ p {
 }
 
 #closePopup {
-  background-color: #248A52;
-  color: white;
-  padding: 5px 15PX;
+  background-color: #;
+  color: black;
   border: none;
   cursor: pointer;
-  float: right;
 }
 @font-face {
   font-family: 'IAMAPLAYER';
@@ -294,7 +294,6 @@ p {
     </iframe>
   </div>
 
-
 {% comment %} <div style=" z-index: 1;">
   <div class="sticky_click" style="top: 50px;">ststststst</div> {% endcomment %}
 
@@ -319,7 +318,6 @@ p {
                   <li class="active"><a href="/">서비스 소개</a></li>
                   <li class="active"><a href="/mg/test/">선착장예약</a></li>
                   <li><a href="/je/service/">교통/관광 서비스</a></li>
-                  <li><a href="/je/service/chatbotiframe/">챗봇 서비스</a></li>
                   </li>
                   {% if request.session.ses_mem_id == None %}
                   <li><a href="/login2/">로그인</a></li>
@@ -384,15 +382,7 @@ p {
     <span class="svg-wave"> <img class="svg-hero" src="{% static 'mainapp/free-css/images/iconizer-applight-wave.svg' %}" style="width: 100%;"> </span> </section>
 
 
-  <script>
-    document.getElementById('openPopup').addEventListener('click', function () {
-      document.getElementById('popupContainer').style.display = 'block';
-  });
-  
-  document.getElementById('closePopup').addEventListener('click', function () {
-      document.getElementById('popupContainer').style.display = 'none';
-  });
-  </script>
+
 
   <!-- service section -->
   <section class="service_section layout_padding" style="margin-bottom: 70px;">
@@ -414,14 +404,14 @@ p {
                   Reservation
                 </h5>
                 <p>
-                  휴대폰만 있으면 택시 스케줄을 확인하고 승차권을 예매할 수 있습니다.<br>여행의 시작부터 간편하게!
+                  휴대폰만 있으면 선착장 스케줄을 확인하고 승차권을 예매할 수 있습니다. 여행의 시작부터 간편하게!
                 </p>
               </div>
             </div>
           </a>
         </div>
         <div class="col-sm-6 col-md-4 mx-auto">
-            <div class="box " style="height: 225px;">
+            <div class="box" style="height: 225px;">
               <div class="img-box">
                 <img src="{% static 'jeapp/images/c5.png' %}" alt="" />
               </div>
@@ -430,12 +420,26 @@ p {
                   Chat-Bot
                 </h5>
                 <p>
-                  도착 후 어디로 갈지, 어떤 음식점이 좋을지 고민이신가요?<br>빅데이터 기반의 CHAT GPT가 여러분에게 관광 코스를 알려드립니다.<br>CHAT-GPT와 함께라면 여행 중 모르는 것은 없습니다!
+                  도착 후 어디로 갈지, 어떤 음식점이 좋을지 고민이신가요? 빅데이터 기반의 CHAT GPT가 여러분에게 관광 코스를 알려드립니다.  CHAT-GPT와 함께라면 여행 중 모르는 것은 없습니다!
                 </p>
               </div>
             </div>
-          </a>
         </div>
+        
+        <div id="iframeContainer" style="display: none;">
+          <iframe id="myIframe" src="/mg/chat/" width="100%" height="300" frameborder="0"></iframe>
+
+          <button id="closePopup">닫기</button>
+        </div>
+<script>
+  function showIframe() {
+    // 클릭 시 아이프레임 컨테이너를 보이도록 설정
+    document.getElementById("iframeContainer").style.display = "block";
+  }
+  document.getElementById('closePopup').addEventListener('click', function () {
+    document.getElementById('iframeContainer').style.display = 'none';
+});
+</script>        
         <div class="col-sm-6 col-md-4 mx-auto">
           <a href="/je/service/" style="color: inherit;">
             <div class="box " style="height: 225px;">
@@ -447,7 +451,7 @@ p {
                   Tourist Information
                 </h5>
                 <p>
-                  가장 가까운 음식점, 카페, 버스 정류장은 어디에 위치해 있을까요?<br>주변 시설 및 서비스에 대한 상세한 안내와 위치 정보를 통해<br>여러분의 편리한 이용을 돕습니다.
+                  선착장 주변에서 가장 가까운 음식점, 카페, 버스 정류장은 어디에 위치해 있을까요? 주변 시설 및 서비스에 대한 상세한 안내와 위치 정보를 통해 여러분의 편리한 이용을 돕습니다.
                 </p>
               </div>
             </div>
@@ -456,13 +460,21 @@ p {
       </div>
     </div>
   </section>
-
+  <script>
+    document.getElementById('openPopup').addEventListener('click', function () {
+      document.getElementById('popupContainer').style.display = 'block';
+  });
+  
+  document.getElementById('closePopup').addEventListener('click', function () {
+      document.getElementById('popupContainer').style.display = 'none';
+  });
+  </script>
   <section class="team section-padding" data-scroll-index='3'>
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           <div class="sectioner-header text-center">
-            <h3>팀원 소개</h3>
+            <h2 style="text-align: center;"> About US </h2>
             <span class="line"></span>
             <p>2023년 프로젝트 기반 빅데이터 분석가 양성과정<br>Team 5. BIGWAVE</p>
           </div>
@@ -471,37 +483,37 @@ p {
               <div class="col-md-4">
                 <div class="team-detail wow bounce" data-wow-delay="0.2s"> <img src="{% static 'mainapp/free-css/images/son.jpg' %}" class="img-fluid"/>
                   <h4>손유정</h4>
-                  <p>모델링/PPT</p>
+                  <p>팀장/모델링</p>
                 </div>
               </div>
               <div class="col-md-4">
-                <div class="team-detail wow bounce" data-wow-delay="0.4s"> <img src="{% static 'mainapp/free-css/images/user2.jpg' %}" class="img-fluid"/>
+                <div class="team-detail wow bounce" data-wow-delay="0.4s"> <img src="{% static 'mainapp/free-css/images/hwang.jpg' %}" class="img-fluid"/>
                   <h4>황종민</h4>
                   <p>모델링/Chat-Bot</p>
                 </div>
               </div>
               <div class="col-md-4">
-                <div class="team-detail wow bounce" data-wow-delay="0.6s"> <img src="{% static 'mainapp/free-css/images/user3.jpg' %}" class="img-fluid"/>
+                <div class="team-detail wow bounce" data-wow-delay="0.6s"> <img src="{% static 'mainapp/free-css/images/ha.jpg' %}" class="img-fluid"/>
                   <h4>하유현</h4>
-                  <p>모델링/</p>
+                  <p>모델링</p>
                 </div>
               </div>
               <div class="col-md-4">
-                  <div class="team-detail wow bounce" data-wow-delay="0.2s"> <img src="{% static 'mainapp/free-css/images/user1.jpg' %}" class="img-fluid"/>
+                  <div class="team-detail wow bounce" data-wow-delay="0.2s"> <img src="{% static 'mainapp/free-css/images/kim.jpg' %}" class="img-fluid"/>
                     <h4>김태헌</h4>
-                    <p>Marketing Specialist</p>
+                    <p>웹개발</p>
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="team-detail wow bounce" data-wow-delay="0.4s"> <img src="{% static 'mainapp/free-css/images/user1.jpg' %}" class="img-fluid"/>
                     <h4>김명기</h4>
-                    <p>CEO & Founder</p>
+                    <p>웹개발</p>
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="team-detail wow bounce" data-wow-delay="0.6s"> <img src="{% static 'mainapp/free-css/images/jeong.jpg' %}" class="img-fluid"/>
                     <h4>정지은</h4>
-                    <p>Web Developer</p>
+                    <p>웹개발</p>
                   </div>
                 </div>
             </div>
@@ -518,7 +530,7 @@ p {
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-          <p>2018 &copy; Applight. Website Designed by <a href="http://w3Template.com" target="_blank" rel="dofollow">W3 Template</a></p>
+          <p>2023 &copy; Copyright. by BIGWAVE </p>
         </div>
       </div>
     </div>

@@ -179,7 +179,7 @@ def save_reservation(request):
         msg = """
                 <script type='text/javascript'>
                     alert('정상적으로 저장되었습니다.');
-                    location.href='/je/'
+                    location.href='/'
                 </script>
             """
         return HttpResponse(msg)
