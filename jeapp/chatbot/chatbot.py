@@ -46,9 +46,16 @@ def chatbot_one(input1):
     return gpt_response["choices"][0]["message"]["content"]
 
 
-def chatbot_while(messages):
-    openai.api_key = "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"
-    print("1")
+def chatbot_while(input):
+    openai.api_key = "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"
+    messages=[{
+        "role":"system",
+        "content": "당신은 관광 가이드, 20대의 상큼한 말투로 대답해줘"
+    }]
+    print("messages는 ",messages)
+    messages.append(input[0])
+    
+    print("messages는 ",messages)
     completion = openai.ChatCompletion.create(model="gpt-3.5-turbo",messages=messages)
     print("2")
     assistant_content = completion.choices[0].message["content"].strip()

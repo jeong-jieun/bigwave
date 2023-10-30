@@ -248,7 +248,7 @@
 
       <input class="nav-link" type="radio" name="tabmenu" id="tab04" value="교통정보" 
         {% if selected_service_type == '교통정보' %}checked{% endif %} 
-        onclick="updateServiceType('교통정보')">
+        onclick="traffic_info()">
       <label class="ttab" for="tab04"style="border-radius: 25px;"><i class="fas fa-bus"></i><div> 교통정보</div></label>
     </div>
       {% if selected_service_type == "교통정보" %}
@@ -327,7 +327,15 @@
       function submitForm() {
         document.getElementById("searchForm").submit();
       }
+
+      function traffic_info() {
+        option_val = document.getElementById("search_option").value;
+        alert(option_val);
+        alert("13123")  ;   
+       location.href = "/je/service/practice1/?search_option="+option_val;
+      }
     </script>
+      
     
     
     <script src="{% static 'mgapp/js/jquery-3.4.1.min.js'%}"></script>

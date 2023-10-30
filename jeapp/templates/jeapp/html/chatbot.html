@@ -18,12 +18,12 @@
 			padding: 0; /* 기본 패딩 제거 */
 		}
 		.chat-container {
-			width: 100%;
+			width: 70%;
 			height: calc(100% - 50px); /* 버튼 높이만큼 컨테이너 높이에서 빼줍니다 */
 			overflow-y: auto;
 		}
 		.chat-message {
-			width: 95%;
+			width: 70%;
 			margin: 10px;
 			padding: 10px;
 			border-radius: 10px;
@@ -33,12 +33,15 @@
 			align-self: flex-end;
 			background-color: #cce6ff;
 			text-align: left;
+			float: left;
+
 		}
 		.assistant-message {
 			align-self: flex-start;
 			background-color: #f0f0f0;
 			margin-right: 0;
-			text-align: RIGHT;
+			text-align: left;
+			float: right;
 		}
 
 		.chat-assistant {
