@@ -167,14 +167,9 @@ def service(request):
                    'marina_list': marinas,
                    'service' : service,
                    'services': filtered_services,
-<<<<<<< HEAD
-                   'map_html':map_html,})
-
-=======
                    'map_html':map_html,
                    'lat':lat,
                    'lon':lon,})
->>>>>>> 8786ae3e4cb8bdfab47036d21e8604ac10a59b5e
     
  # 서비스_first
 def fservice(request):
