@@ -312,7 +312,6 @@ tr:hover {
 									<tbody>
 										<tr>
 											<th class="small_1">선택하기</th>
-											<th class="small_1">번호</th>
 											<th class="small_1">출발지</th>
 											<th class="small_1">도착지</th>
 
@@ -321,7 +320,6 @@ tr:hover {
 										{% for row3 in schedule %}
 										<tr class="KOTRA-fontsize-80">
 											<td><input type="radio" name="selected_schedule" value="{{ row3.sch_no }}"></td>
-											<td><p2 style="font-size: 25px;font-weight: 700;">1</p2></td>
 											<td class="small_1"><p2  class="small_1" >{{ row3.sch_marina }}</p2><br><p style="font-size: 18px;">{{ row3.sch_stime }}</p></td>
 											<td class="small_1"><p2  class="small_1" >{{ row3.sch_arrival }}</p2><br><p style="font-size: 18px;">{{ row3.sch_stime }}</p></td>
 										</tr>
