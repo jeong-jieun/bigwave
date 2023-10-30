@@ -10,173 +10,130 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
     <script type="text/javascript" src="script.js"></script>
     <script type="text/javascript"></script>
-    <link rel="stylesheet" href="{% static 'mainapp/css/signup.css' %}">
+
+    <meta name="description" content="" />
+    <meta name="keywords" content="bootstrap, bootstrap4" />
+  
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
+  
+    <link rel="stylesheet" href="{% static 'mgapp/css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'mgapp/css/owl.carousel.min.css'%}">
+    <link rel="stylesheet" href="{% static 'mgapp/css/owl.theme.default.min.css'%}">
+    <link rel="stylesheet" href="{% static 'mgapp/css/jquery.fancybox.min.css'%}">
+    <link rel="stylesheet" href="{% static 'mgapp/fonts/icomoon/style.css'%}">
+    <link rel="stylesheet" href="{% static 'mgapp/fonts/flaticon/font/flaticon.css'%}">
+    <link rel="stylesheet" href="{% static 'mgapp/css/daterangepicker.css'%}">
+    <link rel="stylesheet" href="{% static 'mgapp/css/aos.css'%}">
+    <link rel="stylesheet" href="{% static 'mgapp/css/style.css'%}">
+  
+  
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
+  
+      
+    <script src="{% static 'mgapp/css/assets/js/color-modes.js'%}"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/n pm/@docsearch/css@3">
+    <link href="{% static 'mgapp/css/assets/dist/css/bootstrap.min.css'%}" rel="stylesheet">
 </head>
 
     <body>
-    
-      <header class="headertop">
-        <nav>
-          <ul>
-            <li><a href="#"><img src="https://res.kurly.com/mobile/service/common/2006/ico_navi_back.svg?v=1" alt=""></a></li>
-            <li>회원가입</li>
-            <li><a href="#"><img src="https://res.kurly.com/kurly/ico/2021/cart_24_24_black.svg" alt=""></a></li>
-          </ul>
-        </nav>
-      </header>
-    
-    
-      <header class="headerbottom">
-    
-        <nav>
-          <ul>
-            <li><a href="#"><img src="https://res.kurly.com/mobile/service/common/2011/ico_home.svg?ver=2" alt="">홈</a></li>
-            <li><a href="#"><img src="https://res.kurly.com/mobile/service/common/2011/ico_cate.svg?ver=2" alt="">카테고리</a></li>
-            <li><a href="#"><img src="https://res.kurly.com/mobile/service/common/2011/ico_search.svg?ver=2" alt="">검색</a></li>
-            <li><a href="#"><img src="https://res.kurly.com/mobile/service/common/2011/ico_mypage_on.svg?ver=2" alt="">마이컬리</a></li>
-          </ul>
-        </nav>
-    
-      </header>
-    
-    
-      <div class="info_member">
-    
-        <div>
-          <p>아이디</p>
-          <div>
-            <input type="text" name="" value="" placeholder="예: marketkurly12" required>
-            <button type="submit" name="button">중복확인</button>
-          </div>
+      <div class="site-mobile-menu site-navbar-target">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close">
+                <span class="icofont-close js-menu-toggle"></span>
+            </div>
         </div>
-    
-        <div>
-          <p>비밀번호</p>
-          <input type="text" name="" value="" placeholder="비밀번호를 입력해주세요" required>
-        </div>
-    
-        <div>
-          <p>비밀번호 확인</p>
-          <input type="text" name="" value="" placeholder="비밀번호를 한번 더 입력해주세요" required>
-        </div>
-    
-        <div>
-          <p>이름</p>
-          <input type="text" name="" value="" placeholder="이름을 입력해주세요" required>
-        </div>
-    
-        <div>
-          <p>이메일</p>
-          <input type="text" name="" value="" placeholder="예: marketkurly@kurly.com" required>
-        </div>
-    
-        <div>
-          <p>휴대폰</p>
-          <div>
-            <input type="text" name="" value="" placeholder="숫자만 입력해주세요" required>
-            <button type="submit" name="button" disabled>인증번호 받기</button>
-          </div>
-        </div>
-    
-        <div>
-          <p>주소</p>
-          <input type="text" name="" value="" placeholder="도로명, 지번, 건물명 검색" required>
-          <span>배송지에 따라 상품 정보가 달라질 수 있습니다. </span>
-        </div>
-    
-        <div>
-          <p>생년월일</p>
-          <div>
-            <input type="text" size="4" maxlength="4" placeholder="YYYY">
-            <span>/</span>
-            <input type="text" size="2" maxlength="2"  placeholder="MM">
-            <span>/</span>
-            <input type="text" size="2" maxlength="2"  placeholder="DD">
-          </div>
-        </div>
-    
-        <div>
-          <p>성별</p>
-          <label for="smallradio">
-            <input type="radio" class="smallradio" name="sex">
-            남자</label>
-          <label for="smallradio">
-            <input type="radio" class="smallradio" name="sex">
-            여자</label>
-    
-          <label for="smallradio">
-            <input type="radio" class="smallradio" name="sex">
-            선택안함</label>
-        </div>
-    
-    
-        <div>
-          <span>추가입력 사항</span>
-          <p>추천인 아이디와 참여 이벤트명 중 하나만 선택 가능합니다.</p>
-          <label for="smallradio">
-            <input type="radio" class="smallradio" name="add">
-            추천인 아이디</label>
-    
-          <label for="smallradio">
-            <input type="radio" class="smallradio" name="add">
-            참여 이벤트명</label>
-        </div>
-    
+        <div class="site-mobile-menu-body"></div>
+    </div>
+  
+    <nav class="site-nav" style="z-index: 5;">
+      <div class="site-navigation">
+        <a href="/" class="logo m-0"><img src="{% static "mainapp/free-css/images/로고색.png" %}" alt="" style="width: 300px; height: 50px;" ></a> 
+        <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
+            {% if request.session.ses_mem_id == None %}
+            <li class="active"><a href="/">서비스 소개</a></li>
+            <li class="active"><a href="/mg/test/">선착장예약</a></li>
+            <li><a href="/je/service/">교통/관광 서비스</a></li>
+            <li><a href="/login2/">로그인</a></li>
+            <li><a href="/signup2/">회원가입</a></li>
+            {% else %}
+            <li class="active"><a href="/">서비스 소개</a></li>
+            <li class="active"><a href="/mg/test/">선착장예약</a></li>
+            <li><a href="/mg/booking/">예약확인</a></li>
+            <li><a href="/je/service/">교통/관광 서비스</a></li>
+            <li><a href="/mypage/">회원정보</a></li>
+            <li><a href="/logout/">로그아웃</a></li>
+            {% endif %} 
+        </ul>
+        <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
+            <span></span>
+        </a>
       </div>
+    </nav><br><br><br><br>
     
-    
-      <div class="consent">
-    
-        <span>이용약관 동의</span>
-    
-        <div>
-          <input type="radio" class="smallradio" checked>
-          <label for="smallradio">전체 동의합니다.</label>
-          <p>선택 항목에 동의하지 않은 경우도 회원가입 및 일반적인 서비스를 이용할 수 있습니다.</p>
+    <br>
+      <br>
+      <nav>
+        <div class="mx-auto">
+          <span>마이페이지</span>
+          <ul class="menu-box">
+  
+            <li><a href="/mypage">회원 정보</a></li>
+            <li><a href="/mygjlist/">예약 내역</a></li>
+
+          </ul>
         </div>
+      </nav>
+      <div class="col-12">
+        <center>
+        <form class="form" id="scheduleForm" method="GET" action="/mg/check/" style="width: 80%;">
+          <h1 style="text-align: center;">회원정보</h1>
+          <table  class="rwd-table">
+            <tbody>
+              <tr>
+                <th class="small_1">선택하기</th>
+                <th class="small_1">도착지</td>
+
+              </tr>
+              {% if schedule %}
+              {% for row3 in schedule %}
+              <tr class="KOTRA-fontsize-80">
+                <td><input type="radio" name="selected_schedule" value="{{ row3.sch_no }}"></td>
+                <td><p2 style="font-size: 25px;font-weight: 700;">1</p2></td>
+                <td class="small_1"><p2  class="small_1" >{{ row3.sch_marina }}</p2><br><p style="font-size: 18px;">{{ row3.sch_stime }}</p></td>
+                <td class="small_1"><p2  class="small_1" >{{ row3.sch_arrival }}</p2><br><p style="font-size: 18px;">{{ row3.sch_stime }}</p></td>
+              </tr>
+              {% endfor %}
+              {% else %}
+              <tr>
+                <td colspan="4" style="height: 50px; width: 100%;">상세 항목을 선택해 주세요</td>
+              </tr>
+              {% endif %}
+              
+              <tr class="KOTRA-fontsize-80" {% if not schedule %}style="display: none;"{% endif %}>
+                <input type="hidden" name="qty" value="{{ qty }}">
+                <td colspan="4"><input type="submit" value="예약" style="height: 50px; width: 100%;"></td>
+              </tr>
+            
+            </tbody>
+          </table>
     
-    
-        <div>
-          <input type="radio" class="smallradio">
-          <label for="smallradio">이용약관 동의 <span>(필수)</span></label>
-        </div>
-    
-        <div>
-          <input type="radio" class="smallradio">
-          <label for="smallradio">개인정보 수집·이용 동의 <span>(필수)</span></label>
-        </div>
-    
-        <div>
-          <input type="radio" class="smallradio">
-          <label for="smallradio">개인정보 수집·이용 동의 <span>(선택)</span></label>
-        </div>
-    
-        <div>
-          <input type="radio" class="smallradio">
-          <label for="smallradio">무료배송, 할인쿠폰 등 혜택/정보 수신 동의<span>(선택)</span></label>
-        </div>
-    
-        <div>
-          <label for="smallradio">
-            <input type="radio" class="smallradio" name="contact">
-            SMS</label>
-    
-          <label for="smallradio">
-            <input type="radio" class="smallradio" name="contact">
-            이메일</label>
-        </div>
-    
-        <img src="https://res.kurly.com/mobile/service/join/2007/bnr_join_benefit_v3.svg?v=1" alt="">
-    
-        <div>
-          <input type="radio" class="smallradio">
-          <label for="smallradio">본인은 만 14세 이상입니다.<span>(필수)</span></label>
-        </div>
-    
-        <button type="button" name="button">가입하기</button>
-    
+        </form>
+      </center>
       </div>
+      <script src="{% static 'mgapp/js/jquery-3.4.1.min.js'%}"></script>
+      <script src="{% static 'mgapp/js/popper.min.js'%}"></script>
+      <script src="{% static 'mgapp/js/bootstrap.min.js'%}"></script>
+      <script src="{% static 'mgapp/js/owl.carousel.min.js'%}"></script>
+      <script src="{% static 'mgapp/js/jquery.animateNumber.min.js'%}"></script>
+      <script src="{% static 'mgapp/js/jquery.waypoints.min.js'%}"></script>
+      <script src="{% static 'mgapp/js/jquery.fancybox.min.js'%}"></script>
+      <script src="{% static 'mgapp/js/aos.js'%}"></script>
+      <script src="{% static 'mgapp/js/moment.min.js'%}"></script>
+      <script src="{% static 'mgapp/js/daterangepicker.js'%}"></script>
     
-    
+      <script src="{% static 'mgapp/js/typed.js'%}"></script>
+      <script src="{% static 'mgapp/js/custom.js'%}"></script>
     
     </body>

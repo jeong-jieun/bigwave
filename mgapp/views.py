@@ -33,6 +33,7 @@ def booking(request):
     boo_mem = Boo_mem.objects.filter(boo_mem1=mem_id).last()
 
     # 클래스 인스턴스와 변수 이름을 구분
+    
     my_qrcode = Qrcode(boo_mem.boo_mem1.mem_id, boo_mem.boo_sch1.sch_marina, boo_mem.book_qty, boo_mem.book_price, boo_mem.boo_sch1.sch_arrival, boo_mem.boo_sch1.sch_stime, boo_mem.boo_sch1.sch_etime)
     get_qr = my_qrcode.get_html()
 

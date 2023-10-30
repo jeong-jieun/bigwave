@@ -143,7 +143,7 @@ def service(request):
 
     filtered_services = Service.objects.filter(ser_mar=selected_mar, ser_gu=selected_service_type)
     
-    if selected_mar is None and selected_service_type == '':
+    if selected_mar is None :
         # 만약 둘 다 None이라면, "selected_mar"와 "selected_service_type"를 "boo_mem"에서의 도착 지점으로 설정합니다.
         map_view = Marina_Map_View()
         ### 지도맵 시각화 HTML로 받아오기

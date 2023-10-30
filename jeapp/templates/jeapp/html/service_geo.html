@@ -186,7 +186,6 @@
                     <li class="active"><a href="/">서비스 소개</a></li>
                     <li class="active"><a href="/mg/test/">선착장예약</a></li>
                     <li><a href="/je/service/">교통/관광 서비스</a></li>
-                    <li><a href="/je/service/chatbotiframe/">챗봇 서비스</a></li>
                     </li>
                     {% if request.session.ses_mem_id == None %}
                     <li><a href="/login2/">로그인</a></li>
@@ -216,19 +215,19 @@
               <div>
                 <label for="lat"></label>
                 <input type="hidden" name="lat" id="lat" class="lat" />
-            </div>
-            <div>
+              </div>
+              <div>
                 <label for="lon"></label>
                 <input type="hidden" name="lon" id="lon" class="lon" />
-            </div>
-              <select class="form-select" name="search_option" aria-label="Default select example" onchange="submitForm()" style="padding: 2%;">
+              </div>
+              <select id="search_option" class="form-select" name="search_option" aria-label="Default select example" onchange="submitForm()" style="padding: 2%;">
                 <option value="" {% if not search_result %}selected{% endif %}>선착장을 검색하세요</option>
                 {% for row in marina_list %}
                   <option value="{{row.mar_nm}}" {% if row.mar_nm == search_result %} selected{% endif %}>{{row.mar_nm}}</option>
                 {% endfor %}
-                </select>
+              </select>
               <input type="hidden" name="service_type" id="serviceType" value="음식점">
-          </form>
+            </form>
           <br>
     <div class="nav nav-tabs nav-justified" role="tablist">
       <div class="slider"></div>
@@ -258,7 +257,7 @@
       {% if search_result == None %}
       <section class="py-5 text-center container">
         <div class="row py-lg-5">
-            <h1>선착장을 선택하여 주세요<i class="far fa-laugh-wink"></i></h1>
+            <h1>선착장을 먼저 선택해 주세요<i class="far fa-laugh-wink"></i></h1>
         </div>
       </section>
       {% else %}
@@ -299,9 +298,14 @@
 
     <script>
       function updateServiceType(serviceValue) {
+        const search_option = document.getElementById("search_option");
+        if (search_option.selectedIndex === 0 && serviceValue !== null) {
+            alert("선착장을 먼저 선택해주세요.");
+            document.getElementById("search_option").submit();
+        }
         document.getElementById("serviceType").value = serviceValue;
         submitForm();
-      }
+    }
 
       // 페이지 로드 시 자동으로 위치 정보 요청
       window.onload = function() {
