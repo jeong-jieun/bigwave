@@ -11,10 +11,10 @@ from folium import CustomIcon
 
 ### 서비스 지도 시각화
 class Service_Map_View:
-    def __init__(self, ser_mar, ser_gu):
-        self.sermap(ser_mar, ser_gu)
+    def __init__(self, ser_mar, ser_gu, lat, lon):
+        self.sermap(ser_mar, ser_gu, lat, lon)
 
-    def sermap(self, ser_mar, ser_gu):
+    def sermap(self, ser_mar, ser_gu, lat, lon):
         # 데이터 불러오기
         self.data = pd.read_excel('mainapp/mappy/항구 근처 가게.xlsx')
 
@@ -22,7 +22,7 @@ class Service_Map_View:
         self.selected_data = self.data[(self.data['선착장'] == ser_mar) & (self.data['종류'] == ser_gu)]
         self.selected_data = self.selected_data.dropna(subset=['선착장위도', '선착장경도'])
 
-        self.service_map = folium.Map(location=[self.selected_data['선착장위도'].mean(), self.selected_data['선착장경도'].mean()], zoom_start=16)
+        self.service_map = folium.Map(location=[self.selected_data['선착장위도'].mean(), self.selected_data['선착장경도'].mean()], zoom_start=17)
 
         arr_icon = CustomIcon(icon_image='mainapp/static/mainapp/img/arr.png', icon_size=(60, 60))
                
@@ -31,22 +31,21 @@ class Service_Map_View:
                       icon=arr_icon 
                       ).add_to(self.service_map)
         
-        #bus_icon = CustomIcon(icon_image='mainapp/static/mainapp/img/bus.png', icon_size=(60, 60))
+        bus_icon = CustomIcon(icon_image='mainapp/static/mainapp/img/bus.png', icon_size=(60, 60))
                
-        # 회원 위치 마커 표시
-        #folium.Marker([self.lat, self.lon],
-                      #icon=bus_icon 
-                      #).add_to(self.service_map)
+         #회원 위치 마커 표시
+        folium.Marker([lat, lon],
+                      icon=bus_icon 
+                      ).add_to(self.service_map)
 
         # 가게 마커 표시
         for j in range(len(self.selected_data)):
             service_name = self.selected_data.iloc[j, 3]
             service_gu = self.selected_data.iloc[j, 1]
 
-            popup_html = "-"*69+"<br>"
+            popup_html = "-"*40+"<br>"
             popup_html += f"<b>이름:</b> {service_name}<br>"
-            popup_html += f"<b>음식점 종류:</b> {service_gu}<br>"
-            popup_html += "-"*69+"<br>"
+            popup_html += "-"*40+"<br>"
             
             
 

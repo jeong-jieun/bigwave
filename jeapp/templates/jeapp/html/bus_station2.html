@@ -19,6 +19,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Source+Serif+Pro:wght@400;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
 
 	<link rel="stylesheet" href="{% static 'mgapp/css/bootstrap.min.css'%}">
 	<link rel="stylesheet" href="{% static 'mgapp/css/owl.carousel.min.css'%}">
@@ -30,9 +31,11 @@
 	<link rel="stylesheet" href="{% static 'mgapp/css/aos.css'%}">
 	<link rel="stylesheet" href="{% static 'mgapp/css/style.css'%}">
 
-	<title>Tour Free Bootstrap Template for Travel Agency by Untree.co</title>
+	<title>버스정보안내</title>
     {% comment %} 아래는 종민이 추가한 것 {% endcomment %}
     <style>
+		@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css");
+
         table {
             border: 2px solid red;
             width: 100%;
@@ -40,96 +43,33 @@
         th, td {
             border: 1px solid blue;
         }
+		body{
+			font-family: "Pretendard";
+		}
     </style>
     
 
 </head>
 
 <body>
-
-    <div class="site-mobile-menu site-navbar-target">
-		<div class="site-mobile-menu-header">
-			<div class="site-mobile-menu-close">
-				<span class="icofont-close js-menu-toggle"></span>
-			</div>
-		</div>
-		<div class="site-mobile-menu-body"></div>
-	</div>
-
-	<nav class="site-nav">
-
-			<div class="site-navigation">
-				<a href="/mg/home/" class="logo m-0">bigwave</a> 
-				{% comment %} <span class="text-primary">bigwave</span> {% endcomment %}
-
-				<ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-					<li class="active"><a href="/">선착장</a></li>
-					<li><a href="services.html">Services</a></li>
-					<li class="has-children">
-						<a href="#">부가 서비스</a>
-						<ul class="dropdown">
-							<li class="has-children">
-								<a href="#">선착장</a>
-								<ul class="dropdown">
-									<li><a href="#">다대선착장</a></li>
-									<li><a href="#">동삼선착장</a></li>
-									<li><a href="#">미포선착장</a></li>
-									<li><a href="#">자갈치선착장</a></li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-					<li><a href="/login2/">로그인</a></li>
-					<li><a href="/signup2/">회원가입</a></li>
-				</ul>
-
-				<a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
-					<span></span>
-				</a>
-
-			</div>
-	</nav>
-
-    <script src="{% static 'mgapp/js/jquery-3.4.1.min.js'%}"></script>
-	<script src="{% static 'mgapp/js/popper.min.js'%}"></script>
-	<script src="{% static 'mgapp/js/bootstrap.min.js'%}"></script>
-	<script src="{% static 'mgapp/js/owl.carousel.min.js'%}"></script>
-	<script src="{% static 'mgapp/js/jquery.animateNumber.min.js'%}"></script>
-	<script src="{% static 'mgapp/js/jquery.waypoints.min.js'%}"></script>
-	<script src="{% static 'mgapp/js/jquery.fancybox.min.js'%}"></script>
-	<script src="{% static 'mgapp/js/aos.js'%}"></script>
-	<script src="{% static 'mgapp/js/moment.min.js'%}"></script>
-	<script src="{% static 'mgapp/js/daterangepicker.js'%}"></script>
-
-	<script src="{% static 'mgapp/js/typed.js'%}"></script>
-	<script>
-		$(function() {
-			var slides = $('.slides'),
-			images = slides.find('img');
-
-			images.each(function(i) {
-				$(this).attr('data-id', i + 1);
-			})
-
-			var typed = new Typed('.typed-words', {
-				strings: ["다대포 ","영도 ","자갈치 ", "송도",],
-				typeSpeed: 80,
-				backSpeed: 80,
-				backDelay: 4000,
-				startDelay: 1000,
-				loop: true,
-				showCursor: true,
-				preStringTyped: (arrayPos, self) => {
-					arrayPos++;
-					console.log(arrayPos);
-					$('.slides img').removeClass('active');
-					$('.slides img[data-id="'+arrayPos+'"]').addClass('active');
-				}
-
-			});
-		})
+	<h3 style="text-align: center;">정류장을 선택해주세요 <i class="fas fa-check"></i></h3>
+	<div id="map" style="width:100%;height:500px; margin-bottom: 20px;"></div>
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	06fff07d3b1e45e728e0edc10adc7218
+	">
 	</script>
+	<!-- jquery 자바스크립트 적용하기-->
+	<script type="text/javascript" 
+			src = "https://code.jquery.com/jquery-3.6.0.min.js">
+	</script>
+	<script >
+	$(document).ready(function(){
+		var mapContainer = document.getElementById('map');
+		var mapOption = {
+			center: new kakao.maps.LatLng(35.100811303038, 129.036429658218),
+			level: 3
+		};
 
+<<<<<<< HEAD
 	<script src="{% static 'mgapp/js/custom.js'%}"></script>
     
 
@@ -137,28 +77,20 @@
  
 <div id="map" style="width:100%;height:500px;"></div>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	06fff07d3b1e45e728e0edc10adc7218
-">
-</script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	06fff07d3b1e45e728e0edc10adc7218"></script>
 <!-- jquery 자바스크립트 적용하기-->
 <script type="text/javascript" 
 		src = "https://code.jquery.com/jquery-3.6.0.min.js">
 </script>
 <script >
 $(document).ready(function(){
-	
-
-	navigator.geolocation.getCurrentPosition(function(position) {
-    var mapContainer = document.getElementById('map');
-	var lat = position.coords.latitude, // 위도
-		lon = position.coords.longitude; // 경도
+	var mapContainer = document.getElementById('map');
 	var mapOption = {
-		center: new kakao.maps.LatLng(lat, lon),
+		center: new kakao.maps.LatLng(35.100811303038, 129.036429658218),
 		level: 3
-		};
-		var map = new kakao.maps.Map(mapContainer, mapOption);
+	};
 
-	
+	var map = new kakao.maps.Map(mapContainer, mapOption);
 	var positions = [];
 	
 
@@ -261,95 +193,139 @@ $(document).ready(function(){
 		
 
 		alert(p_lat + " / " + p_lng + " / " + p_busno);
+=======
+		var map = new kakao.maps.Map(mapContainer, mapOption);
+		var positions = [];
+>>>>>>> a767f7192ed57bd1728e3af2d984393fc17e2911
 
+		// Ajax 요청을 통해 데이터를 가져오고 마커를 생성합니다
 		$.ajax({
-			url: "/je/service/bus_min/", 
-			type : "post",
+			// 수정 필요
+			url: "/je/service/busmaker/", 
 			datatype: "json",
-			data : {
-				lat:p_lat, 
-				lng:p_lng, 
-				busno:p_busno,
-				csrfmiddlewaretoken:"{{csrf_token}}",
-			},
 			success: function(data) {
-				// 받아 온값 처리영역...
-                // 기존 테이블 삭제
-    var existingTable = document.querySelector('#myTable');
-    if (existingTable) {
-        existingTable.parentNode.removeChild(existingTable);
-    }
-    
-    alert("연결");
-    alert(">>>>>>>>>>>>>>> " + data["businfo_data"][0].bus_stop);
-    
-    // traffic_db3 데이터에 접근
-    var businfo_data = data.businfo_data;
-    var body = document.querySelector('body');
+				
+				/*for (var i =0; i < 2; i++){
+								alert(data["df_list"][0]["tra_nm"]),
+								alert(data["df_list2"][0]["tra_lon"]),
+								alert(data["df_list3"][0]["tra_lat"])};
+					
+				*/
+				var ppp = [];
+				for (var i = 0; i < data["df_list"].length; i++) {
+					var position = {
+						content: data["df_list"][i]["tra_nm"],
+						latlng: new kakao.maps.LatLng(data["df_list3"][i]["tra_lat"],data["df_list2"][i]["tra_lon"] ),
+						busno: data["df_list4"][i]["tra_id"]
+						
+					};
+					//ppp.push(data["df_list3"][i]["tra_lat"],data["df_list2"][i]["tra_lon"])
+					positions.push(position);
 
+				}
+				var markers = [];
+				var infowindows = [];
 
-	
-    // 새로운 테이블 생성
-    var table = document.createElement('table');
-    table.id = "myTable"; // 테이블에 아이디를 추가
+				for (var i = 0; i < positions.length; i++) {				
+					var marker = new kakao.maps.Marker({
+						map: map,
+						position: positions[i].latlng
+					});
+					
+					markers.push(marker);
+						
+					var infowindow = new kakao.maps.InfoWindow({
+						content: positions[i].content
+					});
+					
+					infowindows.push(infowindow);
 
-    // 테이블 헤더 생성
-    var thead = table.createTHead();
-    var headerRow = thead.insertRow(0);
-    var header1 = headerRow.insertCell(0);
-    var header2 = headerRow.insertCell(1);
-    var header3 = headerRow.insertCell(2);
-	var header4 = headerRow.insertCell(3);
-	var header5 = headerRow.insertCell(4);
+					kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+					kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+					kakao.maps.event.addListener(marker, 'click',function(){
+					
+					var getcnn = infowindow.getContent();
+					//alert(getcnn)
+					} );
 
-    header1.innerHTML = "<b>bus_stop</b>";
-    header2.innerHTML = "<b>bus_no</b>";
-    header3.innerHTML = "<b>bus_nm</b";
-	header4.innerHTML = "<b>bus_time</b";
-	header5.innerHTML = "<b>bus_remain</b";
+					var lat = i;//cls.getLat();
+					var lng = i;//cls.getLng();
+					//alert(positions[i].latlng);
 
+					// 버스번호를 임시로 입력
+					marker.text = positions[i].busno;
 
-    // traffic_db3 배열을 반복
-    for (var i = 0; i < businfo_data.length; i++) {
-        var item = businfo_data[i];
-        var bus_stop = item.bus_stop;
-        var bus_no = item.bus_no;
-        var bus_nm = item.bus_nm;
-        var bus_time = item.bus_time;
-		var bus_remain =item.bus_remain;
+					kakao.maps.event.addListener(marker, 'click', function() {
+						// 버스번호를 임시로 입력
+						// marker.text = positions[i].busno;
+						//alert(this.text);
+						//markers[i].addListener("click", function(mouseEvent)) {
+						var getLatlng = this.getPosition();
+						//var getCn = this.getContent();
+						//alert(getcn);
+						//alert("------------>>> " + chk.getLat() + " / " + chk.getLng())
 
-        // 새로운 행 추가
-        var row = table.insertRow(i + 1);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        var cell3 = row.insertCell(2);
-        var cell4 = row.insertCell(3);
-		var cell5 = row.insertCell(4);
+						
+						//alert("xxx---" + lat);
+						//alert("xxx---" + lng);
+						//var latlng = positions[i].latlng;
+						//alert("---------------------/////" + this.bus_no);
+						busNumber(getLatlng.getLat(), getLatlng.getLng(), this.text);
+						
+					});
 
+					//alert(ppp)
 
-        // 데이터 추가
-        cell1.innerHTML = bus_stop;
-        cell2.innerHTML = bus_no;
-        cell3.innerHTML = bus_nm;
-        cell4.innerHTML = bus_time;
-		cell5.innerHTML = bus_remain
-    }
+				}
+				
+			}, beforeSend:function(){
+				console.log("1111")
+			}, complete:function(){
+				console.log("22222")
+			}, error:function(request, status, error){
+				console.log("333333")
+			}
+		});
+	});
+		function busNumber(p_lat, p_lng, p_busno){
+			
 
-    // body에 새로운 테이블 추가
-    body.appendChild(table);
+			alert(p_lat + " / " + p_lng + " / " + p_busno);
 
-	// 새로운 테이블
-
+			$.ajax({
+				url: "/je/service/bus_min/", 
+				type : "post",
+				datatype: "json",
+				data : {
+					lat:p_lat, 
+					lng:p_lng, 
+					busno:p_busno,
+					csrfmiddlewaretoken:"{{csrf_token}}",
+				},
+				success: function(data) {
+					// 받아 온값 처리영역...
+					// 기존 테이블 삭제
+		var existingTable = document.querySelector('#myTable');
+		if (existingTable) {
+			existingTable.parentNode.removeChild(existingTable);
+		}
+		
+		// alert("연결");
+		// alert(">>>>>>>>>>>>>>> " + data["businfo_data"][0].bus_stop);
+		
+		// traffic_db3 데이터에 접근
+		var businfo_data = data.businfo_data;
+		var body = document.querySelector('body');
 
 		// 테이블 내용 생성
 		var tbody = document.createElement('tbody');
 		var tr = document.createElement('tr');
 		var th = document.createElement('th');
-		th.textContent = '버스 정류장 번호';
+		th.textContent = '정류장 번호';
 		var th2 = document.createElement('th');
-		th2.textContent = '버스 번호';
+		th2.textContent = '정류장 이름';
 		var th3 = document.createElement('th');
-		th3.textContent = '정류장 번호';
+		th3.textContent = '버스 번호';
 		var th4 = document.createElement('th');
 		th4.textContent = '남은 시간';
 		var th5 = document.createElement('th');
@@ -380,13 +356,13 @@ $(document).ready(function(){
 			var td = document.createElement('td');
 			td.textContent = bus_stop;
 			var td2 = document.createElement('td');
-			td2.textContent = bus_no;
+			td2.textContent = bus_nm;
 			var td3 = document.createElement('td');
-			td3.textContent = bus_nm;
+			td3.textContent = bus_no;
 			var td4 = document.createElement('td');
-			td4.textContent = bus_time;
+			td4.textContent = bus_time + "분";
 			var td5 = document.createElement('td');
-			td5.textContent = bus_remain;
+			td5.textContent = bus_remain + "개";
 	
 
 	
@@ -404,25 +380,14 @@ $(document).ready(function(){
 			// 생성한 테이블을 body에 추가
 			body.appendChild(table2);
 		}
+			// id 속성값으로 문서 객체 생성 : 캐스팅
+			// document.getElementById('아이디속성값');
+			var header1 = document.getElementById('header-1');
+			var header2 = document.getElementById('header-2');
 
-
-
-
-
-
-
-
-
-
-
-				// id 속성값으로 문서 객체 생성 : 캐스팅
-				// document.getElementById('아이디속성값');
-				var header1 = document.getElementById('header-1');
-				var header2 = document.getElementById('header-2');
-	
-				// 문서 객체의 속성 변경
-				//header1.innerHTML = data["traffic_db3"];
-				//header2.textContent = '<i>문서객체 생성</i>';
+			// 문서 객체의 속성 변경
+			//header1.innerHTML = data["traffic_db3"];
+			//header2.textContent = '<i>문서객체 생성</i>';
 
 
 
@@ -461,4 +426,5 @@ value = record.field3
 
 
 
+	</script>
 </body>

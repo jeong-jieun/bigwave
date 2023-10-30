@@ -20,6 +20,10 @@ urlpatterns = [
     path('schedule/', views.schedule),
     ### 결제버튼 클릭시 db저장 (http://127.0.0.1:8000/je/save_reservation)
     path('save_reservation/', views.save_reservation, name='save_reservation'),
+        ### 서비스페이지 (http://127.0.0.1:8000/je/service2)
+    path('service_geo/', views.service_geo, name='service_geo'),
+    ### 서비스페이지 (http://127.0.0.1:8000/je/service2)
+    path('service/', views.service, name='search_action'),
     ### 서비스페이지 (http://127.0.0.1:8000/je/service)
     path('service/', views.service, name='search_action1'),## 서비스 name 손댄것 확인
     ### 서비스페이지 (http://127.0.0.1:8000/je/fservice)
