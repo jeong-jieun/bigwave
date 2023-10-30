@@ -633,7 +633,7 @@ def practice1(request):
     ### 지도 클래스 불러오기
     map_view = Service_Map_View(selected_mar, selected_service_type)
     
-    ### 지도맵 시각화 HTML로 받아오기
+    ### 지도맵 시각화 HTML로 받아오기s
     map_html = map_view.getMap()
     
     traf = Traffic.objects.all()
