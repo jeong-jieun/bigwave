@@ -6,7 +6,7 @@ import openai
 from konlpy.tag import Okt
 
 def chatbot_11(input1):
-    openai.api_key = "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"
+    openai.api_key = "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"
     okt = Okt()
     gpt_prompt=[{
         "role":"system",
@@ -27,7 +27,7 @@ def chatbot_11(input1):
 
 
 def chatbot_one(input1):
-    openai.api_key = "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"
+    openai.api_key = "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"
 
     gpt_prompt=[{
         "role":"system",

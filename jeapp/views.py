@@ -127,12 +127,9 @@ def traffic(request):
 
 
  # 서비스
- # service.html
-def service(request):
-    #if request.method == "POST":
-        #lat = request.POST.get("lat")
-        #lon = request.POST.get("lon")
     
+# service.html
+def service(request):
     mem_id = request.session.get('ses_mem_id', None)
     boo_mem = Boo_mem.objects.filter(boo_mem1=mem_id).last()
     marinas = Marina.objects.all()
@@ -158,22 +155,6 @@ def service(request):
     
         ### 지도맵 시각화 HTML로 받아오기
         map_html = map_view.getMap()
-
-
-    return render(request,
-                  'jeapp/html/service_geo.html',
-                  {'marina_list': marinas,
-                   'service' : service,
-                   'search_result': selected_mar,
-                   'services': filtered_services,
-                   'selected_service_type': selected_service_type,
-                   'marina_list': marinas,
-                   'service' : service,
-                   'services': filtered_services,
-                   'map_html':map_html,
-                   'lat':lat,
-                   'lon':lon,})
-
 
 
     return render(request,
@@ -539,14 +520,17 @@ def chatbot_back11(request):
     print(">>>>>>>>>>>>>>>>>>00000000000",data.get("user_input"))
     print(">>>>>>>>>>>>>>>>>>00000000000",data.get("messages"))
     user_input = data.get("user_input")
+    print(user_input)
     messages = data.get("messages")
+    
     # print(">>>>>>>>>>>>>>>>>>>>>>>",user_content)
     assistant_content = chatbot_while(messages)
     print("값을 받아옴")
     assistant_content1={"user_input":user_input,
                         "assistant_content":assistant_content,
                         "messages":messages,
-                          "max_tokens": 500}
+                        "max_tokens": 1024,
+}
     print(assistant_content1)
     json_data = json.dumps(assistant_content1)
     print("ok 11----------->>>>>>>>")
@@ -559,17 +543,29 @@ def iframe(request):
     
     return render(request,'jeapp/html/chatbotiframe.html',{})
 
+#################################################
+def geo(request):
+    return render(request,'jeapp/html/geolocation_pra.html',{})
 
 
+<<<<<<< HEAD
 
 ##### 버스 정보 
 def practice1(request):
+=======
+def practice(request):
+>>>>>>> 9c43042a7f3468bc1047f4a8520ab6f2f10db342
     mem_id = request.session.get('ses_mem_id', None)
     boo_mem = Boo_mem.objects.filter(boo_mem1=mem_id).last()
     marinas = Marina.objects.all()
     service = Service.objects.all()
+<<<<<<< HEAD
     selected_mar = request.GET.get('search_option', None) 
     selected_service_type = request.GET.get('service_type', '')  # Default is '음식점'
+=======
+    selected_mar = request.POST.get('search_option', None) 
+    selected_service_type = request.POST.get('service_type', '')  # Default is '음식점'
+>>>>>>> 9c43042a7f3468bc1047f4a8520ab6f2f10db342
 
     filtered_services = Service.objects.filter(ser_mar=selected_mar, ser_gu=selected_service_type)
     
@@ -579,7 +575,76 @@ def practice1(request):
         selected_service_type = "음식점"
     #filtered_services = Service.objects.filter(ser_mar=ser_mar, ser_gu=ser_gu)
 
+<<<<<<< HEAD
 
+=======
+    ### 지도 클래스 불러오기
+    map_view = Service_Map_View(selected_mar, selected_service_type)
+    
+    ### 지도맵 시각화 HTML로 받아오기
+    map_html = map_view.getMap()
+    
+    traf = Traffic.objects.all()
+    print("trafdfjaslfjsalfj느는느는<>>>>>>", traf)
+    rr = traf[2].tra_id
+    print("rr의 값은 ㅇㄹㄴㅇㄹ미넒ㅇ니;ㅏ럼;ㅣㅓㅁㄹ",)
+    tra_lon = Traffic.objects.all().values('tra_lon')
+    tra_lat = Traffic.objects.all().values('tra_lat')
+    print("dslkjfsal;dfjas;lfjalsjf",selected_mar)
+    print("dslkjfsal;dfjas;lfjalsjf",selected_service_type)
+    
+    
+    contexts = {"traf":traf,
+                   "rr":rr,
+                   "tra_lon":tra_lon,
+                   "tra_lat":tra_lat,
+                   }
+    
+    # return JsonResponse(contexts)
+
+    return render(request,
+                  'jeapp/html/practice.html',
+                  {'marina_list': marinas,
+                   'service' : service,
+                   'search_result': selected_mar,
+                   'services': filtered_services,
+                   'selected_service_type': selected_service_type,
+                   'marina_list': marinas,
+                   'service' : service,
+                   'services': filtered_services,
+                   'map_html':map_html,
+                   "traf":traf,
+                   "rr":rr,
+                   "tra_lon":tra_lon,
+                   "tra_lat":tra_lat,})
+
+
+def geo(request):
+    return render(request,'jeapp/html/geolocation_pra.html',{})
+
+
+def practice1(request):
+    mem_id = request.session.get('ses_mem_id', None)
+    boo_mem = Boo_mem.objects.filter(boo_mem1=mem_id).last()
+    marinas = Marina.objects.all()
+    service = Service.objects.all()
+    selected_mar = request.POST.get('search_option', None) 
+    selected_service_type = request.POST.get('service_type', '')  # Default is '음식점'
+
+    filtered_services = Service.objects.filter(ser_mar=selected_mar, ser_gu=selected_service_type)
+    
+    if selected_mar is None and selected_service_type == '':
+        # 만약 둘 다 None이라면, "selected_mar"와 "selected_service_type"를 "boo_mem"에서의 도착 지점으로 설정합니다.
+        selected_mar = boo_mem.boo_sch1.sch_arrival
+        selected_service_type = "음식점"
+    #filtered_services = Service.objects.filter(ser_mar=ser_mar, ser_gu=ser_gu)
+
+    ### 지도 클래스 불러오기
+    map_view = Service_Map_View(selected_mar, selected_service_type)
+    
+    ### 지도맵 시각화 HTML로 받아오기s
+    map_html = map_view.getMap()
+>>>>>>> 9c43042a7f3468bc1047f4a8520ab6f2f10db342
     
     traf = Traffic.objects.all()
     print("trafdfjaslfjsalfj느는느는<>>>>>>", traf)
@@ -629,11 +694,19 @@ def practice1(request):
                    'marina_list': marinas,
                    'service' : service,
                    'services': filtered_services,
+<<<<<<< HEAD
+=======
+                   'map_html':map_html,
+>>>>>>> 9c43042a7f3468bc1047f4a8520ab6f2f10db342
                    "traf":traf,
                    "rr":rr,
                    "tra_lon":tra_lon,
                    "tra_lat":tra_lat,
                     "lat1":lat1,
+<<<<<<< HEAD
                     "lon1":lon1,}) 
 
 
+=======
+                    "lon1":lon1,})  
+>>>>>>> 9c43042a7f3468bc1047f4a8520ab6f2f10db342

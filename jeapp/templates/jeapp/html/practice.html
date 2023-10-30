@@ -211,11 +211,7 @@
         <div class="Scriptcontent">
           <!-- START DEMO -->
           <div class="tile" id="tile-1">
-<<<<<<< HEAD
-            <form id="searchForm" method="get" action="{% url 'search_action4' %}">
-=======
-            <form id="searchForm" method="post" action="{% url 'search_action4' %}">
->>>>>>> 9c43042a7f3468bc1047f4a8520ab6f2f10db342
+            <form id="searchForm" method="post" action="{% url 'search_action3' %}">
               {% csrf_token %}
               <select class="form-select" name="search_option" aria-label="Default select example" onchange="submitForm()" style="padding: 2%;">
                 <option value="" {% if not search_result %}selected{% endif %}>선착장을 검색하세요</option>
@@ -251,11 +247,7 @@
       <input class="nav-link" type="radio" name="tabmenu" id="tab04" value="교통정보" 
       
         {% if selected_service_type == '교통정보' %}checked{% endif %}
-<<<<<<< HEAD
-        onclick="traffic_info()">
-=======
         onclick="tarffic_info()">
->>>>>>> 9c43042a7f3468bc1047f4a8520ab6f2f10db342
         <label class="ttab" for="tab04"style="border-radius: 25px;"><i class="fas fa-bus"></i><div> 교통정보</div></label>
                   
 
@@ -263,44 +255,37 @@
     <script>
         //아래 function은 카테고리 변환
         function updateServiceType(serviceValue) {
-            document.getElementById("serviceType").value = serviceValue;
-<<<<<<< HEAD
             alert(serviceValue)
-            option_val = document.getElementById("searchForm");
-            var option_val = option_val.search_option.value;
-            alert(option_val)
-            url = "/je/service/?service_type="+serviceValue;
-            url = url + "&search_option=" + option_val
+            document.getElementById("serviceType").value = serviceValue;
+            //submitForm();
+            var selectElement = document.querySelector('select[name="search_option"]');
+            // 선택된 옵션의 값을 가져옵니다.
+            var selectedOption = selectElement.value;
+            // 선택된 옵션의 값을 출력하거나 필요한 작업을 수행합니다.
+            alert("Selected option: " + selectedOption);
+                //alert(searchForm.value)
+            url = "/je/service/?selectedOption="
+            url = url +selectedOption
+            url = url + "&serviceType="+serviceType
+            alert(url)
+            //document.getElementById("searchForm").submit();
             location.href = url
-    
-=======
-            submitForm()
-            alert("22")
-            location.href = "/je/service/"
-            alert("22")
->>>>>>> 9c43042a7f3468bc1047f4a8520ab6f2f10db342
 
         }
         //아래 function은 선착장 변환
         function submitForm() {
-<<<<<<< HEAD
-            document.getElementById("searchForm").submit(); // 폼을 제출하여 서버로 전송합니다.
+            var selectElement = document.querySelector('select[name="search_option"]');
+            // 선택된 옵션의 값을 가져옵니다.
+            var selectedOption = selectElement.value;
+            // 선택된 옵션의 값을 출력하거나 필요한 작업을 수행합니다.
+            url = "/je/service/practice1/?selectedOption="
+            url = url +selectedOption
+            location.href = url
+            // 'search_option' 요소를 선택합니다.
+
+
 
         }
-
-
-        function traffic_info(){
-
-
-
-        }
-
-=======
-
-          document.getElementById("searchForm").submit(); // 폼을 제출하여 서버로 전송합니다.
-
-        }
->>>>>>> 9c43042a7f3468bc1047f4a8520ab6f2f10db342
     </script>
 
 
@@ -325,14 +310,14 @@
    
    <script >
    $(document).ready(function(){
-   
+
 
     navigator.geolocation.getCurrentPosition(function(position) {
         var mapContainer = document.getElementById('map');
         var lat = position.coords.latitude, // 위도
             lon = position.coords.longitude; // 경도
         var mapOption = {
-            center: new kakao.maps.LatLng({{lat1}}, {{lon1}}),
+            center: new kakao.maps.LatLng(lat, lon),
             level: 3
             };
             var map = new kakao.maps.Map(mapContainer, mapOption);
