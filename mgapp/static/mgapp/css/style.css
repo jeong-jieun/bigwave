@@ -590,7 +590,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
 
   .hero .slides {
     background: #ffffff;
-    max-width: 100%;
+    max-width: 80%;
     left: 80px;
     z-index: 0;
     position: relative;
@@ -1421,7 +1421,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
 }
 
 .rwd-table tr:first-child {
-  background: linear-gradient(to left, #3F72AF, #b4caf2);;
+  background:#3F72AF;
   color: #fff;
 }
 

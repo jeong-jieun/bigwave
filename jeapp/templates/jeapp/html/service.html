@@ -186,7 +186,6 @@
                     <li class="active"><a href="/">서비스 소개</a></li>
                     <li class="active"><a href="/mg/test/">선착장예약</a></li>
                     <li><a href="/je/service/">교통/관광 서비스</a></li>
-                    <li><a href="/je/service/chatbotiframe/">챗봇 서비스</a></li>
                     </li>
                     {% if request.session.ses_mem_id == None %}
                     <li><a href="/login2/">로그인</a></li>
@@ -299,9 +298,38 @@
 
     <script>
       function updateServiceType(serviceValue) {
+        const search_option = document.getElementById("search_option");
+        if (search_option.selectedIndex === 0 && serviceValue !== null) {
+            alert("선착장을 먼저 선택해주세요.");
+            document.getElementById("search_option").submit();
+        }
         document.getElementById("serviceType").value = serviceValue;
         submitForm();
+    }
+      wow = new WOW();
+      wow.init();
+      $(document).ready(function(e) {
+      
+      $('#video-icon').on('click',function(e){
+      e.preventDefault();
+      $('.video-popup').css('display','flex');
+      $('.iframe-src').slideDown햣 ();
+      });
+      $('.video-popup').on('click',function(e){
+      var $target = e.target.nodeName;
+      var video_src = $(this).find('iframe').attr('src');
+      if($target != 'IFRAME'){
+      $('.video-popup').fadeOut();
+      $('.iframe-src').slideUp();
+      $('.video-popup iframe').attr('src'," ");
+      $('.video-popup iframe').attr('src',video_src);
       }
+      });
+      
+      $('.slider').bxSlider({
+      pager: false
+      });
+    });
 
       // 페이지 로드 시 자동으로 위치 정보 요청
       window.onload = function() {

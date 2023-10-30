@@ -34,7 +34,7 @@ class Marina(models.Model):
         managed = False
         
 class Schedule(models.Model):
-    sch_no = IntegerField(primary_key=True, null=False)
+    sch_no = BigIntegerField(primary_key=True, null=False)
     sch_marina = CharField(max_length=30, null=False)
     sch_arrival = CharField(max_length=30, null=False)
     sch_taxi = CharField(max_length=10, null=False)
@@ -52,7 +52,7 @@ class Booking(models.Model):
     book_mem = CharField(max_length=30, null=False)
     book_qty = IntegerField(null=False)
     book_price = IntegerField(null=False)
-    book_schedule = IntegerField(null=False)
+    book_schedule = BigIntegerField(null=False)
     class Meta:
         db_table = "booking"
         app_label = "mgapp"

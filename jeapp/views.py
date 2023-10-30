@@ -545,7 +545,8 @@ def chatbot_back11(request):
     print("값을 받아옴")
     assistant_content1={"user_input":user_input,
                         "assistant_content":assistant_content,
-                        "messages":messages}
+                        "messages":messages,
+                          "max_tokens": 500}
     print(assistant_content1)
     json_data = json.dumps(assistant_content1)
     print("ok 11----------->>>>>>>>")
