@@ -6,7 +6,7 @@ import openai
 from konlpy.tag import Okt
 
 def chatbot_11(input1):
-    openai.api_key = "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"
+    openai.api_key = "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"
     okt = Okt()
     gpt_prompt=[{
         "role":"system",
@@ -27,7 +27,7 @@ def chatbot_11(input1):
 
 
 def chatbot_one(input1):
-    openai.api_key = "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"
+    openai.api_key = "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"
 
     gpt_prompt=[{
         "role":"system",
@@ -46,9 +46,19 @@ def chatbot_one(input1):
     return gpt_response["choices"][0]["message"]["content"]
 
 
-def chatbot_while(messages):
-    openai.api_key = "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"
-    print("1")
+def chatbot_while(input):
+    openai.api_key = "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"
+    print(input)
+    
+    messages=[{
+        "role":"system",
+        "content": "당신은 관광 가이드, 20대의 상큼한 말투로 대답해줘"
+    }]
+    print("messages는 ",messages)
+    messages.append(input[0])
+    
+    print("messages는 ",messages)
+
     completion = openai.ChatCompletion.create(model="gpt-3.5-turbo",messages=messages)
     print("2")
     assistant_content = completion.choices[0].message["content"].strip()

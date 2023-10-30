@@ -211,16 +211,21 @@
         <div class="Scriptcontent">
           <!-- START DEMO -->
           <div class="tile" id="tile-1">
-            <form id="searchForm" method="post" action="{% url 'search_action1' %}">
+            <form id="searchForm" method="post" action="{% url 'search_action4' %}">
               {% csrf_token %}
               <select class="form-select" name="search_option" aria-label="Default select example" onchange="submitForm()" style="padding: 2%;">
                 <option value="" {% if not search_result %}selected{% endif %}>선착장을 검색하세요</option>
                 {% for row in marina_list %}
                   <option value="{{row.mar_nm}}" {% if row.mar_nm == search_result %} selected{% endif %}>{{row.mar_nm}}</option>
+                
                 {% endfor %}
                 </select>
+
               <input type="hidden" name="service_type" id="serviceType" value="음식점">
           </form>
+
+
+
           <br>
     <div class="nav nav-tabs nav-justified" role="tablist">
       <div class="slider"></div>
@@ -240,125 +245,315 @@
       <label class="ttab" for="tab03"style="border-radius: 25px;"><i class="fas fa-map-signs"></i><div> 관광명소</div></label>
 
       <input class="nav-link" type="radio" name="tabmenu" id="tab04" value="교통정보" 
+      
         {% if selected_service_type == '교통정보' %}checked{% endif %}
         onclick="tarffic_info()">
         <label class="ttab" for="tab04"style="border-radius: 25px;"><i class="fas fa-bus"></i><div> 교통정보</div></label>
-    </div>
-      {% if search_result == None %}
-      <section class="py-5 text-center container">
-        <div class="row py-lg-5">
-            <h1>선착장을 선택하여 주세요<i class="far fa-laugh-wink"></i></h1>
-        </div>
-      </section>
-        
-      {% else %}
-      <div class="album py-3 bg-body-tertiary">
-        <div class="container">
-          <div id="map" style="width: 100%; height: 3%;">{{ map_html | safe }}</div>
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            {% for row1 in services %}
-              <div class="col">
-                <div class="card shadow-sm">
-                  <svg class="bd-placeholder-img card-img-top" width="100%" height="225" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                    <image href="{{ row1.ser_img }}" width="100%" height="100%">
-                  </svg>
-                  <div class="card-body">
-                    <h5 class="card-text">{{ row1.ser_nm }}</h5>
-                    <small><div>{{ row1.ser_group }}</div></small>
-                    <div class="d-flex justify-content-between align-items-center">
-                      <div class="btn-group">
-                        <button style="background-color: #112D4E; color: #F9F7F7; border-radius: 3px; padding:3px 8px "
-                          type="button" class="btn btn-sm btn-outline-secondary">
-                          <a href="{{ row1.ser_url }}" style="color: inherit; text-decoration: none;">
-                            카카오맵 상세보기
-                          </a>
-                        </button>
-                      </div>
-                      <small class="text-body-secondary">{{ row1.ser_distance }}m</small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            {% endfor %} 
-          </div>
-        </div> 
-      </div>
-      {% endif %}
-    </main>
+                  
 
 
     <script>
-      function updateServiceType(serviceValue) {
-        document.getElementById("serviceType").value = serviceValue;
-        submitForm();
-      }
-    
-      function submitForm() {
-        
-        document.getElementById("searchForm").submit();
-      }
+        //아래 function은 카테고리 변환
+        function updateServiceType(serviceValue) {
+            document.getElementById("serviceType").value = serviceValue;
+            submitForm()
+            alert("22")
+            location.href = "/je/service/"
+            alert("22")
+
+        }
+        //아래 function은 선착장 변환
+        function submitForm() {
+
+          document.getElementById("searchForm").submit(); // 폼을 제출하여 서버로 전송합니다.
+
+        }
     </script>
-    {% comment %} 아래 script쪽은 종민이 추가한 거 {% endcomment %}
-    <script>
-      
-      
-      function tarffic_info(){
-        location.href = "/je/service/practice";
+
+
+
+
+
+
+
+
+
+{% comment %} 아래쪽은 대부분이 지도 관련 부분  {% endcomment %}
+    <div id="map" style="width:100%;height:500px; margin-bottom: 20px;"></div>
+
+   <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=06fff07d3b1e45e728e0edc10adc7218
+   ">
+   </script>
+   <!-- jquery 자바스크립트 적용하기-->
+   <script type="text/javascript" 
+         src = "https://code.jquery.com/jquery-3.6.0.min.js">
+   </script>
+  
+   
+   <script >
+   $(document).ready(function(){
+   
+
+    navigator.geolocation.getCurrentPosition(function(position) {
+        var mapContainer = document.getElementById('map');
+        var lat = position.coords.latitude, // 위도
+            lon = position.coords.longitude; // 경도
+        var mapOption = {
+            center: new kakao.maps.LatLng({{lat1}}, {{lon1}}),
+            level: 3
+            };
+            var map = new kakao.maps.Map(mapContainer, mapOption);
+    
         
-        alert("test");
-        //$("#traffic").load(`/je/service/f_bus_station`,)     
+        var positions = [];
+
+
+    
+      // Ajax 요청을 통해 데이터를 가져오고 마커를 생성합니다
+      $.ajax({
+         // 수정 필요
+         url: "/je/service/busmaker/", 
+         datatype: "json",
+         success: function(data) {
+            
+            /*for (var i =0; i < 2; i++){
+                        alert(data["df_list"][0]["tra_nm"]),
+                        alert(data["df_list2"][0]["tra_lon"]),
+                        alert(data["df_list3"][0]["tra_lat"])};
+               
+            */
+            var ppp = [];
+            for (var i = 0; i < data["df_list"].length; i++) {
+               var position = {
+                  content: data["df_list"][i]["tra_nm"],
+                  latlng: new kakao.maps.LatLng(data["df_list3"][i]["tra_lat"],data["df_list2"][i]["tra_lon"] ),
+                  busno: data["df_list4"][i]["tra_id"]
+                  
+               };
+               //ppp.push(data["df_list3"][i]["tra_lat"],data["df_list2"][i]["tra_lon"])
+               positions.push(position);
+
+            }
+            var markers = [];
+            var infowindows = [];
+
+            for (var i = 0; i < positions.length; i++) {            
+               var marker = new kakao.maps.Marker({
+                  map: map,
+                  position: positions[i].latlng
+               });
+               
+               markers.push(marker);
+                  
+               var infowindow = new kakao.maps.InfoWindow({
+                  content: positions[i].content
+               });
+               
+               infowindows.push(infowindow);
+
+               kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+               kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+               kakao.maps.event.addListener(marker, 'click',function(){
+               
+               var getcnn = infowindow.getContent();
+               //alert(getcnn)
+               } );
+
+               var lat = i;//cls.getLat();
+               var lng = i;//cls.getLng();
+               //alert(positions[i].latlng);
+
+               // 버스번호를 임시로 입력
+               marker.text = positions[i].busno;
+
+               kakao.maps.event.addListener(marker, 'click', function() {
+                  // 버스번호를 임시로 입력
+                  // marker.text = positions[i].busno;
+                  //alert(this.text);
+                  //markers[i].addListener("click", function(mouseEvent)) {
+                  var getLatlng = this.getPosition();
+                  //var getCn = this.getContent();
+                  //alert(getcn);
+                  //alert("------------>>> " + chk.getLat() + " / " + chk.getLng())
+
+                  
+                  //alert("xxx---" + lat);
+                  //alert("xxx---" + lng);
+                  //var latlng = positions[i].latlng;
+                  //alert("---------------------/////" + this.bus_no);
+                  busNumber(getLatlng.getLat(), getLatlng.getLng(), this.text);
+                  
+               });
+
+               //alert(ppp)
+
+            }
+            
+         }, beforeSend:function(){
+            console.log("1111")
+         }, complete:function(){
+            console.log("22222")
+         }, error:function(request, status, error){
+            console.log("333333")
+         }
+      });
+   });
+      function busNumber(p_lat, p_lng, p_busno){
+         
+
+         alert(p_lat + " / " + p_lng + " / " + p_busno);
+
+         $.ajax({
+            url: "/je/service/bus_min/", 
+            type : "post",
+            datatype: "json",
+            data : {
+               lat:p_lat, 
+               lng:p_lng, 
+               busno:p_busno,
+               csrfmiddlewaretoken:"{{csrf_token}}",
+            },
+            success: function(data) {
+               // 받아 온값 처리영역...
+               // 기존 테이블 삭제
+      var existingTable = document.querySelector('#myTable');
+      if (existingTable) {
+         existingTable.parentNode.removeChild(existingTable);
       }
+      
+      // alert("연결");
+      // alert(">>>>>>>>>>>>>>> " + data["businfo_data"][0].bus_stop);
+      
+      // traffic_db3 데이터에 접근
+      var businfo_data = data.businfo_data;
+      var body = document.querySelector('body');
 
-      </script>
-      <div id = "traffic"></div>
+      // 테이블 내용 생성
+      var tbody = document.createElement('tbody');
+      var tr = document.createElement('tr');
+      var th = document.createElement('th');
+      th.textContent = '정류장 번호';
+      var th2 = document.createElement('th');
+      th2.textContent = '정류장 이름';
+      var th3 = document.createElement('th');
+      th3.textContent = '버스 번호';
+      var th4 = document.createElement('th');
+      th4.textContent = '남은 시간';
+      var th5 = document.createElement('th');
+      th5.textContent = '남은 정거장 수';
+
+      tr.appendChild(th);
+      tr.appendChild(th2);
+      tr.appendChild(th3);
+      tr.appendChild(th4);
+      tr.appendChild(th5);
+      tbody.appendChild(tr);
+
+      // businfo_data 배열을 반복
+      for (var i = 0; i < businfo_data.length; i++) {
+         var item = businfo_data[i];
+         var bus_stop = item.bus_stop;
+         var bus_no = item.bus_no;
+         var bus_nm = item.bus_nm;
+         var bus_time = item.bus_time;
+         var bus_remain = item.bus_remain;
+   
+         // 새로운 테이블을 생성
+         var table2 = document.createElement('table');
+         table2.className = 'rwd-table';
+
+
+   
+         var td = document.createElement('td');
+         td.textContent = bus_stop;
+         var td2 = document.createElement('td');
+         td2.textContent = bus_nm;
+         var td3 = document.createElement('td');
+         td3.textContent = bus_no;
+         var td4 = document.createElement('td');
+         td4.textContent = bus_time + "분";
+         var td5 = document.createElement('td');
+         td5.textContent = bus_remain + "개";
+   
+
+   
+         var tr2 = document.createElement('tr');
+         tr2.className = 'KOTRA-fontsize-80';
+         tr2.appendChild(td);
+         tr2.appendChild(td2);
+         tr2.appendChild(td3);
+         tr2.appendChild(td4);
+         tr2.appendChild(td5);
+         tbody.appendChild(tr2);
+   
+         table2.appendChild(tbody);
+   
+         // 생성한 테이블을 body에 추가
+         body.appendChild(table2);
+      }
+         // id 속성값으로 문서 객체 생성 : 캐스팅
+         // document.getElementById('아이디속성값');
+         var header1 = document.getElementById('header-1');
+         var header2 = document.getElementById('header-2');
+
+         // 문서 객체의 속성 변경
+         //header1.innerHTML = data["traffic_db3"];
+         //header2.textContent = '<i>문서객체 생성</i>';
+
+
+
+         }, beforeSend:function(){
+            console.log("1111")
+         }, complete:function(){
+            console.log("22222")
+         }, error:function(request, status, error){
+            console.log("333333")
+         }
+      });
+
+   }
+
+   function makeOverListener(map, marker, infowindow) {
+      return function() {
+         infowindow.open(map, marker);
+      };
+   }
+
+   function makeOutListener(infowindow) {
+      return function() {
+         infowindow.close();
+      };
+   }
+});
+   </script>
+
+
+
+
+
+
+
+
+
+
+
+
+        <script src="{% static 'mgapp/js/jquery-3.4.1.min.js'%}"></script>
+        <script src="{% static 'mgapp/js/popper.min.js'%}"></script>
+        <script src="{% static 'mgapp/js/bootstrap.min.js'%}"></script>
+        <script src="{% static 'mgapp/js/owl.carousel.min.js'%}"></script>
+        <script src="{% static 'mgapp/js/jquery.animateNumber.min.js'%}"></script>
+        <script src="{% static 'mgapp/js/jquery.waypoints.min.js'%}"></script>
+        <script src="{% static 'mgapp/js/jquery.fancybox.min.js'%}"></script>
+        <script src="{% static 'mgapp/js/aos.js'%}"></script>
+        <script src="{% static 'mgapp/js/moment.min.js'%}"></script>
+        <script src="{% static 'mgapp/js/daterangepicker.js'%}"></script>
+        <script src="{% static 'mgapp/js/typed.js'%}"></script>
+        <script src="{% static 'mgapp/js/custom.js'%}"></script>
     
-      </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        </body>
+    </html>
 
 
-
- 
-
-
-    {% comment %} <script>
-      navigator.geolocation.getCurrentPosition(function(position) {
-        map = document.getElementById("map")
-        var lat = position.coords.latitude;
-        var lon = position.coords.longitude;
-    
-        console.log("lat:", lat, "lon:", lon);
-    
-        var formData = new FormData();
-        formData.append("lat", lat);
-        formData.append("lon", lon);
-    
-        fetch("{% url 'search_action' %}", {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            // 서버에서 반환한 응답을 처리합니다.
-          
-
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-    });
-  </script> {% endcomment %}
-    <script src="{% static 'mgapp/js/jquery-3.4.1.min.js'%}"></script>
-    <script src="{% static 'mgapp/js/popper.min.js'%}"></script>
-    <script src="{% static 'mgapp/js/bootstrap.min.js'%}"></script>
-    <script src="{% static 'mgapp/js/owl.carousel.min.js'%}"></script>
-    <script src="{% static 'mgapp/js/jquery.animateNumber.min.js'%}"></script>
-    <script src="{% static 'mgapp/js/jquery.waypoints.min.js'%}"></script>
-    <script src="{% static 'mgapp/js/jquery.fancybox.min.js'%}"></script>
-    <script src="{% static 'mgapp/js/aos.js'%}"></script>
-    <script src="{% static 'mgapp/js/moment.min.js'%}"></script>
-    <script src="{% static 'mgapp/js/daterangepicker.js'%}"></script>
-    <script src="{% static 'mgapp/js/typed.js'%}"></script>
-    <script src="{% static 'mgapp/js/custom.js'%}"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-  </body>
-</html>
+   

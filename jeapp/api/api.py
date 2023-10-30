@@ -13,7 +13,7 @@ def traffic_bus(tra_id):
 
     url = "http://apis.data.go.kr/6260000/BusanBIMS/bitArrByArsno?arsno={}&serviceKey={}"
 
-    apikey="z%2BMThYhsIiJ1ITaPe4ltugLn1nmbggse6XnxKEq%2Fg3ulDnIAkdtrPJ6aUhOaJD3jW2DFBHQELOrr7vF91vpddQ%3D%3D"
+    apikey="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"
     num = tra_id
 
     api_url =url.format(num, apikey)
