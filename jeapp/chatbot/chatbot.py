@@ -6,7 +6,7 @@ import openai
 from konlpy.tag import Okt
 
 def chatbot_11(input1):
-    openai.api_key = "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"
+    openai.api_key = "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"
     okt = Okt()
     gpt_prompt=[{
         "role":"system",
@@ -27,7 +27,7 @@ def chatbot_11(input1):
 
 
 def chatbot_one(input1):
-    openai.api_key = "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"
+    openai.api_key = "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"
 
     gpt_prompt=[{
         "role":"system",
@@ -47,7 +47,7 @@ def chatbot_one(input1):
 
 
 def chatbot_while(messages):
-    openai.api_key = "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"
+    openai.api_key = "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"
     print("1")
     completion = openai.ChatCompletion.create(model="gpt-3.5-turbo",messages=messages)
     print("2")

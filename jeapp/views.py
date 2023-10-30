@@ -127,9 +127,12 @@ def traffic(request):
 
 
  # 서비스
-    
-# service.html
+ # service.html
 def service(request):
+    #if request.method == "POST":
+        #lat = request.POST.get("lat")
+        #lon = request.POST.get("lon")
+    
     mem_id = request.session.get('ses_mem_id', None)
     boo_mem = Boo_mem.objects.filter(boo_mem1=mem_id).last()
     marinas = Marina.objects.all()
@@ -155,6 +158,22 @@ def service(request):
     
         ### 지도맵 시각화 HTML로 받아오기
         map_html = map_view.getMap()
+
+
+    return render(request,
+                  'jeapp/html/service_geo.html',
+                  {'marina_list': marinas,
+                   'service' : service,
+                   'search_result': selected_mar,
+                   'services': filtered_services,
+                   'selected_service_type': selected_service_type,
+                   'marina_list': marinas,
+                   'service' : service,
+                   'services': filtered_services,
+                   'map_html':map_html,
+                   'lat':lat,
+                   'lon':lon,})
+
 
 
     return render(request,
@@ -526,7 +545,8 @@ def chatbot_back11(request):
     print("값을 받아옴")
     assistant_content1={"user_input":user_input,
                         "assistant_content":assistant_content,
-                        "messages":messages}
+                        "messages":messages,
+                          "max_tokens": 500}
     print(assistant_content1)
     json_data = json.dumps(assistant_content1)
     print("ok 11----------->>>>>>>>")

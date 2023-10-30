@@ -557,7 +557,7 @@ $(document).ready(function(e) {
 	});
 });
     
-{% comment %} $(window).on("scroll",function () {
+$(window).on("scroll",function () {
 
 	var bodyScroll = $(window).scrollTop(),
 	navbar = $(".navbar");
@@ -572,7 +572,7 @@ $(document).ready(function(e) {
 }
 
 });
-$(window).on("load",function (){
+{% comment %} $(window).on("load",function (){
 	var bodyScroll = $(window).scrollTop(),
 	navbar = $(".navbar");
 	
@@ -584,15 +584,15 @@ $(window).on("load",function (){
 	navbar.removeClass("nav-scroll");
 	} {% endcomment %}
 
-	$.scrollIt({
+  $.scrollIt({
 	
-	easing: 'swing',      // the easing function for animation
-	scrollTime: 900,       // how long (in ms) the animation takes
-	activeClass: 'active', // class given to the active nav element
-	onPageChange: null,    // function(pageIndex) that is called when page is changed
-	topOffset: -63
-	});
-
+    easing: 'swing',      // the easing function for animation
+    scrollTime: 900,       // how long (in ms) the animation takes
+    activeClass: 'active', // class given to the active nav element
+    onPageChange: null,    // function(pageIndex) that is called when page is changed
+    topOffset: -63
+    });
+  });
 </script>
 <script>
   function scrollToTop() {
