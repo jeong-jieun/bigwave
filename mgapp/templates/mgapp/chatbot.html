@@ -23,7 +23,7 @@
 			overflow-y: auto;
 		}
 		.chat-message {
-			width: 95%;
+			width: 70%;
 			margin: 10px;
 			padding: 10px;
 			border-radius: 10px;
@@ -33,17 +33,21 @@
 			align-self: flex-end;
 			background-color: #cce6ff;
 			text-align: left;
+			float: left;
+
 		}
 		.assistant-message {
 			align-self: flex-start;
 			background-color: #f0f0f0;
 			margin-right: 0;
-			text-align: RIGHT;
-		}
+			text-align: left;
+			float: right;
 
+		}
+		/*assistant-message은 메세지, chat-assistant은 메세지박스*/
 		.chat-assistant {
 			border: 2px ;
-			width: 95%;
+			width: 70%;
 			margin: 10px;
 			padding: 10px;
 			border-radius: 10px;

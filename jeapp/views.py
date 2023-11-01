@@ -127,12 +127,9 @@ def traffic(request):
 
 
  # 서비스
- # service.html
-def service(request):
-    #if request.method == "POST":
-        #lat = request.POST.get("lat")
-        #lon = request.POST.get("lon")
     
+# service.html
+def service(request):
     mem_id = request.session.get('ses_mem_id', None)
     boo_mem = Boo_mem.objects.filter(boo_mem1=mem_id).last()
     marinas = Marina.objects.all()
@@ -171,21 +168,6 @@ def service(request):
                    'lat':lat,
                    'lon':lon,})
 
-
-
-    return render(request,
-                  'jeapp/html/service.html',
-                  {'marina_list': marinas,
-                   'service' : service,
-                   'search_result': selected_mar,
-                   'services': filtered_services,
-                   'selected_service_type': selected_service_type,
-                   'marina_list': marinas,
-                   'service' : service,
-                   'services': filtered_services,
-                   'map_html':map_html,
-                   'lat':lat,
-                   'lon':lon,})
     
  # 서비스_first
 def fservice(request):
@@ -536,14 +518,17 @@ def chatbot_back11(request):
     print(">>>>>>>>>>>>>>>>>>00000000000",data.get("user_input"))
     print(">>>>>>>>>>>>>>>>>>00000000000",data.get("messages"))
     user_input = data.get("user_input")
+    print(user_input)
     messages = data.get("messages")
+    
     # print(">>>>>>>>>>>>>>>>>>>>>>>",user_content)
     assistant_content = chatbot_while(messages)
     print("값을 받아옴")
     assistant_content1={"user_input":user_input,
                         "assistant_content":assistant_content,
                         "messages":messages,
-                          "max_tokens": 500}
+                        "max_tokens": 1024,
+}
     print(assistant_content1)
     json_data = json.dumps(assistant_content1)
     print("ok 11----------->>>>>>>>")
@@ -555,5 +540,84 @@ def chatbot_back11(request):
 def iframe(request):
     
     return render(request,'jeapp/html/chatbotiframe.html',{})
+
+#################################################
+def geo(request):
+    return render(request,'jeapp/html/geolocation_pra.html',{})
+
+
+
+##### 버스 정보 
+def practice1(request):
+    mem_id = request.session.get('ses_mem_id', None)
+    boo_mem = Boo_mem.objects.filter(boo_mem1=mem_id).last()
+    marinas = Marina.objects.all()
+    service = Service.objects.all()
+    selected_mar = request.GET.get('search_option', None) 
+    selected_service_type = request.GET.get('service_type', '')  # Default is '음식점'
+
+    filtered_services = Service.objects.filter(ser_mar=selected_mar, ser_gu=selected_service_type)
+    
+    if selected_mar is None and selected_service_type == '':
+        # 만약 둘 다 None이라면, "selected_mar"와 "selected_service_type"를 "boo_mem"에서의 도착 지점으로 설정합니다.
+        selected_mar = boo_mem.boo_sch1.sch_arrival
+        selected_service_type = "음식점"
+    #filtered_services = Service.objects.filter(ser_mar=ser_mar, ser_gu=ser_gu)
+
+    
+    traf = Traffic.objects.all()
+    print("trafdfjaslfjsalfj느는느는<>>>>>>", traf)
+    rr = traf[2].tra_id
+    print("rr의 값은 ㅇㄹㄴㅇㄹ미넒ㅇ니;ㅏ럼;ㅣㅓㅁㄹ",)
+    tra_lon = Traffic.objects.all().values('tra_lon')
+    tra_lat = Traffic.objects.all().values('tra_lat')
+    print("dslkjfsal;dfjas;lfjalsjf",selected_mar)
+    print("dslkjfsal;dfjas;lfjalsjf",selected_service_type)
+    
+    if selected_mar == "[송도]암남항":
+        lat1=35.08526
+        lon1=129.0340
+    elif selected_mar == "[자갈치]남항유람선선착장":
+        lat1 = 35.0965
+        lon1 = 129.032
+    elif selected_mar == "[영도]부산항국제크루즈터미널":
+        lat1=35.0738
+        lon1=129.074
+    elif selected_mar == "[해운대]미포항":
+        lat1=35.1578
+        lon1=129.172
+    elif selected_mar == "[기장]일광해수욕장":
+        lat1=35.2583
+        lon1=129.2538
+
+    print("lat1와 lon1은",lat1,lon1)
+    ##selectedOption은 selected_mar
+    print("1131241",selected_mar)
+  
+    selectedOption_loc=[]
+    contexts = {"traf":traf,
+                   "rr":rr,
+                   "tra_lon":tra_lon,
+                   "tra_lat":tra_lat,
+                   }
+    
+    # return JsonResponse(contexts)
+
+    return render(request,
+                  'jeapp/html/practice1.html',
+                  {'marina_list': marinas,
+                   'service' : service,
+                   'search_result': selected_mar,
+                   'services': filtered_services,
+                   'selected_service_type': selected_service_type,
+                   'marina_list': marinas,
+                   'service' : service,
+                   'services': filtered_services,
+                   "traf":traf,
+                   "rr":rr,
+                   "tra_lon":tra_lon,
+                   "tra_lat":tra_lat,
+                    "lat1":lat1,
+                    "lon1":lon1,}) 
 
 
