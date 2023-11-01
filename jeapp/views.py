@@ -130,43 +130,61 @@ def traffic(request):
     
 # service.html
 def service(request):
-    mem_id = request.session.get('ses_mem_id', None)
-    boo_mem = Boo_mem.objects.filter(boo_mem1=mem_id).last()
-    marinas = Marina.objects.all()
-    service = Service.objects.all()
-    #ser_mar = "자갈치유선장"#request.POST.get('search_option', None) 
-    #ser_gu = "음식점"#request.POST.get('service_type', '')
-    selected_mar = request.GET.get('search_option', None) 
-    selected_service_type = request.GET.get('service_type', '')  # Default is '음식점'
-    lat = float(request.GET.get('lat', 1))
-    lon = float(request.GET.get('lon', 1))
+    try:
+        mem_id = request.session.get('ses_mem_id', None)
+        boo_mem = Boo_mem.objects.filter(boo_mem1=mem_id).last()
+        marinas = Marina.objects.all()
+        service = Service.objects.all()
+        #ser_mar = "자갈치유선장"#request.POST.get('search_option', None) 
+        #ser_gu = "음식점"#request.POST.get('service_type', '')
+        selected_mar = request.GET.get('search_option', None) 
+        selected_service_type = request.GET.get('service_type', 1)  # Default is '음식점'
+        lat = float(request.GET.get('lat', 1))
+        lon = float(request.GET.get('lon', 1))
 
-    filtered_services = Service.objects.filter(ser_mar=selected_mar, ser_gu=selected_service_type)
-    
-    if selected_mar is None :
-        # 만약 둘 다 None이라면, "selected_mar"와 "selected_service_type"를 "boo_mem"에서의 도착 지점으로 설정합니다.
-        map_view = Marina_Map_View()
-        ### 지도맵 시각화 HTML로 받아오기
-        map_html = map_view.getMap()
+        filtered_services = Service.objects.filter(ser_mar=selected_mar, ser_gu=selected_service_type)
+        
+        if selected_mar is None :
+            # 만약 둘 다 None이라면, "selected_mar"와 "selected_service_type"를 "boo_mem"에서의 도착 지점으로 설정합니다.
+            map_view = Marina_Map_View()
+            ### 지도맵 시각화 HTML로 받아오기
+            map_html = map_view.getMap()
+        elif selected_mar == '1' :
+            msg = """
+                <script type='text/javascript'>
+                    alert('선착장을 다시 선택해 주세요.');
+                    history.go(-1);
+                </script>
+            """    
+            return HttpResponse(msg)
 
-    else :
-            ### 지도 클래스 불러오기
-        map_view = Service_Map_View(selected_mar, selected_service_type, lat, lon)
-    
-        ### 지도맵 시각화 HTML로 받아오기
-        map_html = map_view.getMap()
+        else :
+                ### 지도 클래스 불러오기
+            map_view = Service_Map_View(selected_mar, selected_service_type, lat, lon)
+        
+            ### 지도맵 시각화 HTML로 받아오기
+            map_html = map_view.getMap()
 
 
-    return render(request,
-                  'jeapp/html/service_geo.html',
-                  {'marina_list': marinas,
-                   'service' : service,
-                   'search_result': selected_mar,
-                   'services': filtered_services,
-                   'selected_service_type': selected_service_type,
-                   'map_html':map_html,
-                   'lat':lat,
-                   'lon':lon,})
+        return render(request,
+                    'jeapp/html/service_geo.html',
+                    {'marina_list': marinas,
+                    'service' : service,
+                    'search_result': selected_mar,
+                    'services': filtered_services,
+                    'selected_service_type': selected_service_type,
+                    'map_html':map_html,
+                    'lat':lat,
+                    'lon':lon,})
+    except :        
+        ### 오류처리
+        msg = """
+            <script type='text/javascript'>
+                alert('트래픽 초과했습니다. 천천히 눌러주세요.');
+                history.go(-1);
+            </script>
+        """    
+        return HttpResponse(msg)
 
     
  # 서비스_first
