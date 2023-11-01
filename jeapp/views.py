@@ -167,9 +167,6 @@ def service(request):
                    'search_result': selected_mar,
                    'services': filtered_services,
                    'selected_service_type': selected_service_type,
-                   'marina_list': marinas,
-                   'service' : service,
-                   'services': filtered_services,
                    'map_html':map_html,
                    'lat':lat,
                    'lon':lon,})

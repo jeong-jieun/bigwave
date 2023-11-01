@@ -24,8 +24,6 @@ urlpatterns = [
     path('service_geo/', views.service_geo, name='service_geo'),
     ### 서비스페이지 (http://127.0.0.1:8000/je/service2)
     path('service/', views.service, name='search_action'),
-    ### 서비스페이지 (http://127.0.0.1:8000/je/service)
-    path('service/', views.service, name='search_action'),
     ### 서비스페이지 (http://127.0.0.1:8000/je/fservice)
     path('fservice/', views.fservice, name='search_action1'),
     ### 로그인페이지 (http://127.0.0.1:8000/je/login)
