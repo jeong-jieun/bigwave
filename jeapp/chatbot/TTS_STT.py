@@ -30,29 +30,25 @@ def speech_to_text(audio):
     
 ################################
 # 메인 루프
-text_list=[]
-# while True:
-#     audio_input = listen_to_microphone()
-#     text_output = speech_to_text(audio_input)
-text_list.append(text_output)
+
 
 #     print("인식된 텍스트:", text_output)
 #     if "굿바이" in text_output:
 #         break
 
+def  text_mp3_save(text1):
 
-text ="안녕하세요, 라이브러리를 사용하여 집에 가면 머하시나요? 안녕하세요, 라이브러리를 사용하여 집에 가면 머하시나요 안녕하세요, 라이브러리를 사용하여 집에 가면 머하시나요 안녕하세요, 라이브러리를 사용하여 집에 가면 머하시나요"
-
-tts = gTTS(text=text, lang='ko')
-tts.save("./data/helloEN.mp3")
-
+    tts = gTTS(text=text1, lang='ko')
+    tts.save("/static/stt/player.mp3")
 
 
-# 음성 파일 재생
-pygame.mixer.init()
-pygame.mixer.music.load("./data/helloEN.mp3")
-pygame.mixer.music.play()
+def text_to_speech():
+    # 음성 파일 재생
+    pygame.mixer.init()
+    pygame.mixer.music.load("/static/stt/player.mp3")
+    pygame.mixer.music.play()
 
-# 재생이 끝날 때까지 대기
-while pygame.mixer.music.get_busy():
-    pygame.time.Clock().tick(10)
+    # 재생이 끝날 때까지 대기
+    while pygame.mixer.music.get_busy():
+        pygame.time.Clock().tick(10)
+    
