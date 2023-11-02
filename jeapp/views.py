@@ -6,6 +6,8 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from jeapp.api.api import traffic_bus
 from jeapp.chatbot.chatbot import chatbot_while 
+from jeapp.chatbot.TTS_STT import listen_to_microphone,speech_to_text
+from jeapp.chatbot.TTS_STT import text_mp3_save, text_to_speech
 import json
 from mainapp.mappy.map import Service_Map_View
 from mainapp.mappy.map2 import Marina_Map_View
@@ -640,3 +642,22 @@ def practice1(request):
                     "lon1":lon1,}) 
 
 
+#####################TTS, STT
+
+def stt_hp(request):   # stt 화면
+    return render(request,'jeapp/html/stt_tts.html',{})
+
+
+def stt(request):    # stt 코드 불러오기
+    text_list=[]
+    while True :
+        audio_input = listen_to_microphone()
+        text_output = speech_to_text(audio_input)
+        text_list.append(text_output)
+        print("인식된 텍스트:", text_output)
+        if "굿바이" in text_output:
+            break
+    text_mp3_save(text_output)
+    text_to_speech()
+    
+    return render(request,'jeapp/html/stt_tts.html',{})
