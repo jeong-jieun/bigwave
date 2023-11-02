@@ -62,8 +62,15 @@ urlpatterns = [
     path('service/geogeo/', views.geo),
     # # main 페이지(http://127.0.0.1:8000/je/service/geogeo/)
     path('service/practice1/', views.practice1, name='search_action4'),
-    # # main 페이지(http://127.0.0.1:8000/je/service/geogeo/)
+    # # main 페이지(http://127.0.0.1:8000/je/service/practice1/)
     
     
+    ##############STT, TTS
+    path('service/stt_hp/', views.stt_hp),
+    # # main 페이지(http://127.0.0.1:8000/je/service/tts/)
+    path('service/stt/', views.stt),
+    # # main 페이지(http://127.0.0.1:8000/je/service/tts/)
+    
+
     
 ]

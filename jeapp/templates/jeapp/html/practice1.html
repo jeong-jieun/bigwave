@@ -434,6 +434,12 @@
       // alert("연결");
       // alert(">>>>>>>>>>>>>>> " + data["businfo_data"][0].bus_stop);
       
+
+          // 새로운 테이블 생성
+      var table2 = document.createElement('table');
+      table2.id = 'myTable'; // 새로 생성된 테이블의 ID를 설정
+      table2.className = 'rwd-table';
+
       // traffic_db3 데이터에 접근
       var businfo_data = data.businfo_data;
       var body = document.querySelector('body');
@@ -468,13 +474,10 @@
          var bus_time = item.bus_time;
          var bus_remain = item.bus_remain;
    
-         // 새로운 테이블을 생성
-         var table2 = document.createElement('table');
-         table2.className = 'rwd-table';
-
+  
 
    
-         var td = document.createElement('td');
+         var td = document.createElement('td');``
          td.textContent = bus_stop;
          var td2 = document.createElement('td');
          td2.textContent = bus_nm;

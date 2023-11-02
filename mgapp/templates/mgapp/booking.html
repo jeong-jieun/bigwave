@@ -277,8 +277,6 @@
 					</div>
 						<div class="col-sm-2"><img style="width: 100%;" src="data:image/png;base64,{{ get_qr }}" alt="QR Code"></div>
 				</fieldset>
-				
-				
 			  </div>
 			</div>
 		  </div>
@@ -326,6 +324,29 @@
 			document.getElementById('popupContainer').style.display = 'none';
 		});
 	</script>
+    <script>
+        //취소하기
+        function goBack(){
+            history.go(-1);
+        }
+        const now = new Date();
+        const formattedTime = `${now.getFullYear()}년 ${String(now.getMonth() + 1).padStart(2, '0')}월 ${String(now.getDate()).padStart(2, '0')}일 ${String(now.getHours()).padStart(2, '0')}시 ${String(now.getMinutes()).padStart(2, '0')}분`;
+
+        document.getElementById('reservationTime').innerText = formattedTime;
+
+        // URL의 쿼리 매개변수를 추출하고 표시하는 JavaScript 코드
+        const urlParams = new URLSearchParams(window.location.search);
+        const selectedSchNo = urlParams.get('selected_schedule');
+        const qtyValue = urlParams.get('qty');
+
+        document.getElementById('input_selected_schedule').value = selectedSchNo;
+        document.getElementById('qty').innerText = qtyValue;
+        document.getElementById('input_qty').value = qtyValue;
+
+        const paymentAmount = qtyValue * 20000;
+        document.getElementById('totalAmount').innerText = paymentAmount.toLocaleString();
+        document.getElementById('input_totalAmount').value = paymentAmount;
+    </script>
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 
@@ -335,32 +356,6 @@
 			<span class="sr-only">Loading...</span>
 		</div>
 	</div>
-	
-	<script>
-		//취소하기
-		function goBack(){
-			fm = document.getElementById("fm")
-			fm.action = "/";
-      		fm.submit();
-		}
-		const now = new Date();
-		const formattedTime = `${now.getFullYear()}년 ${String(now.getMonth() + 1).padStart(2, '0')}월 ${String(now.getDate()).padStart(2, '0')}일 ${String(now.getHours()).padStart(2, '0')}시 ${String(now.getMinutes()).padStart(2, '0')}분`;
-
-		document.getElementById('reservationTime').innerText = formattedTime;
-
-		// URL의 쿼리 매개변수를 추출하고 표시하는 JavaScript 코드
-		const urlParams = new URLSearchParams(window.location.search);
-		const selectedSchNo = urlParams.get('selected_schedule');
-		const qtyValue = urlParams.get('qty');
-
-		document.getElementById('input_selected_schedule').value = selectedSchNo;
-		document.getElementById('qty').innerText = qtyValue;
-		document.getElementById('input_qty').value = qtyValue;
-
-		const paymentAmount = qtyValue * 20000;
-		document.getElementById('totalAmount').innerText = paymentAmount.toLocaleString();
-		document.getElementById('input_totalAmount').value = paymentAmount;
-	</script>
 
 	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js" ></script>

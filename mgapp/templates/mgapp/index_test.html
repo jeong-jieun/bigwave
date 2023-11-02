@@ -139,6 +139,14 @@ tr:hover {
   font-weight: normal;
   font-style: normal;
 }
+.small_1{
+	font-size: 25px;
+	font-weight: 700;"
+
+}@media (min-width:350px) and (max-width:660px) {
+	.small_1 {font-size:15px ;
+	}
+}
 	</style>
 	<title>bigwave</title>
 </head>
@@ -225,12 +233,12 @@ tr:hover {
 			<div class="row align-items-center">
 				<div class="col-lg-7">
 					<div class="intro-wrap">
-						<h1 class="mb-5"><span class="d-block">Marine Taxi</span>Booking service
+						<h1 class="mb-5" style="font-family: IAMAPLAYER;"><span class="d-block">Marine Taxi</span>Booking service
 							<br><span class="typed-words"></span></h1>
 						<div class="row">
 							<div class="col-12">
 								<form class="form" id="fm" method="GET" action="#" onsubmit="return validateForm()">
-									<div class="row mb-2">
+									<div class="row mb-3">
 										<div class="col-sm-12 cl-md-6 mb-3 mb-lg-0 col-lg-6">
 											<select name="start" id="start" class="form-control custom-select" onchange="changeP_nm()">
 												<option value="" {% if not selected_start %}selected{% endif %}>출발지를 선택하세요</option>
@@ -245,6 +253,7 @@ tr:hover {
 												<option value="" {% if not selected_end %}selected{% endif %}>도착지를 선택하세요</option>
 											</select>
 										</div>
+										<br>
 										<div class="col-sm-12 col-md-6 mb-3 mb-lg-0 col-lg-6">
 											<input type="text" class="form-control" name="daterange">
 										</div>
@@ -302,19 +311,17 @@ tr:hover {
 								<table  class="rwd-table">
 									<tbody>
 										<tr>
-											<th style="font-size: 20px;">선택하기</th>
-											<th style="font-size: 20px;">번호</th>
-											<th style="font-size: 20px;">출발지</th>
-											<th style="font-size: 20px;">도착지</th>
+											<th class="small_1">선택하기</th>
+											<th class="small_1">출발지</th>
+											<th class="small_1">도착지</th>
 
 										</tr>
 										{% if schedule %}
 										{% for row3 in schedule %}
 										<tr class="KOTRA-fontsize-80">
 											<td><input type="radio" name="selected_schedule" value="{{ row3.sch_no }}"></td>
-											<td><p2 style="font-size: 25px;font-weight: 700;">1</p2></td>
-											<td><p2 style="font-size: 25px;font-weight: 700;">{{ row3.sch_marina }}</p2><br><p style="font-size: 18px;">{{ row3.sch_stime }}</p></td>
-											<td><p2 style="font-size: 25px;font-weight: 700;">{{ row3.sch_arrival }}</p2><br><p style="font-size: 18px;">{{ row3.sch_stime }}</p></td>
+											<td class="small_1"><p2  class="small_1" >{{ row3.sch_marina }}</p2><br><p style="font-size: 18px;">{{ row3.sch_stime }}</p></td>
+											<td class="small_1"><p2  class="small_1" >{{ row3.sch_arrival }}</p2><br><p style="font-size: 18px;">{{ row3.sch_stime }}</p></td>
 										</tr>
 										{% endfor %}
 										{% else %}
@@ -330,6 +337,30 @@ tr:hover {
 									
 									</tbody>
 								</table>
+								{% comment %} <div class="row mb-8 lg-12" style="padding-top: 50px;">
+									<table border="2" style="width: 91%;height: 100%;">
+										<tr >
+											<th style="color: black;">번호</th>
+											<th style="color: black; font-size: 27px;" >출발지</th>
+											<th style="font-size: 27px;">도착지</th>
+											<th style="color: black;">예약하기</th>
+
+										</tr>
+										{% for row3 in schedule %}
+										<tr>
+											<td style="color: black;"><input type="radio" name="selected_schedule" value="{{ row3.sch_no }}"></td>
+											
+											<td style="color: black;"><p2 style="font-size: 35px;font-weight: 700;">1</td></p2>
+											<td style="color: black;"><p2 style="font-size: 35px;font-weight: 700;">{{ row3.sch_marina }}</p2>
+												<br><p style="font-size: 18px;">{{ row3.sch_stime }}</p></td>
+											<td style="color: black;"><p2 style="font-size: 35px;font-weight: 700;">{{ row3.sch_arrival }}</p2>
+												<br><p style="font-size: 18px;">{{ row3.sch_stime }}</p></td>
+												<input type="hidden" name="qty" value="{{ qty }}" style="color: black;">
+											<td><input type="submit" value="예약" style="color: black;height: 100%;width: 100%;"	></td>
+										</tr>
+										{% endfor %}
+									</table>
+								</div> {% endcomment %}
 							</form>
 						</div>
 					</div>
@@ -473,6 +504,22 @@ tr:hover {
 				console.error('Error:', error);
 			});
 		});
+		{% comment %} document.addEventListener('DOMContentLoaded', function () {
+			// 이동할 대상 요소를 선택합니다. 클래스 이름이 "untree_co-section"인 첫 번째 요소를 선택합니다.
+			var targetElement = document.querySelector('.untree_co-section');
+		
+			if (targetElement) {
+				// 스크롤 애니메이션 옵션 설정
+				var scrollOptions = {
+					top: targetElement.offsetTop, // 대상 요소의 상단 위치로 이동
+					left: 0, // 가로 스크롤은 0으로 설정
+					behavior: 'smooth' // 부드러운 스크롤 애니메이션 사용
+				};
+		
+				// 스크롤 이동 실행
+				window.scrollTo(scrollOptions);
+			}
+		}); {% endcomment %}
 
 	</script>
 
