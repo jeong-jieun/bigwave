@@ -58,11 +58,11 @@ option {
 
 button {
   margin-top: 1rem;
-  background: linear-gradient(to left, #3F72AF, #b4caf2);
+  background: #5082ee;
   padding: 1rem;
   width: 5vw;
   height: 2vh;
-  color: #3F72AF;
+  color: #5082ee;
   transition: 0.6s;
 }
 find
@@ -104,7 +104,7 @@ button:hover {
 
 #content1 input[type="button"] {
   margin-top: 1rem;
-  background: linear-gradient(to left, #3F72AF, #b4caf2);
+  background: #5082ee;
   padding: 15px;
   width: 55%;
   color: white;
@@ -228,17 +228,13 @@ button:hover {
   background: none;
   margin: 0 0 0 20rem;
   padding: 0;
-  color: linear-gradient(to left, #3F72AF, #b4caf2);
+  color: #5082ee;
   font-size: 0.75rem;
   text-align: end;
   text-decoration: underline;
   width: 5vw;
   height: 2vh;
   text-align: right;
-}
-
-#content3 button:hover{
-  background:#112D4E;
 }
 
 #content3>:nth-child(2)>:nth-child(1)>:nth-child(2) {
@@ -280,8 +276,8 @@ button:hover {
 
 #content3>.join2 button {
   width: 40%;
-  background: linear-gradient(to left, #3F72AF, #b4caf2);
-  border: 1px solid #3F72AF;
+  background: #5082ee;
+  border: 1px solid #5082ee;
   color: white;
   padding: 10px;
   margin-left: 0;
@@ -303,22 +299,21 @@ button:hover {
 
 #content3>.join2 input[type="button"] {
   width: 39%;
-  background: linear-gradient(to left, #3F72AF, #b4caf2);
-  border: 1px solid #3F72AF;
+  background:#5082ee;
+  border: 1px solid #5082ee;
   color: white;
   padding: 10px;
   margin-left: 0;
   margin-bottom: 0;
   text-align: center;
   text-decoration: none;
-  font-family: 굴림;
   font-weight: bolder;
 }
 
 #content3>:last-child {
   margin: 3rem auto 0 7rem;
   margin-top: 1rem;
-  background: linear-gradient(to left, #3F72AF, #b4caf2);
+  background: #5082ee;
   padding: 13px;
   width: 55%;
   color: white;
@@ -331,7 +326,7 @@ button:hover {
 
 #content4 input[type="button"] {
   margin-top: 1rem;
-  background: linear-gradient(to left, #3F72AF, #b4caf2);
+  background: #5082ee;
   padding: 15px;
   width: 55%;
   color: white;
@@ -543,11 +538,11 @@ footer h4 {
   
   button {
     margin-top: 1rem;
-    background: linear-gradient(to left, #3F72AF, #b4caf2);
+    background: #5082ee;
     padding: 1rem;
     width: 5vw;
     height: 2vh;
-    color: #3F72AF;
+    color: #5082ee;
     transition: 0.6s;
   }
   find
@@ -588,7 +583,7 @@ footer h4 {
   
   #content1 input[type="button"] {
     margin-top: 1rem;
-    background: linear-gradient(to left, #3F72AF, #b4caf2);
+    background: #5082ee;
     padding: 15px;
     width: 55%;
     color: white;
@@ -712,7 +707,7 @@ footer h4 {
     background: none;
     margin: 0 0 0 20rem;
     padding: 0;
-    color: linear-gradient(to left, #3F72AF, #b4caf2);
+    color: #5082ee;
     font-size: 0.75rem;
     text-align: end;
     text-decoration: underline;
@@ -764,8 +759,8 @@ footer h4 {
   
   #content3>.join2 button {
     width: 40%;
-    background: linear-gradient(to left, #3F72AF, #b4caf2);
-    border: 1px solid #3F72AF;
+    background: #5082ee;
+    border: 1px solid #5082ee;
     color: white;
     padding: 10px;
     margin-left: 0;
@@ -787,8 +782,8 @@ footer h4 {
   
   #content3>.join2 input[type="button"] {
     width: 39%;
-    background: linear-gradient(to left, #3F72AF, #b4caf2);
-    border: 1px solid #3F72AF;
+    background: #5082ee;
+    border: 1px solid #5082ee;
     color: white;
     padding: 10px;
     margin-left: 0;
@@ -802,7 +797,7 @@ footer h4 {
   #content3>:last-child {
     margin: 3rem auto 0 7rem;
     margin-top: 1rem;
-    background: linear-gradient(to left, #3F72AF, #b4caf2);
+    background: #5082ee;
     padding: 13px;
     width: 55%;
     color: white;
@@ -815,7 +810,7 @@ footer h4 {
   
   #content4 input[type="button"] {
     margin-top: 1rem;
-    background: linear-gradient(to left, #3F72AF, #b4caf2);
+    background: #5082ee;
     padding: 15px;
     width: 55%;
     color: white;

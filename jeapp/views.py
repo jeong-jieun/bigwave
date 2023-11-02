@@ -260,9 +260,14 @@ def save_reservation(request):
             """
         return HttpResponse(msg)
 
-    except Exception as e:
-        error_msg = f"Error: {str(e)}"
-        return HttpResponse(error_msg)
+    except:
+        msg = """
+            <script type='text/javascript'>
+                alert('로그인 후 예약해주세요.');
+                location.href='/login2/'
+            </script>
+        """
+        return HttpResponse(msg)
 
     
 # def setbookingInsert(request):
