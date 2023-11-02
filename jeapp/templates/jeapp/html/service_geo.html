@@ -210,7 +210,7 @@
         <div class="Scriptcontent">
           <!-- START DEMO -->
           <div class="tile" id="tile-1">
-            <form id="searchForm" method="GET" action="/je/service_geo/">
+            <form id="searchForm" method="GET" action="/je/service/">
               {% csrf_token %}
               <div>
                 <label for="lat"></label>
@@ -221,7 +221,7 @@
                 <input type="hidden" name="lon" id="lon" class="lon" />
               </div>
               <select id="search_option" class="form-select" name="search_option" aria-label="Default select example" onchange="submitForm()" style="padding: 2%;">
-                <option value="" {% if not search_result %}selected{% endif %}>선착장을 검색하세요</option>
+                <option value="1" {% if not search_result %}selected{% endif %}>선착장을 검색하세요</option>
                 {% for row in marina_list %}
                   <option value="{{row.mar_nm}}" {% if row.mar_nm == search_result %} selected{% endif %}>{{row.mar_nm}}</option>
                 {% endfor %}
@@ -263,7 +263,7 @@
       {% else %}
       <div class="album py-3 bg-body-tertiary">
         <div class="container">
-          <div id="map" style="width: 100%; height: 5%;">{{ map_html | safe }}</div>
+          <center><div id="map" style="width: 100%; height: 5%;">{{ map_html | safe }}</div></center>
           <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             {% for row1 in services %}
               <div class="col">
@@ -297,15 +297,27 @@
     </main>
 
     <script>
+      function submitForm() {submitForm
+        // 이 함수는 폼을 서브밋하는데 사용하는 함수입니다.
+        document.getElementById("searchForm").submit();
+      }
+      
       function updateServiceType(serviceValue) {
+        var searchForm = document.getElementById("fsearchForm");
         const search_option = document.getElementById("search_option");
-        if (search_option.selectedIndex === 0 && serviceValue !== null) {
+        const selectedValue = search_option.value;
+      
+        if (selectedValue === "1" && serviceValue !== null) {
+            // '선착장을 먼저 선택해주세요' 팝업을 표시합니다.
             alert("선착장을 먼저 선택해주세요.");
-            document.getElementById("search_option").submit();
+            // 페이지를 새로고침하여 이전 상태로 되돌립니다.
+            searchForm.location = "/je/service/"
+            searchForm.submit();
+        } else {
+            document.getElementById("serviceType").value = serviceValue;
+            submitForm();
         }
-        document.getElementById("serviceType").value = serviceValue;
-        submitForm();
-    }
+      }
 
       // 페이지 로드 시 자동으로 위치 정보 요청
       window.onload = function() {

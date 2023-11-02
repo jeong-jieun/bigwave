@@ -25,31 +25,34 @@ class Service_Map_View:
         self.service_map = folium.Map(location=[self.selected_data['선착장위도'].mean(), self.selected_data['선착장경도'].mean()], zoom_start=17)
 
         arr_icon = CustomIcon(icon_image='mainapp/static/mainapp/img/arr.png', icon_size=(60, 60))
+        
                
         # 회원 위치 마커 표시
         folium.Marker([self.selected_data['선착장위도'].mean(), self.selected_data['선착장경도'].mean()],
                       icon=arr_icon 
                       ).add_to(self.service_map)
         
-        bus_icon = CustomIcon(icon_image='mainapp/static/mainapp/img/bus.png', icon_size=(60, 60))
+        user_icon = CustomIcon(icon_image='mainapp/static/mainapp/img/user.png', icon_size=(60, 60))
                
          #회원 위치 마커 표시
         folium.Marker([lat, lon],
-                      icon=bus_icon 
+                      icon=user_icon 
                       ).add_to(self.service_map)
 
         # 가게 마커 표시
         for j in range(len(self.selected_data)):
             service_name = self.selected_data.iloc[j, 3]
             service_gu = self.selected_data.iloc[j, 1]
+            service_distance = self.selected_data.iloc[j, 4]
 
             popup_html = "-"*40+"<br>"
             popup_html += f"<b>이름:</b> {service_name}<br>"
+            popup_html += f"<b>선착장에서 거리:</b> {service_distance}<br>"
             popup_html += "-"*40+"<br>"
             
             
 
-            popup = folium.Popup(popup_html, max_width=250)
+            popup = folium.Popup(popup_html, max_width=150)
             # 가게 종류에 따라 아이콘 선택
             if service_gu == '음식점':
                 selected_icon = CustomIcon(icon_image='mainapp/static/mainapp/img/ham.png', icon_size=(40, 40))
