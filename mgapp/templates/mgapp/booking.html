@@ -326,7 +326,9 @@
     <script>
         //취소하기
         function goBack(){
-            history.go(-1);
+           fm = document.getElementById("fm");
+		   fm.action = "/";
+		   fm.submit();
         }
         const now = new Date();
         const formattedTime = `${now.getFullYear()}년 ${String(now.getMonth() + 1).padStart(2, '0')}월 ${String(now.getDate()).padStart(2, '0')}일 ${String(now.getHours()).padStart(2, '0')}시 ${String(now.getMinutes()).padStart(2, '0')}분`;
