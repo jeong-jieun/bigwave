@@ -19,8 +19,8 @@ def listen_to_microphone():
 def speech_to_text(audio):
     try:
         text = recognizer.recognize_google(audio, language="ko-KR")  # 한국어 인식
-        with open('C:/edu_busan_202305/final_project_13/MyDrive/새 폴더/memo.txt', 'a') as f:
-            f.write(str(text)+"\n")
+        #with open('C:/edu_busan_202305/final_project_13/MyDrive/새 폴더/memo.txt', 'a') as f:
+        #    f.write(str(text)+"\n")
         return text
     except sr.UnknownValueError:
         return "음성을 이해할 수 없습니다."
@@ -37,15 +37,15 @@ def speech_to_text(audio):
 #         break
 
 def  text_mp3_save(text1):
-
-    tts = gTTS(text=text1, lang='ko')
-    tts.save("/static/stt/player.mp3")
+    text2 = "되게 해줘 해줘 해줘 해줘 해줘"
+    tts = gTTS(text=text2, lang='ko')
+    tts.save("/jeapp/static/jeapp/stt/player.mp3")
 
 
 def text_to_speech():
     # 음성 파일 재생
     pygame.mixer.init()
-    pygame.mixer.music.load("/static/stt/player.mp3")
+    pygame.mixer.music.load("/jeapp/static/jeapp/stt/player.mp3")
     pygame.mixer.music.play()
 
     # 재생이 끝날 때까지 대기

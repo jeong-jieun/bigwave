@@ -595,20 +595,20 @@ def practice1(request):
     print("dslkjfsal;dfjas;lfjalsjf",selected_service_type)
     
     if selected_mar == "[송도]암남항":
-        lat1=35.08526
-        lon1=129.0340
+        lat1=35.0706
+        lon1=129.019
     elif selected_mar == "[자갈치]남항유람선선착장":
-        lat1 = 35.0965
+        lat1 = 35.0967
         lon1 = 129.032
     elif selected_mar == "[영도]부산항국제크루즈터미널":
-        lat1=35.0738
-        lon1=129.074
+        lat1=35.0808
+        lon1=129.079
     elif selected_mar == "[해운대]미포항":
         lat1=35.1578
-        lon1=129.172
+        lon1=129.171
     elif selected_mar == "[기장]일광해수욕장":
-        lat1=35.2583
-        lon1=129.2538
+        lat1=35.2622
+        lon1=129.234
 
     print("lat1와 lon1은",lat1,lon1)
     ##selectedOption은 selected_mar

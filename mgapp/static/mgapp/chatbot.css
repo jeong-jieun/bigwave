@@ -104,7 +104,7 @@ Chat
 
 
 input[type="range"] {
- -webkit-appearance: none;
+-webkit-appearance: none;
     width: 340px;
     height: 2px;
     background: #0070ff;
@@ -121,7 +121,7 @@ input[type="range"] {
 }
 
 input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
+-webkit-appearance: none;
   width: 20px;
   height: 20px;
   border-radius: 100%;
