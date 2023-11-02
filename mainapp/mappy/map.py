@@ -41,6 +41,7 @@ class Service_Map_View:
 
         # 가게 마커 표시
         for j in range(len(self.selected_data)):
+            
             service_name = self.selected_data.iloc[j, 3]
             service_gu = self.selected_data.iloc[j, 1]
             service_distance = self.selected_data.iloc[j, 4]

@@ -148,8 +148,11 @@ tr:hover {
 	}
 }
 .dio{
-	margin-left: 20px;
+	margin-left: 40px;
 
+}@media (min-width:350px) and (max-width:660px) {
+	.dio {margin-left: 20px;
+	}
 }
 	</style>
 	<title>bigwave</title>
@@ -222,7 +225,7 @@ tr:hover {
 			  <li class="active"><a href="/mg/test/">선착장예약</a></li>
 			  <li><a href="/mg/booking/">예약확인</a></li>
 			  <li><a href="/je/service/">교통/관광 서비스</a></li>
-			  <li><a href="/signup/">회원정보</a></li>
+			  <li><a href="/mypage/">회원정보</a></li>
 			  <li><a href="/logout/">로그아웃</a></li>
 			  {% endif %} 
 		  </ul>
@@ -241,7 +244,7 @@ tr:hover {
 							<br><span class="typed-words"></span></h1>
 						<div class="row">
 							<div class="col-12">
-								<form class="form" id="fm" method="GET" action="/mg/test2" onsubmit="return validateForm()">
+								<form class="form" id="fm" method="GET" action="#" onsubmit="return validateForm()">
 									<div class="row mb-3">
 										<div class="col-sm-12 cl-md-6 mb-3 mb-lg-0 col-lg-6">
 											<select name="start" id="start" class="form-control custom-select" onchange="changeP_nm()">
@@ -322,7 +325,7 @@ tr:hover {
 										{% if schedule %}
 										{% for row3 in schedule %}
 										<tr class="KOTRA-fontsize-80">
-											<td><input type="radio" name="selected_schedule" value="{{ row3.sch_no }}" class="dio" style="width:30px;height:30px;border:1px;"></td>
+											<td><input type="radio" name="selected_schedule" value="{{ row3.sch_no }}" class="dio" style="width:20px;height:20px;border:1px;"></td>
 											<td class="small_1"><p2  class="small_1" >{{ row3.sch_marina }}</p2><br><p style="font-size: 18px;">{{ row3.sch_stime }}</p></td>
 											<td class="small_1"><p2  class="small_1" >{{ row3.sch_arrival }}</p2><br><p style="font-size: 18px;">{{ row3.sch_etime }}</p></td>
 										</tr>
@@ -478,10 +481,10 @@ tr:hover {
 			}
 			// return true;
 			fm = document.getElementById('fm');
-			fm.action = "/mg/test2/";
+			fm.action = "#";
 			fm.submit();
 
-			window.location.href = "/mg/test2/#scheduleForm";
+			window.location.href = "/mg/test/#scheduleForm";
 
 		}
 	
@@ -552,6 +555,19 @@ tr:hover {
 
 			});
 		})
+		    // 여기서 유효성 검사를 수행하고, 검사 결과가 유효한 경우에 스크롤을 실행합니다.
+			var targetElement = document.querySelector('.untree_co-section');
+			if (targetElement) {
+				// 스크롤 애니메이션 옵션 설정
+				var scrollOptions = {
+					top: targetElement.offsetTop, // 대상 요소의 상단 위치로 이동
+					left: 0, // 가로 스크롤은 0으로 설정
+					behavior: 'smooth' // 부드러운 스크롤 애니메이션 사용
+				};
+		
+				// 스크롤 이동 실행
+				window.scrollTo(scrollOptions);
+			}
 	</script>
 	<script>
 		document.getElementById('openPopup').addEventListener('click', function () {

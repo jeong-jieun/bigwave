@@ -255,7 +255,7 @@ def save_reservation(request):
         msg = """
                 <script type='text/javascript'>
                     alert('정상적으로 저장되었습니다.');
-                    location.href='/'
+                    location.href='/mg/booking/'
                 </script>
             """
         return HttpResponse(msg)
@@ -543,19 +543,18 @@ def chatbot_back11(request):
     print(">>>>>>>>>>>>>>>>>>00000000000",data.get("user_input"))
     print(">>>>>>>>>>>>>>>>>>00000000000",data.get("messages"))
     user_input = data.get("user_input")
+    print(user_input)
     messages = data.get("messages")
     
     # print(">>>>>>>>>>>>>>>>>>>>>>>",user_content)
     assistant_content = chatbot_while(messages)
+    print("값을 받아옴")
     assistant_content1={"user_input":user_input,
                         "assistant_content":assistant_content,
                         "messages":messages,
                         "max_tokens": 1024,
-                        }
-
-    
-
-    #print(assistant_content1)
+}
+    print(assistant_content1)
     json_data = json.dumps(assistant_content1)
     print("ok 11----------->>>>>>>>")
     
@@ -601,20 +600,20 @@ def practice1(request):
     print("dslkjfsal;dfjas;lfjalsjf",selected_service_type)
     
     if selected_mar == "[송도]암남항":
-        lat1=35.08526
-        lon1=129.0340
+        lat1=35.0706
+        lon1=129.019
     elif selected_mar == "[자갈치]남항유람선선착장":
-        lat1 = 35.0965
+        lat1 = 35.0967
         lon1 = 129.032
     elif selected_mar == "[영도]부산항국제크루즈터미널":
-        lat1=35.0738
-        lon1=129.074
+        lat1=35.0808
+        lon1=129.079
     elif selected_mar == "[해운대]미포항":
         lat1=35.1578
-        lon1=129.172
+        lon1=129.171
     elif selected_mar == "[기장]일광해수욕장":
-        lat1=35.2583
-        lon1=129.2538
+        lat1=35.2622
+        lon1=129.234
 
     print("lat1와 lon1은",lat1,lon1)
     ##selectedOption은 selected_mar

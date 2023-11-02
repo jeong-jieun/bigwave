@@ -47,13 +47,14 @@ urlpatterns = [
     ### about (http://127.0.0.1:8000/mg/about/)
     path('about/', views.about),
     ### mainapp (http://127.0.0.1:8000/mg/home/)
-    path('index_test/', views.index_t),
     ### mainapp (http://127.0.0.1:8000/mg/home/)
     path('service/', views.service),
     ### mainapp (http://127.0.0.1:8000/mg/home/)
     path('home/', views.index),
     ### mainapp (http://127.0.0.1:8000/mg/home2/)
     path('home2/', views.index2),
+    ### mainapp (http://127.0.0.1:8000/mg/test2/)
+    path('test2/', views.test2),
     ### mainapp (http://127.0.0.1:8000/mg/test/)
     path('test/', views.test),
     ### mainapp (http://127.0.0.1:8000/mg/check/)
@@ -62,4 +63,11 @@ urlpatterns = [
     path('temp3/', views.temptemp),
     ### mainapp (http://127.0.0.1:8000/mg/save2/)
     path('save2/', views.save2_reservation, name='save2_reservation'),
+    
+    
+    
+    ## 아래 경로는 종민이 추가한거임
+    path('chatbot_frame/', views.chatbot_frame),
 ]
+    
+

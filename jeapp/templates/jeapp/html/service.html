@@ -319,31 +319,29 @@
         <div class="site-mobile-menu-body"></div>
     </div>
     
-    <nav class="site-nav">
-    
-            <div class="site-navigation">
-                <a href="/" class="logo m-0"><img src="{% static "mainapp/free-css/images/로고색.png" %}" alt="" style="width: 300px; height: 50px;" ></a> 
-                {% comment %} <span class="text-primary">bigwave</span> {% endcomment %}
-    
-                <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-                    <li class="active"><a href="/">서비스 소개</a></li>
-                    <li class="active"><a href="/mg/test/">선착장예약</a></li>
-                    <li><a href="/je/service/">교통/관광 서비스</a></li>
-                    </li>
-                    {% if request.session.ses_mem_id == None %}
-                    <li><a href="/login2/">로그인</a></li>
-                    <li><a href="/signup2/">회원가입</a></li>
-                    {% else %}
-                    <li><a href="/mg/booking/">예약확인</a></li>
-                    <li><a href="/mypage/">회원정보</a></li>
-                    <li><a href="/logout/">로그아웃</a></li>
-                    {% endif %}
-                </ul>
-    
-                <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
-                    <span></span>
-                </a>
-            </div>
+    <nav class="site-nav" style="z-index: 5;">
+      <div class="site-navigation">
+        <a href="/" class="logo m-0"><img src="{% static "mainapp/free-css/images/로고색.png" %}" alt="" style="width: 300px; height: 50px;" ></a> 
+        <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
+            {% if request.session.ses_mem_id == None %}
+            <li class="active"><a href="/">서비스 소개</a></li>
+            <li class="active"><a href="/mg/test/">선착장예약</a></li>
+            <li><a href="/je/service/">교통/관광 서비스</a></li>
+            <li><a href="/login2/">로그인</a></li>
+            <li><a href="/signup2/">회원가입</a></li>
+            {% else %}
+            <li class="active"><a href="/">서비스 소개</a></li>
+            <li class="active"><a href="/mg/test/">선착장예약</a></li>
+            <li><a href="/mg/booking/">예약확인</a></li>
+            <li><a href="/je/service/">교통/관광 서비스</a></li>
+            <li><a href="/mypage/">회원정보</a></li>
+            <li><a href="/logout/">로그아웃</a></li>
+            {% endif %} 
+        </ul>
+        <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
+            <span></span>
+        </a>
+      </div>
     </nav>
     </header>
     <main>
@@ -446,26 +444,10 @@
     });
     </script> 
     <script>
-function submitForm() {submitForm
-  // 이 함수는 폼을 서브밋하는데 사용하는 함수입니다.
-  document.getElementById("searchForm").submit();
-}
-
-function updateServiceType(serviceValue) {
-  var searchForm = document.getElementById("fsearchForm");
-  const search_option = document.getElementById("search_option");
-  const selectedValue = search_option.value;
-
-  if (selectedValue === "1" && serviceValue !== null) {
-      // '선착장을 먼저 선택해주세요' 팝업을 표시합니다.
-      alert("선착장을 먼저 선택해주세요.");
-      // 페이지를 새로고침하여 이전 상태로 되돌립니다.
-      location.href = "/je/service/";
-  } else {
-      document.getElementById("serviceType").value = serviceValue;
-      submitForm();
-  }
-}
+      function showIframe() {
+        // 클릭 시 아이프레임 컨테이너를 보이도록 설정
+        document.getElementById("iframeContainer").style.display = "block";
+      }
       wow = new WOW();
       wow.init();
       $(document).ready(function(e) {
@@ -511,6 +493,20 @@ function updateServiceType(serviceValue) {
         
         document.getElementById("searchForm").submit();
       }
+      $.scrollIt({
+	
+        easing: 'swing',      // the easing function for animation
+        scrollTime: 900,       // how long (in ms) the animation takes
+        activeClass: 'active', // class given to the active nav element
+        onPageChange: null,    // function(pageIndex) that is called when page is changed
+        topOffset: -63
+        });
+      
+      </script>
+      <script>
+        function scrollToTop() {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
     </script>
     {% comment %} 아래 script쪽은 종민이 추가한 거 {% endcomment %}
     <script>
