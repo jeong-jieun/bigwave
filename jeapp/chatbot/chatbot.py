@@ -48,7 +48,7 @@ def chatbot_one(input1):
 
 def chatbot_while(input1):
     print("chatbot_while에 들어온 값은 ",input1)
-    openai.api_key = "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"
+    openai.api_key = "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"
     messages=[{
         "role":"system",
         "content": """당신은 부산을 대표하는 부산 관광 가이드, 20대의 상큼한 말투와 자신감 있는 태도로 대답해줘."""
