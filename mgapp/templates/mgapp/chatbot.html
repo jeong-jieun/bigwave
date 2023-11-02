@@ -2,46 +2,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
-
-	<style>
-		html, body {
-			height: 100%; /* 전체 페이지 높이를 100%로 설정 */
-			margin: 0; /* 기본 마진 제거 */
-			padding: 0; /* 기본 패딩 제거 */
-		}
-		.chat-container {
-			width: 100%;
-			height: calc(100% - 50px); /* 버튼 높이만큼 컨테이너 높이에서 빼줍니다 */
-			overflow-y: auto;
-		}
-		.chat-message {
-			width: 95%;
-			margin: 10px;
-			padding: 10px;
-			border-radius: 10px;
-			max-width: 95%;
-		}
-		.user-message {
-			align-self: flex-end;
-			background-color: #cce6ff;
-			text-align: left;
-		}
-		.assistant-message {
-			align-self: flex-start;
-			background-color: #f0f0f0;
-			margin-right: 0;
-			text-align: RIGHT;
-		}
-
-		.chat-assistant {
-			border: 2px ;
-			width: 95%;
-			margin: 10px;
-			padding: 10px;
-			border-radius: 10px;
-			max-width:95%;; /* 주황색 테두리 스타일 */}
-=======
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 
    
@@ -92,7 +52,6 @@
          padding: 10px;
          border-radius: 10px;
          max-width:95%;; /* 주황색 테두리 스타일 */}
->>>>>>> 71abc6b6993981f6450564ce6cfcd43e436de238
 
       .chat-input {
          display: flex;
@@ -114,10 +73,6 @@
         .chat-input-button {
             padding: 0 10px; /* 버튼의 좌우 여백 설정 */
         }
-<<<<<<< HEAD
-
-	</style>
-=======
       .chat{
          width: 100%;
       } @media (min-width:340px) and (max-width: 660px){
@@ -127,7 +82,6 @@
          }
       }
    </style>
->>>>>>> 71abc6b6993981f6450564ce6cfcd43e436de238
 </head>
 <script src="{% static 'mgapp/js/custom.js'%}"></script>
      
@@ -136,71 +90,6 @@
 <script type="text/javascript" 
       src = "https://code.jquery.com/jquery-3.6.0.min.js">
 </script>
-<<<<<<< HEAD
-<script >
-	messages=[]
-	var isUserMessage = true;
-
-function cc(){
-	fm = document.getElementById("chatbotbox")
-	const user_input = fm.chatbot.value;
-	var header1 = document.getElementById('header-1');
-	var newMessage1 = document.createElement('div');
-	newMessage1.textContent = user_input;
-	
-
-	//추가 부분
-	newMessage1.className = "chat-message";
-
-	if (isUserMessage) {
-		newMessage1.className = "chat-message user-message";
-	} else {
-		newMessage1.className = "chat-assistant assistant-message "; // chat-assistant 스타일 추가
-	}
-
-	header1.appendChild(newMessage1);
-	isUserMessage = !isUserMessage;
-	//요기까지
-
-	alert("1");
-	alert(user_input);
-	messages.push({"role":"user","content":user_input});
-	// var csrf_token = $("[name=csrfmiddlewaretoken]").val();
-	messages1 = {
-		user_input: user_input,
-		messages:messages
-	};
-	messages2=JSON.stringify(messages1);
-	alert(messages2);
-    
-    $.ajax({
-		url: "/je/service/chatbot_back11/", 
-		type:"post",
-		contentType: "application/json; charset=utf-8",
-        dataType: "json",
-        data :messages2 ,
-		success: function(data) {
-			alert("33");
-			alert(data["assistant_content"])
-			//alert(data["user_input"])
-			//alert(data["assistant_content"])
-    		messages.push({"role":"assistant", "content":data["assistant_content"]})
-			// 새로운 메시지를 생성하고 추가
-
-			var newMessage2 = document.createElement('div');
-			newMessage2.textContent = data["assistant_content"];
-
-			if (isUserMessage) {
-				newMessage2.className = "chat-message user-message";
-			} else {
-				newMessage2.className = "chat-assistant assistant-message"; // chat-assistant 스타일 추가
-			}
-			header1.appendChild(newMessage2);
-			isUserMessage = !isUserMessage;
-
-
-=======
->>>>>>> 71abc6b6993981f6450564ce6cfcd43e436de238
 
 
    
@@ -208,23 +97,6 @@ function cc(){
 
 
 <body>
-<<<<<<< HEAD
-
-<div class="chat-container" id="header-1" >
-	<!-- 사용자 메시지를 표시할 컨테이너 -->
-	챗봇 서비스입니다!
-
-</div>
-<div class="chat-input">
-<form action="#" id = "chatbotbox" method ="post" class="chat-input-container">
-	{% csrf_token%}
-대화를 입력해주세요: <input type="text" name="question" id="chatbot" class="chat-input-text">
-
-</form>
-<button onclick="cc()"  >전송해주세요</button>
-</div>
-</body>
-=======
    <div class="chat1" >
       <div class="chat-title">
         <h1>ai챗봇 서비스</h1>
@@ -239,4 +111,3 @@ function cc(){
 </body>
 
 
->>>>>>> 71abc6b6993981f6450564ce6cfcd43e436de238
