@@ -16,7 +16,7 @@ def mypage(request):
     mem_id = request.session.get('ses_mem_id', None)
     boo_mem = Member.objects.get(mem_id=mem_id)
 
-    return render(request, 'mainapp/mypage.html', {
+    return render(request, 'mainapp/signup.html', {
         "mem_id": mem_id,
         "boo_mem": boo_mem,
     })

@@ -63,4 +63,11 @@ urlpatterns = [
     path('temp3/', views.temptemp),
     ### mainapp (http://127.0.0.1:8000/mg/save2/)
     path('save2/', views.save2_reservation, name='save2_reservation'),
+    
+    
+    
+    ## 아래 경로는 종민이 추가한거임
+    path('chatbot_frame/', views.chatbot_frame),
 ]
+    
+

@@ -35,7 +35,7 @@ urlpatterns = [
     ### mainapp (http://127.0.0.1:8000/mygjlist/)
     path('mygjlist/', views.mygjlist),
     ### mainapp (http://127.0.0.1:8000/mypage/)
-    path('mypage/', views.mypage),
+    path('signup/', views.mypage),
     ### mainapp (http://127.0.0.1:8000/hwsj/)
     path('hwsj/', views.hwsj),
     ### mainapp (http://127.0.0.1:8000/signup2/)

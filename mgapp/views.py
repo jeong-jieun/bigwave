@@ -298,3 +298,11 @@ def check(request):
                    'selected_qty': selected_qty,
                    'selected_schedule_id': selected_schedule_id,
                    'selected_schedule': selected_schedule,})
+    
+    
+    ## 아래는 종민이 추가한거임
+def chatbot_frame(request):
+    
+    return render(request,
+                  'mgapp/chatbot_frame.html',
+                  {})
