@@ -6,7 +6,7 @@ import openai
 from konlpy.tag import Okt
 
 def chatbot_11(input1):
-    openai.api_key = "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"
+    openai.api_key = "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"
     okt = Okt()
     gpt_prompt=[{
         "role":"system",
@@ -27,7 +27,7 @@ def chatbot_11(input1):
 
 
 def chatbot_one(input1):
-    openai.api_key = "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"
+    openai.api_key = "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"
 
     gpt_prompt=[{
         "role":"system",
@@ -46,20 +46,24 @@ def chatbot_one(input1):
     return gpt_response["choices"][0]["message"]["content"]
 
 
-def chatbot_while(input):
-    openai.api_key = "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"
+def chatbot_while(input1):
+    print("chatbot_while에 들어온 값은 ",input1)
+    openai.api_key = "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"
     messages=[{
         "role":"system",
-        "content": "당신은 관광 가이드, 20대의 상큼한 말투로 대답해줘"
+        "content": """당신은 부산을 대표하는 부산 관광 가이드, 20대의 상큼한 말투와 자신감 있는 태도로 대답해줘."""
     }]
-    print("messages는 ",messages)
-    messages.append(input[0])
-    
-    print("messages는 ",messages)
+    print("input1의 길이는 >>>>> [",len(input1),"]")
+    for i in input1:
+        messages.append(i)
+    print("chatbot.py의 messages는 ",messages)
     completion = openai.ChatCompletion.create(model="gpt-3.5-turbo",messages=messages)
-    print("2")
     assistant_content = completion.choices[0].message["content"].strip()
-    print(assistant_content)
+    #print("completion는 >>>",completion)
+    assistant_content = re.sub(r'\.', '.\n', assistant_content)
+    assistant_content = re.sub(r'\?', '?\n', assistant_content)
+    assistant_content = re.sub(r'!', '!\n', assistant_content)
+
     return assistant_content
     #print(messages)
     #print(f"GPT: {assistant_content}")

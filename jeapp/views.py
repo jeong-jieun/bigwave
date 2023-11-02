@@ -518,18 +518,19 @@ def chatbot_back11(request):
     print(">>>>>>>>>>>>>>>>>>00000000000",data.get("user_input"))
     print(">>>>>>>>>>>>>>>>>>00000000000",data.get("messages"))
     user_input = data.get("user_input")
-    print(user_input)
     messages = data.get("messages")
     
     # print(">>>>>>>>>>>>>>>>>>>>>>>",user_content)
     assistant_content = chatbot_while(messages)
-    print("값을 받아옴")
     assistant_content1={"user_input":user_input,
                         "assistant_content":assistant_content,
                         "messages":messages,
                         "max_tokens": 1024,
-}
-    print(assistant_content1)
+                        }
+
+    
+
+    #print(assistant_content1)
     json_data = json.dumps(assistant_content1)
     print("ok 11----------->>>>>>>>")
     
