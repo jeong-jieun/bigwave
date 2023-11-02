@@ -127,12 +127,9 @@ def traffic(request):
 
 
  # 서비스
- # service.html
-def service(request):
-    #if request.method == "POST":
-        #lat = request.POST.get("lat")
-        #lon = request.POST.get("lon")
     
+# service.html
+def service(request):
     mem_id = request.session.get('ses_mem_id', None)
     boo_mem = Boo_mem.objects.filter(boo_mem1=mem_id).last()
     marinas = Marina.objects.all()
@@ -158,22 +155,6 @@ def service(request):
     
         ### 지도맵 시각화 HTML로 받아오기
         map_html = map_view.getMap()
-
-
-    return render(request,
-                  'jeapp/html/service_geo.html',
-                  {'marina_list': marinas,
-                   'service' : service,
-                   'search_result': selected_mar,
-                   'services': filtered_services,
-                   'selected_service_type': selected_service_type,
-                   'marina_list': marinas,
-                   'service' : service,
-                   'services': filtered_services,
-                   'map_html':map_html,
-                   'lat':lat,
-                   'lon':lon,})
-
 
 
     return render(request,

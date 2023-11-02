@@ -121,10 +121,7 @@ def temptemp(request):
     return render(request,
                   'mgapp/temptemp.html',
                   {})
-def index_t(request):
-    return render(request,
-                  'mgapp/index_test.html',
-                  {})
+
 def service(request):
     mem_id = request.session.get('ses_mem_id', None)
     boo_mem = None
@@ -187,12 +184,12 @@ def test(request):
         start = request.POST.get('start')
         end = request.POST.get('end')
         qty = request.POST.get('qty', '')
-        schedules = Schedule.objects.filter(sch_marina=start, sch_arrival=end)
+        schedules = Schedule.objects.filter(sch_marina=start, sch_arrival=end).order_by('sch_stime')
     elif request.method == 'GET':
         start = request.GET.get('start')
         end = request.GET.get('end')
         qty = request.GET.get('qty', '')
-        schedules = Schedule.objects.filter(sch_marina=start, sch_arrival=end)
+        schedules = Schedule.objects.filter(sch_marina=start, sch_arrival=end).order_by('sch_stime')
     return render(request,
                   'mgapp/index_test.html',
                   {"mem_list" : mem_list,
