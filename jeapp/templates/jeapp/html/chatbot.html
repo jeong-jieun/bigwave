@@ -18,13 +18,8 @@
 			padding: 0;
 		}
 		.chat-container {
-<<<<<<< HEAD
 			width: 70%;
 			height: calc(100% - 50px); /* 버튼 높이만큼 컨테이너 높이에서 빼줍니다 */
-=======
-			width: 100%;
-			height: calc(100% - 50px);
->>>>>>> 9c43042a7f3468bc1047f4a8520ab6f2f10db342
 			overflow-y: auto;
 		}
 		.chat-message {
@@ -40,12 +35,8 @@
 
 			background-color: #cce6ff;
 			text-align: left;
-<<<<<<< HEAD
 			float: left;
 
-=======
-			float: left; /* 왼쪽 정렬 */
->>>>>>> 9c43042a7f3468bc1047f4a8520ab6f2f10db342
 		}
 		.assistant-message {
 			align-self: flex-start;
@@ -60,12 +51,9 @@
 			align-items: center;
 			padding: 10px;
 			background-color: #f0f0f0;
-<<<<<<< HEAD
 			margin-right: 0;
 			text-align: left;
 			float: right;
-=======
->>>>>>> 9c43042a7f3468bc1047f4a8520ab6f2f10db342
 		}
 
 		.chat-assistant {
@@ -83,12 +71,6 @@
 			align-items: center;
 		}
 		.chat-input-text {
-<<<<<<< HEAD
-			flex: 1;
-		}
-		.chat-input-button {
-			padding: 0 10px;
-=======
             flex: 1; /* 텍스트 입력란이 나머지 공간을 모두 차지하도록 설정 */
         }
         .chat-input-button {
@@ -102,7 +84,6 @@
 				width: 500px;
 				border-radius: 0;
 			}
->>>>>>> 8786ae3e4cb8bdfab47036d21e8604ac10a59b5e
 		}
 	</style>
 	
@@ -139,8 +120,8 @@ function cc(){
 	isUserMessage = !isUserMessage;
 	//요기까지
 
-	alert("1");
-	alert(user_input);
+	//alert("1");
+	//alert(user_input);
 	messages.push({"role":"user","content":user_input});
 	// var csrf_token = $("[name=csrfmiddlewaretoken]").val();
 	messages1 = {
@@ -148,7 +129,7 @@ function cc(){
 		messages:messages
 	};
 	messages2=JSON.stringify(messages1);
-	alert(messages2);
+	//alert(messages2);
     
     $.ajax({
 		url: "/je/service/chatbot_back11/", 
@@ -157,8 +138,8 @@ function cc(){
         dataType: "json",
         data :messages2 ,
 		success: function(data) {
-			alert("33");
-			alert(data["assistant_content"])
+			//alert("33");
+			//alert(data["assistant_content"])
 			//alert(data["user_input"])
 			//alert(data["assistant_content"])
     		messages.push({"role":"assistant", "content":data["assistant_content"]})

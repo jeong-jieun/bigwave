@@ -255,10 +255,10 @@
         //아래 function은 카테고리 변환
         function updateServiceType(serviceValue) {
             document.getElementById("serviceType").value = serviceValue;
-            alert(serviceValue)
+            //alert(serviceValue)
             option_val = document.getElementById("searchForm");
             var option_val = option_val.search_option.value;
-            alert(option_val)
+            //alert(option_val)
             url = "/je/service/?service_type="+serviceValue;
             url = url + "&search_option=" + option_val
             location.href = url
@@ -411,7 +411,7 @@
       function busNumber(p_lat, p_lng, p_busno){
          
 
-         alert(p_lat + " / " + p_lng + " / " + p_busno);
+         //alert(p_lat + " / " + p_lng + " / " + p_busno);
 
          $.ajax({
             url: "/je/service/bus_min/", 
