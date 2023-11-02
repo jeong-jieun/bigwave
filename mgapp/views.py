@@ -188,12 +188,12 @@ def test(request):
         start = request.POST.get('start')
         end = request.POST.get('end')
         qty = request.POST.get('qty', '')
-        schedules = Schedule.objects.filter(sch_marina=start, sch_arrival=end)
+        schedules = Schedule.objects.filter(sch_marina=start, sch_arrival=end).order_by('sch_stime')
     elif request.method == 'GET':
         start = request.GET.get('start')
         end = request.GET.get('end')
         qty = request.GET.get('qty', '')
-        schedules = Schedule.objects.filter(sch_marina=start, sch_arrival=end)
+        schedules = Schedule.objects.filter(sch_marina=start, sch_arrival=end).order_by('sch_stime')
     return render(request,
                   'mgapp/index_test.html',
                   {"mem_list" : mem_list,
@@ -238,9 +238,14 @@ def save2_reservation(request):
             """
         return HttpResponse(msg)
 
-    except Exception as e:
-        error_msg = f"Error: {str(e)}"
-        return HttpResponse(error_msg)
+    except:
+        msg = """
+            <script type='text/javascript'>
+                alert('로그인 후, 예약해주세요.');
+                history.go(-1)
+            </script>
+        """
+        return HttpResponse(msg)
     
 def check(request):
     schedules = []
