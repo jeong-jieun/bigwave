@@ -171,13 +171,41 @@ def index2(request):
     return render(request,
                   'mgapp/index2.html',
                   {})
+def test2(request):
+    mem_id = request.session.get('ses_mem_id', None)
+    boo_mem = None
+    schedules = []
+    mem_list = Member.objects.all()
+    marinas = Marina.objects.all()
+
+    if mem_id is not None:
+        boo_mem = Boo_sch.objects.filter(book_mem=mem_id).first()    
+    if request.method == 'POST':
+        start = request.POST.get('start')
+        end = request.POST.get('end')
+        qty = request.POST.get('qty', '')
+        schedules = Schedule.objects.filter(sch_marina=start, sch_arrival=end).order_by('sch_stime')
+    elif request.method == 'GET':
+        start = request.GET.get('start')
+        end = request.GET.get('end')
+        qty = request.GET.get('qty', '')
+        schedules = Schedule.objects.filter(sch_marina=start, sch_arrival=end).order_by('sch_stime')
+    return render(request,
+                  'mgapp/index_test2.html',
+                  {"mem_list" : mem_list,
+                   'schedule': schedules,
+                   'marina_list': marinas,
+                   'selected_start': start,
+                   'selected_end': end,
+                   'qty' : qty,
+                   'boo_mem': boo_mem,})
 def test(request):
     mem_id = request.session.get('ses_mem_id', None)
     boo_mem = None
     schedules = []
     mem_list = Member.objects.all()
     marinas = Marina.objects.all()
-    start, end = None, None
+
     
     if mem_id is not None:
         boo_mem = Boo_sch.objects.filter(book_mem=mem_id).first()    
