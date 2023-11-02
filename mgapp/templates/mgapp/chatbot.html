@@ -23,7 +23,7 @@
 			overflow-y: auto;
 		}
 		.chat-message {
-			width: 95%;
+			width: 70%;
 			margin: 10px;
 			padding: 10px;
 			border-radius: 10px;
@@ -33,17 +33,21 @@
 			align-self: flex-end;
 			background-color: #cce6ff;
 			text-align: left;
+			float: left;
+
 		}
 		.assistant-message {
 			align-self: flex-start;
 			background-color: #f0f0f0;
 			margin-right: 0;
-			text-align: RIGHT;
-		}
+			text-align: left;
+			float: right;
 
+		}
+		/*assistant-message은 메세지, chat-assistant은 메세지박스*/
 		.chat-assistant {
 			border: 2px ;
-			width: 95%;
+			width: 70%;
 			margin: 10px;
 			padding: 10px;
 			border-radius: 10px;
@@ -111,8 +115,8 @@ function cc(){
 	isUserMessage = !isUserMessage;
 	//요기까지
 
-	alert("1");
-	alert(user_input);
+	//alert("1");
+	//alert(user_input);
 	messages.push({"role":"user","content":user_input});
 	// var csrf_token = $("[name=csrfmiddlewaretoken]").val();
 	messages1 = {
@@ -120,7 +124,7 @@ function cc(){
 		messages:messages
 	};
 	messages2=JSON.stringify(messages1);
-	alert(messages2);
+	//alert(messages2);
     
     $.ajax({
 		url: "/je/service/chatbot_back11/", 
@@ -129,25 +133,28 @@ function cc(){
         dataType: "json",
         data :messages2 ,
 		success: function(data) {
-			alert("33");
-			alert(data["assistant_content"])
-			//alert(data["user_input"])
-			//alert(data["assistant_content"])
-    		messages.push({"role":"assistant", "content":data["assistant_content"]})
-			// 새로운 메시지를 생성하고 추가
+			// 메시지 추가
+			messages.push({ "role": "assistant", "content": data["assistant_content"] });
 
-			var newMessage2 = document.createElement('div');
-			newMessage2.textContent = data["assistant_content"];
+            // 받은 메시지를 HTML에 추가
+            var header1 = document.getElementById('header-1');
+            var newMessage2 = document.createElement('div');
 
-			if (isUserMessage) {
-				newMessage2.className = "chat-message user-message";
-			} else {
-				newMessage2.className = "chat-assistant assistant-message"; // chat-assistant 스타일 추가
-			}
-			header1.appendChild(newMessage2);
-			isUserMessage = !isUserMessage;
+            var formattedContent = data["assistant_content"].split("\n");
+            for (var i = 0; i < formattedContent.length; i++) {
+                var newLine = document.createElement('div');
+                newLine.textContent = formattedContent[i];
+                newMessage2.appendChild(newLine);
+            }
 
+            if (isUserMessage) {
+                newMessage2.className = "chat-message user-message";
+            } else {
+                newMessage2.className = "chat-assistant assistant-message";
+            }
 
+            header1.appendChild(newMessage2);
+            isUserMessage = !isUserMessage;
 
 
 		}, beforeSend:function(){

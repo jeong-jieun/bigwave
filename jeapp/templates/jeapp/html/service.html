@@ -18,6 +18,8 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.118.2">
 
+
+
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/album/">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -360,7 +362,7 @@
                 <input type="hidden" name="lon" id="lon" class="lon" />
             </div>
               <select class="form-select" name="search_option" aria-label="Default select example" onchange="submitForm()" style="padding: 2%;">
-                <option value="" {% if not search_result %}selected{% endif %}>선착장을 검색하세요</option>
+                <option value="1" {% if not search_result %}selected{% endif %}>선착장을 검색하세요</option>
                 {% for row in marina_list %}
                   <option value="{{row.mar_nm}}" {% if row.mar_nm == search_result %} selected{% endif %}>{{row.mar_nm}}</option>
                 {% endfor %}
@@ -386,19 +388,17 @@
       <label class="ttab" for="tab03"style="border-radius: 25px;"><i class="fas fa-map-signs"></i><div> 관광명소</div></label>
 
       <input class="nav-link" type="radio" name="tabmenu" id="tab04" value="교통정보" 
-        {% if selected_service_type == '교통정보' %}checked{% endif %} 
-        onclick="updateServiceType('교통정보')">
-      <label class="ttab" for="tab04"style="border-radius: 25px;"><i class="fas fa-bus"></i><div> 교통정보</div></label>
+        {% if selected_service_type == '교통정보' %}checked{% endif %}
+        onclick="tarffic_info()">
+        <label class="ttab" for="tab04"style="border-radius: 25px;"><i class="fas fa-bus"></i><div> 교통정보</div></label>
     </div>
-      {% if selected_service_type == "교통정보" %}
-        <h1>교통정보 페이지입니다.</h1>
-      {% endif %}
       {% if search_result == None %}
       <section class="py-5 text-center container">
         <div class="row py-lg-5">
             <h1>선착장을 선택하여 주세요<i class="far fa-laugh-wink"></i></h1>
         </div>
       </section>
+        
       {% else %}
       <div class="album py-3 bg-body-tertiary">
         <div class="container">
@@ -444,9 +444,9 @@
     });
     </script> 
     <script>
-      function updateServiceType(serviceValue) {
-        document.getElementById("serviceType").value = serviceValue;
-        submitForm();
+      function showIframe() {
+        // 클릭 시 아이프레임 컨테이너를 보이도록 설정
+        document.getElementById("iframeContainer").style.display = "block";
       }
       wow = new WOW();
       wow.init();
@@ -474,7 +474,7 @@
     });
 
       // 페이지 로드 시 자동으로 위치 정보 요청
-      window.onload = function() {
+      $(document).ready(function() {
         if (navigator.geolocation) {
           // GeoLocation을 이용해서 접속 위치를 얻어옵니다
           navigator.geolocation.getCurrentPosition(function(position) {
@@ -487,9 +487,10 @@
             $('searchForm').submit(); // 'yourFormId'를 실제 폼 ID로 대체하세요
           });
         }
-      }
+      });
 
       function submitForm() {
+        
         document.getElementById("searchForm").submit();
       }
       $.scrollIt({
@@ -507,8 +508,54 @@
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
+    {% comment %} 아래 script쪽은 종민이 추가한 거 {% endcomment %}
+    <script>
+      
+      
+      function tarffic_info(){
+        location.href = "/je/service/practice";
+        
+        alert("test");
+        //$("#traffic").load(`/je/service/f_bus_station`,)     
+      }
+
+      </script>
+      <div id = "traffic"></div>
     
+      </script>
+
+
+
+ 
+
+
+    {% comment %} <script>
+      navigator.geolocation.getCurrentPosition(function(position) {
+        map = document.getElementById("map")
+        var lat = position.coords.latitude;
+        var lon = position.coords.longitude;
     
+        console.log("lat:", lat, "lon:", lon);
+    
+        var formData = new FormData();
+        formData.append("lat", lat);
+        formData.append("lon", lon);
+    
+        fetch("{% url 'search_action' %}", {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            // 서버에서 반환한 응답을 처리합니다.
+          
+
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+  </script> {% endcomment %}
     <script src="{% static 'mgapp/js/jquery-3.4.1.min.js'%}"></script>
     <script src="{% static 'mgapp/js/popper.min.js'%}"></script>
     <script src="{% static 'mgapp/js/bootstrap.min.js'%}"></script>

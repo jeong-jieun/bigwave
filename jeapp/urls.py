@@ -24,10 +24,8 @@ urlpatterns = [
     path('service_geo/', views.service_geo, name='service_geo'),
     ### 서비스페이지 (http://127.0.0.1:8000/je/service2)
     path('service/', views.service, name='search_action'),
-    ### 서비스페이지 (http://127.0.0.1:8000/je/service)
-    path('service/', views.service, name='search_action'),
     ### 서비스페이지 (http://127.0.0.1:8000/je/fservice)
-    path('fservice/', views.fservice, name='search_action1'),
+    path('fservice/', views.fservice),
     ### 로그인페이지 (http://127.0.0.1:8000/je/login)
     path('login/', views.login),
     ### 결제확인페이지 (http://127.0.0.1:8000/je/checkout)
@@ -59,4 +57,13 @@ urlpatterns = [
     # # main 페이지(http://127.0.0.1:8000/je/service/bus_min/)
     path('service/chatbotiframe/', views.iframe),
     # # main 페이지(http://127.0.0.1:8000/je/service/chatbotiframe/)
+    
+    ##별개의 페이지
+    path('service/geogeo/', views.geo),
+    # # main 페이지(http://127.0.0.1:8000/je/service/geogeo/)
+    path('service/practice1/', views.practice1, name='search_action4'),
+    # # main 페이지(http://127.0.0.1:8000/je/service/geogeo/)
+    
+    
+    
 ]
