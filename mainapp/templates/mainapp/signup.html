@@ -35,7 +35,16 @@
     <script src="{% static 'mgapp/css/assets/js/color-modes.js'%}"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/n pm/@docsearch/css@3">
     <link href="{% static 'mgapp/css/assets/dist/css/bootstrap.min.css'%}" rel="stylesheet">
+
+    <style>
+      tbody {
+        width: 100%;
+        /* border: 1px solid silver; */
+      }
+
+    </style>
 </head>
+
 
     <body>
       <div class="site-mobile-menu site-navbar-target">
@@ -74,50 +83,61 @@
     
     <br>
       <br>
-      <nav>
-        <div class="mx-auto">
-          <span>마이페이지</span>
-          <ul class="menu-box">
-  
-            <li><a href="/mypage">회원 정보</a></li>
-            <li><a href="/mygjlist/">예약 내역</a></li>
 
-          </ul>
-        </div>
-      </nav>
       <div class="col-12">
         <center>
-        <form class="form" id="scheduleForm" method="GET" action="/mg/check/" style="width: 80%;">
+        <form class="form" id="scheduleForm" method="post" action="#" style="width: 70%;">
+          {% csrf_token %}
           <h1 style="text-align: center;">회원정보</h1>
           <table  class="rwd-table">
             <tbody>
               <tr>
-                <th class="small_1">선택하기</th>
-                <th class="small_1">도착지</td>
+                <th class="small_1">/</th>
+                <th class="small_1">회원정보</td>
 
               </tr>
-              {% if schedule %}
-              {% for row3 in schedule %}
               <tr class="KOTRA-fontsize-80">
-                <td><input type="radio" name="selected_schedule" value="{{ row3.sch_no }}"></td>
-                <td><p2 style="font-size: 25px;font-weight: 700;">1</p2></td>
-                <td class="small_1"><p2  class="small_1" >{{ row3.sch_marina }}</p2><br><p style="font-size: 18px;">{{ row3.sch_stime }}</p></td>
-                <td class="small_1"><p2  class="small_1" >{{ row3.sch_arrival }}</p2><br><p style="font-size: 18px;">{{ row3.sch_stime }}</p></td>
+                <td class="small_1"><p style="font-size: 15px;">아이디</p></td>
+                <td class="small_1"><p style="font-size: 15px;">a001</p></td>
               </tr>
-              {% endfor %}
-              {% else %}
-              <tr>
-                <td colspan="4" style="height: 50px; width: 100%;">상세 항목을 선택해 주세요</td>
+              <tr class="KOTRA-fontsize-80">
+                <td class="small_1"><p style="font-size: 15px;">비밀번호</p></td>
+                <td class="small_1"> <input style="width: 50%;" type="password" placeholder="********"> </td>
               </tr>
-              {% endif %}
+              <tr class="KOTRA-fontsize-80">
+                <td class="small_1"><p style="font-size: 15px;">비밀번호 확인</p></td>
+                <td class="small_1"> <input style="width: 50%;" type="password" placeholder="********"> </td>
+              </tr>
+              <tr class="KOTRA-fontsize-80">
+                <td class="small_1"><p style="font-size: 15px;">이름</p></td>
+                <td class="small_1"> <p style="font-size: 15px;">{{boo_mem.mem_name}}</p> </td>
+              </tr>
+              <tr class="KOTRA-fontsize-80">
+                <td class="small_1"><p style="font-size: 15px;">생년월일</p></td>
+                <td class="small_1"> <p style="font-size: 15px;">{{boo_mem.mem_regno1}}</p> </td>
+              </tr>
+              <tr class="KOTRA-fontsize-80">
+                <td class="small_1"><p style="font-size: 15px;">휴대폰번호</p></td>
+                <td class="small_1"> <input style="width: 50%;" type="password" placeholder="{{boo_mem.mem_hp}}"> </td>
+              </tr>
+              <tr class="KOTRA-fontsize-80">
+                <td class="small_1"><p style="font-size: 15px;">이메일</p></td>
+                <td class="small_1"> <input style="width: 50%;" type="password" placeholder="{{boo_mem.mem_mail}}"> </td>
+              </tr>
+              <tr class="KOTRA-fontsize-80">
+                <td class="small_1"><p style="font-size: 15px;">주소</p></td>
+                <td class="small_1"> <input style="width: 50%;" type="password" placeholder="{{boo_mem.mem_add1}}-{{boo_mem.mem_add2}}"> </td>
+              </tr>
+
               
-              <tr class="KOTRA-fontsize-80" {% if not schedule %}style="display: none;"{% endif %}>
-                <input type="hidden" name="qty" value="{{ qty }}">
-                <td colspan="4"><input type="submit" value="예약" style="height: 50px; width: 100%;"></td>
-              </tr>
             
             </tbody>
           </table>
+          <div class="tal_c">
+            <input type="button" style=" background: #213c5a; color: #fff; display: inline-block; text-align: center; height: 44px; line-height: 42px; padding: 0 10px;" value="돌아가기" onclick="goBack()">
+            <input type="button" style=" background: #213c5a; color: #fff; display: inline-block; text-align: center; height: 44px; line-height: 42px; padding: 0 10px;" value="수정완료">
+          </div>
+
     
         </form>
       </center>
@@ -135,5 +155,14 @@
     
       <script src="{% static 'mgapp/js/typed.js'%}"></script>
       <script src="{% static 'mgapp/js/custom.js'%}"></script>
+
+      <script>
+        //취소하기
+        function goBack(){
+          fm = document.getElementById("scheduleForm")
+          fm.action = "/";
+          fm.submit();
+        }
+      </script>
     
     </body>
