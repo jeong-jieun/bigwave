@@ -190,15 +190,24 @@ def test2(request):
         end = request.GET.get('end')
         qty = request.GET.get('qty', '')
         schedules = Schedule.objects.filter(sch_marina=start, sch_arrival=end).order_by('sch_stime')
-    return render(request,
-                  'mgapp/index_test2.html',
-                  {"mem_list" : mem_list,
-                   'schedule': schedules,
-                   'marina_list': marinas,
-                   'selected_start': start,
-                   'selected_end': end,
-                   'qty' : qty,
-                   'boo_mem': boo_mem,})
+    if mem_id is None:
+        msg = """
+                <script type='text/javascript'>
+                    alert("로그인 후, 예약해주세요.");
+                    location.href='/login2/'
+                </script>
+            """
+        return HttpResponse(msg)
+    else:
+        return render(request,
+                    'mgapp/index_test2.html',
+                    {"mem_list" : mem_list,
+                    'schedule': schedules,
+                    'marina_list': marinas,
+                    'selected_start': start,
+                    'selected_end': end,
+                    'qty' : qty,
+                    'boo_mem': boo_mem,})
 def test(request):
     mem_id = request.session.get('ses_mem_id', None)
     boo_mem = None

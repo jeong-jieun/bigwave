@@ -375,22 +375,22 @@
       <input class="nav-link" type="radio" name="tabmenu" id="tab01" value="음식점" 
         {% if selected_service_type == '음식점' %}checked{% endif %} 
         onclick="updateServiceType('음식점')">
-      <label class="ttab" for="tab01"style="border-radius: 25px;"><i class="fas fa-hamburger"></i><div> 음식점</div></label>
+      <label class="ttab" for="tab01"style="border-radius: 25px;"><i class="fas fa-hamburger"></i><div>음식점</div></label>
 
       <input class="nav-link" type="radio" name="tabmenu" id="tab02" value="카페" 
         {% if selected_service_type == '카페' %}checked{% endif %} 
         onclick="updateServiceType('카페')">
-      <label class="ttab" for="tab02"style="border-radius: 25px;"><i class="fas fa-mug-hot"></i><div> 카페</div></label>
+      <label class="ttab" for="tab02"style="border-radius: 25px;"><i class="fas fa-mug-hot"></i><div>카페</div></label>
 
       <input class="nav-link" type="radio" name="tabmenu" id="tab03" value="관광명소" 
         {% if selected_service_type == '관광명소' %}checked{% endif %} 
         onclick="updateServiceType('관광명소')">
-      <label class="ttab" for="tab03"style="border-radius: 25px;"><i class="fas fa-map-signs"></i><div> 관광명소</div></label>
+      <label class="ttab" for="tab03"style="border-radius: 25px;"><i class="fas fa-map-signs"></i><div>관광 명소</div></label>
 
       <input class="nav-link" type="radio" name="tabmenu" id="tab04" value="교통정보" 
         {% if selected_service_type == '교통정보' %}checked{% endif %}
         onclick="tarffic_info()">
-        <label class="ttab" for="tab04"style="border-radius: 25px;"><i class="fas fa-bus"></i><div> 교통정보</div></label>
+        <label class="ttab" for="tab04"style="border-radius: 25px;"><i class="fas fa-bus"></i><div>교통 정보</div></label>
     </div>
       {% if search_result == None %}
       <section class="py-5 text-center container">
