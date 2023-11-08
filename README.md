@@ -22,8 +22,10 @@
  - 팀원5 : 하유현 - 
 ### ⚙️ 개발 스택(skill)
 웹:
-<img src="https://img.shields.io/badge/-django-092E20?style=flat&logo=django&logoColor=white"/>
--#092E20,#1572B6,#7952B3,#F7DF1E,#412991,#FFCD00,#4479A1,#527FFF,#FF9900
+-<img src="https://img.shields.io/badge/-django-092E20?style=flat&logo=django&logoColor=white"/>,<img src="https://img.shields.io/badge/-css3-1572B6?style=flat&logo=css&logoColor=white"/>,
+<img src="https://img.shields.io/badge/-bootstrap-#7952B3?style=flat&logo=bootstrap&logoColor=white"/>,<img src="https://img.shields.io/badge/-javascript-F7DF1E?style=flat&logo=javascript&logoColor=white"/>,
+<img src="https://img.shields.io/badge/-HTML5-E34F26?style=flat&logo=html&logoColor=white"/>,<img src="https://img.shields.io/badge/-kakao-FFCD00?style=flat&logo=kakao&logoColor=white"/>,
+
 
 ## 📌 주요 기능
 #### 로그인 - <a href="https://github.com/chaehyuenwoo/SpringBoot-Project-MEGABOX/wiki/%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EC%86%8C%EA%B0%9C(Login)" >상세보기 - WIKI 이동</a>
