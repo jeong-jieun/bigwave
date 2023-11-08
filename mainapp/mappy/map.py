@@ -27,7 +27,7 @@ class Service_Map_View:
         arr_icon = CustomIcon(icon_image='mainapp/static/mainapp/img/arr.png', icon_size=(60, 60))
         
                
-        # 회원 위치 마커 표시
+        # 선착장 위치 마커 표시
         folium.Marker([self.selected_data['선착장위도'].mean(), self.selected_data['선착장경도'].mean()],
                       icon=arr_icon 
                       ).add_to(self.service_map)

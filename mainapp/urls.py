@@ -23,6 +23,10 @@ urlpatterns = [
     ### mainapp (http://127.0.0.1:8000/mygjlist/)
     path('geo/', views.geo),
     ### mainapp (http://127.0.0.1:8000/mygjlist/)
+    path('naver_login_after/', views.naver_login_after),
+    ### mainapp (http://127.0.0.1:8000/mygjlist/)
+    path('naver_login/', views.naver_login),
+    ### mainapp (http://127.0.0.1:8000/mygjlist/)
     path('main/', views.main),
     ### mainapp (http://127.0.0.1:8000/mygjlist/)
     path('logout/', views.logout),

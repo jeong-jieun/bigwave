@@ -284,3 +284,31 @@ def index(request):
                     "mem_id": mem_id,
                     "boo_mem": boo_mem,})
     
+# naver_login.html 처리
+def naver_login(request):
+  
+    return render(request,
+                  'mainapp/naver_login.html',
+                  {})
+    
+### loginafter 로그인 후 페이지
+def naver_login_after(request):
+    if request.method == 'POST':
+        mem_id = request.POST.get("id", "")
+        mem_name = request.POST.get("name", "")
+        
+        # 이후 필요한 작업 수행
+        request.session["ses_mem_id"] = mem_id
+        request.session["ses_mem_name"] = mem_name
+        
+        msg = f"""
+        <script type="text/javascript">
+            alert('{mem_id} {mem_name}님 정상적으로 로그인 되었습니다.');
+            location.href='/';
+        </script>
+        """
+        return HttpResponse(msg)
+    
+    
+    
+    
