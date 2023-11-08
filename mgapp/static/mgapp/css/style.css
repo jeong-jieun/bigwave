@@ -1421,7 +1421,7 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
 }
 
 .rwd-table tr:first-child {
-  background: linear-gradient(to left, #3F72AF, #b4caf2);;
+  background: #3F72AF;
   color: #fff;
 }
 
