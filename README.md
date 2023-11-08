@@ -28,11 +28,11 @@
  
 ### ⚙️ 개발 스택(skill)
 툴:
--<img src="https://img.shields.io/badge/-notion-000000?style=flat&logo=notion&logoColor=white"/>,<img src="https://img.shields.io/badge/-visualstudiocode-512BD4?style=flat&logo=vscode&logoColor=white"/>
+<img src="https://img.shields.io/badge/-notion-000000?style=flat&logo=notion&logoColor=white"/>,<img src="https://img.shields.io/badge/-visualstudiocode-512BD4?style=flat&logo=vscode&logoColor=white"/>
 <br>
 
 웹:
--<img src="https://img.shields.io/badge/-django-092E20?style=flat&logo=django&logoColor=white"/>,<img src="https://img.shields.io/badge/-css3-1572B6?style=flat&logo=css&logoColor=white"/>,
+<img src="https://img.shields.io/badge/-django-092E20?style=flat&logo=django&logoColor=white"/>,<img src="https://img.shields.io/badge/-css3-1572B6?style=flat&logo=css&logoColor=white"/>,
 <img src="https://img.shields.io/badge/-bootstrap-7952B3?style=flat&logo=bootstrap&logoColor=white"/>,<img src="https://img.shields.io/badge/-javascript-F7DF1E?style=flat&logo=javascript&logoColor=white"/>,
 <img src="https://img.shields.io/badge/-HTML5-E34F26?style=flat&logo=html&logoColor=white"/>,<img src="https://img.shields.io/badge/-kakao-FFCD00?style=flat&logo=kakao&logoColor=white"/>,
 <img src="https://img.shields.io/badge/-aws-232F3E?style=flat&logo=aws&logoColor=white"/>,<img src="https://img.shields.io/badge/-mysql-4479A1?style=flat&logo=mysql&logoColor=white"/>,
@@ -40,7 +40,7 @@
 <br>
 
 분석:
--<img src="https://img.shields.io/badge/-python-3776AB?style=flat&logo=python&logoColor=white"/>,<img src="https://img.shields.io/badge/-tableau-E97627?style=flat&logo=tableau&logoColor=white"/>,
+<img src="https://img.shields.io/badge/-python-3776AB?style=flat&logo=python&logoColor=white"/>,<img src="https://img.shields.io/badge/-tableau-E97627?style=flat&logo=tableau&logoColor=white"/>,
 <img src="https://img.shields.io/badge/-folium-77B829?style=flat&logo=folium&logoColor=white"/>,<img src="https://img.shields.io/badge/-qgis-589632?style=flat&logo=qgis&logoColor=white"/>,
 <img src="https://img.shields.io/badge/-scikitlearn-F7931E?style=flat&logo=scikit&logoColor=white"/>,<img src="https://img.shields.io/badge/-selenium-43B02A?style=flat&logo=tableau&logoColor=white"/>,
 <img src="https://img.shields.io/badge/-googlecolab-F9AB00?style=flat&logo=googlecolab&logoColor=white"/>
