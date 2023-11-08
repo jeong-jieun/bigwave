@@ -263,7 +263,11 @@
 				<form id="fm" name="input-form" method="post" action="#"> 
 				{% csrf_token %}
 				<fieldset>
+<<<<<<< HEAD
 					<div class="col-sm-2" style="margin-right: 200px;">
+=======
+					<div class="col-sm-3">
+>>>>>>> 1185bdeae9c43574238b87ec8e2f100d86963ee5
 						
 						<legend style="font-size: 18px;"><h3>[예약확인]</h3></legend>
 						* 예약자ID : <span style="font-size: 20px;">{{boo_mem.boo_mem1.mem_id}}</span></br>
@@ -274,7 +278,8 @@
 						* 승차 시간 : <span style="font-size: 20px;">{{boo_mem.boo_sch1.sch_stime}}</span></br>
 						* 하차 시간 : <span style="font-size: 20px;">{{boo_mem.boo_sch1.sch_etime}} </span></br>
 					</div>
-						<div class="col-sm-2"><img style="width: 100%;" src="data:image/png;base64,{{ get_qr }}" alt="QR Code"></div>
+					<div class="col-sm-2"></div>
+						<center><div class="col-sm-2"><img style="width: 100%;" src="data:image/png;base64,{{ get_qr }}" alt="QR Code"></div></center>
 				</fieldset>
 			  </div>
 			</div>

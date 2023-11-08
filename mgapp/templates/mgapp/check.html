@@ -280,7 +280,7 @@ margin-bottom: 5.5rem!important;
 			  <div class="panel-heading" style="color: black;">예약 상세</div>
 
 			</div>      
-            <form name="input-form" action="{% url 'save_reservation' %}" method="post"> 
+            <form id="fm" name="input-form" action="#" method="post"> 
                <fieldset>
                <div class="gap30"></div>
                   <div class="box2" style="background-color: white;">
@@ -341,8 +341,8 @@ margin-bottom: 5.5rem!important;
          
                   <div class="gap50"></div>
                   <div class="tal_c">
-                     <button type="submit" class="btn_large btn_blue_dark val_m"><b>결제</b></button>   
-                     <button onclick="goBack()" class="btn_large btn_blue_dark val_m"><b>취소</b></button>
+                     <input type="button" onclick="gogo()" class="btn_large btn_blue_dark val_m" value="결제">
+                     <input type="button" onclick="goBack()" class="btn_large btn_blue_dark val_m" value="취소">
                   </div>
                </fieldset>
             </form>
@@ -352,6 +352,11 @@ margin-bottom: 5.5rem!important;
    </div>
     
     <script>
+         function gogo(){
+            fm = document.getElementById("fm");
+            fm.action = "/je/save_reservation/";
+            fm.submit();
+      }
         //취소하기
         function goBack(){
             history.go(-1);
