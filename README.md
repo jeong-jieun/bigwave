@@ -36,7 +36,7 @@
 <img src="https://img.shields.io/badge/-bootstrap-7952B3?style=flat&logo=bootstrap&logoColor=white"/>,<img src="https://img.shields.io/badge/-javascript-F7DF1E?style=flat&logo=javascript&logoColor=white"/>,
 <img src="https://img.shields.io/badge/-HTML5-E34F26?style=flat&logo=html&logoColor=white"/>,<img src="https://img.shields.io/badge/-kakao-FFCD00?style=flat&logo=kakao&logoColor=white"/>,
 <img src="https://img.shields.io/badge/-aws-232F3E?style=flat&logo=aws&logoColor=white"/>,<img src="https://img.shields.io/badge/-mysql-4479A1?style=flat&logo=mysql&logoColor=white"/>,
-<img src="https://img.shields.io/badge/-openai-412991?style=flat&logo=openai&logoColor=white"/>,
+<img src="https://img.shields.io/badge/-openai-412991?style=flat&logo=openai&logoColor=white"/>
 <br>
 
 분석:
