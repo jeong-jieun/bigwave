@@ -309,6 +309,46 @@ def naver_login_after(request):
         """
         return HttpResponse(msg)
     
+### mem_update 회원정보수정 후 페이지
+def mem_update(request):
+    try :
+        mem_id = request.POST.get("mem_id")
+        mem_name = request.POST.get("mem_name")
+        mem_regno1 = request.POST.get("mem_regno1")
+        mem_pass = request.POST.get("mem_pass")
+        mem_pass2 = request.POST.get("mem_pass2")
+        mem_hp = request.POST.get("mem_hp")
+        mem_mail = request.POST.get("mem_mail")
+        mem_add1 = request.POST.get("mem_add1")
+        mem_add2 = request.POST.get("mem_add1")
+
+        Member.objects.filter(mem_id = mem_id).update(mem_id=mem_id,
+                                                mem_pass=mem_pass,
+                                                mem_name=mem_name,
+                                                mem_age=mem_regno1,
+                                                mem_zip=mem_mail,
+                                                mem_add1=mem_add1,
+                                                mem_add2=mem_add2,
+                                                mem_hp=mem_hp)
+        
+    except:
+        msg = """
+            <script type='text/javascript'>
+                alert('정보를 다시 확인해주세요.');
+                history.go(-1);
+            </script>
+        """
+        return HttpResponse(msg)
+    
+    msg = """
+            <script type='text/javascript'>
+                alert('정상적으로 수정되었습니다.');
+                location.href = '/mem_view/?mem_id={}';
+            </script>
+        """.format(mem_id)
+        
+    return HttpResponse(msg)
+    
     
     
     

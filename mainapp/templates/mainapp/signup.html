@@ -98,35 +98,35 @@
               </tr>
               <tr class="KOTRA-fontsize-80">
                 <td class="small_1"><p style="font-size: 15px;">아이디</p></td>
-                <td class="small_1"><p style="font-size: 15px;">a001</p></td>
+                <td class="small_1"><p style="font-size: 15px;"><input type="text" name="mem_id" value="{{boo_mem.mem_id}}"></p></td>
               </tr>
               <tr class="KOTRA-fontsize-80">
                 <td class="small_1"><p style="font-size: 15px;">비밀번호</p></td>
-                <td class="small_1"> <input style="width: 50%;" type="password" placeholder="********"> </td>
+                <td class="small_1"> <input style="width: 50%;" name="mem_pass" type="password" placeholder="********"> </td>
               </tr>
               <tr class="KOTRA-fontsize-80">
                 <td class="small_1"><p style="font-size: 15px;">비밀번호 확인</p></td>
-                <td class="small_1"> <input style="width: 50%;" type="password" placeholder="********"> </td>
+                <td class="small_1"> <input style="width: 50%;" name="mem_pass2" type="password" placeholder="********"> </td>
               </tr>
               <tr class="KOTRA-fontsize-80">
                 <td class="small_1"><p style="font-size: 15px;">이름</p></td>
-                <td class="small_1"> <p style="font-size: 15px;">{{boo_mem.mem_name}}</p> </td>
+                <td class="small_1"> <p style="font-size: 15px;"><input type="text" name="mem_name" placeholder="{{boo_mem.mem_name}}"></p> </td>
               </tr>
               <tr class="KOTRA-fontsize-80">
                 <td class="small_1"><p style="font-size: 15px;">생년월일</p></td>
-                <td class="small_1"> <p style="font-size: 15px;">{{boo_mem.mem_regno1}}</p> </td>
+                <td class="small_1"> <p style="font-size: 15px;"><input type="text" name="mem_regno1" value="{{boo_mem.mem_regno1}}"></p> </td>
               </tr>
               <tr class="KOTRA-fontsize-80">
                 <td class="small_1"><p style="font-size: 15px;">휴대폰번호</p></td>
-                <td class="small_1"> <input style="width: 50%;" type="password" placeholder="{{boo_mem.mem_hp}}"> </td>
+                <td class="small_1"> <input style="width: 50%;" type="text" name="mem_hp" placeholder="{{boo_mem.mem_hp}}"> </td>
               </tr>
               <tr class="KOTRA-fontsize-80">
                 <td class="small_1"><p style="font-size: 15px;">이메일</p></td>
-                <td class="small_1"> <input style="width: 50%;" type="password" placeholder="{{boo_mem.mem_mail}}"> </td>
+                <td class="small_1"> <input style="width: 50%;" type="text" name="mem_mail" placeholder="{{boo_mem.mem_mail}}"> </td>
               </tr>
               <tr class="KOTRA-fontsize-80">
                 <td class="small_1"><p style="font-size: 15px;">주소</p></td>
-                <td class="small_1"> <input style="width: 50%;" type="password" placeholder="{{boo_mem.mem_add1}}-{{boo_mem.mem_add2}}"> </td>
+                <td class="small_1"> <input style="width: 50%;" type="text" name="mem_add1" placeholder="{{boo_mem.mem_add1}}">-<input type="text" name="mem_add2" placeholder="{{boo_mem.mem_add2}}"></td>
               </tr>
 
               
@@ -157,6 +157,21 @@
       <script src="{% static 'mgapp/js/custom.js'%}"></script>
 
       <script>
+        function goCreate() {
+          fm = document.getElementById("scheduleForm");
+
+          mem_id = fm.mem_id.value;
+          mem_name = fm.mem_name.value;
+          mem_pass = fm.mem_pass.value;
+          mem_pass2 = fm.mem_pass2.value;
+          mem_hp = fm.mem_hp.value;
+          mem_mail = fm.mem_mail.value;
+          mem_add1 = fm.mem_add1.value;
+          mem_add2 = fm.mem_add2.value;
+        
+          fm.action = "/mem_update/";
+          fm.submit();
+      }
         //취소하기
         function goBack(){
           fm = document.getElementById("scheduleForm")

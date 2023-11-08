@@ -20,6 +20,8 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
+    # - http://127.0.0.1:8000/mem_update/
+    path('mem_update/', views.mem_update),
     ### mainapp (http://127.0.0.1:8000/mygjlist/)
     path('geo/', views.geo),
     ### mainapp (http://127.0.0.1:8000/mygjlist/)
