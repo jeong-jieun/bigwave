@@ -22,6 +22,7 @@
  - 팀원5 : 하유현 - 
 ### ⚙️ 개발 스택(skill)
 웹:
+<img src="https://img.shields.io/badge/-django-092E20?style=flat&logo=django&logoColor=white"/>
 -#092E20,#1572B6,#7952B3,#F7DF1E,#412991,#FFCD00,#4479A1,#527FFF,#FF9900
 
 ## 📌 주요 기능
