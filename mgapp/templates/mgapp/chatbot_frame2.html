@@ -125,33 +125,37 @@ function cc(){
    isUserMessage = !isUserMessage;
    //요기까지
 
+   //alert("1");
+   //alert(user_input);
+   messages.push({"role":"user","content":user_input});
    // var csrf_token = $("[name=csrfmiddlewaretoken]").val();
    messages1 = {
       user_input: user_input,
+      messages:messages
    };
    messages2=JSON.stringify(messages1);
-
-
+   //alert(messages2);
+    
     $.ajax({
-      url: "/je/service/chatbot_back123/", 
+      url: "/je/service/chatbot_back11/", 
       type:"post",
       contentType: "application/json; charset=utf-8",
         dataType: "json",
         data :messages2 ,
       success: function(data) {
          // 메시지 추가
-         
+         messages.push({ "role": "assistant", "content": data["assistant_content"] });
+
             // 받은 메시지를 HTML에 추가
             var header1 = document.getElementById('header-1');
             var newMessage2 = document.createElement('div');
 
-            var formattedContent = data["chatbotdb"].split("\n");
+            var formattedContent = data["assistant_content"].split("\n");
             for (var i = 0; i < formattedContent.length; i++) {
                 var newLine = document.createElement('div');
                 newLine.textContent = formattedContent[i];
                 newMessage2.appendChild(newLine);
             }
-
 
             if (isUserMessage) {
                 newMessage2.className = "chat-message user-message";

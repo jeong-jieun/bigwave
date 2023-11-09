@@ -1,47 +1,46 @@
-{% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static "mainapp/css/imsi.css" %}">
-    <link rel="stylesheet" href="{% static "mainapp/bootstrap/css/bootstrap.min.css" %}">
+    <title>챗봇 채팅 형식</title>
 </head>
 <body>
-    <div class="wrapper">
-        <div class="contariner main">
-            <div class="row">
-                <div class="col-md-6 side-image">
-                    <img src="{% static "mainapp/img/see.jpg" %}" alt="">
-                    <div class="text">
-                        <p>join the community <i>- ludiflex</i></p>
-                    </div>
-                </div>
-                <div class="col-md-6 right">
-                    <div class="input-box">
-                        <header>Create account</header>
-                        <div class="input-field">
-                            <input type="text" class="input" id="email" required autocomplete="off">
-                            <label for="email">Email</label>
-                        </div>
-                        <div class="input-field">
-                            <input type="password" class="input" id="password" required autocomplete="off">
-                            <label for="password">Password</label>
-                        </div>
-                        <div class="input-field">
-                            <input type="submit" class="submit" value="sign up" required autocomplete="off">
-                            
-                        </div>
-                        <div class="signin">
-                            <span>Already gave an account?<a href="#">login</a></span>
-                        </div>
-                    </div>
-                </div>
 
-            </div>
-        </div>
+<div class="messages" id="header-1">
+    <div class="message">
+        <div class="sender">사용자</div>
+        <div class="message-text">안녕, 챗봇!</div>
     </div>
-    
+    <div class="message">
+        <div class="sender">챗봇</div>
+        <div class="message-text">안녕하세요! 오늘 어떻게 도와드릴까요?</div>
+    </div>
+</div>
+
+<script>
+    // 클래스와 ID로 메시지 div를 찾습니다
+    const messagesDiv = document.querySelector(".messages#header-1");
+
+    if (messagesDiv) {
+        // 채팅 메시지를 저장할 빈 배열을 초기화합니다
+        const chatMessages = [];
+
+        // 메시지 div 내의 각 메시지를 반복 처리합니다
+        const messageElements = messagesDiv.querySelectorAll(".message");
+        messageElements.forEach(messageElement => {
+            const sender = messageElement.querySelector(".sender").textContent;
+            const messageText = messageElement.querySelector(".message-text").textContent;
+            // 메시지를 형식화합니다
+            const formattedMessage = `${sender}: ${messageText}`;
+            chatMessages.push(formattedMessage);
+        });
+
+        // 메시지를 채팅 형식으로 결합합니다
+        const chatFormat = chatMessages.join('\n');
+        console.log(chatFormat);
+    } else {
+        console.log("채팅 메시지를 찾을 수 없습니다.");
+    }
+</script>
+
 </body>
 </html>

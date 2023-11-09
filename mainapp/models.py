@@ -88,6 +88,15 @@ class Traffic(models.Model):
         app_label = "mainapp"
         managed = False
         
+class Chatbot(models.Model):
+    request = CharField(primary_key=True, max_length=1000, null=False)
+    response = CharField(max_length=1000, null=False)
+
+    class Meta:
+        db_table = "chatbot"
+        app_label = "mainapp"
+        managed = False
+        
 
 class Boo_sch(models.Model):
     book_no = BigIntegerField(primary_key=True, null=False)

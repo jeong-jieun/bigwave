@@ -85,6 +85,15 @@ class Traffic(models.Model):
         app_label = "jeapp"
         managed = False
         
+class Chatbot(models.Model):
+    request = CharField(primary_key=True, max_length=1000, null=False)
+    response = CharField(max_length=1000, null=False)
+
+    class Meta:
+        db_table = "chatbot"
+        app_label = "jeapp"
+        managed = False
+        
 class Businfo(models.Model):
     bus_index = CharField(max_length=5, primary_key=True, null=False)
     bus_stop = CharField(max_length=5)

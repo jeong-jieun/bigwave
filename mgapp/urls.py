@@ -21,6 +21,8 @@ from . import views
 
 urlpatterns = [
     ### about (http://127.0.0.1:8000/mg/chat/)
+    path('chatbotdb/', views.chatbotdb),
+    ### about (http://127.0.0.1:8000/mg/chat/)
     path('chat/', views.chat),
     ### about (http://127.0.0.1:8000/mg/login/)
     path('booking/', views.booking),

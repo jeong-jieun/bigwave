@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Member, Marina, Schedule, Booking, Boo_sch, Boo_mem
+from .models import Member, Marina, Schedule, Booking, Boo_sch, Boo_mem, Chatbot
 from datetime import datetime
 from mainapp.qrcodepy.qrcode import Qrcode
 import qrcode
@@ -320,3 +320,12 @@ def chatbot_frame(request):
     return render(request,
                   'mgapp/chatbot_frame.html',
                   {})
+    
+def chatbotdb(request):
+    user_input = user_input = request.POST.get("user_input", "")
+    chatbotdb = Chatbot.objects.get(request=user_input)
+
+    return render(request, 'mg/chatbot_frame.html', {
+        "user_input": user_input,
+        "chatbotdb": chatbotdb,
+    })

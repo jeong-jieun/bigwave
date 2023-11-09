@@ -284,6 +284,30 @@ def index(request):
                     "mem_id": mem_id,
                     "boo_mem": boo_mem,})
     
+# index.html 처리
+def index2(request):
+    mem_id = request.session.get('ses_mem_id', None)
+    boo_mem = None
+    schedules = []
+    mem_list = Member.objects.all()
+    marinas = Marina.objects.all()
+    start, end = None, None
+    
+    if request.method == 'POST':
+        start = request.POST.get('start')
+        end = request.POST.get('end')
+    if mem_id is not None:
+        boo_mem = Boo_mem.objects.filter(boo_mem1=mem_id).first()        
+    return render(request,
+                  'mainapp/index2.html',
+                  {"mem_list" : mem_list,
+                   'schedule': schedules,
+                   'marina_list': marinas,
+                   'selected_start': start,
+                   'selected_end': end,
+                    "mem_id": mem_id,
+                    "boo_mem": boo_mem,})
+    
 # naver_login.html 처리
 def naver_login(request):
   
@@ -320,13 +344,13 @@ def mem_update(request):
         mem_hp = request.POST.get("mem_hp")
         mem_mail = request.POST.get("mem_mail")
         mem_add1 = request.POST.get("mem_add1")
-        mem_add2 = request.POST.get("mem_add1")
+        mem_add2 = request.POST.get("mem_add2")
 
         Member.objects.filter(mem_id = mem_id).update(mem_id=mem_id,
                                                 mem_pass=mem_pass,
                                                 mem_name=mem_name,
-                                                mem_age=mem_regno1,
-                                                mem_zip=mem_mail,
+                                                mem_regno1=mem_regno1,
+                                                mem_mail=mem_mail,
                                                 mem_add1=mem_add1,
                                                 mem_add2=mem_add2,
                                                 mem_hp=mem_hp)
@@ -343,12 +367,36 @@ def mem_update(request):
     msg = """
             <script type='text/javascript'>
                 alert('정상적으로 수정되었습니다.');
-                location.href = '/mem_view/?mem_id={}';
+                location.href = '/';
             </script>
         """.format(mem_id)
         
     return HttpResponse(msg)
     
+### mem_delete 회원정보 삭제하기
+def mem_delete(request):
+    try: 
+        mem_id = request.GET.get("mem_id")
+        Member.objects.filter(mem_id = mem_id).delete()
+        request.session.flush()
+
+    except:
+        msg = """
+            <script type='text/javascript'>
+                alert('다시 확인해주세요.');
+                history.go(-1);
+            </script>
+        """
+        return HttpResponse(msg)
     
+    msg = """
+            <script type='text/javascript'>
+                alert('정상적으로 삭제되었습니다.');
+                location.href = '/';
+            </script>
+        """
+        
+    return HttpResponse(msg)
+
     
     

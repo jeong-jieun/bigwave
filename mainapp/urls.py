@@ -20,6 +20,8 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
+    # - http://127.0.0.1:8000/mem_delete/
+    path('mem_delete/', views.mem_delete),
     # - http://127.0.0.1:8000/mem_update/
     path('mem_update/', views.mem_update),
     ### mainapp (http://127.0.0.1:8000/mygjlist/)
@@ -54,6 +56,8 @@ urlpatterns = [
     path('login2/', views.login2),
     ### mainapp (http://127.0.0.1:8000/imsi/)
     path('imsi/', views.imsi, name='search_action'),
+    ### mainapp (http://127.0.0.1:8000/)
+    path('2/', views.index2),
     ### mainapp (http://127.0.0.1:8000/)
     path('', views.index),
 

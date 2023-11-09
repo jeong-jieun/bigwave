@@ -22,7 +22,21 @@ class Service_Map_View:
         self.selected_data = self.data[(self.data['선착장'] == ser_mar) & (self.data['종류'] == ser_gu)]
         self.selected_data = self.selected_data.dropna(subset=['선착장위도', '선착장경도'])
 
-        self.service_map = folium.Map(location=[self.selected_data['선착장위도'].mean(), self.selected_data['선착장경도'].mean()], zoom_start=17)
+        self.service_map = folium.Map(location=[self.selected_data['선착장위도'].mean(), self.selected_data['선착장경도'].mean()], zoom_start=17, tiles = "Stamen Toner")
+        
+        self.vworld_key = 'A4C9C54A-C485-3457-B0CE-4AA3788D776F'
+        # 배경지도 타일 설정하기
+        self.layer = "Base"
+        self.tileType = "png"
+        self.tiles = f"http://api.vworld.kr/req/wmts/1.0.0/{self.vworld_key}/{self.layer}/{{z}}/{{y}}/{{x}}.{self.tileType}"
+        self.attr = "Vworld"
+
+        folium.TileLayer(
+            tiles=self.tiles,
+            attr=self.attr,
+            overlay=True,
+            control=True
+        ).add_to(self.service_map)
 
         arr_icon = CustomIcon(icon_image='mainapp/static/mainapp/img/arr.png', icon_size=(60, 60))
         

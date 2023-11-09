@@ -46,6 +46,8 @@ urlpatterns = [
     # # main 페이지(http://127.0.0.1:8000/je/service/bus_station/)
     path('service/chatbot/', views.chatbot),
     # # main 페이지(http://127.0.0.1:8000/je/service/chatbot/)
+    path('service/chatbot_back123/', views.chatbot_back123),
+    # # main 페이지(http://127.0.0.1:8000/je/service/chatbot/)
     path('service/chatbot_back11/', views.chatbot_back11),
     # # main 페이지(http://127.0.0.1:8000/je/service/chatbot_back/)
     

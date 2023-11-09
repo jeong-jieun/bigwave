@@ -88,7 +88,12 @@
         <center>
         <form class="form" id="scheduleForm" method="post" action="#" style="width: 70%;">
           {% csrf_token %}
-          <h1 style="text-align: center;">회원정보</h1>
+          
+          <div style="text-align: right;">
+            <h1 style="text-align: center;">회원정보</h1>
+            <input type="button" style=" background: #213c5a; color: #fff; display: inline-block; text-align: center; height: 44px; line-height: 42px; padding: 0 10px;" value="회원탈퇴" onclick="goDelete()">
+          </div>
+          <br>
           <table  class="rwd-table">
             <tbody>
               <tr>
@@ -98,7 +103,8 @@
               </tr>
               <tr class="KOTRA-fontsize-80">
                 <td class="small_1"><p style="font-size: 15px;">아이디</p></td>
-                <td class="small_1"><p style="font-size: 15px;"><input type="text" name="mem_id" value="{{boo_mem.mem_id}}"></p></td>
+                <td class="small_1"><p style="font-size: 15px;">{{boo_mem.mem_id}}</p><input type="hidden" name="mem_id" value="{{boo_mem.mem_id}}"></td>
+                
               </tr>
               <tr class="KOTRA-fontsize-80">
                 <td class="small_1"><p style="font-size: 15px;">비밀번호</p></td>
@@ -110,11 +116,11 @@
               </tr>
               <tr class="KOTRA-fontsize-80">
                 <td class="small_1"><p style="font-size: 15px;">이름</p></td>
-                <td class="small_1"> <p style="font-size: 15px;"><input type="text" name="mem_name" placeholder="{{boo_mem.mem_name}}"></p> </td>
+                <td class="small_1"> <p style="font-size: 15px;">{{boo_mem.mem_name}}<input type="hidden" name="mem_name" placeholder="{{boo_mem.mem_name}}"></p> </td>
               </tr>
               <tr class="KOTRA-fontsize-80">
                 <td class="small_1"><p style="font-size: 15px;">생년월일</p></td>
-                <td class="small_1"> <p style="font-size: 15px;"><input type="text" name="mem_regno1" value="{{boo_mem.mem_regno1}}"></p> </td>
+                <td class="small_1"> <p style="font-size: 15px;">{{boo_mem.mem_regno1}}<input type="hidden" name="mem_regno1" value="{{boo_mem.mem_regno1}}"></p> </td>
               </tr>
               <tr class="KOTRA-fontsize-80">
                 <td class="small_1"><p style="font-size: 15px;">휴대폰번호</p></td>
@@ -135,7 +141,7 @@
           </table>
           <div class="tal_c">
             <input type="button" style=" background: #213c5a; color: #fff; display: inline-block; text-align: center; height: 44px; line-height: 42px; padding: 0 10px;" value="돌아가기" onclick="goBack()">
-            <input type="button" style=" background: #213c5a; color: #fff; display: inline-block; text-align: center; height: 44px; line-height: 42px; padding: 0 10px;" value="수정완료">
+            <input type="button" style=" background: #213c5a; color: #fff; display: inline-block; text-align: center; height: 44px; line-height: 42px; padding: 0 10px;" value="수정완료" onclick="goCreate()">
           </div>
 
     
@@ -162,6 +168,7 @@
 
           mem_id = fm.mem_id.value;
           mem_name = fm.mem_name.value;
+          mem_regno1 = fm.mem_regno1.value;
           mem_pass = fm.mem_pass.value;
           mem_pass2 = fm.mem_pass2.value;
           mem_hp = fm.mem_hp.value;
@@ -178,6 +185,12 @@
           fm.action = "/";
           fm.submit();
         }
+
+        function goDelete() {
+          if (window.confirm("정말 탈퇴하시겠습니까?")) {
+              location.href = "/mem_delete/?mem_id={{boo_mem.mem_id}}";
+          } 
+      }
       </script>
     
     </body>

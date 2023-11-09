@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Member, Marina, Schedule, Booking, Service, Traffic, Boo_mem, Businfo
+from .models import Member, Marina, Schedule, Booking, Service, Traffic, Boo_mem, Businfo, Chatbot
 from datetime import datetime
 from django.http import JsonResponse
 from django.shortcuts import render
@@ -560,6 +560,36 @@ def chatbot_back11(request):
     
     # print("ok 22----------->>>>>>>>")
     return HttpResponse(json_data, content_type='application/json')
+
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+@csrf_exempt
+
+@csrf_exempt
+def chatbot_back123(request):
+   
+    # user_content=request.POST.get("user_input","None")
+    # messages=request.POST.get("messages","None")
+    data = json.loads(request.body)
+    print(">>>>>>>>>>>>>>>>>>00000000000",data.get("user_input"))
+    user_input = data.get("user_input")
+    print(user_input)
+    chatbot = Chatbot.objects.get(request=user_input)
+    chatbotdb = chatbot.response
+    
+    # print(">>>>>>>>>>>>>>>>>>>>>>>",user_content)
+    print("값을 받아옴")
+    assistant_content1={"user_input":user_input,
+                        "chatbotdb":chatbotdb,
+                        "max_tokens": 1024,
+}
+    print(assistant_content1)
+    json_data = json.dumps(assistant_content1)
+    print("ok 11----------->>>>>>>>")
+    
+    # print("ok 22----------->>>>>>>>")
+    return HttpResponse(json_data, content_type='application/json')
+
     
     
 def iframe(request):

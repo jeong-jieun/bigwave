@@ -183,19 +183,21 @@
                 {% comment %} <span class="text-primary">bigwave</span> {% endcomment %}
     
                 <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu float-right">
-                    <li class="active"><a href="/">서비스 소개</a></li>
-                    <li class="active"><a href="/mg/test/">선착장예약</a></li>
-                    <li><a href="/je/service/">교통/관광 서비스</a></li>
-                    </li>
-                    {% if request.session.ses_mem_id == None %}
-                    <li><a href="/login2/">로그인</a></li>
-                    <li><a href="/signup2/">회원가입</a></li>
-                    {% else %}
-                    <li><a href="/mg/booking/">예약확인</a></li>
-                    <li><a href="/signup/">회원정보</a></li>
-                    <li><a href="/logout/">로그아웃</a></li>
-                    {% endif %}
-                </ul>
+                  {% if request.session.ses_mem_id == None %}
+                  <li class="active"><a href="/">서비스 소개</a></li>
+                  <li class="active"><a href="/mg/test/">선착장예약</a></li>
+                  <li><a href="/je/service/">교통/관광 서비스</a></li>
+                  <li><a href="/login2/">로그인</a></li>
+                  <li><a href="/signup2/">회원가입</a></li>
+                  {% else %}
+                  <li class="active"><a href="/">서비스 소개</a></li>
+                  <li class="active"><a href="/mg/test/">선착장예약</a></li>
+                  <li><a href="/mg/booking/">예약확인</a></li>
+                  <li><a href="/je/service/">교통/관광 서비스</a></li>
+                  <li><a href="/mypage/">회원정보</a></li>
+                  <li><a href="/logout/">로그아웃</a></li>
+                  {% endif %}
+              </ul>
     
                 <a href="#" class="burger ml-auto float-right site-menu-toggle js-menu-toggle d-inline-block d-lg-none light" data-toggle="collapse" data-target="#main-navbar">
                     <span></span>
@@ -229,28 +231,28 @@
               <input type="hidden" name="service_type" id="serviceType" value="음식점">
             </form>
           <br>
-          <div class="nav nav-tabs nav-justified" role="tablist">
-            <div class="slider"></div>
-            <input class="nav-link" type="radio" name="tabmenu" id="tab01" value="음식점" 
-              {% if selected_service_type == '음식점' %}checked{% endif %} 
-              onclick="updateServiceType('음식점')">
-            <label class="ttab" for="tab01"style="border-radius: 25px;"><i class="fas fa-hamburger"></i><div>음식점</div></label>
-      
-            <input class="nav-link" type="radio" name="tabmenu" id="tab02" value="카페" 
-              {% if selected_service_type == '카페' %}checked{% endif %} 
-              onclick="updateServiceType('카페')">
-            <label class="ttab" for="tab02"style="border-radius: 25px;"><i class="fas fa-mug-hot"></i><div>카페</div></label>
-      
-            <input class="nav-link" type="radio" name="tabmenu" id="tab03" value="관광명소" 
-              {% if selected_service_type == '관광명소' %}checked{% endif %} 
-              onclick="updateServiceType('관광명소')">
-            <label class="ttab" for="tab03"style="border-radius: 25px;"><i class="fas fa-map-signs"></i><div>관광 명소</div></label>
-      
-            <input class="nav-link" type="radio" name="tabmenu" id="tab04" value="교통정보" 
-              {% if selected_service_type == '교통정보' %}checked{% endif %}
-              onclick="tarffic_info()">
-              <label class="ttab" for="tab04"style="border-radius: 25px;"><i class="fas fa-bus"></i><div>교통 정보</div></label>
-          </div>
+    <div class="nav nav-tabs nav-justified" role="tablist">
+      <div class="slider"></div>
+      <input class="nav-link" type="radio" name="tabmenu" id="tab01" value="음식점" 
+        {% if selected_service_type == '음식점' %}checked{% endif %} 
+        onclick="updateServiceType('음식점')">
+      <label class="ttab" for="tab01"style="border-radius: 25px;"><i class="fas fa-hamburger"></i><div> 음식점</div></label>
+
+      <input class="nav-link" type="radio" name="tabmenu" id="tab02" value="카페" 
+        {% if selected_service_type == '카페' %}checked{% endif %} 
+        onclick="updateServiceType('카페')">
+      <label class="ttab" for="tab02"style="border-radius: 25px;"><i class="fas fa-mug-hot"></i><div> 카페</div></label>
+
+      <input class="nav-link" type="radio" name="tabmenu" id="tab03" value="관광명소" 
+        {% if selected_service_type == '관광명소' %}checked{% endif %} 
+        onclick="updateServiceType('관광명소')">
+      <label class="ttab" for="tab03"style="border-radius: 25px;"><i class="fas fa-map-signs"></i><div> 관광명소</div></label>
+
+      <input class="nav-link" type="radio" name="tabmenu" id="tab04" value="교통정보" 
+        {% if selected_service_type == '교통정보' %}checked{% endif %} 
+        onclick="traffic_info()">
+      <label class="ttab" for="tab04"style="border-radius: 25px;"><i class="fas fa-bus"></i><div> 교통정보</div></label>
+    </div>
       {% if selected_service_type == "교통정보" %}
         <h1>교통정보 페이지입니다.</h1>
       {% endif %}
