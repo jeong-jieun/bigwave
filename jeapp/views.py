@@ -617,6 +617,14 @@ def practice1(request):
         # 만약 둘 다 None이라면, "selected_mar"와 "selected_service_type"를 "boo_mem"에서의 도착 지점으로 설정합니다.
         selected_mar = boo_mem.boo_sch1.sch_arrival
         selected_service_type = "음식점"
+    elif selected_mar == '1' :
+        msg = """
+        <script type='text/javascript'>
+            alert('선착장을 다시 선택해 주세요.');
+            history.go(-1);
+        </script>
+    """    
+    return HttpResponse(msg)
     #filtered_services = Service.objects.filter(ser_mar=ser_mar, ser_gu=ser_gu)
 
     

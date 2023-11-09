@@ -215,7 +215,7 @@
             <form id="searchForm" method="get" action="{% url 'search_action4' %}">
               {% csrf_token %}
               <select class="form-select" name="search_option" aria-label="Default select example" onchange="submitForm()" style="padding: 2%;">
-                <option value="" {% if not search_result %}selected{% endif %}>선착장을 검색하세요</option>
+                <option value="1" {% if not search_result %}selected{% endif %}>선착장을 검색하세요</option>
                 {% for row in marina_list %}
                   <option value="{{row.mar_nm}}" {% if row.mar_nm == search_result %} selected{% endif %}>{{row.mar_nm}}</option>
                 
