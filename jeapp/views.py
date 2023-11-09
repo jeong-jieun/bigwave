@@ -624,7 +624,7 @@ def practice1(request):
             history.go(-1);
         </script>
     """    
-    return HttpResponse(msg)
+        return HttpResponse(msg)
     #filtered_services = Service.objects.filter(ser_mar=ser_mar, ser_gu=ser_gu)
 
     

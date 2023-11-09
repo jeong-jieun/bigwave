@@ -23,6 +23,8 @@ urlpatterns = [
     ### about (http://127.0.0.1:8000/mg/chat/)
     path('chatbotdb/', views.chatbotdb),
     ### about (http://127.0.0.1:8000/mg/chat/)
+    path('chat2/', views.chat2),
+    ### about (http://127.0.0.1:8000/mg/chat/)
     path('chat/', views.chat),
     ### about (http://127.0.0.1:8000/mg/login/)
     path('booking/', views.booking),
@@ -70,6 +72,8 @@ urlpatterns = [
     
     ## 아래 경로는 종민이 추가한거임
     path('chatbot_frame/', views.chatbot_frame),
+    ## 아래 경로는 종민이 추가한거임
+    path('chatbot_frame2/', views.chatbot_frame2),
 ]
     
 

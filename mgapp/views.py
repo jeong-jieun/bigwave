@@ -8,6 +8,11 @@ from io import BytesIO
 import base64
 # Create your views here.
 
+# index.html 처리
+def chat2(request):
+    return render(request,
+                  'mgapp/chatbot2.html',
+                  {})
 
 # index.html 처리
 def chat(request):
@@ -329,3 +334,10 @@ def chatbotdb(request):
         "user_input": user_input,
         "chatbotdb": chatbotdb,
     })
+    
+def chatbot_frame2(request):
+    
+    return render(request,
+                  'mgapp/chatbot_frame2.html',
+                  {})
+    
