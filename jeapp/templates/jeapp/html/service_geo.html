@@ -163,9 +163,254 @@
       input[type="radio"] {display:none;}
       input[type="radio"] + label {display: inline-block; width: 25%; text-align: center; padding: 13px;color: #112D4E; font-size: 18px; cursor: pointer;}
       input[type="radio"]:checked + label {background: #112D4E; color:#F9F7F7;}
+      @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+body,
+html {
+    height: 100%;
+    display: grid;
+    background: #eef1ff;
+}
+p {
+    margin: 0;
+}
+
+.ticket {
+    width: 80% ;
+    height: 80% ;
+    margin: auto;
+    background: white;
+    box-shadow: -1px 14px 14px -3px rgba(125, 123, 123, 0.43);
+    -webkit-box-shadow: -1px 14px 14px -3px rgba(125, 123, 123, 0.43);
+    -moz-box-shadow: -1px 14px 14px -3px rgba(125, 123, 123, 0.43);
+}
+.airline {
+    width: 90% ;
+    height: auto;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.header {
+    background: #6499E9;
+    padding: 1em;
+}
+.header h1 {
+    font-family: "Roboto", sans-serif;
+    font-size: 4em;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+.airline h2 {
+    font-size: 1.5em;
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+    color: white;
+}
+.airline h3 {
+    font-size: 1.5em;		
+    font-family: "Roboto", sans-serif;
+    text-align: center;
+    font-weight: semibold;
+}
+.grid {
+    padding: 1em;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 0.5em;
+    padding: 1em;
+    border-bottom: 1px solid lightgray;
+}
+.col {
+    padding: 5px 10px;
+    display: flex;
+    flex-direction: column;
+}
+.col p {
+    font-weight: 600;
+    color: black;
+    font-family: "Roboto", sans-serif;
+}
+.col p:nth-child(2) {
+    font-weight: 100;
+    margin-top: 10px;
+}
+.basic {
+    box-shadow: none;
+    background-color: transparent;
+    font-family: "Roboto", sans-serif;
+    font-size: 2em;
+}
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  text-anchor: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+    font-size: 3.5rem;
+  }
+}
+
+.b-example-divider {
+  width: 100%;
+  height: 3rem;
+  background-color: rgba(0, 0, 0, .1);
+  border: solid rgba(0, 0, 0, .15);
+  border-width: 1px 0;
+  box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+}
+
+.b-example-vr {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 100vh;
+}
+
+.bi {
+  vertical-align: -.125em;
+  fill: currentColor;
+}
+
+.nav-scroller {
+  position: relative;
+  z-index: 2;
+  height: 2.75rem;
+  overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+  display: flex;
+  flex-wrap: nowrap;
+  padding-bottom: 1rem;
+  margin-top: -1px;
+  overflow-x: auto;
+  text-align: center;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+.btn-bd-primary {
+  --bd-violet-bg: #712cf9;
+  --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: var(--bs-white);
+  --bs-btn-bg: var(--bd-violet-bg);
+  --bs-btn-border-color: var(--bd-violet-bg);
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: #6528e0;
+  --bs-btn-hover-border-color: #6528e0;
+  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+  --bs-btn-active-color: var(--bs-btn-hover-color);
+  --bs-btn-active-bg: #5a23c8;
+  --bs-btn-active-border-color: #5a23c8;
+}
+.btn-bd-primary2 {
+  --bd-violet-bg: #ffffff00;
+  --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: var(--bs-white);
+  --bs-btn-bg: var(--bd-violet-bg);
+  --bs-btn-border-color: var(--bd-violet-bg);
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: #6528e0;
+  --bs-btn-hover-border-color: #6528e0;
+  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+  --bs-btn-active-color: var(--bs-btn-hover-color);
+  --bs-btn-active-bg: #5a23c8;
+  --bs-btn-active-border-color: #5a23c8;
+}
+.bd-mode-toggle {
+  z-index: 1500;
+}
+.mb-2 {
+  margin-bottom: 5.5rem!important;
+}
+#popupContainer {
+  display: none;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  width: 500px;
+  height: 500px;
+  background-color: transparent;
+  z-index: 9999; /* 팝업을 항상 위에 띄우기 위해 z-index 사용 */
+} @media (min-width:350px) and (max-width:660px) {
+  #popupContainer{
+   width: 300px;
+   height: 400px;
+  }
+ }
+
+#popupContent {
+  right: 10px;
+  width: 500px;
+  height: 435px;
+
+}
+ @media (min-width:350px) and (max-width:660px) {
+ #popupContent{
+  width: 300px;
+  height: 300px;
+ }
+}
+
+#closePopup {
+  background-color: #248A52;
+  color: white;
+  padding: 5px 15PX;
+  border: none;
+  cursor: pointer;
+  float: right;
+}
+@font-face {
+  font-family: 'IAMAPLAYER';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/IAMAPLAYER.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
     </style> 
   </head>
   <body>
+    <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+      <symbol id="arrow-up" viewBox="0 0 16 16">
+        <path d="M7.646 1.646a.5.5 0 0 1 .708 0l5 5a.5.5 0 0 1-.708.708L8 2.707 2.354 8.354a.5.5 0 0 1-.708-.708l5-5z"/>
+      </symbol>
+      </svg>
+    
+    
+      <div class="dropdown position-fixed bottom-0 end-0 mb-2 me-3 bd-mode-toggle">
+      <button class="btn btn-bd-primary2 py-2 dropdown-toggle d-flex align-items-center"
+          id="openPopup"
+          type="button"
+          aria-expanded="false"
+          aria-label="Toggle theme (auto)"
+          onclick="">
+        <img src="{% static "\mgapp\images\dbdb.png" %}" style="max-width: 50px; max-height: 50px;" alt="챗봇">
+        <span class="visually-hidden" id="bd-theme-text">sadas</span>
+      </button>
+      </div>
+      <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+      <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
+          id="bd-theme"
+          type="button"
+          aria-expanded="false"
+          aria-label="Toggle theme (auto)"
+          onclick="scrollToTop()">
+        <svg class="bi my-1 theme-icon-active" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor">
+        <use xlink:href="#arrow-up"></use>
+        <span class="visually-hidden" id="bd-theme-text">sadas</span>
+      </button>
+      </div>
+      <div id="popupContainer">
+      <button id="closePopup" style="font-size: 20px;">X</button>
+      <iframe id="popupContent" src="/mg/chat2/" frameborder="0">
+        <h2>Popup Title</h2>
+      </iframe>
+      </div>
     <header>
       <div class="site-mobile-menu site-navbar-target">
         <div class="site-mobile-menu-header">
@@ -194,7 +439,7 @@
                   <li class="active"><a href="/mg/test/">선착장예약</a></li>
                   <li><a href="/mg/booking/">예약확인</a></li>
                   <li><a href="/je/service/">교통/관광 서비스</a></li>
-                  <li><a href="/mypage/">회원정보</a></li>
+                  <li><a href="/signup/">회원정보</a></li>
                   <li><a href="/logout/">로그아웃</a></li>
                   {% endif %}
               </ul>
@@ -347,6 +592,21 @@
         //alert(option_val);
         //alert("13123")  ;   
        location.href = "/je/service/practice1/?search_option="+option_val;
+      }
+    </script>
+
+    <script>
+      document.getElementById('openPopup').addEventListener('click', function () {
+        document.getElementById('popupContainer').style.display = 'block';
+      });
+      
+      document.getElementById('closePopup').addEventListener('click', function () {
+        document.getElementById('popupContainer').style.display = 'none';
+      });
+    </script>
+    <script>
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     </script>
       

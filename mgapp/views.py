@@ -326,14 +326,6 @@ def chatbot_frame(request):
                   'mgapp/chatbot_frame.html',
                   {})
     
-def chatbotdb(request):
-    user_input = user_input = request.POST.get("user_input", "")
-    chatbotdb = Chatbot.objects.get(request=user_input)
-
-    return render(request, 'mg/chatbot_frame.html', {
-        "user_input": user_input,
-        "chatbotdb": chatbotdb,
-    })
     
 def chatbot_frame2(request):
     

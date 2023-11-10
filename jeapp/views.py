@@ -561,10 +561,6 @@ def chatbot_back11(request):
     # print("ok 22----------->>>>>>>>")
     return HttpResponse(json_data, content_type='application/json')
 
-from django.http import HttpResponse
-from django.views.decorators.csrf import csrf_exempt
-@csrf_exempt
-
 @csrf_exempt
 def chatbot_back123(request):
    
